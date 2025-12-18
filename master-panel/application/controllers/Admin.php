@@ -1666,4 +1666,342 @@ class Admin extends CI_Controller
         }
     }
     
+    // Sitemap Management
+    public function sitemap_management() {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+        
+        $page_data['page_name']  = 'sitemap_management';
+        $page_data['page_title'] = 'Sitemap Management';
+        
+        // Check if sitemap file exists and get last modified date
+        $sitemap_path = dirname(FCPATH) . '/sitemap.xml';
+        $sitemap_path = str_replace('\\', '/', $sitemap_path);
+        $sitemap_path = realpath($sitemap_path) ?: $sitemap_path;
+        
+        if (file_exists($sitemap_path)) {
+            $page_data['sitemap_exists'] = true;
+            $page_data['last_generated'] = date("F d, Y h:i A", filemtime($sitemap_path));
+        } else {
+            $page_data['sitemap_exists'] = false;
+            $page_data['last_generated'] = 'Never';
+        }
+        
+        // Get base URL for sitemap
+        $page_data['base_url'] = rtrim($this->config->item('base_url'), '/');
+        $page_data['base_url'] = str_replace('/master-panel', '', $page_data['base_url']);
+        
+        $this->load->view('backend/index', $page_data);
+    }
+    
+    public function generate_sitemap() {
+        if ($this->session->userdata('admin_login') != true) {
+            echo json_encode(['status' => 'error', 'message' => 'Unauthorized access']);
+            return;
+        }
+        
+        try {
+            ini_set('memory_limit', '512M');
+            ini_set('max_execution_time', 300);
+            
+            // Get frontend base URL
+            $base_url = rtrim($this->config->item('base_url'), '/');
+            $base_url = str_replace('/master-panel', '', $base_url);
+            
+            // Start XML
+            $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+            $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . "\n";
+            $xml .= '        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' . "\n";
+            $xml .= '        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9' . "\n";
+            $xml .= '              http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n\n";
+            
+            $current_date = date('Y-m-d\TH:i:s+00:00');
+            
+            // Homepage
+            $xml .= $this->generate_url_entry($base_url . '/', $current_date, 'always', '1.00');
+            
+            // Get active blogs - URL format: /blog-details/(slug)
+            try {
+                if ($this->db->table_exists('blogs')) {
+                    $this->db->group_start();
+                    $this->db->where('status', '1');
+                    $this->db->or_where('status', 1);
+                    $this->db->group_end();
+                    $this->db->order_by('id', 'ASC');
+                    $query = $this->db->get('blogs');
+                    if ($query && $query->num_rows() > 0) {
+                        $blogs = $query->result();
+                        foreach ($blogs as $blog) {
+                            $blog_slug = !empty($blog->slug) ? $blog->slug : slugify($blog->name);
+                            
+                            if (!empty($blog->name) && !empty($blog_slug)) {
+                                $xml .= $this->generate_url_entry(
+                                    $base_url . '/blog-details/' . $blog_slug,
+                                    $current_date,
+                                    'always',
+                                    '0.80'
+                                );
+                            }
+                        }
+                    }
+                }
+            } catch (Exception $e) {
+                log_message('error', 'Sitemap Generation Error (Blogs): ' . $e->getMessage());
+            }
+            
+            // Get all events - URL format: /event/(slug)/(id)
+            try {
+                if ($this->db->table_exists('event')) {
+                    $this->db->order_by('id', 'ASC');
+                    $query = $this->db->get('event');
+                    if ($query && $query->num_rows() > 0) {
+                        $events = $query->result();
+                        foreach ($events as $event) {
+                            $event_name = !empty($event->name) ? $event->name : (!empty($event->title) ? $event->title : '');
+                            $event_slug = !empty($event->slug) ? $event->slug : (!empty($event_name) ? slugify($event_name) : '');
+                            $event_id = !empty($event->id) ? $event->id : '';
+                            
+                            if (!empty($event_id) && !empty($event_slug)) {
+                                $xml .= $this->generate_url_entry(
+                                    $base_url . '/event/' . $event_slug . '/' . $event_id,
+                                    $current_date,
+                                    'always',
+                                    '0.80'
+                                );
+                            }
+                        }
+                    }
+                }
+            } catch (Exception $e) {
+                log_message('error', 'Sitemap Generation Error (Events): ' . $e->getMessage());
+            }
+            
+            // Get active branches - URL format: /explore-centers/(city)/(slug)
+            try {
+                if ($this->db->table_exists('branches')) {
+                    $this->db->group_start();
+                    $this->db->where('status', '1');
+                    $this->db->or_where('status', 1);
+                    $this->db->or_where('status', 'active');
+                    $this->db->group_end();
+                    $this->db->order_by('id', 'ASC');
+                    $query = $this->db->get('branches');
+                    if ($query && $query->num_rows() > 0) {
+                        $branches = $query->result();
+                        foreach ($branches as $branch) {
+                            $branch_slug = !empty($branch->slug) ? $branch->slug : slugify($branch->name);
+                            $branch_city = !empty($branch->city) ? strtolower($branch->city) : 'hyderabad';
+                            
+                            if (!empty($branch->name) && !empty($branch_slug)) {
+                                $xml .= $this->generate_url_entry(
+                                    $base_url . '/explore-centers/' . $branch_city . '/' . $branch_slug,
+                                    $current_date,
+                                    'always',
+                                    '0.80'
+                                );
+                            }
+                        }
+                    }
+                }
+            } catch (Exception $e) {
+                log_message('error', 'Sitemap Generation Error (Branches): ' . $e->getMessage());
+            }
+            
+            // Static pages based on frontend routes
+            $static_pages = [
+                'admissions' => '0.80',
+                'career' => '0.80',
+                'about-us' => '0.80',
+                'our-learning-spaces-amenities' => '0.80',
+                'awards-recognitions' => '0.80',
+                'our-curriculum' => '0.80',
+                'our-programmes' => '0.80',
+                'a-day-at-kidzonia' => '0.80',
+                'kidzonia-commits' => '0.80',
+                'ixplore' => '0.80',
+                'whizkids' => '0.80',
+                'our-teachers' => '0.80',
+                'print-media' => '0.80',
+                'achievements' => '0.80',
+                'kidzonia-gallery' => '0.80',
+                'blogs' => '0.80',
+                'digital-news' => '0.80',
+                'explore-centers/hyderabad' => '0.80',
+                'explore-centers/mumbai' => '0.80',
+                'explore-centers/pune' => '0.80',
+                'contact-us' => '0.80',
+                'privacy-policy' => '0.80',
+            ];
+            
+            foreach ($static_pages as $page => $priority) {
+                $xml .= $this->generate_url_entry(
+                    $base_url . '/' . $page,
+                    $current_date,
+                    'always',
+                    $priority
+                );
+            }
+            
+            $xml .= "\n</urlset>";
+            
+            // Save sitemap to root directory
+            $sitemap_path = dirname(FCPATH) . '/sitemap.xml';
+            $sitemap_path = str_replace('\\', '/', $sitemap_path);
+            $sitemap_dir = dirname($sitemap_path);
+            
+            // Check if directory exists
+            if (!is_dir($sitemap_dir)) {
+                if (!@mkdir($sitemap_dir, 0755, true)) {
+                    echo json_encode([
+                        'status' => 'error',
+                        'message' => 'Failed to create directory. Path: ' . $sitemap_dir . '. Please check permissions.'
+                    ]);
+                    return;
+                }
+            }
+            
+            // Check if directory is writable
+            if (!is_writable($sitemap_dir)) {
+                @chmod($sitemap_dir, 0755);
+                if (!is_writable($sitemap_dir)) {
+                    echo json_encode([
+                        'status' => 'error',
+                        'message' => 'Directory is not writable. Path: ' . $sitemap_dir . '. Please set permissions to 755 or 777.'
+                    ]);
+                    return;
+                }
+            }
+            
+            // Check if file exists and its permissions
+            $file_exists = file_exists($sitemap_path);
+            $file_writable = $file_exists ? is_writable($sitemap_path) : true;
+            
+            if ($file_exists && !$file_writable) {
+                @chmod($sitemap_path, 0644);
+                $file_writable = is_writable($sitemap_path);
+            }
+            
+            // Check disk space
+            $free_space = disk_free_space($sitemap_dir);
+            if ($free_space !== false && $free_space < 1048576) {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Insufficient disk space. Free space: ' . round($free_space / 1024 / 1024, 2) . ' MB. Path: ' . $sitemap_dir
+                ]);
+                return;
+            }
+            
+            error_clear_last();
+            $write_success = false;
+            $error_details = '';
+            
+            // Attempt 1: file_put_contents
+            $write_result = file_put_contents($sitemap_path, $xml, LOCK_EX);
+            if ($write_result !== false) {
+                $write_success = true;
+            } else {
+                $error = error_get_last();
+                $error_details .= 'file_put_contents failed. PHP Error: ' . ($error['message'] ?? 'Unknown error') . '. ';
+                
+                // Attempt 2: Try to delete and then write
+                if ($file_exists && !$file_writable) {
+                    if (@unlink($sitemap_path)) {
+                        $error_details .= 'Old file deleted. ';
+                        $write_result = file_put_contents($sitemap_path, $xml, LOCK_EX);
+                        if ($write_result !== false) {
+                            $write_success = true;
+                        } else {
+                            $error = error_get_last();
+                            $error_details .= 'file_put_contents after delete failed. PHP Error: ' . ($error['message'] ?? 'Unknown error') . '. ';
+                        }
+                    } else {
+                        $error_details .= 'Failed to delete old file. ';
+                    }
+                }
+                
+                // Attempt 3: Use fopen/fwrite
+                if (!$write_success) {
+                    $fp = @fopen($sitemap_path, 'w');
+                    if ($fp) {
+                        if (@fwrite($fp, $xml) !== false) {
+                            @fclose($fp);
+                            $write_success = true;
+                            $error_details .= 'fopen/fwrite succeeded. ';
+                        } else {
+                            @fclose($fp);
+                            $error = error_get_last();
+                            $error_details .= 'fopen/fwrite failed. PHP Error: ' . ($error['message'] ?? 'Unknown error') . '. ';
+                        }
+                    } else {
+                        $error = error_get_last();
+                        $error_details .= 'fopen failed. PHP Error: ' . ($error['message'] ?? 'Unknown error') . '. ';
+                        
+                        // Attempt 4: Write to temp file and rename
+                        $temp_sitemap_path = $sitemap_dir . '/sitemap.xml.tmp';
+                        $temp_write_result = file_put_contents($temp_sitemap_path, $xml, LOCK_EX);
+                        if ($temp_write_result !== false) {
+                            $error_details .= 'Wrote to temp file. ';
+                            if (@rename($temp_sitemap_path, $sitemap_path)) {
+                                $write_success = true;
+                                $error_details .= 'Renamed temp file. ';
+                            } else {
+                                $error = error_get_last();
+                                $error_details .= 'Rename failed. PHP Error: ' . ($error['message'] ?? 'Unknown error') . '. ';
+                                if (@copy($temp_sitemap_path, $sitemap_path)) {
+                                    $write_success = true;
+                                    $error_details .= 'Copied temp file. ';
+                                    @unlink($temp_sitemap_path);
+                                } else {
+                                    $error = error_get_last();
+                                    $error_details .= 'Copy failed. PHP Error: ' . ($error['message'] ?? 'Unknown error') . '. ';
+                                }
+                            }
+                        } else {
+                            $error = error_get_last();
+                            $error_details .= 'Writing to temp file failed. PHP Error: ' . ($error['message'] ?? 'Unknown error') . '. ';
+                        }
+                    }
+                }
+            }
+            
+            if ($write_success) {
+                @chmod($sitemap_path, 0644);
+                $response = [
+                    'status' => 'success',
+                    'message' => 'Sitemap generated successfully!',
+                    'date' => date("F d, Y h:i A"),
+                    'path' => $sitemap_path,
+                    'size' => filesize($sitemap_path) . ' bytes'
+                ];
+                echo json_encode($response);
+            } else {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Failed to write sitemap file. ' . $error_details .
+                                 ' Path: ' . $sitemap_path .
+                                 ' Directory writable: ' . (is_writable($sitemap_dir) ? 'Yes' : 'No') .
+                                 ' File exists: ' . ($file_exists ? 'Yes' : 'No') .
+                                 ' File writable: ' . ($file_writable ? 'Yes' : 'No')
+                ]);
+            }
+        } catch (Exception $e) {
+            log_message('error', 'Sitemap Generation Error: ' . $e->getMessage());
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Error! Fatal error generating sitemap: ' . $e->getMessage()
+            ]);
+        }
+    }
+    
+    private function generate_url_entry($url, $lastmod, $changefreq, $priority) {
+        $entry = "<url>\n";
+        $entry .= "  <loc>" . htmlspecialchars($url, ENT_XML1, 'UTF-8') . "</loc>\n";
+        $entry .= "  <lastmod>" . $lastmod . "</lastmod>\n";
+        $entry .= "  <changefreq>" . $changefreq . "</changefreq>\n";
+        $entry .= "  <priority>" . $priority . "</priority>\n";
+        $entry .= "</url>\n";
+        return $entry;
+    }
+    
 }

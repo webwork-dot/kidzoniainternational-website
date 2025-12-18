@@ -223,5 +223,12 @@
            </a>
        </li> -->
        
+       <li class="nav-item <?php if ($page_name == 'sitemap_management') echo 'active'; ?>">
+           <a class="d-flex align-items-center" href="<?php echo site_url() . 'admin/sitemap-management'; ?>">
+               <i data-feather="sitemap"></i>
+               <span class="menu-title text-truncate fw-bolder" data-i18n="sitemap">Sitemap Generator</span>
+           </a>
+       </li>
+       
     </ul>
 </div>

@@ -139,3 +139,7 @@ $route[$r_admin . '/products/add']                  = 'admin/products_form/add';
 $route[$r_admin . '/products/edit/(:num)']          = 'admin/products_form/edit/$1';
 
 $route[$r_admin . '/contact-enquiry']               = 'admin/contact_enquiry';
+
+// Sitemap Management
+$route[$r_admin . '/sitemap-management']                 = 'admin/sitemap_management';
+$route[$r_admin . '/generate_sitemap']                   = 'admin/generate_sitemap';
