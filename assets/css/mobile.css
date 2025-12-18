@@ -1,0 +1,137 @@
+@media (max-width: 767px) {
+.section-heading, .rs-feature-box-1 .title {
+   font-size: 24px; 
+}  
+.bgi-hide-xs {
+    background-image: none !important;
+} 
+.overlap {
+    margin-top: 0; 
+} 
+.jumbo-heading {
+      font-size: 40px; 
+}
+.box-news-1 {
+    display: block; 
+}
+.box-news-1 .media, .box-news-1 .body {
+  width: 100%; 
+    
+}
+.history-1 .timeline__item {
+    display: block;
+}
+.history-1 .timeline__item .media, .history-1 .timeline__item .text {
+    width: 100%; 
+}
+.history-1 .timeline__item .media img, .history-1 .timeline__item .text img {
+    margin-bottom: 20px; 
+}
+.history-1 .timeline__item .aksen {
+    display: none; 
+}
+.box-partner .item {
+    display: block; 
+}
+.box-partner .item .box-image, .box-partner .item .box-info {
+    width: 100%;
+}
+.navbar-main .collapse ul li:hover > ul {
+    display: block; 
+}
+.navbar-main .collapse ul ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none; 
+}
+.navbar-main .collapse ul ul li {
+    position: relative; 
+}
+.navbar-main .collapse ul ul li:hover > ul {
+    display: block; 
+}
+.navbar-main .collapse ul ul ul {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: none;
+}
+.navbar-main .collapse ul ul ul li {
+    position: relative; 
+}
+.navbar-main .collapse ul ul ul li:hover ul {
+    display: block;
+}
+.navbar-main .collapse ul ul ul ul {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    min-width: 200px;
+    display: none;
+    z-index: 1; 
+}
+.navbar-main .navbar-nav .show .dropdown-menu .dropdown-menu > li > a {
+    padding: 16px 15px 16px 35px; 
+}
+.navbar-main .navbar-nav .show .dropdown-menu .dropdown-menu .dropdown-menu > li > a {
+    padding: 16px 15px 16px 45px; 
+}
+.header-1 .navbar-main .nav-link {
+    padding-top: .7rem;
+    padding-bottom: .7rem; 
+}
+.header-1 .navbar-main {
+    /*background-color: $white;*/ }
+    .header-1 .navbar-main .navbar-brand {
+      position: relative;
+      top: 0; }
+
+  .navbar-collapse {
+    padding-bottom: 20px; }
+
+  .btn-nav {
+    display: block; }
+    .banner .custom-nav {
+        display: none; }
+        .cta-overlap {
+      margin-top: -10px; }
+      .sideright-img {
+      position: static;
+      -webkit-transition: all 0.4s ease 0s !important;
+      transition: all 0.4s ease 0s !important; }
+      .sideright-img:hover {
+        opacity: 0.9;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+        filter: alpha(opacity=90); }
+      .sideright-img img {
+        display: block; }
+         h1 {
+    font-size: 3.071em;
+    line-height: normal; }
+
+  h2, .banner-page .title-page {
+    font-size: 2.357em;
+    line-height: normal; }
+
+  h3 {
+    font-size: 1.214em;
+    line-height: normal; }
+
+  h4, .rs-team-2 .title, .rs-team-single .title {
+    font-size: 1em;
+    line-height: normal; }
+
+
+
+
+
+
+
+
+
+
+
+ 
+    
+}

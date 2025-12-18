@@ -1,0 +1,95 @@
+/* Moved inline styles to external CSS for better performance */
+@media(max-width:500px) {
+    .custom-top-10-preschool {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        flex-direction: column !important
+    }
+}
+
+.swal2-container {
+    z-index: 9999999999999
+}
+
+.custom-box-event {
+    width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 1px 2px 9px rgb(0 0 0 / 35%)
+}
+
+.owl-nav.disabled {
+    display: flex !important
+}
+
+.owl-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    justify-content: space-between;
+    margin: 0;
+    z-index: -9999999
+}
+
+.owl-next,
+.owl-prev {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px
+}
+
+.owl-next .bi,
+.owl-prev .bi {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    background: #8064ab;
+    border-radius: 50%;
+    padding: 4px 8px;
+    transition: text-shadow .3s, background .3s
+}
+
+.owl-next .bi:hover,
+.owl-prev .bi:hover {
+    font-weight: none;
+    background: #654e89;
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 70%)
+}
+
+.owl-prev {
+    position: relative;
+    right: 25px;
+    order: 1
+}
+
+.owl-next {
+    position: relative;
+    left: 25px;
+    order: 2
+}
+
+.owl-stage-outer {
+    padding-right: 0 !important;
+    padding-left: 0 !important
+}
+
+a {
+    text-decoration: none
+}
+
+.custom-footer-address {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    line-height: 1.8em
+}
+
+
