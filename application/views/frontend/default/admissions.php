@@ -90,7 +90,7 @@
                                 <div class="col-md-12">
                                   <div class="form-group mb-2">
                                     <label>Phone<i class="text-dander">*</i></label>
-                                    <input type="tel" minlength="10" maxlength="10" class="signup-form-control" oninput="sanitizeInput(this)" onfocus="openDialer(this)" class="form-control" name="phone" placeholder="Phone" required>
+                                    <input type="tel" class="signup-form-control form-control" name="phone" placeholder="Phone" required>
                                     <span class="invalid-feedback"></span>
                                   </div>
                                 </div>

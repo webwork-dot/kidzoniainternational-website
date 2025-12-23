@@ -33,7 +33,7 @@ if (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false
     $host = str_replace('www.', '', $host);
     $protocol = 'http'; // Force HTTP for localhost
 } else {
-    $protocol = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+    $protocol = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "http" : "http");
 }
 $base_path = str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 $config['base_url'] = $protocol . "://" . $host . $base_path;

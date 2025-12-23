@@ -934,6 +934,7 @@ class Crud_model extends CI_Model
         $data['child_name']  = clean_and_escape($this->input->post('child_name'));
         $data['email']       = clean_and_escape($this->input->post('email'));
         $data['phone']       = clean_and_escape($this->input->post('phone'));
+        $data['phone_country_code'] = clean_and_escape($this->input->post('phone_country_code')) ?: '+91';
         $data['message']     = clean_and_escape($this->input->post('message'));
         $data['know_about_us'] = clean_and_escape($this->input->post('know_about_us'));
         $data['ip_address']  = $ip_address;
@@ -1141,6 +1142,7 @@ class Crud_model extends CI_Model
         $data['child_name']  = ($this->input->post('child_name'));
         $data['email']       = ($this->input->post('email'));
         $data['phone']       = $phone;
+        $data['phone_country_code'] = clean_and_escape($this->input->post('phone_country_code')) ?: '';
         $data['location']    = ($this->input->post('location'));
         $data['know_about_us']  = ($this->input->post('know_about_us'));
         $data['ip_address']  = $ip_address;
@@ -1180,6 +1182,7 @@ class Crud_model extends CI_Model
                 "first_name"       => ($this->input->post('parent_name')),
                 "child_first_name" => ($this->input->post('child_name')),
                 "mobile"           => $phone,
+                "mobile_country_code" => clean_and_escape($this->input->post('phone_country_code')) ?: '',
                 "email"            => ($this->input->post('email')),
                 "how_know"         => ($this->input->post('know_about_us')),
                 "program_id"       => $class_id,
@@ -1632,6 +1635,7 @@ class Crud_model extends CI_Model
             $data['child_name']  = clean_and_escape($this->input->post('child_name'));
             $data['email']       = clean_and_escape($this->input->post('email'));
             $data['phone']       = clean_and_escape($this->input->post('phone'));
+            $data['phone_country_code'] = clean_and_escape($this->input->post('phone_country_code')) ?: '+91';
             $data['location']       = clean_and_escape($this->input->post('location'));
             $data['know_about_us']     = clean_and_escape($this->input->post('know_about_us'));
             $data['ip_address']  = $ip_address;
@@ -1731,6 +1735,7 @@ class Crud_model extends CI_Model
             $data['name']        = clean_and_escape($this->input->post('name'));
             $data['email']       = clean_and_escape($this->input->post('email'));
             $data['mobile']      = clean_and_escape($this->input->post('mobile'));
+            $data['mobile_country_code'] = clean_and_escape($this->input->post('mobile_country_code')) ?: '+91';
             $data['ip_address']  = $ip_address;
             $data['created_at']  = date("Y-m-d H:i:s");
             if ($this->db->insert('brochure', $data)) {
@@ -1794,6 +1799,7 @@ class Crud_model extends CI_Model
         $data       =  array();
         $data['name']       =  clean_and_escape($this->input->post('name'));
         $data['phone']       =  clean_and_escape($this->input->post('phone'));
+        $data['phone_country_code'] = clean_and_escape($this->input->post('phone_country_code')) ?: '+91';
         $data['email']       =  clean_and_escape($this->input->post('email'));
         $data['created_at']       =  date("Y-m-d H:i:s");
 
@@ -1851,6 +1857,7 @@ class Crud_model extends CI_Model
             $data['name']       =  clean_and_escape($this->input->post('name'));
             $data['gender']     =  clean_and_escape($this->input->post('gender'));
             $data['phone']      =  clean_and_escape($this->input->post('phone'));
+            $data['phone_country_code'] = clean_and_escape($this->input->post('phone_country_code')) ?: '+91';
             $data['event_id']   =  clean_and_escape($this->input->post('event_id'));
             $data['location']   =  clean_and_escape($this->input->post('location'));
             $data['created_at'] = date("Y-m-d H:i:s");
@@ -1991,6 +1998,7 @@ class Crud_model extends CI_Model
         $data['career_id'] = $this->input->post('career_id');
         $data['name'] = clean_and_escape($this->input->post('name'));
         $data['phone'] = clean_and_escape($this->input->post('phone'));
+        $data['phone_country_code'] = clean_and_escape($this->input->post('phone_country_code')) ?: '+91';
         $data['email'] = clean_and_escape($this->input->post('email'));
         $data['branch_id'] = $branch_id;
         $data['branch'] = $branch_name;
@@ -2157,6 +2165,7 @@ class Crud_model extends CI_Model
 				'name' => clean_and_escape($this->input->post('name')),
 				'email' => clean_and_escape($this->input->post('email')),
 				'phone' => clean_and_escape($this->input->post('phone')),
+				'phone_country_code' => clean_and_escape($this->input->post('phone_country_code')) ?: '+91',
 				'chat_with_us' => clean_and_escape($this->input->post('chat_with_us')),
 				'subject' => clean_and_escape($this->input->post('subject')),
 				'ip_address' => $this->input->ip_address(),

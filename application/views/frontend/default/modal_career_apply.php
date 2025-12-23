@@ -53,7 +53,7 @@ $branches = $this->crud_model->get_branches()->result_array();
                <div class="col-md-12">
                   <div class="form-group mb-2">
                      <label>Phone<i class="text-dander">*</i></label>
-                     <input type="tel" minlength="10" maxlength="10" class="signup-form-control" oninput="sanitizeInput(this)" onfocus="openDialer(this)" class="form-control" name="phone" placeholder="Phone" required>
+                     <input type="tel" class="signup-form-control form-control" name="phone" placeholder="Phone" required>
                      <span class="invalid-feedback"></span>
                   </div>
                </div>
@@ -99,6 +99,11 @@ $branches = $this->crud_model->get_branches()->result_array();
 </div>
    
  <script>  
+  // Initialize intl-tel-input when modal loads
+  if (typeof initializeIntlTelInput === 'function') {
+      initializeIntlTelInput();
+  }
+
   function checkMForm(form){
    form.btn_merify.disabled = true; 
 	$('.btn_merify').attr("disabled", true);
@@ -112,8 +117,37 @@ $branches = $this->crud_model->get_branches()->result_array();
           $('.btn_merify').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ms-25 align-middle">Loading...</span>');
           var url = $(this).attr('action');
    
-         // Get form
-        var form = $('.add-ajax-modal-form')[0];
+         // Get form - use the form that triggered the submit
+        var form = this;
+
+        // Extract country code before form submission
+        if (typeof extractCountryCode === 'function') {
+            extractCountryCode(form);
+        } else {
+            // Fallback: Get country code from intl-tel-input and store in separate field
+            var phoneInput = form.querySelector('input[name="phone"]');
+            if (phoneInput) {
+                var itiInstance = phoneInput.itiInstance || window.intlTelInput.getInstance(phoneInput);
+                if (itiInstance) {
+                    var countryData = itiInstance.getSelectedCountryData();
+                    if (countryData && countryData.dialCode) {
+                        var countryCode = '+' + countryData.dialCode;
+                        
+                        // Remove existing country code field if any
+                        var existingField = form.querySelector('input[name="phone_country_code"]');
+                        if (existingField) {
+                            existingField.remove();
+                        }
+                        // Create hidden input with country code only
+                        var hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'phone_country_code';
+                        hiddenInput.value = countryCode;
+                        form.appendChild(hiddenInput);
+                    }
+                }
+            }
+        }
 
         // FormData object 
          var data = new FormData(form);

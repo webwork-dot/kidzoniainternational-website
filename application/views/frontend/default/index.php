@@ -79,10 +79,109 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
     
+    <!-- intl-tel-input CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/css/intlTelInput.css">
+    <style>
+
+.iti input.iti__tel-input, .iti input.iti__tel-input[type=text], .iti input.iti__tel-input[type=tel]{
+    padding-left: 75px !important;
+}
+     
+        .iti--separate-dial-code {
+            width: 100% !important;
+        }
+        .iti--separate-dial-code .iti__selected-dial-code {
+            padding-right: 8px !important;
+            margin-right: 4px !important;
+            min-width: 50px !important;
+        }
+        .iti--separate-dial-code input {
+            padding-left: 80px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .iti--separate-dial-code .iti__flag-container {
+            left: 0 !important;
+            position: absolute !important;
+            width: 0 !important;
+            overflow: hidden !important;
+        }
+        .iti--separate-dial-code .iti__selected-flag {
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+            width: auto !important;
+            cursor: pointer !important;
+        }
+        /* Ensure input text doesn't overlap with dial code */
+        .iti input {
+            padding-left: 80px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .iti--separate-dial-code input {
+            padding-left: 80px !important;
+            width: 100% !important;
+        }
+        /* Fix for form controls */
+        .form-control.iti__tel-input,
+        .signup-form-control.iti__tel-input {
+            padding-left: 80px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        /* Ensure placeholder doesn't overlap */
+        .iti input::placeholder {
+            padding-left: 0 !important;
+        }
+        /* Fix for specific input types */
+        input[type="tel"].form-control,
+        input[type="tel"].signup-form-control {
+            padding-left: 80px !important;
+        }
+        /* Container fixes */
+        .form-group .iti,
+        .h-enquiry .iti {
+            width: 100% !important;
+        }
+        /* Prevent text overflow */
+        .iti--separate-dial-code input {
+            text-indent: 0 !important;
+        }
+        /* Hide flag images completely - only show country code */
+        .iti__flag {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            opacity: 0 !important;
+        }
+        .iti__flag-box {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+        /* Keep selected flag area clickable for dropdown (contains dial code) */
+        .iti__selected-flag {
+            display: flex !important;
+            align-items: center !important;
+            cursor: pointer !important;
+        }
+        /* Hide flag container but keep dial code visible and clickable */
+        .iti__flag-container {
+            width: 0 !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+        }
+
+    </style>
+    
     <!-- Load jQuery synchronously - Required by many scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <!-- jQuery migrate must load immediately after jQuery -->
     <script type="text/javascript" src="<?= base_url(); ?>assets/js/jquery/jquery-migrate.min5589.js" id="jquery-migrate-js"></script>
+    <!-- intl-tel-input JS -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/js/intlTelInput.min.js"></script>
     <!-- Defer non-critical scripts to improve initial page load -->
     <script type="text/javascript" src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js" defer></script>
     <script type="text/javascript" src="<?= base_url(); ?>assets/plugins/bold-page-builder/slick/slick.minae9e.js" id="bt_bb_slick-js" defer></script>
@@ -497,8 +596,11 @@
                 $('.btn_verify').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ms-25 align-middle">Loading...</span>');
                 var url = $(this).attr('action');
 
-                // Get form
-                var form = $('.add-ajax-redirect-image-form')[0];
+                // Get form - use the form that triggered the submit
+                var form = this;
+                
+                // Extract country code before form submission
+                extractCountryCode(form);
 
                 // FormData object 
                 var data = new FormData(form);
@@ -559,7 +661,13 @@
                 $('.btn_verify').attr("disabled", true)
                 $('.btn_verify').html('Loading...');
                 var url = $(this).attr('action');
-                var form = $('.add-ajax-redirect-form')[0];
+                
+                // Get form - use the form that triggered the submit
+                var form = this;
+                
+                // Extract country code before form submission
+                extractCountryCode(form);
+                
                 var data = new FormData(form);
 
                 $.ajax({
@@ -619,7 +727,13 @@
                 $('.btn_verify').attr("disabled", true)
                 $('.btn_verify').html('Loading...');
                 var url = $(this).attr('action');
-                var form = $('.add-ajax-brochure-form')[0];
+                
+                // Get form - use the form that triggered the submit
+                var form = this;
+                
+                // Extract country code before form submission
+                extractCountryCode(form);
+                
                 var data = new FormData(form);
 
                 $.ajax({
@@ -671,7 +785,13 @@
                 $('.btn_verify').attr("disabled", true)
                 $('.btn_verify').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ms-25 align-middle">Loading...</span>');
                 var url = $(this).attr('action');
-                var form = $('.add-ajax-admission-form')[0];
+                
+                // Get form - use the form that triggered the submit
+                var form = this;
+                
+                // Extract country code before form submission
+                extractCountryCode(form);
+                
                 var data = new FormData(form);
 
                 $.ajax({
@@ -802,6 +922,124 @@
                 window.location.href = 'tel:' + inputValue;
             }
         }
+
+        // Function to initialize intl-tel-input on all phone/mobile input fields
+        function initializeIntlTelInput() {
+            // Wait a bit for DOM to be ready if called immediately
+            setTimeout(function() {
+                // Find all phone and mobile input fields
+                var phoneInputs = document.querySelectorAll('input[type="tel"][name="phone"], input[type="tel"][name="mobile"]');
+                
+                phoneInputs.forEach(function(input) {
+                    // Skip if already initialized or if intlTelInput is not available
+                    if (input.classList.contains('iti-initialized') || !window.intlTelInput) {
+                        return;
+                    }
+                    
+                    // Skip if input is not in the DOM
+                    if (!input.parentNode) {
+                        return;
+                    }
+                    
+                    // Remove old attributes that conflict with intl-tel-input
+                    input.removeAttribute('minlength');
+                    input.removeAttribute('maxlength');
+                    input.removeAttribute('oninput');
+                    input.removeAttribute('onfocus');
+                    
+                    try {
+                        // Initialize intl-tel-input with India (+91) as default
+                        var iti = window.intlTelInput(input, {
+                            initialCountry: "in",
+                            separateDialCode: true,
+                            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/js/utils.js",
+                            nationalMode: false,
+                            formatOnDisplay: true,
+                            autoPlaceholder: "polite"
+                        });
+                        
+                        // Mark as initialized
+                        input.classList.add('iti-initialized');
+                        
+                        // Store the instance for later use
+                        input.itiInstance = iti;
+                    } catch (e) {
+                        console.error('Error initializing intl-tel-input:', e);
+                    }
+                });
+            }, 100);
+        }
+
+        // Global function to extract and add country code to form
+        function extractCountryCode(form) {
+            // Try to find phone input
+            var phoneInput = form.querySelector('input[type="tel"][name="phone"], input[name="phone"]');
+            if (phoneInput) {
+                var itiInstance = phoneInput.itiInstance || window.intlTelInput.getInstance(phoneInput);
+                if (itiInstance) {
+                    var countryData = itiInstance.getSelectedCountryData();
+                    if (countryData && countryData.dialCode) {
+                        var countryCode = '+' + countryData.dialCode;
+                        console.log('Extracted country code:', countryCode);
+                        
+                        // Remove existing field if any
+                        var existingField = form.querySelector('input[name="phone_country_code"]');
+                        if (existingField) {
+                            existingField.remove();
+                        }
+                        // Create hidden input with country code
+                        var hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'phone_country_code';
+                        hiddenInput.value = countryCode;
+                        form.appendChild(hiddenInput);
+                        console.log('Added hidden field with country code:', countryCode);
+                        return true;
+                    }
+                }
+            }
+            
+            // Try to find mobile input
+            var mobileInput = form.querySelector('input[type="tel"][name="mobile"], input[name="mobile"]');
+            if (mobileInput) {
+                var itiInstance = mobileInput.itiInstance || window.intlTelInput.getInstance(mobileInput);
+                if (itiInstance) {
+                    var countryData = itiInstance.getSelectedCountryData();
+                    if (countryData && countryData.dialCode) {
+                        var countryCode = '+' + countryData.dialCode;
+                        console.log('Extracted mobile country code:', countryCode);
+                        
+                        // Remove existing field if any
+                        var existingField = form.querySelector('input[name="mobile_country_code"]');
+                        if (existingField) {
+                            existingField.remove();
+                        }
+                        // Create hidden input with country code
+                        var hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'mobile_country_code';
+                        hiddenInput.value = countryCode;
+                        form.appendChild(hiddenInput);
+                        console.log('Added hidden field with mobile country code:', countryCode);
+                        return true;
+                    }
+                }
+            }
+            
+            console.log('No phone/mobile input found or intlTelInput instance not available');
+            return false;
+        }
+
+        // Initialize on page load for forms that are already in the DOM
+        jQuery(document).ready(function($) {
+            initializeIntlTelInput();
+        });
+
+        // Re-initialize when Bootstrap modals are shown (for dynamically loaded content)
+        jQuery('.modal').on('shown.bs.modal', function () {
+            console.log('Modal shown, re-initializing intl-tel-input...');
+            initializeIntlTelInput();
+        });
 
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();

@@ -22,7 +22,7 @@ class Leads_sync_model extends CI_Model
             'age','date_of_lead','follow_up_date','remark','location','is_delete','is_enroll',
             'is_move','meeting_user_id','enquiry_id','school_type','school_id','meeting_type_id',
             'meeting_date','meeting_followup_date','meeting_remark','meeting_added_date',
-            'utm_source','utm_medium','utm_id','utm_campaign','utm_term','utm_content','referrer_url','site_name'
+            'utm_source','utm_medium','utm_id','utm_campaign','utm_term','utm_content','referrer_url','site_name','mobile_country_code'
         ];
 
         return $this->db_src
