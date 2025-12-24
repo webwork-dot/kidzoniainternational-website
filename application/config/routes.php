@@ -42,10 +42,8 @@ $route['our-teachers']                          = 'home/our_teachers';
 $route['print-media']                           = 'home/newsroom';
 $route['achievements']                          = 'home/achievements';
 $route['kidzonia-gallery']                      = 'home/kidzonia_gallery';
-$route['explore-centers/hyderabad/tellapur']                            = 'home/tellapur';
-$route['explore-centers/hyderabad/lingampally']                            = 'home/lingampally';
-$route['explore-centers/hyderabad/ramachandrapuram']                            = 'home/ramachandrapuram';
-$route['explore-centers/hyderabad/chanda-nagar']                            = 'home/chanda_nagar';
+// Old explore-centers routes removed - now using new preschool-in URLs with .htaccess redirects
+// Catch-all route kept for any other locations that haven't been migrated yet
 $route['explore-centers/hyderabad/(:any)']                 = 'home/gallery_details/$1';
 
 // New preschool-in URL routes

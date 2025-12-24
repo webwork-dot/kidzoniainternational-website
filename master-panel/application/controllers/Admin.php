@@ -1777,9 +1777,22 @@ class Admin extends CI_Controller
                 log_message('error', 'Sitemap Generation Error (Events): ' . $e->getMessage());
             }
             
-            // Get active branches - URL format: /explore-centers/(city)/(slug)
+            // Get active branches - URL format: /preschool-in-[slug]-hyderabad for migrated locations, /explore-centers/(city)/(slug) for others
             try {
                 if ($this->db->table_exists('branches')) {
+                    // Locations that have been migrated to new URL format
+                    $migrated_locations = [
+                        'serilingampally',
+                        'nallagandla',
+                        'nallagandla-navodaya',
+                        'suraksha-enclave-ameenpur',
+                        'kphb-kukatpally',
+                        'tellapur',
+                        'lingampally',
+                        'ramachandrapuram',
+                        'chanda-nagar'
+                    ];
+                    
                     $this->db->group_start();
                     $this->db->where('status', '1');
                     $this->db->or_where('status', 1);
@@ -1794,8 +1807,17 @@ class Admin extends CI_Controller
                             $branch_city = !empty($branch->city) ? strtolower($branch->city) : 'hyderabad';
                             
                             if (!empty($branch->name) && !empty($branch_slug)) {
+                                // Check if this location has been migrated to new URL format
+                                if ($branch_city === 'hyderabad' && in_array($branch_slug, $migrated_locations)) {
+                                    // Use new URL format: /preschool-in-[slug]-hyderabad
+                                    $url = $base_url . '/preschool-in-' . $branch_slug . '-hyderabad';
+                                } else {
+                                    // Use old URL format: /explore-centers/(city)/(slug)
+                                    $url = $base_url . '/explore-centers/' . $branch_city . '/' . $branch_slug;
+                                }
+                                
                                 $xml .= $this->generate_url_entry(
-                                    $base_url . '/explore-centers/' . $branch_city . '/' . $branch_slug,
+                                    $url,
                                     $current_date,
                                     'always',
                                     '0.80'
