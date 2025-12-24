@@ -47,6 +47,14 @@ $route['explore-centers/hyderabad/lingampally']                            = 'ho
 $route['explore-centers/hyderabad/ramachandrapuram']                            = 'home/ramachandrapuram';
 $route['explore-centers/hyderabad/chanda-nagar']                            = 'home/chanda_nagar';
 $route['explore-centers/hyderabad/(:any)']                 = 'home/gallery_details/$1';
+
+// New preschool-in URL routes
+$route['preschool-in-serilingampally-hyderabad']            = 'home/gallery_details/serilingampally';
+$route['preschool-in-nallagandla-hyderabad']                = 'home/gallery_details/nallagandla';
+$route['preschool-in-nallagandla-navodaya-hyderabad']        = 'home/gallery_details/nallagandla-navodaya';
+$route['preschool-in-suraksha-enclave-ameenpur-hyderabad']  = 'home/gallery_details/suraksha-enclave-ameenpur';
+$route['preschool-in-kphb-kukatpally-hyderabad']            = 'home/gallery_details/kphb-kukatpally';
+
 $route['blogs']                                 = 'home/blogs';
 $route['blog-details/(:any)']            = 'home/blog_details/$1';
 $route['event/(:any)/(:num)']                   = 'home/event_details/$1/$2';
