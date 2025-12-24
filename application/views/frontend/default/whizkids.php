@@ -316,7 +316,7 @@
                           <div class="container">
                             <div class="row d-flex justify-content-center">
                               <div class="col-lg-10 col-12">
-                                <img src="<?php echo base_url() . $item['image']; ?>" alt="<?php echo $item['alt'] ?>" class="w-100 h-auto" />
+                                <img src="<?php echo base_url() . $item['image']; ?>" alt="<?php echo $item['alt'] ?>" class="w-100 h-auto mb-2" />
                               </div>
                             </div>
                           </div>

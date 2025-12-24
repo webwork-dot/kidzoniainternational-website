@@ -21,6 +21,33 @@
 .bt_bb_section.bt_bb_bottom_spacing_extra_large>.bt_bb_port {
   padding-bottom: 3.4em !important;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+.bt_bb_row{
+  margin: 0 auto;
+}
+.bt_bb_layout_boxed_1200 .bt_bb_cell{
+      max-width: calc(100% - 100px) !important;
+   }
+
+   .bt_bb_title_size_normal.bt_bb_organic_animation .item .item__meta .item__title{
+    font-size: 16px;
+   }
+}
+
+@media (max-width: 768px) {
+
+.bt_bb_row{
+  margin: 0 auto;
+}
+
+.bt_bb_layout_boxed_1200 .bt_bb_cell{
+      max-width: calc(100% - 100px) !important;
+   }
+
+  
+}
 </style>
 
 <div class="btContentWrap btClear">
@@ -348,7 +375,7 @@
                         <div class="bt_bb_column_content_inner">
                           <div data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
-                            style="width:370px;; --icon-primary-color:#282828; --icon-secondary-color:var(--alternate-color);">
+                            style=";; --icon-primary-color:#282828; --icon-secondary-color:var(--alternate-color);">
                             <div class="item item--style-1"
                               data-morph-path="M 444.96404,266.56453 C 457.96774,175.13774 387.39406,71.817158 293.36662,55.332153 c -35.00247,-6.135 -58.72247,-9.445 -101.74994,2.930005 -62.65496,18.007472 -78.93745,-6.685005 -78.93745,-6.685005 0,0 -34.413702,121.208787 -37.749995,153.307417 -15.536144,148.08958 75.999975,214.33238 156.879915,225.12486 94.61245,12.63001 195.08376,-36.47551 213.15489,-163.4449 z"
                               data-animation-path-duration="2000" data-animation-path-delay="0"
@@ -362,7 +389,7 @@
                               data-animation-deco-easing="easeOutElastic" data-deco-elasticity="400"
                               data-deco-scaleX="0.85" data-deco-scaleY="0.85" data-deco-translateX="-5"
                               data-deco-translateY="-3" data-deco-rotate="60">
-                              <svg class="item__svg" viewBox="0 0 500 500" width="500" height="500">
+                              <svg class="item__svg" viewBox="0 0 500 500" width="300" height="300">
                                 <clipPath id="bt_bb_organic_animation_656da16ab0aa3">
                                   <path class="item__clippath"
                                     d="M 424.96404,266.56453 C 440.90903,175.60459 385.39406,81.817158 291.36662,65.332153 c -35.00247,-6.135 -56.72247,-5.445 -99.74994,6.930005 -62.65496,18.007472 -78.93745,-20.685005 -78.93745,-20.685005 0,0 -24.082495,121.244937 -27.749995,153.307417 -13.4175,116.30992 65.999975,194.33238 146.879915,205.12486 94.61245,12.63001 177.2024,-52.49246 193.15489,-143.4449 z" />
@@ -401,7 +428,7 @@
                           </div>
                           <div data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
-                            style="width:370px;; --icon-primary-color:#282828; --icon-secondary-color:var(--alternate-color);">
+                            style=";; --icon-primary-color:#282828; --icon-secondary-color:var(--alternate-color);">
                             <div class="item item--style-1"
                               data-morph-path="M 444.96404,266.56453 C 457.96774,175.13774 387.39406,71.817158 293.36662,55.332153 c -35.00247,-6.135 -58.72247,-9.445 -101.74994,2.930005 -62.65496,18.007472 -78.93745,-6.685005 -78.93745,-6.685005 0,0 -34.413702,121.208787 -37.749995,153.307417 -15.536144,148.08958 75.999975,214.33238 156.879915,225.12486 94.61245,12.63001 195.08376,-36.47551 213.15489,-163.4449 z"
                               data-animation-path-duration="2000" data-animation-path-delay="0"
@@ -415,7 +442,7 @@
                               data-animation-deco-easing="easeOutElastic" data-deco-elasticity="400"
                               data-deco-scaleX="0.85" data-deco-scaleY="0.85" data-deco-translateX="-5"
                               data-deco-translateY="-3" data-deco-rotate="60">
-                              <svg class="item__svg" viewBox="0 0 500 500" width="500" height="500">
+                              <svg class="item__svg" viewBox="0 0 500 500" width="300" height="300">
                                 <clipPath id="bt_bb_organic_animation_656da16ab0dd7">
                                   <path class="item__clippath"
                                     d="M 424.96404,266.56453 C 440.90903,175.60459 385.39406,81.817158 291.36662,65.332153 c -35.00247,-6.135 -56.72247,-5.445 -99.74994,6.930005 -62.65496,18.007472 -78.93745,-20.685005 -78.93745,-20.685005 0,0 -24.082495,121.244937 -27.749995,153.307417 -13.4175,116.30992 65.999975,194.33238 146.879915,205.12486 94.61245,12.63001 177.2024,-52.49246 193.15489,-143.4449 z" />
@@ -504,7 +531,7 @@
                         <div class="bt_bb_column_content_inner">
                           <div data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
-                            style="width:370px;; --icon-primary-color:#282828; --icon-secondary-color:var(--alternate-color);">
+                            style=";; --icon-primary-color:#282828; --icon-secondary-color:var(--alternate-color);">
                             <div class="item item--style-1"
                               data-morph-path="M 444.96404,266.56453 C 457.96774,175.13774 387.39406,71.817158 293.36662,55.332153 c -35.00247,-6.135 -58.72247,-9.445 -101.74994,2.930005 -62.65496,18.007472 -78.93745,-6.685005 -78.93745,-6.685005 0,0 -34.413702,121.208787 -37.749995,153.307417 -15.536144,148.08958 75.999975,214.33238 156.879915,225.12486 94.61245,12.63001 195.08376,-36.47551 213.15489,-163.4449 z"
                               data-animation-path-duration="2000" data-animation-path-delay="0"
@@ -518,7 +545,7 @@
                               data-animation-deco-easing="easeOutElastic" data-deco-elasticity="400"
                               data-deco-scaleX="0.85" data-deco-scaleY="0.85" data-deco-translateX="-5"
                               data-deco-translateY="-3" data-deco-rotate="60">
-                              <svg class="item__svg" viewBox="0 0 500 500" width="500" height="500">
+                              <svg class="item__svg" viewBox="0 0 500 500" width="300" height="300">
                                 <clipPath id="bt_bb_organic_animation_656da16ab1542">
                                   <path class="item__clippath"
                                     d="M 424.96404,266.56453 C 440.90903,175.60459 385.39406,81.817158 291.36662,65.332153 c -35.00247,-6.135 -56.72247,-5.445 -99.74994,6.930005 -62.65496,18.007472 -78.93745,-20.685005 -78.93745,-20.685005 0,0 -24.082495,121.244937 -27.749995,153.307417 -13.4175,116.30992 65.999975,194.33238 146.879915,205.12486 94.61245,12.63001 177.2024,-52.49246 193.15489,-143.4449 z" />
@@ -558,7 +585,7 @@
                           </div>
                           <div data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
-                            style="width:370px;; --icon-primary-color:#282828; --icon-secondary-color:var(--alternate-color);">
+                            style=";; --icon-primary-color:#282828; --icon-secondary-color:var(--alternate-color);">
                             <div class="item item--style-1"
                               data-morph-path="M 444.96404,266.56453 C 457.96774,175.13774 387.39406,71.817158 293.36662,55.332153 c -35.00247,-6.135 -58.72247,-9.445 -101.74994,2.930005 -62.65496,18.007472 -78.93745,-6.685005 -78.93745,-6.685005 0,0 -34.413702,121.208787 -37.749995,153.307417 -15.536144,148.08958 75.999975,214.33238 156.879915,225.12486 94.61245,12.63001 195.08376,-36.47551 213.15489,-163.4449 z"
                               data-animation-path-duration="2000" data-animation-path-delay="0"
@@ -572,7 +599,7 @@
                               data-animation-deco-easing="easeOutElastic" data-deco-elasticity="400"
                               data-deco-scaleX="0.85" data-deco-scaleY="0.85" data-deco-translateX="-5"
                               data-deco-translateY="-3" data-deco-rotate="60">
-                              <svg class="item__svg" viewBox="0 0 500 500" width="500" height="500">
+                              <svg class="item__svg" viewBox="0 0 500 500" width="300" height="300">
                                 <clipPath id="bt_bb_organic_animation_656da16ab1b13">
                                   <path class="item__clippath"
                                     d="M 424.96404,266.56453 C 440.90903,175.60459 385.39406,81.817158 291.36662,65.332153 c -35.00247,-6.135 -56.72247,-5.445 -99.74994,6.930005 -62.65496,18.007472 -78.93745,-20.685005 -78.93745,-20.685005 0,0 -24.082495,121.244937 -27.749995,153.307417 -13.4175,116.30992 65.999975,194.33238 146.879915,205.12486 94.61245,12.63001 177.2024,-52.49246 193.15489,-143.4449 z" />
@@ -706,7 +733,7 @@
                 <div class="bt_bb_row_wrapper">
                   <div class="bt_bb_row bt_bb_column_gap_15 bt_bb_negative_margin_" data-bt-override-class="{}">
                     <div data-bb-version="4.5.9"
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate"
                       data-width="2.4"
                       data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">
@@ -775,7 +802,7 @@
                       </div>
                     </div>
                     <div
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
                       data-width="2.4"
                       data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">
@@ -844,7 +871,7 @@
                       </div>
                     </div>
                     <div
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
                       data-width="2.4"
                       data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">
@@ -913,7 +940,7 @@
                       </div>
                     </div>
                     <div
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
                       data-width="2.4"
                       data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">
@@ -982,7 +1009,7 @@
                       </div>
                     </div>
                     <div
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
                       data-width="2.4"
                       data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">

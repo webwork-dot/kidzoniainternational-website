@@ -63,6 +63,26 @@
   padding-right: 0px !important;
   padding-left: 0px !important;
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+
+.bt_bb_row{
+  margin: 0 auto;
+}
+.bt_bb_layout_boxed_1200 .bt_bb_cell{
+      max-width: calc(100% - 75px) !important;
+   }
+}
+
+@media (max-width: 768px) {
+
+.bt_bb_row{
+  margin: 0 auto;
+}
+
+.bt_bb_layout_boxed_1200 .bt_bb_cell{
+      max-width: calc(100% - 75px) !important;
+   }
+}
 </style>
 
 <div class="btContentWrap btClear">

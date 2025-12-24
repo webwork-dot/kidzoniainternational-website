@@ -1,3 +1,20 @@
+<style>
+
+  @media (max-width: 768px) {
+    .bt_bb_align_left .bt_bb_align_center.bt_bb_headline, .bt_bb_align_right .bt_bb_align_center.bt_bb_headline, .bt_bb_align_left .bt_bb_align_center .bt_bb_headline, .bt_bb_align_right .bt_bb_align_center .bt_bb_headline, .bt_bb_align_center.bt_bb_headline, .bt_bb_align_center .bt_bb_headline{
+          text-align: left !important; 
+    }
+
+    .bt_bb_align_left .bt_bb_align_center.bt_bb_custom_menu > div, .bt_bb_align_right .bt_bb_align_center.bt_bb_custom_menu > div, .bt_bb_align_left .bt_bb_align_center .bt_bb_custom_menu > div, .bt_bb_align_right .bt_bb_align_center .bt_bb_custom_menu > div, .bt_bb_align_center.bt_bb_custom_menu > div, .bt_bb_align_center .bt_bb_custom_menu > div{
+      justify-content: normal !important;
+    }
+
+    .bt_bb_size_huge.bt_bb_headline h1, .bt_bb_size_huge.bt_bb_headline h2, .bt_bb_size_huge.bt_bb_headline h3, .bt_bb_size_huge.bt_bb_headline h4, .bt_bb_size_huge.bt_bb_headline h5, .bt_bb_size_huge.bt_bb_headline h6{
+      font-size: 26px !important;
+    }
+  }
+</style>
+
 <div class="btSiteFooter">
   <div class="bt_bb_wrapper">
     <section
@@ -83,7 +100,7 @@
                       </div>
                       <div class="bt_bb_row_inner">
                         <div
-                          class="bt_bb_column_inner col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
+                          class="bt_bb_column_inner col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-6 col-lg-12 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
                           data-width="12"
                           data-bt-override-class="{}">
                           <div class="bt_bb_column_inner_content">
@@ -197,14 +214,14 @@
                 </div>
                 <div
                   data-bb-version="4.6.0"
-                  class="bt_bb_column col-xxl-4 col-xl-4 col-xs-12 col-sm-12 col-md-12 col-lg-4 bt_bb_vertical_align_top bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate"
+                  class="bt_bb_column col-xxl-4 col-xl-4 col-xs-12 col-sm-12 col-md-6 col-lg-4 bt_bb_vertical_align_top bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate"
                   data-width="4"
                   data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_center","xxl":"center"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal"}}'>
                   <div class="bt_bb_column_content">
                     <div class="bt_bb_column_content_inner">
                       <div class="bt_bb_row_inner bt_bb_column_inner_gap_0">
                         <div
-                          class="bt_bb_column_inner col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
+                          class="bt_bb_column_inner col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-6 col-lg-12 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
                           data-width="12"
                           data-bt-override-class="{}">
                           <div class="bt_bb_column_inner_content">
@@ -303,7 +320,7 @@
                   </div>
                 </div>
                 <div
-                  class="bt_bb_column col-xxl-4 col-xl-4 col-xs-12 col-sm-12 col-md-12 col-lg-4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
+                  class="bt_bb_column col-xxl-4 col-xl-4 col-xs-12 col-sm-12 col-md-6 col-lg-4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
                   data-width="4"
                   data-bt-override-class="{}">
                   <div class="bt_bb_column_content">

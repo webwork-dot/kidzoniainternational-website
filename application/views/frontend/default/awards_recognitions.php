@@ -78,6 +78,34 @@
       font-size: 20px !important;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+
+.bt_bb_row{
+  margin: 0 auto;
+}
+.bt_bb_layout_boxed_1200 .bt_bb_cell{
+      max-width: calc(100% - 100px) !important;
+   }
+
+   .bt_bb_title_size_normal.bt_bb_organic_animation .item .item__meta .item__title{
+    font-size: 16px;
+   }
+}
+
+@media (max-width: 768px) {
+
+.bt_bb_row{
+  margin: 0 auto;
+}
+
+.bt_bb_layout_boxed_1200 .bt_bb_cell{
+      max-width: calc(100% - 100px) !important;
+   }
+
+  
+}
+</style>
 </style>
 <div class="btContentWrap btClear">
   <div class="btContentHolder">
@@ -295,8 +323,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18bde52e">
                                   <path
@@ -436,8 +464,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18bdeaa1">
                                   <path
@@ -587,8 +615,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18bdf213">
                                   <path
@@ -753,8 +781,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18bdf816">
                                   <path
@@ -902,8 +930,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18bdfbce">
                                   <path
@@ -1044,8 +1072,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18bdfd97">
                                   <path

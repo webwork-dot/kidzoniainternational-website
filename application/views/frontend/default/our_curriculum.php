@@ -346,7 +346,7 @@
                             data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
                             style="
-                              width: 370px;
+                              
                               --icon-primary-color: #282828;
                               --icon-secondary-color: var(--alternate-color);
                             ">
@@ -383,8 +383,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c4653d">
                                   <path
@@ -504,7 +504,7 @@
                             data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
                             style="
-                              width: 370px;
+                              
                               --icon-primary-color: #282828;
                               --icon-secondary-color: var(--alternate-color);
                             ">
@@ -541,8 +541,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c46d33">
                                   <path
@@ -705,7 +705,7 @@
                             data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
                             style="
-                              width: 370px;
+                              
                               --icon-primary-color: #282828;
                               --icon-secondary-color: var(--alternate-color);
                             ">
@@ -742,8 +742,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c480ab">
                                   <path
@@ -836,7 +836,7 @@
                             data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
                             style="
-                              width: 370px;
+                              
                               --icon-primary-color: #282828;
                               --icon-secondary-color: var(--alternate-color);
                             ">
@@ -873,8 +873,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c484a0">
                                   <path
@@ -1406,7 +1406,7 @@
                     class="bt_bb_row bt_bb_column_gap_15 bt_bb_negative_margin_"
                     data-bt-override-class="{}">
                     <div
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
                       data-width="2.4"
                       data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left","xl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
                       <div class="bt_bb_column_content">
@@ -1464,7 +1464,7 @@
                       </div>
                     </div>
                     <div
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-6 mb-2 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
                       data-width="2.4"
                       data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left","xl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
                       <div class="bt_bb_column_content">
@@ -1522,7 +1522,7 @@
                       </div>
                     </div>
                     <div
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-6 mb-2 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
                       data-width="2.4"
                       data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left","xl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
                       <div class="bt_bb_column_content">
@@ -1580,7 +1580,7 @@
                       </div>
                     </div>
                     <div
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-6 mb-2 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
                       data-width="2.4"
                       data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left","xl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
                       <div class="bt_bb_column_content">
@@ -1638,7 +1638,7 @@
                       </div>
                     </div>
                     <div
-                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
+                      class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-12 col-sm-12 col-md-6 mb-2 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit"
                       data-width="2.4"
                       data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left","xl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
                       <div class="bt_bb_column_content">
@@ -2214,7 +2214,7 @@
                             data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
                             style="
-                              width: 370px;
+                              
                               --icon-primary-color: #282828;
                               --icon-secondary-color: var(--alternate-color);
                             ">
@@ -2251,8 +2251,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c4c780">
                                   <path
@@ -2404,7 +2404,7 @@
                             data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
                             style="
-                              width: 370px;
+                              
                               --icon-primary-color: #282828;
                               --icon-secondary-color: var(--alternate-color);
                             ">
@@ -2441,8 +2441,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c4cbe8">
                                   <path
@@ -2619,7 +2619,7 @@
                             data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
                             style="
-                              width: 370px;
+                              
                               --icon-primary-color: #282828;
                               --icon-secondary-color: var(--alternate-color);
                             ">
@@ -2656,8 +2656,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c4d265">
                                   <path
@@ -2795,7 +2795,7 @@
                             data-bb-version="4.5.9"
                             class="bt_bb_organic_animation bt_bb_organic_animation_fill bt_bb_title_size_normal bt_bb_icon_color_scheme_9 bt_bb_icon_size_normal"
                             style="
-                              width: 370px;
+                              
                               --icon-primary-color: #282828;
                               --icon-secondary-color: var(--alternate-color);
                             ">
@@ -2832,8 +2832,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c4d52f">
                                   <path

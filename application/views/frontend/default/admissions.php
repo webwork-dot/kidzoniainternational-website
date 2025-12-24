@@ -1,4 +1,12 @@
 <style>
+    @media (min-width: 768px) and (max-width: 1024px) {
+
+      .bt_bb_style_filled.bt_bb_tabs ul.bt_bb_tabs_header{
+    display: flex;
+  }
+}
+
+
   @media screen and (max-width: 768px) {
     .bt_bb_style_filled.bt_bb_tabs ul.bt_bb_tabs_header {
       border: none;
@@ -215,7 +223,7 @@
                 </div>
                 <div class="bt_bb_row_wrapper">
                   <div class="bt_bb_row bt_bb_column_gap_15 bt_bb_negative_margin_" data-bt-override-class="{}">
-                    <div data-bb-version="4.5.9" class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
+                    <div data-bb-version="4.5.9" class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">
                         <div class="bt_bb_column_content_inner">
                           <div data-bb-version="4.6.1" class="bt_bb_card bt_bb_padding_25 btWithLink bt_bb_image_position_rotate bt_bb_color_scheme_2" style="background-color:rgb(250,249,249);; --primary-color:#282828; --secondary-color:#ffffff;" data-bt-override-class="{&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_25&quot;,&quot;xxl&quot;:&quot;25&quot;}}">
@@ -268,7 +276,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                    <div class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">
                         <div class="bt_bb_column_content_inner">
                           <div data-bb-version="4.6.1" class="bt_bb_card bt_bb_padding_25 btWithLink bt_bb_image_position_rotate bt_bb_color_scheme_2" style="background-color:rgb(247,243,238);; --primary-color:#282828; --secondary-color:#ffffff;" data-bt-override-class="{&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_25&quot;,&quot;xxl&quot;:&quot;25&quot;}}">
@@ -321,7 +329,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                    <div class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">
                         <div class="bt_bb_column_content_inner">
                           <div data-bb-version="4.6.1" class="bt_bb_card bt_bb_padding_25 btWithLink bt_bb_image_position_rotate bt_bb_color_scheme_2" style="background-color:rgb(250,249,249);; --primary-color:#282828; --secondary-color:#ffffff;" data-bt-override-class="{&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_25&quot;,&quot;xxl&quot;:&quot;25&quot;}}">
@@ -374,7 +382,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                    <div class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">
                         <div class="bt_bb_column_content_inner">
                           <div data-bb-version="4.6.1" class="bt_bb_card bt_bb_padding_25 btWithLink bt_bb_image_position_rotate bt_bb_color_scheme_2" style="background-color:rgb(247,243,238);; --primary-color:#282828; --secondary-color:#ffffff;" data-bt-override-class="{&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_25&quot;,&quot;xxl&quot;:&quot;25&quot;}}">
@@ -427,7 +435,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-12 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                    <div class="bt_bb_column col-xxl-2_4 col-xl-2_4 col-xs-6 col-sm-6 col-md-6 col-lg-2_4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate bt_bb_shape_inherit" data-width="2.4" data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
                       <div class="bt_bb_column_content">
                         <div class="bt_bb_column_content_inner">
                           <div data-bb-version="4.6.1" class="bt_bb_card bt_bb_padding_25 btWithLink bt_bb_image_position_rotate bt_bb_color_scheme_2" style="background-color:rgb(250,249,249);; --primary-color:#282828; --secondary-color:#ffffff;" data-bt-override-class="{&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_25&quot;,&quot;xxl&quot;:&quot;25&quot;}}">

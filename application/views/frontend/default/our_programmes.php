@@ -1,4 +1,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+<style>
+    @media (min-width: 768px) and (max-width: 1024px) {
+
+
+
+   .bt_bb_title_size_normal.bt_bb_organic_animation .item .item__meta .item__title{
+    font-size: 16px;
+   }
+}
+</style>
 
 <div class="btContentWrap btClear">
   <div class="btContentHolder">
@@ -830,8 +840,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c8ee66">
                                   <path
@@ -994,8 +1004,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c8f44e">
                                   <path
@@ -1158,8 +1168,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c8f976">
                                   <path
@@ -1331,8 +1341,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c90034">
                                   <path
@@ -1511,8 +1521,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c90444">
                                   <path
@@ -1675,8 +1685,8 @@
                               <svg
                                 class="item__svg"
                                 viewBox="0 0 500 500"
-                                width="500"
-                                height="500">
+                                width="300"
+                                height="300">
                                 <clipPath
                                   id="bt_bb_organic_animation_656da18c90618">
                                   <path

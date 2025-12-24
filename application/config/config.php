@@ -26,24 +26,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // $config['base_url'] = 'http://localhost/kidzoniainternational.in/';
 
-// Dynamic base URL construction - forces HTTP and removes www. prefix for localhost
-$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-// Remove www. prefix and force HTTP for localhost/127.0.0.1
-if (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false) {
-    $host = str_replace('www.', '', $host);
-    $protocol = 'http'; // Force HTTP for localhost
-} else {
-    $protocol = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "http" : "http");
-}
-$base_path = str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-$config['base_url'] = $protocol . "://" . $host . $base_path;
+$config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "https");
+$config['base_url'] .= "://".$_SERVER['HTTP_HOST'];
+$config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 
 
 $config['recaptcha_site_key'] = '6Le6K8YrAAAAAO6Tx1uIx1VeUiqHyryZo25lQVtH';
 $config['recaptcha_secret_key'] = '6Le6K8YrAAAAADFmsLt9V8mpsC9aCLtFoVgVhdIy';
 
+
 // UTM tracking notification email
-$config['tracking_notification_email'] = 'info@kidzoniainternational.in';
+$config['tracking_notification_email'] = 'ashutoshsingh752000@gmail.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -408,10 +401,9 @@ $config['sess_regenerate_destroy'] = FALSE;*/
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-// Use application/cache/sessions instead of temp directory for better performance
-$config['sess_save_path'] = APPPATH.'cache/sessions/';
+$config['sess_save_path'] = sys_get_temp_dir();
 $config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 300;
+$config['sess_time_to_update'] = 3000;
 $config['sess_regenerate_destroy'] = FALSE;
 /*
 |--------------------------------------------------------------------------
@@ -431,9 +423,8 @@ $config['sess_regenerate_destroy'] = FALSE;
 $config['cookie_prefix']	= '';
 $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
-// Enable secure cookies if HTTPS is being used
-$config['cookie_secure']	= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on");
-$config['cookie_httponly'] 	= TRUE;
+$config['cookie_secure']	= FALSE;
+$config['cookie_httponly'] 	= FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -504,7 +495,7 @@ $config['csrf_exclude_uris'] = array();
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = TRUE;
+$config['compress_output'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

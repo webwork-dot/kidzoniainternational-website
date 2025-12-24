@@ -149,7 +149,7 @@
                             <?php foreach($data as $d){ ?>
                             <div
                               data-bb-version="4.6.1"
-                              class="bt_bb_column_inner mb-3 col-xxl-4 col-xl-4 col-xs-12 col-sm-12 col-md-12 col-lg-4 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
+                              class="bt_bb_column_inner mb-3 col-xxl-4 col-xl-4 col-xs-12 col-sm-12 col-md-6 col-lg-4 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
                               data-width="4"
                               data-bt-override-class="{}"
                             >

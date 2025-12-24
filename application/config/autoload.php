@@ -58,8 +58,6 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-// Performance Note: Consider removing 'xmlrpc' and 'cart' if not used on every page
-// Load them only in controllers that need them for better performance
 $autoload['libraries'] = array('database', 'session', 'xmlrpc', 'pagination','user_agent','cart','form_validation');
 
 /*

@@ -1,5 +1,5 @@
 <style>
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .bt_bb_tabs_tabs {
       flex-direction: column;
       display: grid;
