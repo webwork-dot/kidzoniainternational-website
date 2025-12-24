@@ -54,6 +54,10 @@ $route['preschool-in-nallagandla-hyderabad']                = 'home/gallery_deta
 $route['preschool-in-nallagandla-navodaya-hyderabad']        = 'home/gallery_details/nallagandla-navodaya';
 $route['preschool-in-suraksha-enclave-ameenpur-hyderabad']  = 'home/gallery_details/suraksha-enclave-ameenpur';
 $route['preschool-in-kphb-kukatpally-hyderabad']            = 'home/gallery_details/kphb-kukatpally';
+$route['preschool-in-tellapur-hyderabad']                    = 'home/tellapur';
+$route['preschool-in-lingampally-hyderabad']                = 'home/lingampally';
+$route['preschool-in-ramachandrapuram-hyderabad']           = 'home/ramachandrapuram';
+$route['preschool-in-chanda-nagar-hyderabad']               = 'home/chanda_nagar';
 
 $route['blogs']                                 = 'home/blogs';
 $route['blog-details/(:any)']            = 'home/blog_details/$1';

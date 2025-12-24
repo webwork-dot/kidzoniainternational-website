@@ -22,6 +22,10 @@ RewriteRule ^explore-centers/hyderabad/nallagandla$ /preschool-in-nallagandla-hy
 RewriteRule ^explore-centers/hyderabad/nallagandla-navodaya$ /preschool-in-nallagandla-navodaya-hyderabad [R=301,L]
 RewriteRule ^explore-centers/hyderabad/suraksha-enclave-ameenpur$ /preschool-in-suraksha-enclave-ameenpur-hyderabad [R=301,L]
 RewriteRule ^explore-centers/hyderabad/kphb-kukatpally$ /preschool-in-kphb-kukatpally-hyderabad [R=301,L]
+RewriteRule ^explore-centers/hyderabad/tellapur$ /preschool-in-tellapur-hyderabad [R=301,L]
+RewriteRule ^explore-centers/hyderabad/lingampally$ /preschool-in-lingampally-hyderabad [R=301,L]
+RewriteRule ^explore-centers/hyderabad/ramachandrapuram$ /preschool-in-ramachandrapuram-hyderabad [R=301,L]
+RewriteRule ^explore-centers/hyderabad/chanda-nagar$ /preschool-in-chanda-nagar-hyderabad [R=301,L]
 
 # Route all requests through index.php if file/folder not found
 RewriteCond %{REQUEST_FILENAME} !-f

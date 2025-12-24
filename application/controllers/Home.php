@@ -991,7 +991,7 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
         $page_data['page_title']        = "Best CBSE & International Pre Schools in Tellapur, Hyderabad | Pre Primary, Kindergarten, Nursery & Daycare - Kidzonia International";
         $page_data['meta_description']  = "Explore the best CBSE, International, Pre Primary, Nursery & Daycare schools in Tellapur, Hyderabad. Find top schools near Tellapur for your child.";
         $page_data['meta_keyword']      = "schools in tellapur, pre primary schools in tellapur, cbse schools in tellapur, international schools in tellapur, best schools in tellapur, top international schools in tellapur, schools near tellapur, schools in tellapur hyderabad, top international schools in tellapur, pre schools in tellapur, nursery schools in tellapur, kindergarten schools in tellapur, daycare schools in tellapur";
-        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/tellapur";
+        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/preschool-in-tellapur-hyderabad";
         $this->load->view('frontend/default/index', $page_data);
     }
 
@@ -1001,7 +1001,7 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
         $page_data['page_title']        = "Best CBSE & International Pre Schools In Lingampally, Hyderabad | Pre Primary, Kindergarten, Nursery & Daycare - Kidzonia International";
         $page_data['meta_description']  = "Top CBSE & International schools in Lingampally, Hyderabad. From Pre Primary to Daycare, find the right school for your child’s growth and success.";
         $page_data['meta_keyword']      = "schools in lingampally, pre primary schools in lingampally, cbse schools in lingampally, international schools in lingampally, best schools in lingampally, top international schools in lingampally, schools near lingampally,schools in lingampally hyderabad, pre schools in lingampally, nursery schools in lingampally, kindergarten schools in lingampally, best international schools near lingampally, daycare schools in lingampally, pre schools in lingampally hyderabad, pre primary schools in lingampally hyderabad";
-        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/lingampally";
+        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/preschool-in-lingampally-hyderabad";
         $this->load->view('frontend/default/index', $page_data);
     }
 
@@ -1011,7 +1011,7 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
         $page_data['page_title']        = "Best CBSE & International Pre Schools In Ramachandrapuram | Pre Primary, Kindergarten, Nursery & Daycare - Kidzonia International";
         $page_data['meta_description']  = "Discover top CBSE, International, Daycare & Kindergarten schools in Ramachandrapuram. Choose the best school in Hyderabad for your child’s future.";
         $page_data['meta_keyword']      = "schools in ramachandrapuram, pre primary schools in ramachandrapuram, cbse schools in ramachandrapuram, international schools in ramachandrapuram, best schools in ramachandrapuram, top international schools in ramachandrapuram, schools near ramachandrapuram, schools in ramachandrapuram hyderabad, pre schools in ramachandrapuram, nursery schools in ramachandrapuram, kindergarten schools in ramachandrapuram, best international schools near ramachandrapuram, daycare schools in ramachandrapuram";
-        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/ramachandrapuram";
+        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/preschool-in-ramachandrapuram-hyderabad";
         $this->load->view('frontend/default/index', $page_data);
     }
 
@@ -1021,7 +1021,7 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
         $page_data['page_title']        = "Best CBSE & International Pre Schools In Suraksha Chanda Nagar, Hyderabad | Pre Primary, Kindergarten, Nursery & Daycare - Kidzonia International";
         $page_data['meta_description']  = "Discover top CBSE, International, Pre Primary, Nursery & Kindergarten schools in Suraksha Chanda Nagar, Hyderabad. Enroll your child today!";
         $page_data['meta_keyword']      = "schools in suraksha chanda nagar, pre primary schools in suraksha chanda nagar, cbse schools in suraksha chanda nagar, international schools in suraksha chanda nagar, best schools in suraksha chanda nagar, top international schools in suraksha chanda nagar, schools near suraksha chanda nagar, schools in suraksha chanda nagar hyderabad, cbse schools in suraksha chanda nagar, top international schools in suraksha chanda nagar, pre schools in suraksha chanda nagar, nursery schools in suraksha chanda nagar, kindergarten schools in suraksha chanda nagar, best international schools near suraksha chanda nagar, daycare schools in suraksha chanda nagar, pre schools in suraksha chanda nagar hyderabad, pre primary schools in suraksha chanda nagar hyderabad";
-        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/chanda-nagar";
+        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/preschool-in-chanda-nagar-hyderabad";
         $this->load->view('frontend/default/index', $page_data);
     }
 
