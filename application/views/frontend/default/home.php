@@ -1601,27 +1601,7 @@
 </div>
 
 
-<!-- Include Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script>
-  const swiper = new Swiper('.bt_bb_background_image_holder_wrapper.swiper', {
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-      delay: 5000,
-    },
-    slidesPerView: 1,
-    spaceBetween: 10,
-  });
-  
-</script>
+<!-- Swiper loaded once with defer in footer; init runs on window.load there -->
 
 <script>
    document.addEventListener('DOMContentLoaded', function() {

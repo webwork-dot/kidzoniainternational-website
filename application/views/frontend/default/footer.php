@@ -696,6 +696,7 @@
 </div>
 <!-- /btSiteFooter -->
 
+<?php if (isset($page_name) && $page_name == 'home') { ?>
 <link
   rel="stylesheet"
   id="mediaelement-css"
@@ -717,6 +718,7 @@
 <style id="rs-plugin-settings-inline-css" type="text/css">
   #rs-demo-id {}
 </style>
+<?php } ?>
 <link
   rel="stylesheet"
   id="wpforms-smart-phone-field-css"
@@ -744,6 +746,7 @@
   type="text/javascript"
   src="<?= base_url(); ?>assets/plugins/contact-form-7/includes/js/index69c8.js?ver=5.8.4"
   id="contact-form-7-js" defer></script>
+<?php if (isset($page_name) && $page_name == 'home') { ?>
 <script
   type="text/javascript"
   src="<?= base_url(); ?>assets/plugins/revslider/public/assets/js/rbtools.min627e.js?ver=6.6.14"
@@ -756,6 +759,7 @@
   defer
   async
   id="revmin-js"></script>
+<?php } ?>
 <!-- Defer WhatsApp and theme scripts -->
 <script
   type="text/javascript"
@@ -795,7 +799,8 @@
   src="<?= base_url(); ?>assets/themes/bambino/bold-page-builder/content_elements/bt_bb_organic_animation/mainaec2.js?ver=6.4.1"
   id="bt-organic-animation-main-js" defer></script>
 
-<!-- Defer media and form scripts -->
+<!-- Defer media and form scripts (MediaElement only on home - video popup) -->
+<?php if (isset($page_name) && $page_name == 'home') { ?>
 <script
   type="text/javascript"
   src="<?= base_url(); ?>assets/js/mediaelement/mediaelement-and-player.min1f61.js?ver=4.2.17"
@@ -812,6 +817,7 @@
   type="text/javascript"
   src="<?= base_url(); ?>assets/js/mediaelement/renderers/vimeo.min1f61.js?ver=4.2.17"
   id="mediaelement-vimeo-js" defer></script>
+<?php } ?>
 <script
   type="text/javascript"
   src="<?= base_url(); ?>assets/plugins/whatsapp-for-wordpress/assets/js/whatsapp-popupaec2.js?ver=6.4.1"
@@ -852,27 +858,19 @@
 <!-- UTM Tracker - Load early to capture parameters -->
 <script src="<?= base_url(); ?>assets/js/utm-tracker.js" defer></script>
 
-<!-- Swiper JS with proper initialization -->
+<?php if (isset($page_name) && $page_name == 'home') { ?>
+<!-- Swiper JS - only on home (hero carousel) -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
 <script>
-  // Wait for Swiper to load before initializing
   window.addEventListener('load', function() {
     if (typeof Swiper !== 'undefined') {
       const swiperElements = document.querySelectorAll('.bt_bb_background_image_holder_wrapper.swiper');
       swiperElements.forEach(function(element) {
         new Swiper(element, {
           loop: true,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-          autoplay: {
-            delay: 5000,
-          },
+          pagination: { el: '.swiper-pagination', clickable: true },
+          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+          autoplay: { delay: 5000 },
           slidesPerView: 1,
           spaceBetween: 10,
         });
@@ -880,3 +878,4 @@
     }
   });
 </script>
+<?php } ?>

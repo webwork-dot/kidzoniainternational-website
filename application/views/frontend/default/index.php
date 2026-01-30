@@ -60,7 +60,8 @@
         loadCSS("<?= base_url(); ?>assets/plugins/bold-page-builder/slick/slickae9e.css");
         loadCSS("<?= base_url(); ?>assets/plugins/popup-builder/public/css/theme3a05.css");
         // Load Google Fonts asynchronously
-        loadCSS("https://fonts.googleapis.com/css?family=Poppins%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2C400italic%2C500italic%2C600italic%2C700italic%2C800%2C900italic%7CPaytone+One%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CPoppins%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2C400%2C500%2C600%2C700%2C800%2C900italic&display=swap");
+        loadCSS("https://fonts.googleapis.com/css?family=Poppins%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2C400italic%2C500italic%2C600italic%2C700italic%2C800%2C900italic%7CPaytone+One%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CPoppins%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300%2C400%2C500%2C600%2C700%2C800%2C900italic&display=swap");
+        loadCSS("https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/css/intlTelInput.css");
     </script>
 
     <!-- Noscript fallback for non-JS users (only non-critical CSS) -->
@@ -71,6 +72,7 @@
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/whatsapp-for-wordpress/assets/dist/css/styleaec2.css">
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/bold-page-builder/slick/slickae9e.css">
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/popup-builder/public/css/theme3a05.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/css/intlTelInput.css">
     </noscript>
 
     <link rel='stylesheet' id='bambino-print-css' href='<?= base_url(); ?>assets/themes/bambino/printaec2.css' type='text/css' media='print' />
@@ -79,8 +81,7 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
     
-    <!-- intl-tel-input CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/css/intlTelInput.css">
+    <!-- intl-tel-input CSS loaded asynchronously via loadCSS() above -->
     <style>
 
 .iti input.iti__tel-input, .iti input.iti__tel-input[type=text], .iti input.iti__tel-input[type=tel]{
@@ -180,8 +181,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <!-- jQuery migrate must load immediately after jQuery -->
     <script type="text/javascript" src="<?= base_url(); ?>assets/js/jquery/jquery-migrate.min5589.js" id="jquery-migrate-js"></script>
-    <!-- intl-tel-input JS -->
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/js/intlTelInput.min.js"></script>
+    <!-- intl-tel-input JS (defer to reduce main-thread blocking) -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/js/intlTelInput.min.js" defer></script>
     <!-- Defer non-critical scripts to improve initial page load -->
     <script type="text/javascript" src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js" defer></script>
     <script type="text/javascript" src="<?= base_url(); ?>assets/plugins/bold-page-builder/slick/slick.minae9e.js" id="bt_bb_slick-js" defer></script>
@@ -333,7 +334,7 @@
     <link rel="preconnect" href="https://connect.facebook.net">
     <link rel="preconnect" href="https://www.clarity.ms">
 
-    <!-- Defer Google Analytics - Load after page is fully loaded -->
+    <!-- Defer Google Analytics - Load after page is fully loaded (delayed to reduce main-thread work) -->
     <script>
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -346,7 +347,7 @@
                 script.async = true;
                 script.src = 'https://www.googletagmanager.com/gtag/js?id=G-LYFWX4XD9W';
                 document.head.appendChild(script);
-            }, 1000);
+            }, 2000);
         });
     </script>
 
@@ -434,7 +435,7 @@
             src="https://www.facebook.com/tr?id=1069823691669633&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
 
-    <!-- Google Tag Manager - Defer to after page load -->
+    <!-- Google Tag Manager - Defer to after page load (delayed to reduce main-thread work) -->
     <script>
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -451,11 +452,11 @@
                     j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
                     f.parentNode.insertBefore(j, f);
                 })(window, document, 'script', 'dataLayer', 'GTM-59Q8HSB4');
-            }, 1500);
+            }, 4000);
         });
     </script>
 
-    <!-- Google tag (gtag.js) - Defer to after page load -->
+    <!-- Google tag (gtag.js) - Defer to after page load (delayed to reduce main-thread work) -->
     <script>
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -467,7 +468,7 @@
                 script.async = true;
                 script.src = 'https://www.googletagmanager.com/gtag/js?id=G-2PSLM4LFX3';
                 document.head.appendChild(script);
-            }, 1200);
+            }, 3500);
         });
     </script>
 
