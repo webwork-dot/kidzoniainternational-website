@@ -278,8 +278,7 @@
 <div id="videoPopup" style="height:75vh; display:none;" class="video-popup">
   <div class="video-popup-content">
     <span class="close-popup">&times;</span>
-    <video id="modalVideo" class="w-100" controls>
-          <source src="<?php echo base_url() ?>assets/video/new-kidzonia.mp4" type="video/mp4">
+    <video id="modalVideo" class="w-100" controls preload="none" data-src="<?php echo base_url(); ?>assets/video/new-kidzonia.mp4">
           Your browser does not support the video tag.
         </video>
   </div>
@@ -1652,6 +1651,10 @@
 
   function openPopup() {
     videoPopup.css('display', 'flex');
+    // Lazy-load video source only when popup opens (avoids ~13.6 MB on initial page load)
+    if (!modalVideo.src) {
+      modalVideo.src = modalVideo.getAttribute('data-src') || '';
+    }
     modalVideo.play();
   }
 
