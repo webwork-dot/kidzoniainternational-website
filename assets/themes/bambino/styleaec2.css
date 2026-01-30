@@ -90,6 +90,7 @@ body {
     }
 @font-face {
     font-family: "Quotes";
+    font-display: swap;
     src: url(fonts/Quotes.html) format("woff"),url(fonts/Quotes-2.html) format("truetype");
     }
 
@@ -21098,6 +21099,7 @@ to {
 /* Woo fonts */
 @font-face {
     font-family: star;
+    font-display: swap;
     src: url(../../plugins/woocommerce/assets/fonts/star.html);
     src: url(../../plugins/woocommerce/assets/fonts/stard41d.html?#iefix) format("embedded-opentype"),url(../../plugins/woocommerce/assets/fonts/star-2.html) format("woff"),url(../../plugins/woocommerce/assets/fonts/star-3.html) format("truetype"),url(../../plugins/woocommerce/assets/fonts/star-4.html#star) format("svg");
     font-weight: 400;
@@ -21105,6 +21107,7 @@ to {
     }
 @font-face {
     font-family: WooCommerce;
+    font-display: swap;
     src: url(../../plugins/woocommerce/assets/fonts/WooCommerce.html);
     src: url(../../plugins/woocommerce/assets/fonts/WooCommerced41d.html?#iefix) format("embedded-opentype"),url(../../plugins/woocommerce/assets/fonts/WooCommerce-2.html) format("woff"),url(../../plugins/woocommerce/assets/fonts/WooCommerce-3.html) format("truetype"),url(../../plugins/woocommerce/assets/fonts/WooCommerce-4.html#WooCommerce) format("svg");
     font-weight: 400;

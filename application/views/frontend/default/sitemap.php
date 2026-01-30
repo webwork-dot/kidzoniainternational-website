@@ -179,28 +179,31 @@
                 </div>
                 <ul class="children">
                   <li class="tree-node city">
+                    <a href="<?php echo base_url(); ?>preschool-in-hyderabad" class="node-content node-link">📍 Preschool in Hyderabad</a>
+                  </li>
+                  <li class="tree-node city">
                     <div class="node-content">
                       📍 Hyderabad
                       <button class="toggle-btn" onclick="toggleNode(this)"></button>
                     </div>
                     <ul class="children">
                       <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>preschool-in-serilingampally-hyderabad" class="node-content node-link">Serilingampally</a>
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/serilingampally" class="node-content node-link">Serilingampally</a>
                       </li>
                       <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>preschool-in-nallagandla-hyderabad" class="node-content node-link">Nallagandla</a>
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/nallagandla" class="node-content node-link">Nallagandla</a>
                       </li>
                       <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>preschool-in-nallagandla-navodaya-hyderabad" class="node-content node-link">Nallagandla Navodaya</a>
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/nallagandla-navodaya" class="node-content node-link">Nallagandla Navodaya</a>
                       </li>
                       <li class="tree-node branch">
                         <a href="<?php echo base_url(); ?>explore-centers/hyderabad/pragathi-nagar" class="node-content node-link">Pragathi Nagar</a>
                       </li>
                       <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>preschool-in-suraksha-enclave-ameenpur-hyderabad" class="node-content node-link">Suraksha Enclave Ameenpur</a>
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/suraksha-enclave-ameenpur" class="node-content node-link">Suraksha Enclave Ameenpur</a>
                       </li>
                       <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>preschool-in-kphb-kukatpally-hyderabad" class="node-content node-link">KPHB, Kukatpally</a>
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/kphb-kukatpally" class="node-content node-link">KPHB, Kukatpally</a>
                       </li>
                     </ul>
                   </li>
@@ -217,16 +220,19 @@
                     </div>
                     <ul class="children">
                       <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>preschool-in-tellapur-hyderabad" class="node-content node-link">Tellapur</a>
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/tellapur" class="node-content node-link">Tellapur</a>
                       </li>
                       <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>preschool-in-lingampally-hyderabad" class="node-content node-link">Lingampally</a>
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/lingampally" class="node-content node-link">Lingampally</a>
                       </li>
                       <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>preschool-in-ramachandrapuram-hyderabad" class="node-content node-link">Ramachandrapuram</a>
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/ramachandrapuram" class="node-content node-link">Ramachandrapuram</a>
                       </li>
                       <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>preschool-in-chanda-nagar-hyderabad" class="node-content node-link">Chanda Nagar</a>
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/chanda-nagar" class="node-content node-link">Chanda Nagar</a>
+                      </li>
+                      <li class="tree-node branch">
+                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/pragathi-nagar" class="node-content node-link">Pragathi Nagar</a>
                       </li>
                     </ul>
                   </li>

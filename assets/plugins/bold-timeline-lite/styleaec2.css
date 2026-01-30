@@ -2,6 +2,7 @@
 /*  7-stroke (http://themes-pixeden.com/font-demos/7-stroke/index.html) */
 @font-face {
     font-family: 'Icon7Stroke';
+    font-display: swap;
     src: url(assets/fonts/Pe-icon-7-strokebb1d.eot?d7yf1v);
     src: url(assets/fonts/Pe-icon-7-stroked41d.eot?#iefixd7yf1v) format('embedded-opentype'),url(assets/fonts/Pe-icon-7-strokebb1d.woff?d7yf1v) format('woff'),url(assets/fonts/Pe-icon-7-strokebb1d.ttf?d7yf1v) format('truetype'),url(assets/fonts/Pe-icon-7-strokebb1d.svg?d7yf1v#Pe-icon-7-stroke) format('svg');
     font-weight: normal;
@@ -11,6 +12,7 @@
 /* FontAwesome5Brands */
 @font-face {
     font-family: 'FontAwesome5Brands';
+    font-display: swap;
     src: url(assets/fonts/FontAwesome5Brands3f71.woff?v=1.1.1) format('woff'),url(assets/fonts/FontAwesome5Brands3f71.ttf?v=1.1.1) format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -19,6 +21,7 @@
 /* FontAwesome */
 @font-face {
     font-family: 'FontAwesome';
+    font-display: swap;
     src: url(assets/fonts/fontawesome-webfont5b62.eot?v=4.6.3);
     src: url(assets/fonts/fontawesome-webfontd41d.eot?#iefix&v=4.6.3) format('embedded-opentype'),url(assets/fonts/fontawesome-webfont5b62.woff2?v=4.6.3) format('woff2'),url(assets/fonts/fontawesome-webfont5b62.woff?v=4.6.3) format('woff'),url(assets/fonts/fontawesome-webfont5b62.ttf?v=4.6.3) format('truetype'),url(assets/fonts/fontawesome-webfont5b62.svg?v=4.6.3#fontawesomeregular) format('svg');
     font-weight: normal;
@@ -67,6 +70,7 @@
 /*  7-stroke (http://themes-pixeden.com/font-demos/7-stroke/index.html) */
 @font-face {
     font-family: 'Icon7Stroke';
+    font-display: swap;
     src: url(assets/fonts/Pe-icon-7-strokebb1d.eot?d7yf1v);
     src: url(assets/fonts/Pe-icon-7-stroked41d.eot?#iefixd7yf1v) format('embedded-opentype'),url(assets/fonts/Pe-icon-7-strokebb1d.woff?d7yf1v) format('woff'),url(assets/fonts/Pe-icon-7-strokebb1d.ttf?d7yf1v) format('truetype'),url(assets/fonts/Pe-icon-7-strokebb1d.svg?d7yf1v#Pe-icon-7-stroke) format('svg');
     font-weight: normal;
@@ -76,6 +80,7 @@
 /* FontAwesome5Brands */
 @font-face {
     font-family: 'FontAwesome5Brands';
+    font-display: swap;
     src: url(assets/fonts/FontAwesome5Brands3f71.woff?v=1.1.1) format('woff'),url(assets/fonts/FontAwesome5Brands3f71.ttf?v=1.1.1) format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -84,6 +89,7 @@
 /* FontAwesome */
 @font-face {
     font-family: 'FontAwesome';
+    font-display: swap;
     src: url(assets/fonts/fontawesome-webfont5b62.eot?v=4.6.3);
     src: url(assets/fonts/fontawesome-webfontd41d.eot?#iefix&v=4.6.3) format('embedded-opentype'),url(assets/fonts/fontawesome-webfont5b62.woff2?v=4.6.3) format('woff2'),url(assets/fonts/fontawesome-webfont5b62.woff?v=4.6.3) format('woff'),url(assets/fonts/fontawesome-webfont5b62.ttf?v=4.6.3) format('truetype'),url(assets/fonts/fontawesome-webfont5b62.svg?v=4.6.3#fontawesomeregular) format('svg');
     font-weight: normal;
@@ -371,6 +377,7 @@
 /*  7-stroke (http://themes-pixeden.com/font-demos/7-stroke/index.html) */
 @font-face {
     font-family: 'Icon7Stroke';
+    font-display: swap;
     src: url(assets/fonts/Pe-icon-7-strokebb1d.eot?d7yf1v);
     src: url(assets/fonts/Pe-icon-7-stroked41d.eot?#iefixd7yf1v) format('embedded-opentype'),url(assets/fonts/Pe-icon-7-strokebb1d.woff?d7yf1v) format('woff'),url(assets/fonts/Pe-icon-7-strokebb1d.ttf?d7yf1v) format('truetype'),url(assets/fonts/Pe-icon-7-strokebb1d.svg?d7yf1v#Pe-icon-7-stroke) format('svg');
     font-weight: normal;
@@ -380,6 +387,7 @@
 /* FontAwesome5Brands */
 @font-face {
     font-family: 'FontAwesome5Brands';
+    font-display: swap;
     src: url(assets/fonts/FontAwesome5Brands3f71.woff?v=1.1.1) format('woff'),url(assets/fonts/FontAwesome5Brands3f71.ttf?v=1.1.1) format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -388,6 +396,7 @@
 /* FontAwesome */
 @font-face {
     font-family: 'FontAwesome';
+    font-display: swap;
     src: url(assets/fonts/fontawesome-webfont5b62.eot?v=4.6.3);
     src: url(assets/fonts/fontawesome-webfontd41d.eot?#iefix&v=4.6.3) format('embedded-opentype'),url(assets/fonts/fontawesome-webfont5b62.woff2?v=4.6.3) format('woff2'),url(assets/fonts/fontawesome-webfont5b62.woff?v=4.6.3) format('woff'),url(assets/fonts/fontawesome-webfont5b62.ttf?v=4.6.3) format('truetype'),url(assets/fonts/fontawesome-webfont5b62.svg?v=4.6.3#fontawesomeregular) format('svg');
     font-weight: normal;
@@ -775,6 +784,7 @@
 /*  7-stroke (http://themes-pixeden.com/font-demos/7-stroke/index.html) */
 @font-face {
     font-family: 'Icon7Stroke';
+    font-display: swap;
     src: url(assets/fonts/Pe-icon-7-strokebb1d.eot?d7yf1v);
     src: url(assets/fonts/Pe-icon-7-stroked41d.eot?#iefixd7yf1v) format('embedded-opentype'),url(assets/fonts/Pe-icon-7-strokebb1d.woff?d7yf1v) format('woff'),url(assets/fonts/Pe-icon-7-strokebb1d.ttf?d7yf1v) format('truetype'),url(assets/fonts/Pe-icon-7-strokebb1d.svg?d7yf1v#Pe-icon-7-stroke) format('svg');
     font-weight: normal;
@@ -784,6 +794,7 @@
 /* FontAwesome5Brands */
 @font-face {
     font-family: 'FontAwesome5Brands';
+    font-display: swap;
     src: url(assets/fonts/FontAwesome5Brands3f71.woff?v=1.1.1) format('woff'),url(assets/fonts/FontAwesome5Brands3f71.ttf?v=1.1.1) format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -792,6 +803,7 @@
 /* FontAwesome */
 @font-face {
     font-family: 'FontAwesome';
+    font-display: swap;
     src: url(assets/fonts/fontawesome-webfont5b62.eot?v=4.6.3);
     src: url(assets/fonts/fontawesome-webfontd41d.eot?#iefix&v=4.6.3) format('embedded-opentype'),url(assets/fonts/fontawesome-webfont5b62.woff2?v=4.6.3) format('woff2'),url(assets/fonts/fontawesome-webfont5b62.woff?v=4.6.3) format('woff'),url(assets/fonts/fontawesome-webfont5b62.ttf?v=4.6.3) format('truetype'),url(assets/fonts/fontawesome-webfont5b62.svg?v=4.6.3#fontawesomeregular) format('svg');
     font-weight: normal;
@@ -2532,6 +2544,7 @@ TODO: Zavrsiti ovaj deo (problem sa overflow: hidden; na zaobljenim itemima)
 /*  7-stroke (http://themes-pixeden.com/font-demos/7-stroke/index.html) */
 @font-face {
     font-family: 'Icon7Stroke';
+    font-display: swap;
     src: url(assets/fonts/Pe-icon-7-strokebb1d.eot?d7yf1v);
     src: url(assets/fonts/Pe-icon-7-stroked41d.eot?#iefixd7yf1v) format('embedded-opentype'),url(assets/fonts/Pe-icon-7-strokebb1d.woff?d7yf1v) format('woff'),url(assets/fonts/Pe-icon-7-strokebb1d.ttf?d7yf1v) format('truetype'),url(assets/fonts/Pe-icon-7-strokebb1d.svg?d7yf1v#Pe-icon-7-stroke) format('svg');
     font-weight: normal;
@@ -2541,6 +2554,7 @@ TODO: Zavrsiti ovaj deo (problem sa overflow: hidden; na zaobljenim itemima)
 /* FontAwesome5Brands */
 @font-face {
     font-family: 'FontAwesome5Brands';
+    font-display: swap;
     src: url(assets/fonts/FontAwesome5Brands3f71.woff?v=1.1.1) format('woff'),url(assets/fonts/FontAwesome5Brands3f71.ttf?v=1.1.1) format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -2549,6 +2563,7 @@ TODO: Zavrsiti ovaj deo (problem sa overflow: hidden; na zaobljenim itemima)
 /* FontAwesome */
 @font-face {
     font-family: 'FontAwesome';
+    font-display: swap;
     src: url(assets/fonts/fontawesome-webfont5b62.eot?v=4.6.3);
     src: url(assets/fonts/fontawesome-webfontd41d.eot?#iefix&v=4.6.3) format('embedded-opentype'),url(assets/fonts/fontawesome-webfont5b62.woff2?v=4.6.3) format('woff2'),url(assets/fonts/fontawesome-webfont5b62.woff?v=4.6.3) format('woff'),url(assets/fonts/fontawesome-webfont5b62.ttf?v=4.6.3) format('truetype'),url(assets/fonts/fontawesome-webfont5b62.svg?v=4.6.3#fontawesomeregular) format('svg');
     font-weight: normal;
@@ -2971,6 +2986,7 @@ TODO: Zavrsiti ovaj deo (problem sa overflow: hidden; na zaobljenim itemima)
 /*  7-stroke (http://themes-pixeden.com/font-demos/7-stroke/index.html) */
 @font-face {
     font-family: 'Icon7Stroke';
+    font-display: swap;
     src: url(assets/fonts/Pe-icon-7-strokebb1d.eot?d7yf1v);
     src: url(assets/fonts/Pe-icon-7-stroked41d.eot?#iefixd7yf1v) format('embedded-opentype'),url(assets/fonts/Pe-icon-7-strokebb1d.woff?d7yf1v) format('woff'),url(assets/fonts/Pe-icon-7-strokebb1d.ttf?d7yf1v) format('truetype'),url(assets/fonts/Pe-icon-7-strokebb1d.svg?d7yf1v#Pe-icon-7-stroke) format('svg');
     font-weight: normal;
@@ -2980,6 +2996,7 @@ TODO: Zavrsiti ovaj deo (problem sa overflow: hidden; na zaobljenim itemima)
 /* FontAwesome5Brands */
 @font-face {
     font-family: 'FontAwesome5Brands';
+    font-display: swap;
     src: url(assets/fonts/FontAwesome5Brands3f71.woff?v=1.1.1) format('woff'),url(assets/fonts/FontAwesome5Brands3f71.ttf?v=1.1.1) format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -2988,6 +3005,7 @@ TODO: Zavrsiti ovaj deo (problem sa overflow: hidden; na zaobljenim itemima)
 /* FontAwesome */
 @font-face {
     font-family: 'FontAwesome';
+    font-display: swap;
     src: url(assets/fonts/fontawesome-webfont5b62.eot?v=4.6.3);
     src: url(assets/fonts/fontawesome-webfontd41d.eot?#iefix&v=4.6.3) format('embedded-opentype'),url(assets/fonts/fontawesome-webfont5b62.woff2?v=4.6.3) format('woff2'),url(assets/fonts/fontawesome-webfont5b62.woff?v=4.6.3) format('woff'),url(assets/fonts/fontawesome-webfont5b62.ttf?v=4.6.3) format('truetype'),url(assets/fonts/fontawesome-webfont5b62.svg?v=4.6.3#fontawesomeregular) format('svg');
     font-weight: normal;

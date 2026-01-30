@@ -309,6 +309,12 @@
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
                                     <a href="<?php echo base_url(); ?>preschool-in-chanda-nagar-hyderabad" title="Preschool in Chanda Nagar">Preschool in Chanda Nagar</a>
                                   </li>
+                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
+                                    <a href="<?php echo base_url(); ?>preschool-in-pragathi-nagar-hyderabad" title="Preschool in Pragathi Nagar">Preschool in Pragathi Nagar</a>
+                                  </li>
+                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
+                                    <a href="<?php echo base_url(); ?>preschool-in-hyderabad" title="Preschool in Hyderabad">Preschool in Hyderabad</a>
+                                  </li>
 
 
                                 </ul>
@@ -662,7 +668,7 @@
                       </div>
                       <div data-bb-version="4.6.0" class="bt_bb_text">
                         <p style="text-align: center; font-size: 13px">
-                          © 2025. Kidzonia International Preschool. All Rights
+                          © <?php echo date('Y'); ?>. Kidzonia International Preschool. All Rights
                           Reserved.
                         </p>
                       </div>

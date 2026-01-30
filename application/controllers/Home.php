@@ -995,6 +995,41 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
         $this->load->view('frontend/default/index', $page_data);
     }
 
+    public function pragathi_nagar()
+    {
+        $page_data['page_name']         = "pragathi_nagar";
+        $page_data['page_title']        = "Best CBSE & International Pre Schools in Pragathi Nagar, Hyderabad | Pre Primary, Kindergarten, Nursery & Daycare - Kidzonia International";
+        $page_data['meta_description']  = "Explore the best CBSE, International, Pre Primary, Nursery & Daycare schools in Pragathi Nagar, Hyderabad. Find top schools near Pragathi Nagar for your child.";
+        $page_data['meta_keyword']      = "schools in pragathi nagar, pre primary schools in pragathi nagar, cbse schools in pragathi nagar, international schools in pragathi nagar, best schools in pragathi nagar, top international schools in pragathi nagar, schools near pragathi nagar, schools in pragathi nagar hyderabad, top international schools in pragathi nagar, pre schools in pragathi nagar, nursery schools in pragathi nagar, kindergarten schools in pragathi nagar, daycare schools in pragathi nagar";
+        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/preschool-in-pragathi-nagar-hyderabad";
+        $this->load->view('frontend/default/index', $page_data);
+    }
+
+    public function hyderabad()
+    {
+        // Get Hyderabad branches data
+        $data = $this->crud_model->get_explore_centers_list('hyderabad');
+        
+        // Fetch data from serilingampally (same as gallery_details for serilingampally)
+        $title = $this->crud_model->get_gallery_title_by_id('serilingampally')->row_array();
+        $page_data['title']             = !empty($title['name']) ? $title['name'] : 'Hyderabad';
+        $page_data['banner']             = !empty($title['image']) ? $title['image'] : '';
+        $page_data['campus_galleries']  = $this->crud_model->get_gallery_campus_details_by_id('serilingampally');
+        $page_data['galleries']          = $this->crud_model->get_gallery_details_by_id('serilingampally');
+        $page_data['parents']           = $this->crud_model->get_parents_testimonials_by_id('serilingampally');
+        $page_data['awards']            = $this->common_model->selectByidsINWhere('', 'awards_and_recognitions', '4', '0');
+        $page_data['events']            = $this->common_model->selectByidsINWhere('', 'events', '8', '0');
+        $page_data['content']           = 'At Kidzonia, one of the best school in Hyderabad, we believe learning should be both fun and educational. Our approach blends structure with play, creating a dynamic environment where children thrive. The Discover Curriculum is tailored to celebrate each child\'s unique personality, providing an enthusiastic space that fosters creativity and imagination. By combining digital tools with hands-on experiences, our theme-based program lays a strong foundation for early learning. Whether you\'re looking for a nursery school, kindergarten school, preschool, daycare school, or even an international school, Kidzonia stands apart by cultivating confidence and instilling a lifelong love for learning in every child.';
+        
+        $page_data['page_name']         = "hyderabad";
+        $page_data['page_title']        = "Best CBSE & International Pre Schools in Hyderabad | Pre Primary, Kindergarten, Nursery & Daycare - Kidzonia International";
+        $page_data['meta_description']  = "Explore the best CBSE, International, Pre Primary, Nursery & Daycare schools in Hyderabad. Find top schools in Hyderabad for your child's growth and success.";
+        $page_data['meta_keyword']      = "schools in hyderabad, pre primary schools in hyderabad, cbse schools in hyderabad, international schools in hyderabad, best schools in hyderabad, top international schools in hyderabad, schools near hyderabad, pre schools in hyderabad, nursery schools in hyderabad, kindergarten schools in hyderabad, daycare schools in hyderabad, best preschool in hyderabad, montessori schools in hyderabad";
+        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/preschool-in-hyderabad";
+        $page_data['data']              = $data; // Pass branches data to view
+        $this->load->view('frontend/default/index', $page_data);
+    }
+
     public function lingampally()
     {
         $page_data['page_name']         = "lingampally";

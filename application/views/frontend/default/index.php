@@ -191,7 +191,20 @@
     <script type="text/javascript" src="<?= base_url(); ?>assets/plugins/popup-builder/public/js/PopupConfig3a05.js" id="PopupConfig.js-js" defer></script>
     <script type="text/javascript" src="<?= base_url(); ?>assets/plugins/popup-builder/public/js/PopupBuilder3a05.js" id="PopupBuilder.js-js" defer></script>
     <script type="text/javascript" src="<?= base_url(); ?>assets/js/offset_overlay.js" defer></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=SITE_KEY" defer></script>
+    <script>
+    let recaptchaLoaded = false;
+    function loadRecaptcha() {
+        if (recaptchaLoaded) return;
+        recaptchaLoaded = true;
+        let s = document.createElement('script');
+        s.src = 'https://www.google.com/recaptcha/api.js?render=SITE_KEY';
+        s.async = true;
+        document.body.appendChild(s);
+    }
+    document.addEventListener('focusin', function(e) {
+        if (e.target.closest('form')) loadRecaptcha();
+    });
+    </script>
 
     <link rel="icon" href="<?= base_url(); ?>uploads/2023/07/cropped-Favicon-32x32.png?tr=w-30" sizes="32x32" />
     <link rel="icon" href="<?= base_url(); ?>uploads/2023/07/cropped-Favicon-192x192.png?tr=w-30" sizes="192x192" />
