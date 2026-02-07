@@ -649,6 +649,8 @@ inspiring stories.";
         $page_data['meta_description']  = "Reach out to Kidzonia International School for admission enquiries, programmes, and campus information. We are here to guide your child’s journey.";
         $page_data['meta_keyword']      = "contact us";
         $page_data['canonical_url']      = "https://kidzoniainternational.in/contact-us/";
+        $page_data['class_list']         = $this->crud_model->get_kips_program_list();
+        $page_data['branches']           = $this->crud_model->get_header_branches()->result_array();
         $this->load->view('frontend/default/index', $page_data);
     }
 
