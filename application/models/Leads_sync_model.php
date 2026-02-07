@@ -38,15 +38,24 @@ class Leads_sync_model extends CI_Model
     public function push_leads(array $rows)
     {
         $inserted = 0;
+    
         foreach ($rows as $lead) {
             $data = $lead;
-
+    
+            // remove unwanted fields
             unset($data['id']);
             unset($data['is_sync']);
+    
+            // 🔥 AUTO CALCULATE ACADEMIC YEAR FROM date_of_lead
+            if (!empty($data['date_of_lead'])) {
+                $year = date('Y', strtotime($data['date_of_lead']));
+                $data['academic_year'] = $year . '-' . ($year + 1);
+            }
+    
             $this->db_dest->trans_start();
             $this->db_dest->insert('leads', $data);
             $this->db_dest->trans_complete();
-
+    
             if ($this->db_dest->trans_status() === TRUE) {
                 $this->db_src
                     ->where('id', $lead['id'])
@@ -54,6 +63,8 @@ class Leads_sync_model extends CI_Model
                 $inserted++;
             }
         }
+    
         return $inserted;
     }
+    
 }
