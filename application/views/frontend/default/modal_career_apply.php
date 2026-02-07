@@ -83,7 +83,7 @@ $branches = $this->crud_model->get_branches()->result_array();
                      <span class="invalid-feedback"></span>
                   </div>
                </div>
-               <div class="col-md-12 mt-2 g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>"></div>
+               <!--<div class="col-md-12 mt-2 g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>"></div>-->
                <div class="col-md-12 mt-2">
                   <div class="wpforms-submit-container pt-0">
                    <button type="submit" name="wpforms[submit]" id="wpforms-submit-4102" class="btn btn-enquiry wpforms-submit btn_merify" name="btn_merify">
@@ -162,16 +162,8 @@ $branches = $this->crud_model->get_branches()->result_array();
             contentType: false,
             success: function(res) {
                 if (res.status == '200') { 
-                  $(".loader").fadeOut("slow"); 
-                  Swal.fire({
-            		title: "Success!",
-            		text: res.message,
-            		icon: "success",
-            		customClass: {
-            			confirmButton: "btn btn-primary"
-            		},
-            		buttonsStyling: !1
-            	  }).then(() => {window.location.href = res.url;});
+                 $(".loader").fadeOut("slow"); 
+                 window.location.href = res.url;
                 }
                 else {  
                     $.each(res.errors, function(key, value){

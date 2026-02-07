@@ -35,6 +35,12 @@ class Modal extends CI_Controller {
 		$page_data['param3']		=	$param3;
 		$page_data['param4']		=	$param4;
 		$page_data['param5']		=	$param5;
+		$enquiry_modals = array('modal_enquiry_now', 'modal_enquiry_download_brochure', 'modal_youtube_enq');
+		if (in_array($page_name, $enquiry_modals)) {
+			$this->load->model('crud_model');
+			$page_data['class_list'] = $this->crud_model->get_kips_program_list();
+			$page_data['branches'] = $this->crud_model->get_header_branches()->result_array();
+		}
 		$this->load->view( 'frontend/default/'.$page_name.'.php' ,$page_data);
 	}
 	

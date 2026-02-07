@@ -17,7 +17,7 @@
   class="sidebar-contact">
   <div class="toggle_sidebar_icon">&nbsp;&nbsp;Request a Callback</div>
 </a>
-<a href="<?= base_url();?>admissions" class="sidebar-contact">
+<a href="<?= base_url();?>admission-enquiry" class="sidebar-contact">
   <div class="toggle_sidebar_icon_2">&nbsp;&nbsp;Enquiry Now!</div>
 </a>
 

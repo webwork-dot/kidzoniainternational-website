@@ -3,42 +3,96 @@
    <div class="col-lg-12">
       <div class="col-md-12 h-enquiry">
           <h5 class="text-center">IXplore</h5>
-         <form action="<?php echo base_url();?>ajax_youtube_enquiry" class="add-ajax-modal-form mt-10" onsubmit="return checkMForm(this);">
+         <form action="<?php echo base_url();?>check_admission_enquiry" class="add-ajax-modal-form mt-10" onsubmit="return checkMForm(this);" method="POST">
+            <input type="hidden" name="form_type" value="youtube_enquiry">
             <div class="row">
-                
                <div class="col-md-12">
                   <div class="form-group mb-2">
-                     <label>Name<i class="text-dander">*</i></label>
-                     <input type="text" class="form-control" name="name" placeholder="Name" required>
+                     <label>Admission For Class<i class="text-dander">*</i></label>
+                     <select class="form-control" name="class_id" required>
+                        <option value="">Select Class</option>
+                        <?php foreach ($class_list as $class) { ?>
+                          <option value="<?php echo $class['id']; ?>"><?php echo $class['name']; ?></option>
+                        <?php } ?>
+                     </select>
                      <span class="invalid-feedback"></span>
                   </div>
-               </div>  
-
+               </div>
+               <div class="col-md-12">
+                  <div class="form-group mb-2">
+                     <label>Location<i class="text-dander">*</i></label>
+                     <select class="form-control" name="location" required>
+                        <option value="">Select Location</option>
+                        <?php foreach ($branches as $branch) { ?>
+                          <option value="<?php echo $branch['name']; ?>"><?php echo $branch['name']; ?></option>
+                        <?php } ?>
+                     </select>
+                     <span class="invalid-feedback"></span>
+                  </div>
+               </div>
+               <div class="col-md-12">
+                  <div class="form-group mb-2">
+                     <label>Students Name<i class="text-dander">*</i></label>
+                     <input type="text" class="form-control" name="child_name" placeholder="Child Name" required>
+                     <span class="invalid-feedback"></span>
+                  </div>
+               </div>
+               <div class="col-md-12">
+                  <div class="form-group mb-2">
+                     <label>Parent Name<i class="text-dander">*</i></label>
+                     <input type="text" class="form-control" name="parent_name" placeholder="Parent Name" required>
+                     <span class="invalid-feedback"></span>
+                  </div>
+               </div>
                <div class="col-md-12">
                   <div class="form-group mb-2">
                      <label>Phone<i class="text-dander">*</i></label>
                      <input type="tel" class="signup-form-control form-control" name="phone" placeholder="Phone" required>
                      <span class="invalid-feedback"></span>
                   </div>
-               </div>   
-               
+               </div>
                <div class="col-md-12">
                   <div class="form-group mb-2">
                      <label>Email</label>
                      <input type="email" class="form-control" name="email" placeholder="Email">
                      <span class="invalid-feedback"></span>
                   </div>
-               </div>    
-               
+               </div>
+               <div class="col-md-12">
+                  <div class="form-group mb-2">
+                     <label>How did you come to know about us ?<i class="text-dander">*</i></label>
+                     <select class="form-control" name="know_about_us" required>
+                        <option value="">Select Source</option>
+                        <option value="Banner">Banner</option>
+                        <option value="Community Event">Community Event</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Field Data">Field Data</option>
+                        <option value="Flyers">Flyers</option>
+                        <option value="Friends">Friends</option>
+                        <option value="Google">Google</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="No parking Board">No parking Board</option>
+                        <option value="Parent Referral">Parent Referral</option>
+                        <option value="Pole Kiosk">Pole Kiosk</option>
+                        <option value="Poster Ads">Poster Ads</option>
+                        <option value="Previous Student">Previous Student</option>
+                        <option value="Pro Eves">Pro Eves</option>
+                        <option value="School Hoarding">School Hoarding</option>
+                        <option value="Sibling">Sibling</option>
+                        <option value="Staff Child">Staff Child</option>
+                        <option value="Staff Referral">Staff Referral</option>
+                        <option value="Website">Website</option>
+                        <option value="WhatsApp">WhatsApp</option>
+                     </select>
+                     <span class="invalid-feedback"></span>
+                  </div>
+               </div>
                <div class="col-md-12 mt-2">
                   <div class="wpforms-submit-container pt-0">
-                   <button type="submit" class="btn btn-enquiry wpforms-submit btn_merify" name="btn_merify">
-                   Submit</button>
+                   <button type="submit" class="btn btn-enquiry wpforms-submit btn_merify btn_verify" name="btn_merify">Submit</button>
                 </div>
                </div>
             </div>
-            <!-- .wpforms-field-container -->
-          
          </form>
       </div>
    </div>
@@ -107,17 +161,9 @@
             processData: false,
             contentType: false,
             success: function(res) {
-                if (res.status == '200') { 
+                if (res.status == '200' || res.status == 200) { 
                   $(".loader").fadeOut("slow"); 
-                  Swal.fire({
-            		title: "Success!",
-            		text: res.message,
-            		icon: "success",
-            		customClass: {
-            			confirmButton: "btn btn-primary"
-            		},
-            		buttonsStyling: !1
-            	  }).then(() => {window.location.href = res.url;});
+                  if (res.url) window.location.href = res.url;
                 }
                 else {   
                     $.each(res.errors, function(key, value){

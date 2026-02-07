@@ -628,19 +628,10 @@
                     processData: false,
                     contentType: false,
                     success: function(res) {
-                        if (res.status == '200') {
-                            $(".loader").fadeOut("slow");
-                            Swal.fire({
-                                title: "Success!",
-                                text: res.message,
-                                icon: "success",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                },
-                                buttonsStyling: !1
-                            }).then(() => {
-                                window.location.href = res.url;
-                            });
+                        if (res.status == '200' || res.status == 200) {
+                                $(".loader").fadeOut("slow");
+                                $('.btn_verify').html('Redirecting...');
+                                if (res.url) window.location.href = res.url;
                         } else {
 
                             $.each(res.errors, function(key, value) {
@@ -1040,7 +1031,15 @@
                 }
             }
             
-            console.log('No phone/mobile input found or intlTelInput instance not available');
+            // Default +91 for unified forms when intlTelInput not present
+            var phoneInputForDefault = form.querySelector('input[name="phone"]');
+            if (phoneInputForDefault && !form.querySelector('input[name="phone_country_code"]')) {
+                var hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'phone_country_code';
+                hiddenInput.value = '+91';
+                form.appendChild(hiddenInput);
+            }
             return false;
         }
 

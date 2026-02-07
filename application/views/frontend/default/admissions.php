@@ -63,9 +63,10 @@
                       <div class="bt_bb_column_content">
                         <div class="bt_bb_column_content_inner">
                           <div class="wpforms-container  col-md-12 h-enquiry"> 
-                            <h3>Preschool Admission Enquiry Form Academic Year 2025-26</h3>
+                            <h3>Preschool Admission Enquiry Form Academic Year 2026-27</h3>
                             <form action="<?php echo base_url(); ?>check_admission_enquiry" class="add-ajax-redirect-image-form mt-10" onsubmit="return checkForm(this);" method='POST'>
                             <!--<form action="<?php echo base_url(); ?>check_admission_enquiry" class="add-ajax-admission-form mt-10" onsubmit="return checkForm(this);">-->
+                              <input type="hidden" name="form_type" value="admission_enquiry">
                               <div class="row">
                                 <div class="col-md-12">
                                   <div class="form-group mb-2">
@@ -154,7 +155,7 @@
                                     <span class="invalid-feedback"></span>
                                   </div>
                                 </div>
-                                <div class="col-md-12 mt-2 g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>"></div>
+                                <!--<div class="col-md-12 mt-2 g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>"></div>-->
 
                                 <div class="col-md-12 mt-2">
                                   <div class="wpforms-submit-container pt-0">

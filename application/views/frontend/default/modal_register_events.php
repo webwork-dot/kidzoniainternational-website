@@ -120,7 +120,6 @@
                 }
             }
         }
-
         // FormData object 
          var data = new FormData(form);
         
@@ -135,15 +134,7 @@
             success: function(res) {
                 if (res.status == '200') { 
                   $(".loader").fadeOut("slow"); 
-                  Swal.fire({
-            		title: "Success!",
-            		text: res.message,
-            		icon: "success",
-            		customClass: {
-            			confirmButton: "btn btn-primary"
-            		},
-            		buttonsStyling: !1
-            	  }).then(() => {window.location.href = res.url; });
+                  window.location.href = res.url;
                 }
                 else {   
                     $.each(res.errors, function(key, value){

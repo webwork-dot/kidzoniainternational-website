@@ -846,40 +846,40 @@ class Crud_model extends CI_Model
     $this->db->trans_start(); // Start a transaction
 
     // --- Start of reCAPTCHA verification logic ---
-    $recaptcha_response = $this->input->post('g-recaptcha-response');
+    // $recaptcha_response = $this->input->post('g-recaptcha-response');
 
-    if (empty($recaptcha_response)) {
-        $resultpost = [
-            "status" => 400,
-            "message" => "Please complete the reCAPTCHA before submitting."
-        ];
-        $this->db->trans_rollback();
-        return simple_json_output($resultpost);
-    }
+    // if (empty($recaptcha_response)) {
+    //     $resultpost = [
+    //         "status" => 400,
+    //         "message" => "Please complete the reCAPTCHA before submitting."
+    //     ];
+    //     $this->db->trans_rollback();
+    //     return simple_json_output($resultpost);
+    // }
     
-    $secret_key = $this->config->item('recaptcha_secret_key');
-    $verification_url = 'https://www.google.com/recaptcha/api/siteverify';
-    $request_data = http_build_query([
-        'secret' => $secret_key,
-        'response' => $recaptcha_response
-    ]);
+    // $secret_key = $this->config->item('recaptcha_secret_key');
+    // $verification_url = 'https://www.google.com/recaptcha/api/siteverify';
+    // $request_data = http_build_query([
+    //     'secret' => $secret_key,
+    //     'response' => $recaptcha_response
+    // ]);
 
-    $ch = curl_init($verification_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
-    $response_json = curl_exec($ch);
-    curl_close($ch);
+    // $ch = curl_init($verification_url);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
+    // $response_json = curl_exec($ch);
+    // curl_close($ch);
 
-    $response_data = json_decode($response_json);
+    // $response_data = json_decode($response_json);
     
-    if (!$response_data->success) {
-        $resultpost = [
-            "status" => 400,
-            "message" => "reCAPTCHA verification failed. Please try again."
-        ];
-        $this->db->trans_rollback();
-        return simple_json_output($resultpost);
-    }
+    // if (!$response_data->success) {
+    //     $resultpost = [
+    //         "status" => 400,
+    //         "message" => "reCAPTCHA verification failed. Please try again."
+    //     ];
+    //     $this->db->trans_rollback();
+    //     return simple_json_output($resultpost);
+    // }
     // --- End of reCAPTCHA verification logic ---
 
     // The rest of your form validation and processing logic follows
@@ -1044,40 +1044,40 @@ class Crud_model extends CI_Model
     $this->db->trans_start(); // Start a transaction
 
     // --- Start of reCAPTCHA verification logic ---
-    $recaptcha_response = $this->input->post('g-recaptcha-response');
+    // $recaptcha_response = $this->input->post('g-recaptcha-response');
 
-    if (empty($recaptcha_response)) {
-        $resultpost = [
-            "status" => 400,
-            "message" => "Please complete the reCAPTCHA before submitting."
-        ];
-        $this->db->trans_rollback();
-        return simple_json_output($resultpost);
-    }
+    // if (empty($recaptcha_response)) {
+    //     $resultpost = [
+    //         "status" => 400,
+    //         "message" => "Please complete the reCAPTCHA before submitting."
+    //     ];
+    //     $this->db->trans_rollback();
+    //     return simple_json_output($resultpost);
+    // }
     
-    $secret_key = $this->config->item('recaptcha_secret_key');
-    $verification_url = 'https://www.google.com/recaptcha/api/siteverify';
-    $request_data = http_build_query([
-        'secret' => $secret_key,
-        'response' => $recaptcha_response
-    ]);
+    // $secret_key = $this->config->item('recaptcha_secret_key');
+    // $verification_url = 'https://www.google.com/recaptcha/api/siteverify';
+    // $request_data = http_build_query([
+    //     'secret' => $secret_key,
+    //     'response' => $recaptcha_response
+    // ]);
 
-    $ch = curl_init($verification_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
-    $response_json = curl_exec($ch);
-    curl_close($ch);
+    // $ch = curl_init($verification_url);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
+    // $response_json = curl_exec($ch);
+    // curl_close($ch);
 
-    $response_data = json_decode($response_json);
+    // $response_data = json_decode($response_json);
     
-    if (!$response_data->success) {
-        $resultpost = [
-            "status" => 400,
-            "message" => "reCAPTCHA verification failed. Please try again."
-        ];
-        $this->db->trans_rollback();
-        return simple_json_output($resultpost);
-    }
+    // if (!$response_data->success) {
+    //     $resultpost = [
+    //         "status" => 400,
+    //         "message" => "reCAPTCHA verification failed. Please try again."
+    //     ];
+    //     $this->db->trans_rollback();
+    //     return simple_json_output($resultpost);
+    // }
     // --- End of reCAPTCHA verification logic ---
 
     // The rest of your form validation and processing logic follows
@@ -1147,6 +1147,7 @@ class Crud_model extends CI_Model
         $data['know_about_us']  = ($this->input->post('know_about_us'));
         $data['ip_address']  = $ip_address;
         $data['created_at']  = $curr_date;
+        $data['form_type']   = $this->input->post('form_type') ?: 'admission_enquiry';
         
         // Capture referer - use stored external referer from session
         // Only use HTTP_REFERER if session doesn't have one (first page load)
@@ -1271,6 +1272,10 @@ class Crud_model extends CI_Model
                 "message" => 'Your Enquiry has been successfully submitted.',
                 "url" => $url,
             );
+            $form_type = $this->input->post('form_type') ?: 'admission_enquiry';
+            if ($form_type === 'download_brochure') {
+                $resultpost['download_url'] = base_url('download_brochure_url');
+            }
         } else {
             $resultpost = array(
                 "status" => 400,
@@ -1899,40 +1904,40 @@ class Crud_model extends CI_Model
     $this->db->trans_start();
 
     // --- Start of reCAPTCHA verification logic ---
-    $recaptcha_response = $this->input->post('g-recaptcha-response');
+    // $recaptcha_response = $this->input->post('g-recaptcha-response');
 
-    if (empty($recaptcha_response)) {
-        $resultpost = [
-            'status' => 400,
-            'message' => 'Please complete the reCAPTCHA before submitting.',
-        ];
-        $this->db->trans_rollback();
-        return simple_json_output($resultpost);
-    }
+    // if (empty($recaptcha_response)) {
+    //     $resultpost = [
+    //         'status' => 400,
+    //         'message' => 'Please complete the reCAPTCHA before submitting.',
+    //     ];
+    //     $this->db->trans_rollback();
+    //     return simple_json_output($resultpost);
+    // }
     
-    $secret_key = $this->config->item('recaptcha_secret_key');
-    $verification_url = 'https://www.google.com/recaptcha/api/siteverify';
-    $request_data = http_build_query([
-        'secret' => $secret_key,
-        'response' => $recaptcha_response,
-    ]);
+    // $secret_key = $this->config->item('recaptcha_secret_key');
+    // $verification_url = 'https://www.google.com/recaptcha/api/siteverify';
+    // $request_data = http_build_query([
+    //     'secret' => $secret_key,
+    //     'response' => $recaptcha_response,
+    // ]);
 
-    $ch = curl_init($verification_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
-    $response_json = curl_exec($ch);
-    curl_close($ch);
+    // $ch = curl_init($verification_url);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
+    // $response_json = curl_exec($ch);
+    // curl_close($ch);
 
-    $response_data = json_decode($response_json, true);
+    // $response_data = json_decode($response_json, true);
 
-    if (!$response_data['success']) {
-        $resultpost = [
-            'status' => 400,
-            'message' => 'reCAPTCHA verification failed. Please try again.',
-        ];
-        $this->db->trans_rollback();
-        return simple_json_output($resultpost);
-    }
+    // if (!$response_data['success']) {
+    //     $resultpost = [
+    //         'status' => 400,
+    //         'message' => 'reCAPTCHA verification failed. Please try again.',
+    //     ];
+    //     $this->db->trans_rollback();
+    //     return simple_json_output($resultpost);
+    // }
     // --- End of reCAPTCHA verification logic ---
     
     // The rest of your original code follows
@@ -2090,44 +2095,7 @@ class Crud_model extends CI_Model
 
     public function ajax_contact_enquiry()
 	{
-		$this->db->trans_start();
-		
-		// --- Start of reCAPTCHA verification logic ---
-		$recaptcha_response = $this->input->post('g-recaptcha-response');
-
-		if (empty($recaptcha_response)) {
-			$resultpost = [
-				'status' => 400,
-				'message' => 'Please complete the reCAPTCHA before submitting.',
-			];
-			$this->db->trans_rollback();
-			return simple_json_output($resultpost);
-		}
-		
-		$secret_key = $this->config->item('recaptcha_secret_key');
-		$verification_url = 'https://www.google.com/recaptcha/api/siteverify';
-		$request_data = http_build_query([
-			'secret' => $secret_key,
-			'response' => $recaptcha_response,
-		]);
-
-		$ch = curl_init($verification_url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
-		$response_json = curl_exec($ch);
-		curl_close($ch);
-
-		$response_data = json_decode($response_json, true);
-
-		if (!$response_data['success']) {
-			$resultpost = [
-				'status' => 400,
-				'message' => 'reCAPTCHA verification failed. Please try again.',
-			];
-			$this->db->trans_rollback();
-			return simple_json_output($resultpost);
-		}
-		// --- End of reCAPTCHA verification logic ---
+		$this->db->trans_start();   
 
 		// The rest of your form validation and processing logic
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
