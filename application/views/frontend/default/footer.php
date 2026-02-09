@@ -298,19 +298,19 @@
                                     <a href="<?php echo base_url(); ?>sitemap" title="Sitemap">Sitemap </a>
                                   </li>
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-tellapur-hyderabad" title="Preschool in Tellapur">Preschool in Tellapur</a>
+                                    <a href="<?php echo base_url(); ?>preschool-in-serilingampally-hyderabad" title="Preschool in Serilingampally">Preschool in Serilingampally</a>
                                   </li>
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-lingampally-hyderabad" title="Preschool in Lingampally">Preschool in Lingampally</a>
+                                    <a href="<?php echo base_url(); ?>preschool-in-nallagandla-hyderabad" title="Preschool in Nallagandla">Preschool in Nallagandla</a>
                                   </li>
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-ramachandrapuram-hyderabad" title="Preschool in Ramachandrapuram">Preschool in Ramachandrapuram</a>
+                                    <a href="<?php echo base_url(); ?>preschool-in-nallagandla-navodaya-hyderabad" title="Preschool in Nallagandla Navodaya">Preschool in Nallagandla Navodaya</a>
                                   </li>
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-chanda-nagar-hyderabad" title="Preschool in Chanda Nagar">Preschool in Chanda Nagar</a>
+                                    <a href="<?php echo base_url(); ?>preschool-in-suraksha-enclave-ameenpur-hyderabad" title="Preschool in Suraksha Enclave Ameenpur">Preschool in Suraksha Enclave Ameenpur</a>
                                   </li>
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-pragathi-nagar-hyderabad" title="Preschool in Pragathi Nagar">Preschool in Pragathi Nagar</a>
+                                    <a href="<?php echo base_url(); ?>preschool-in-kphb-kukatpally-hyderabad" title="Preschool in KPHB Kukatpally">Preschool in KPHB Kukatpally</a>
                                   </li>
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
                                     <a href="<?php echo base_url(); ?>preschool-in-hyderabad" title="Preschool in Hyderabad">Preschool in Hyderabad</a>
