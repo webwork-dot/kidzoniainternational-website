@@ -388,6 +388,47 @@
                   </li>
                 </ul>
               </li>
+			  
+			  
+
+<style>			  
+.shop-btn { 
+    display: inline !important;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #ddd;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    background: #336699;
+    color: #fff !important;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.shop-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.shop-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    background: #dd2a1b;
+}
+</style>
+		    <li id="menu-item-4098"
+                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4098 d-inline-block">
+						<a href="https://shop.academosedutech.com" target="_blank" 
+						   class="shop-btn" title="Shop Now">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 7.67001V6.70001C7.5 4.45001 9.31 2.24001 11.56 2.03001C14.24 1.77001 16.5 3.88001 16.5 6.51001V7.89001" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.99999 22H15C19.02 22 19.74 20.39 19.95 18.43L20.7 12.43C20.97 9.99 20.27 8 16 8H7.99999C3.72999 8 3.02999 9.99 3.29999 12.43L4.04999 18.43C4.25999 20.39 4.97999 22 8.99999 22Z" stroke="#fff" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.4955 12H15.5045" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.49451 12H8.50349" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> Shop
+						</a>
+					</li>
+
+
+
+			  
+			  
             </ul>
           </nav>
         </div>
