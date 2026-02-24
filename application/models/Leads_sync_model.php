@@ -41,12 +41,10 @@ class Leads_sync_model extends CI_Model
     
         foreach ($rows as $lead) {
             $data = $lead;
-    
-            // remove unwanted fields
+
             unset($data['id']);
             unset($data['is_sync']);
     
-            // 🔥 AUTO CALCULATE ACADEMIC YEAR FROM date_of_lead
             if (!empty($data['date_of_lead'])) {
                 $year = date('Y', strtotime($data['date_of_lead']));
                 $data['academic_year'] = $year . '-' . ($year + 1);
