@@ -222,8 +222,8 @@ and enriching environment where young minds thrive.";
         $page_data['branches']          = $this->crud_model->get_header_branches()->result_array();
         $page_data['admissions']        = $this->crud_model->get_admissions();
         $page_data['page_name']         = "admissions";
-        $page_data['page_title']        = "Admission Process in Kidzonia - Kidzonia International";
-        $page_data['meta_description']  = "Experience a seamless admission process at Kidzonia Preschool. Begin by filling our user-friendly application form, followed by a personalized interaction. We prioritize your child's smooth transition, ensuring a hassle-free enrollment into our nurturing educational environment.";
+        $page_data['page_title']        = "Online Admission Enquiry | Best Preschool in Hyderabad - Kidzonia International";
+        $page_data['meta_description']  = "Enroll your child at Kidzonia International, the best preschool & daycare in Hyderabad. Admissions open for Playgroup, Nursery & Kindergarten. Fill the enquiry form today!";
         $page_data['meta_keyword']      = "admission process in kidzonia";
         $page_data['canonical_url']     = 'https://www.kidzoniainternational.in/admissions';
 
@@ -1024,8 +1024,8 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
         $page_data['content']           = 'At Kidzonia, one of the best school in Hyderabad, we believe learning should be both fun and educational. Our approach blends structure with play, creating a dynamic environment where children thrive. The Discover Curriculum is tailored to celebrate each child\'s unique personality, providing an enthusiastic space that fosters creativity and imagination. By combining digital tools with hands-on experiences, our theme-based program lays a strong foundation for early learning. Whether you\'re looking for a nursery school, kindergarten school, preschool, daycare school, or even an international school, Kidzonia stands apart by cultivating confidence and instilling a lifelong love for learning in every child.';
         
         $page_data['page_name']         = "hyderabad";
-        $page_data['page_title']        = "Best CBSE & International Pre Schools in Hyderabad | Pre Primary, Kindergarten, Nursery & Daycare - Kidzonia International";
-        $page_data['meta_description']  = "Explore the best CBSE, International, Pre Primary, Nursery & Daycare schools in Hyderabad. Find top schools in Hyderabad for your child's growth and success.";
+        $page_data['page_title']        = "Best Preschool in Hyderabad | International Nursery & DayCare";
+        $page_data['meta_description']  = "Kidzonia International is a leading Preschool and DayCare in Hyderabad. We offer a safe, Montessori-based curriculum for Playgroup to UKG. Locate a center near you.";
         $page_data['meta_keyword']      = "schools in hyderabad, pre primary schools in hyderabad, cbse schools in hyderabad, international schools in hyderabad, best schools in hyderabad, top international schools in hyderabad, schools near hyderabad, pre schools in hyderabad, nursery schools in hyderabad, kindergarten schools in hyderabad, daycare schools in hyderabad, best preschool in hyderabad, montessori schools in hyderabad";
         $page_data['canonical_url']     = "https://www.kidzoniainternational.in/preschool-in-hyderabad";
         $page_data['data']              = $data; // Pass branches data to view

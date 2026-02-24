@@ -52,6 +52,7 @@ $route['explore-centers/hyderabad/(:any)']                 = 'home/gallery_detai
 // New preschool-in URL routes
 $route['preschool-in-serilingampally-hyderabad']            = 'home/gallery_details/serilingampally';
 $route['preschool-in-nallagandla-hyderabad']                = 'home/gallery_details/nallagandla';
+$route['preschool-in-nallagandla']                          = 'home/gallery_details/nallagandla';
 $route['preschool-in-nallagandla-navodaya-hyderabad']        = 'home/gallery_details/nallagandla-navodaya';
 $route['preschool-in-suraksha-enclave-ameenpur-hyderabad']  = 'home/gallery_details/suraksha-enclave-ameenpur';
 $route['preschool-in-kphb-kukatpally-hyderabad']            = 'home/gallery_details/kphb-kukatpally';
