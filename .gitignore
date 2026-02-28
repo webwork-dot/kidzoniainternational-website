@@ -1,3 +1,4 @@
 uploads
 /application/cache/sessions
 /application/logs
+/backup
