@@ -22,6 +22,11 @@
   .bt_bb_section.bt_bb_bottom_spacing_extra_large>.bt_bb_port {
     padding-bottom: 3.4em !important;
   }
+@media (min-width: 768px) {
+    .bt_bb_row_wrapper_new {
+        padding: 100px;
+    }
+}
 </style>
 
 <div class="btContentWrap btClear">
@@ -230,8 +235,8 @@
           </div>
         </section>
 
-        <section style="padding: 0 150px;">
-          <div class="bt_bb_row_wrapper">
+        <section class="px-3">
+          <div class="bt_bb_row_wrapper bt_bb_row_wrapper_new">
             <div class="bt_bb_row bt_bb_column_gap_15 bt_bb_negative_margin_" data-bt-override-class="{}">
               <div
                 class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_shape_inherit"
@@ -2049,7 +2054,7 @@
                       data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left","xl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
                       <div class="bt_bb_column_content">
                         <div class="bt_bb_column_content_inner">
-                          <iframe src="https://www.google.com/maps/d/u/0/embed?mid=YOUR_UNIQUE_MAP_ID_HERE" width="100%" height="450"></iframe>
+                          <iframe src="https://www.google.com/maps/d/embed?mid=1_gxhT4dCyb6s0LXCQrYq7pqJihsYwY4&ehbc=2E312F" width="100%" height="480"></iframe>
                         </div>
                       </div>
                     </div>
