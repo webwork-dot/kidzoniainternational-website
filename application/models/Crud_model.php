@@ -1040,6 +1040,9 @@ class Crud_model extends CI_Model
     }
 
     public function check_admission_enquiry() {
+    if (!verify_math_captcha($this->input->post('captcha_answer'))) {
+        return simple_json_output(array("status" => 400, "message" => "Security answer is incorrect."));
+    }
     $this->kcis_db = $this->load->database('kcis_db', TRUE);
     $this->db->trans_start(); // Start a transaction
 
@@ -1577,7 +1580,10 @@ class Crud_model extends CI_Model
 
     public function ajax_admission_enquiry()
     {
-        $this->kcis_db = $this->load->database('kcis_db', TRUE);
+    if (!verify_math_captcha($this->input->post('captcha_answer'))) {
+        return simple_json_output(array("status" => 400, "message" => "Security answer is incorrect."));
+    }
+    $this->kcis_db = $this->load->database('kcis_db', TRUE);
         $this->db->trans_start(); // Start a transaction
 
         $this->form_validation->set_rules('class_id', 'Class', 'trim|required');
@@ -1702,7 +1708,10 @@ class Crud_model extends CI_Model
 
     public function ajax_download_brochure_enquiry()
     {
-        $this->db->trans_start(); // Start a transaction
+    if (!verify_math_captcha($this->input->post('captcha_answer'))) {
+        return simple_json_output(array("status" => 400, "message" => "Security answer is incorrect."));
+    }
+    $this->db->trans_start(); // Start a transaction
 
         $this->form_validation->set_rules('name', 'Name', 'trim|required');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', array(
@@ -1778,7 +1787,10 @@ class Crud_model extends CI_Model
 
     public function ajax_summer_camp_enquiry()
     {
-        $data       =  array();
+    if (!verify_math_captcha($this->input->post('captcha_answer'))) {
+        return simple_json_output(array("status" => 400, "message" => "Security answer is incorrect."));
+    }
+    $data       =  array();
         $data['student_name']       =  clean_and_escape($this->input->post('child_name'));
         $data['parent_name']       =  clean_and_escape($this->input->post('parent_name'));
         $data['phone']       =  clean_and_escape($this->input->post('phone'));
@@ -1801,7 +1813,10 @@ class Crud_model extends CI_Model
 
     public function ajax_youtube_enquiry()
     {
-        $data       =  array();
+    if (!verify_math_captcha($this->input->post('captcha_answer'))) {
+        return simple_json_output(array("status" => 400, "message" => "Security answer is incorrect."));
+    }
+    $data       =  array();
         $data['name']       =  clean_and_escape($this->input->post('name'));
         $data['phone']       =  clean_and_escape($this->input->post('phone'));
         $data['phone_country_code'] = clean_and_escape($this->input->post('phone_country_code')) ?: '+91';
@@ -1822,7 +1837,10 @@ class Crud_model extends CI_Model
 
     public function ajax_register_event()
     {
-        $this->db->trans_start(); // Start a transaction
+    if (!verify_math_captcha($this->input->post('captcha_answer'))) {
+        return simple_json_output(array("status" => 400, "message" => "Security answer is incorrect."));
+    }
+    $this->db->trans_start(); // Start a transaction
 
         $this->form_validation->set_rules('event_id', 'Event', 'trim|required');
         $this->form_validation->set_rules('name', 'Name', 'trim|required');
@@ -1900,6 +1918,9 @@ class Crud_model extends CI_Model
 
     public function ajax_submit_career()
 {
+    if (!verify_math_captcha($this->input->post('captcha_answer'))) {
+        return simple_json_output(array("status" => 400, "message" => "Security answer is incorrect."));
+    }
     $this->kcis_db = $this->load->database('kcis_db', TRUE);
     $this->db->trans_start();
 
@@ -2095,7 +2116,10 @@ class Crud_model extends CI_Model
 
     public function ajax_contact_enquiry()
 	{
-		$this->db->trans_start();   
+    if (!verify_math_captcha($this->input->post('captcha_answer'))) {
+        return simple_json_output(array("status" => 400, "message" => "Security answer is incorrect."));
+    }
+    $this->db->trans_start();
 
 		// The rest of your form validation and processing logic
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');

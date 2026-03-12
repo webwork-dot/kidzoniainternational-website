@@ -57,12 +57,20 @@
                   </div>
                </div>
             
-               <div class="col-md-12 mt-2">
-                  <div class="wpforms-submit-container pt-0">
-                   <button type="submit" class="btn btn-enquiry wpforms-submit btn_merify" name="btn_merify">
-                   Submit</button>
+                <div class="col-md-12">
+                   <div class="form-group mb-2">
+                      <label>Security Check: What is <?php echo generate_math_captcha(); ?> ?<i class="text-dander">*</i></label>
+                      <input type="number" name="captcha_answer" class="form-control" placeholder="Enter your answer" required>
+                      <span class="invalid-feedback"></span>
+                   </div>
                 </div>
-               </div>
+
+                <div class="col-md-12 mt-2">
+                   <div class="wpforms-submit-container pt-0">
+                    <button type="submit" class="btn btn-enquiry wpforms-submit btn_merify" name="btn_merify">
+                    Submit</button>
+                 </div>
+                </div>
             </div>
           
          </form>

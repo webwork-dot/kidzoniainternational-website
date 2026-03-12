@@ -580,6 +580,14 @@
                                      </div>
                                   </div>
         
+                                  <div class="col-md-12">
+                                     <div class="input-group-meta position-relative mb-20">
+                                        <label>Security Check: What is <?php echo generate_math_captcha(); ?> ?<i class="text-dander">*</i></label>
+                                        <input type="number" name="captcha_answer" class="form-control" placeholder="Enter your answer" required>
+                                        <span class="invalid-feedback"></span>
+                                     </div>
+                                  </div>
+
                                   <div class="col-md-12 mt-2">
                                       <button type="submit" class="dt-button add-new btn btn-primary waves-effect waves-float waves-light mt-1 me-1 btnf btn_verify" name="btn_verify">Submit</button>
                                   </div>

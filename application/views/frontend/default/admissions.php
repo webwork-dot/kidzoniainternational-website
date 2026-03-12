@@ -235,13 +235,21 @@
                                 </div>
                                 <!--<div class="col-md-12 mt-2 g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>"></div>-->
 
-                                <div class="col-md-12 mt-2">
-                                  <div class="wpforms-submit-container pt-0">
-                                    <button type="submit" class="btn btn-enquiry wpforms-submit btn_verify"
-                                      name="btn_verify">
-                                      Submit</button>
+                                  <div class="col-md-12">
+                                    <div class="form-group mb-2">
+                                      <label>Security Check: What is <?php echo generate_math_captcha(); ?> ?<i class="text-dander">*</i></label>
+                                      <input type="number" name="captcha_answer" class="form-control" placeholder="Enter your answer" required>
+                                      <span class="invalid-feedback"></span>
+                                    </div>
                                   </div>
-                                </div>
+
+                                  <div class="col-md-12 mt-2">
+                                    <div class="wpforms-submit-container pt-0">
+                                      <button type="submit" class="btn btn-enquiry wpforms-submit btn_verify"
+                                        name="btn_verify">
+                                        Submit</button>
+                                    </div>
+                                  </div>
                                 <!--<a href="javascript:void(0);"  onclick="showAjaxEnquiryModal('<?php echo base_url(); ?>modal/popup_front/modal_admission_otp','Enter OTP!');">-->
                                 <!--     <div>&nbsp;&nbsp;Request a Callback</div>-->
                                 <!-- </a>-->
