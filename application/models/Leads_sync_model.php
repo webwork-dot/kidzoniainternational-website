@@ -40,6 +40,27 @@ class Leads_sync_model extends CI_Model
         $inserted = 0;
     
         foreach ($rows as $lead) {
+			$first_name = strtolower($lead['first_name'] ?? '');
+			$child_name = strtolower($lead['child_first_name'] ?? '');
+
+			// Spam keywords
+			$spam_words = ['tesla', 't.me', 'telegram', 'http', 'www'];
+
+			$is_spam = false;
+
+			foreach ($spam_words as $word) {
+				if (strpos($first_name, $word) !== false || strpos($child_name, $word) !== false) {
+					$is_spam = true;
+					break;
+				}
+			}
+
+			// Skip spam records
+			if ($is_spam) {
+				continue;
+			}
+			
+			
             $data = $lead;
 
             unset($data['id']);
