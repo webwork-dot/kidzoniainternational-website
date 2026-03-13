@@ -35,15 +35,17 @@
         (function(w){"use strict";var loadCSS=function(href,before,media){var doc=w.document;var ss=doc.createElement("link");var ref;if(before){ref=before}else{var refs=(doc.body||doc.getElementsByTagName("head")[0]).childNodes;ref=refs[refs.length-1]}var sheets=doc.styleSheets;ss.rel="stylesheet";ss.href=href;ss.media="only x";function ready(cb){if(doc.body){return cb()}setTimeout(function(){ready(cb)})}ready(function(){ref.parentNode.insertBefore(ss,before?ref:ref.nextSibling)});var onloadcssdefined=function(cb){var resolvedHref=ss.href;var i=sheets.length;while(i--){if(sheets[i].href===resolvedHref){return cb()}}setTimeout(function(){onloadcssdefined(cb)})};ss.onloadcssdefined=onloadcssdefined;onloadcssdefined(function(){if(ss.media!=="all"){ss.media=media||"all"}});return ss};if(typeof exports!=="undefined"){exports.loadCSS=loadCSS}else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this));
     </script>
     
-    <!-- Load core CSS non-blocking to reduce LCP/FCP delays -->
-    <link rel="preload" as="style" href="<?= base_url(); ?>assets/css/bootstrap5-3-2.min.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="<?= base_url(); ?>assets/css/style.minaec2.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="<?= base_url(); ?>assets/themes/bambino/framework/css/styleaec2.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="<?= base_url(); ?>assets/themes/bambino/styleaec2.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="<?= base_url(); ?>assets/css/custom.css" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" as="style" href="<?= base_url(); ?>assets/plugins/bold-page-builder/css/front_end/content_elements.crushae9e.css" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Load CRITICAL CSS synchronously for proper rendering -->
+    <link href="<?= base_url(); ?>assets/css/bootstrap5-3-2.min.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/css/style.minaec2.css" rel="stylesheet">
+    <link rel='stylesheet' id='boldthemes-framework-css' href='<?= base_url(); ?>assets/themes/bambino/framework/css/styleaec2.css' type='text/css' media='all' />
+    <link href='<?= base_url(); ?>assets/themes/bambino/styleaec2.css' rel='stylesheet' type='text/css' />
+    <link rel='stylesheet' href='<?= base_url(); ?>assets/css/custom.css' type='text/css' />
+    <!-- Page Builder CSS is critical for layout -->
+    <link rel='stylesheet' href='<?= base_url(); ?>assets/plugins/bold-page-builder/css/front_end/content_elements.crushae9e.css' type='text/css' media='all' />
     <!-- Preload critical resources -->
-    <link rel="preload" href="<?= base_url(); ?>assets/js/jquery/jquery.minf43b.js" as="script">
+    <link rel="preload" href="https://code.jquery.com/jquery-3.7.1.min.js" as="script">
+    <link rel="dns-prefetch" href="https://code.jquery.com">
 
     <!-- Preload Google Fonts with optimized loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,57 +64,8 @@
         loadCSS("https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/css/intlTelInput.css");
     </script>
 
-    <style>
-        @font-face {
-            font-family: 'FontAwesome';
-            src: url('<?= base_url(); ?>assets/themes/bambino/fonts/FontAwesome/FontAwesome.woff') format('woff'),
-                 url('<?= base_url(); ?>assets/themes/bambino/fonts/FontAwesome/FontAwesome.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'RemixIconsBusiness';
-            src: url('<?= base_url(); ?>assets/themes/bambino/fonts/RemixIconsBusiness/RemixIconsBusiness.woff') format('woff'),
-                 url('<?= base_url(); ?>assets/themes/bambino/fonts/RemixIconsBusiness/RemixIconsBusiness.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'RemixIconsMap';
-            src: url('<?= base_url(); ?>assets/themes/bambino/fonts/RemixIconsMap/RemixIconsMap.woff') format('woff'),
-                 url('<?= base_url(); ?>assets/themes/bambino/fonts/RemixIconsMap/RemixIconsMap.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'RemixIconsDevice';
-            src: url('<?= base_url(); ?>assets/themes/bambino/fonts/RemixIconsDevice/RemixIconsDevice.woff') format('woff'),
-                 url('<?= base_url(); ?>assets/themes/bambino/fonts/RemixIconsDevice/RemixIconsDevice.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'RemixIcons-Logos';
-            src: url('<?= base_url(); ?>assets/themes/bambino/fonts/RemixIcons-Logos/RemixIcons-Logos.woff') format('woff'),
-                 url('<?= base_url(); ?>assets/themes/bambino/fonts/RemixIcons-Logos/RemixIcons-Logos.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-    </style>
-
     <!-- Noscript fallback for non-JS users (only non-critical CSS) -->
     <noscript>
-        <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap5-3-2.min.css">
-        <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.minaec2.css">
-        <link rel="stylesheet" href="<?= base_url(); ?>assets/themes/bambino/framework/css/styleaec2.css">
-        <link rel="stylesheet" href="<?= base_url(); ?>assets/themes/bambino/styleaec2.css">
-        <link rel="stylesheet" href="<?= base_url(); ?>assets/css/custom.css">
-        <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/bold-page-builder/css/front_end/content_elements.crushae9e.css">
         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/old_style.css">
         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/sweetalert2.min.css">
         <link rel="stylesheet" href="<?= base_url(); ?>assets/bootstrap-icons/bootstrap-icons.css">
@@ -224,10 +177,10 @@
 
     </style>
     
-    <!-- Defer jQuery to reduce render-blocking on initial paint -->
-    <script src="<?= base_url(); ?>assets/js/jquery/jquery.minf43b.js" defer></script>
+    <!-- Load jQuery synchronously - Required by many scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <!-- jQuery migrate must load immediately after jQuery -->
-    <script type="text/javascript" src="<?= base_url(); ?>assets/js/jquery/jquery-migrate.min5589.js" id="jquery-migrate-js" defer></script>
+    <script type="text/javascript" src="<?= base_url(); ?>assets/js/jquery/jquery-migrate.min5589.js" id="jquery-migrate-js"></script>
     <!-- intl-tel-input JS (defer to reduce main-thread blocking) -->
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.14.0/build/js/intlTelInput.min.js" defer></script>
     <!-- Defer non-critical scripts to improve initial page load -->
@@ -377,6 +330,9 @@
     <!-- Resource Hints for better performance -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://www.clarity.ms">
 
     <!-- Defer Google Analytics - Load after page is fully loaded (delayed to reduce main-thread work) -->
     <script>
@@ -614,7 +570,6 @@
 
     <!-- Moved inline scripts to external file - Load with defer -->
     <script>
-        window.addEventListener('DOMContentLoaded', function() {
         // Consolidated inline scripts to avoid extra HTTP requests
         var baseUrl = '<?php echo base_url(); ?>';
         
@@ -1101,7 +1056,6 @@
 
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
-        });
         });
     </script>
 </body>

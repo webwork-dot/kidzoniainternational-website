@@ -697,26 +697,46 @@
 <!-- /btSiteFooter -->
 
 <?php if (isset($page_name) && $page_name == 'home') { ?>
-<link rel="preload" as="style" id="mediaelement-css" href="<?= base_url(); ?>assets/js/mediaelement/mediaelementplayer-legacy.min1f61.css?ver=4.2.17" onload="this.onload=null;this.rel='stylesheet'" />
-<link rel="preload" as="style" id="wp-mediaelement-css" href="<?= base_url(); ?>assets/js/mediaelement/wp-mediaelement.minaec2.css?ver=6.4.1" onload="this.onload=null;this.rel='stylesheet'" />
-<link rel="preload" as="style" id="rs-plugin-settings-css" href="<?= base_url(); ?>assets/plugins/revslider/public/assets/css/rs6627e.css?ver=6.6.14" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript>
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/js/mediaelement/mediaelementplayer-legacy.min1f61.css?ver=4.2.17" />
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/js/mediaelement/wp-mediaelement.minaec2.css?ver=6.4.1" />
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/revslider/public/assets/css/rs6627e.css?ver=6.6.14" />
-</noscript>
+<link
+  rel="stylesheet"
+  id="mediaelement-css"
+  href="<?= base_url(); ?>assets/js/mediaelement/mediaelementplayer-legacy.min1f61.css?ver=4.2.17"
+  type="text/css"
+  media="all" />
+<link
+  rel="stylesheet"
+  id="wp-mediaelement-css"
+  href="<?= base_url(); ?>assets/js/mediaelement/wp-mediaelement.minaec2.css?ver=6.4.1"
+  type="text/css"
+  media="all" />
+<link
+  rel="stylesheet"
+  id="rs-plugin-settings-css"
+  href="<?= base_url(); ?>assets/plugins/revslider/public/assets/css/rs6627e.css?ver=6.6.14"
+  type="text/css"
+  media="all" />
 <style id="rs-plugin-settings-inline-css" type="text/css">
   #rs-demo-id {}
 </style>
 <?php } ?>
-<link rel="preload" as="style" id="wpforms-smart-phone-field-css" href="<?= base_url(); ?>assets/plugins/wpforms/assets/pro/css/fields/phone/intl-tel-input.min8d96.css?ver=17.0.17" onload="this.onload=null;this.rel='stylesheet'" />
-<link rel="preload" as="style" id="wpforms-modern-full-css" href="<?= base_url(); ?>assets/plugins/wpforms/assets/css/frontend/modern/wpforms-full.min3a7d.css?ver=1.8.2.2" onload="this.onload=null;this.rel='stylesheet'" />
-<link rel="preload" as="style" id="wpforms-pro-modern-full-css" href="<?= base_url(); ?>assets/plugins/wpforms/assets/pro/css/frontend/modern/wpforms-full.min3a7d.css?ver=1.8.2.2" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript>
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/wpforms/assets/pro/css/fields/phone/intl-tel-input.min8d96.css?ver=17.0.17" />
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/wpforms/assets/css/frontend/modern/wpforms-full.min3a7d.css?ver=1.8.2.2" />
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/wpforms/assets/pro/css/frontend/modern/wpforms-full.min3a7d.css?ver=1.8.2.2" />
-</noscript>
+<link
+  rel="stylesheet"
+  id="wpforms-smart-phone-field-css"
+  href="<?= base_url(); ?>assets/plugins/wpforms/assets/pro/css/fields/phone/intl-tel-input.min8d96.css?ver=17.0.17"
+  type="text/css"
+  media="all" />
+<link
+  rel="stylesheet"
+  id="wpforms-modern-full-css"
+  href="<?= base_url(); ?>assets/plugins/wpforms/assets/css/frontend/modern/wpforms-full.min3a7d.css?ver=1.8.2.2"
+  type="text/css"
+  media="all" />
+<link
+  rel="stylesheet"
+  id="wpforms-pro-modern-full-css"
+  href="<?= base_url(); ?>assets/plugins/wpforms/assets/pro/css/frontend/modern/wpforms-full.min3a7d.css?ver=1.8.2.2"
+  type="text/css"
+  media="all" />
 <!-- Defer non-critical form scripts -->
 <script
   type="text/javascript"

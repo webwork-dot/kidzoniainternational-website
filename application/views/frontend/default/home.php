@@ -1,6 +1,8 @@
-<!-- Include Swiper CSS (non-blocking) -->
-<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" /></noscript>
+<!-- Include Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
 <style>
    video {
       position: absolute;
@@ -120,9 +122,8 @@
 
 </style>
 
-<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" onload="this.onload=null;this.rel='stylesheet'"/>
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/></noscript>
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 
 <div class="btContentWrap btClear">
    <div class="btContentHolder">
@@ -133,28 +134,13 @@
 
             <section data-bb-version="4.5.9" style="margin-top:72px" id="bt_bb_section656da16aae9f6" class="m-slider bt_bb_section bt_bb_layout_boxed_1400 bt_bb_vertical_align_top bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_large bt_bb_bottom_spacing_large bt_bb_negative_margin_none" style="background-color:rgb(255,255,255);" data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_large&quot;,&quot;xxl&quot;:&quot;large&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_large&quot;,&quot;xxl&quot;:&quot;large&quot;}}">
             <div class="bt_bb_background_image_holder_wrapper swiper">
-               <div class="swiper-wrapper">
-                  <?php foreach ($video as $slide_index => $item): ?>
-                     <?php
-                        $slide_image = base_url() . $item['image'];
-                        $query_glue = (strpos($slide_image, '?') !== false) ? '&' : '?';
-                        $slide_image_mobile = $slide_image . $query_glue . 'tr=w-721';
-                        $slide_image_desktop = $slide_image . $query_glue . 'tr=w-1200';
-                        $is_first_slide = ($slide_index === 0);
-                     ?>
-                     <div class="swiper-slide">
-                        <img
-                           src="<?= $slide_image_mobile; ?>"
-                           srcset="<?= $slide_image_mobile; ?> 721w, <?= $slide_image_desktop; ?> 1200w"
-                           sizes="100vw"
-                           alt=""
-                           style="width:100%;"
-                           <?= $is_first_slide ? 'fetchpriority="high" loading="eager"' : 'loading="lazy"'; ?>
-                           decoding="async"
-                        >
-                     </div>
-                  <?php endforeach; ?>
-               </div>
+                <div class="swiper-wrapper">
+                    <?php foreach ($video as $item): ?>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() . $item['image']; ?>" alt="" style="width:100%;">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
             
                <div class="bt_bb_port">

@@ -84,20 +84,12 @@ $branches = $this->crud_model->get_branches()->result_array();
                   </div>
                </div>
                <!--<div class="col-md-12 mt-2 g-recaptcha" data-sitekey="<?php echo $this->config->item('recaptcha_site_key'); ?>"></div>-->
-                <div class="col-md-12">
-                   <div class="form-group mb-2">
-                      <label>Security Check: What is <?php echo generate_math_captcha(); ?> ?<i class="text-dander">*</i></label>
-                      <input type="number" name="captcha_answer" class="form-control" placeholder="Enter your answer" required>
-                      <span class="invalid-feedback"></span>
-                   </div>
+               <div class="col-md-12 mt-2">
+                  <div class="wpforms-submit-container pt-0">
+                   <button type="submit" name="wpforms[submit]" id="wpforms-submit-4102" class="btn btn-enquiry wpforms-submit btn_merify" name="btn_merify">
+                   Submit</button>
                 </div>
-
-                <div class="col-md-12 mt-2">
-                   <div class="wpforms-submit-container pt-0">
-                    <button type="submit" name="wpforms[submit]" id="wpforms-submit-4102" class="btn btn-enquiry wpforms-submit btn_merify" name="btn_merify">
-                    Submit</button>
-                 </div>
-                </div>
+               </div>
             </div>
             <!-- .wpforms-field-container -->
           

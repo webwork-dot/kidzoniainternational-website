@@ -22,11 +22,6 @@
   .bt_bb_section.bt_bb_bottom_spacing_extra_large>.bt_bb_port {
     padding-bottom: 3.4em !important;
   }
-@media (min-width: 768px) {
-    .bt_bb_row_wrapper_new {
-        padding: 100px;
-    }
-}
 </style>
 
 <div class="btContentWrap btClear">
@@ -187,7 +182,7 @@
                             <h2 class="bt_bb_headline_tag">
                               <span class="bt_bb_headline_content"><span>Our-Curriculum</span></span>
                             </h2>
-                            <span class="fw-bold">Best Preschool and DayCare Centre in Hyderabad</span>
+                            <span class="fw-bold">Discover the Curriculum at Kidzonia</span>
                           </header>
                           <div
                             class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_small bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
@@ -214,7 +209,6 @@
                               At Kidzonia, one of the best school in Hyderabad, we believe learning should be both fun and educational. Our approach blends structure with play, creating a dynamic environment where children thrive. The Discover Curriculum is tailored to celebrate each child's unique personality, providing an enthusiastic space that fosters creativity and imagination. By combining digital tools with hands-on experiences, our theme-based program lays a strong foundation for early learning. Whether you're looking for a nursery school, kindergarten school, preschool, daycare school, or even an international school, Kidzonia stands apart by cultivating confidence and instilling a lifelong love for learning in every child.
                             </p>
                           </div>
-
                           <div
                             class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_medium bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
                             data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_medium","xxl":"medium","xl":"medium"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
@@ -227,52 +221,6 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="px-3">
-          <div class="bt_bb_row_wrapper bt_bb_row_wrapper_new">
-            <div class="bt_bb_row bt_bb_column_gap_15 bt_bb_negative_margin_" data-bt-override-class="{}">
-              <div
-                class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_shape_inherit"
-                data-width="12"
-                style="margin-bottom: 18px;"
-                data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left","xl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
-                <div class="bt_bb_column_content">
-                  <div class="bt_bb_column_content_inner">
-                    <header data-bb-version="4.6.1"
-                      class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_dash_none bt_bb_size_small bt_bb_align_left"
-                      data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_small","xxl":"small"},"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left"}}'>
-                      <h3 class="bt_bb_headline_tag">
-                        <span class="bt_bb_headline_content"><span>Trusted DayCare in Hyderabad for Working Parents</span></span>
-                      </h3>
-                    </header>
-                    <div class="bt_bb_text" style="text-align: left;">
-                      <p>Balancing work and parenting is easier with Kidzonia. We offer a safe, engaging DayCare Centre in Hyderabad designed for children aged 9 months to 10 years. With extended operating hours, nutritious meals, and 24/7 CCTV monitoring, we provide a warm 'home away from home' where your child is cared for, active, and happy.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_shape_inherit"
-                data-width="12"
-                data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left","xl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
-                <div class="bt_bb_column_content">
-                  <div class="bt_bb_column_content_inner">
-                    <header data-bb-version="4.6.1"
-                      class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_dash_none bt_bb_size_small bt_bb_align_left"
-                      data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_small","xxl":"small"},"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left"}}'>
-                      <h3 class="bt_bb_headline_tag">
-                        <span class="bt_bb_headline_content"><span>International Montessori School in Hyderabad</span></span>
-                      </h3>
-                    </header>
-                    <div class="bt_bb_text" style="text-align: left;">
-                      <p>We go beyond traditional teaching. As a leading Montessori School in Hyderabad, our integrated 'School of Experiences' curriculum blends Montessori principles with modern thematic learning. This approach fosters independence and critical thinking, giving your child the perfect foundation for future success in CBSE or International boards.</p>
                     </div>
                   </div>
                 </div>
@@ -726,8 +674,8 @@
                             </div>
                           </header>
                           <div class="bt_bb_text">
-                            <p>By blending engaging extracurricular activities with our innovative digital lesson-planning tool,
-                              we equip teachers to deliver customized learning experiences that suit every age group.</p>
+                            <p>By blending engaging extracurricular activities with our innovative digital lesson-planning tool, 
+                            we equip teachers to deliver customized learning experiences that suit every age group.</p>
                           </div>
                           <div data-bb-version="4.5.9"
                             class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
@@ -1161,56 +1109,56 @@
                   <div class="bt_bb_row bt_bb_column_gap_15 bt_bb_negative_margin_ owl-carousel owl-carousel-awards"
                     data-bt-override-class="{}">
                     <?php foreach ($awards as $awrd) { ?>
-                      <div
-                        class="bt_bb_column w-100 col-xxl-3 col-xl-3 col-xs-12 col-sm-12 col-md-6 col-lg-6 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
-                        data-width="3"
-                        data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}"
-                        style="max-width: 100% !important;">
-                        <div class="bt_bb_column_content">
-                          <div class="bt_bb_column_content_inner">
-                            <div data-bb-version="4.5.9"
-                              class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_target_lightbox bt_bb_use_lightbox bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle bt_bb_right_negative_margin_none bt_bb_left_negative_margin_none"
-                              data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_inherit&quot;,&quot;xxl&quot;:&quot;inherit&quot;}}">
-                              <a href="#lightbox" target="_blank" title="<?php echo htmlspecialchars($awrd->title); ?>">
-                                <img loading="lazy" decoding="async" width="966" height="400"
-                                  src="<?php echo base_url() . $awrd->image; ?>" class="attachment-full size-full"
-                                  alt="<?php echo htmlspecialchars($awrd->alt); ?>"
-                                  data-full_image_src="<?php echo base_url() . $awrd->image; ?>"
-                                  title="<?php echo htmlspecialchars($awrd->title); ?>"
-                                  srcset="<?php echo base_url() . $awrd->image; ?>" sizes="(max-width: 966px) 100vw, 966px" />
-                              </a>
+                    <div
+                      class="bt_bb_column w-100 col-xxl-3 col-xl-3 col-xs-12 col-sm-12 col-md-6 col-lg-6 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
+                      data-width="3"
+                      data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}"
+                      style="max-width: 100% !important;">
+                      <div class="bt_bb_column_content">
+                        <div class="bt_bb_column_content_inner">
+                          <div data-bb-version="4.5.9"
+                            class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_target_lightbox bt_bb_use_lightbox bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle bt_bb_right_negative_margin_none bt_bb_left_negative_margin_none"
+                            data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_inherit&quot;,&quot;xxl&quot;:&quot;inherit&quot;}}">
+                            <a href="#lightbox" target="_blank" title="<?php echo htmlspecialchars($awrd->title); ?>">
+                              <img loading="lazy" decoding="async" width="966" height="400"
+                                src="<?php echo base_url() . $awrd->image; ?>" class="attachment-full size-full"
+                                alt="<?php echo htmlspecialchars($awrd->alt); ?>"
+                                data-full_image_src="<?php echo base_url() . $awrd->image; ?>"
+                                title="<?php echo htmlspecialchars($awrd->title); ?>"
+                                srcset="<?php echo base_url() . $awrd->image; ?>" sizes="(max-width: 966px) 100vw, 966px" />
+                            </a>
+                          </div>
+                          <div data-bb-version="4.5.9"
+                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_normal bt_bb_bottom_spacing_normal bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content bt_bb_hidden_lg bt_bb_hidden_xl"
+                            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
+                            <div class="bt_bb_separator_v2_inner">
+                              <span class="bt_bb_separator_v2_inner_before"></span>
+                              <span class="bt_bb_separator_v2_inner_content">
+                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                              </span>
+                              <span class="bt_bb_separator_v2_inner_after"></span>
                             </div>
-                            <div data-bb-version="4.5.9"
-                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_normal bt_bb_bottom_spacing_normal bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content bt_bb_hidden_lg bt_bb_hidden_xl"
-                              data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
-                              <div class="bt_bb_separator_v2_inner">
-                                <span class="bt_bb_separator_v2_inner_before"></span>
-                                <span class="bt_bb_separator_v2_inner_content">
-                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                                </span>
-                                <span class="bt_bb_separator_v2_inner_after"></span>
-                              </div>
-                            </div>
-                            <div data-bb-version="4.5.9" class="bt_bb_text">
-                              <p style="text-align: center;">
-                                <strong><?php echo $awrd->name; ?></strong>
-                                <br /><?php echo $awrd->description; ?>
-                              </p>
-                            </div>
-                            <div data-bb-version="4.5.9"
-                              class="bt_bb_separator_v2 bt_bb_top_spacing_none bt_bb_bottom_spacing_none bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                              data-bt-override-class="null">
-                              <div class="bt_bb_separator_v2_inner">
-                                <span class="bt_bb_separator_v2_inner_before"></span>
-                                <span class="bt_bb_separator_v2_inner_content">
-                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                                </span>
-                                <span class="bt_bb_separator_v2_inner_after"></span>
-                              </div>
+                          </div>
+                          <div data-bb-version="4.5.9" class="bt_bb_text">
+                            <p style="text-align: center;">
+                              <strong><?php echo $awrd->name; ?></strong>
+                              <br /><?php echo $awrd->description; ?>
+                            </p>
+                          </div>
+                          <div data-bb-version="4.5.9"
+                            class="bt_bb_separator_v2 bt_bb_top_spacing_none bt_bb_bottom_spacing_none bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                            data-bt-override-class="null">
+                            <div class="bt_bb_separator_v2_inner">
+                              <span class="bt_bb_separator_v2_inner_before"></span>
+                              <span class="bt_bb_separator_v2_inner_content">
+                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                              </span>
+                              <span class="bt_bb_separator_v2_inner_after"></span>
                             </div>
                           </div>
                         </div>
                       </div>
+                    </div>
                     <?php } ?>
                   </div>
                 </div>
@@ -1222,109 +1170,109 @@
           <!-- port -->
         </section>
         <?php if (!empty($parents)) { ?>
-          <section data-bb-version="4.6.0" id="bt_bb_section656da16abeb25"
-            class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_section_coverage_image bt_bb_section_with_top_coverage_image bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_large bt_bb_bottom_spacing_80 bt_bb_negative_margin_none"
-            style=";background-color:rgb(248,245,238);"
-            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_large&quot;,&quot;xxl&quot;:&quot;large&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_80&quot;,&quot;xxl&quot;:&quot;80&quot;}}">
-            <div class="bt_bb_port">
-              <div class="bt_bb_cell">
-                <div class="bt_bb_cell_inner">
-                  <div class="bt_bb_row_wrapper">
-                    <div class="bt_bb_row" data-bt-override-class="{}">
-                      <div
-                        class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_middle bt_bb_align_left bt_bb_padding_double bt_bb_animation_fade_in animate bt_bb_shape_inherit"
-                        data-width="12"
-                        data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_double&quot;,&quot;xxl&quot;:&quot;double&quot;,&quot;xl&quot;:&quot;double&quot;}}">
-                        <div class="bt_bb_column_content">
-                          <div class="bt_bb_column_content_inner">
-                            <header data-bb-version="4.6.0"
-                              class="pb-5 bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_9 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_center"
-                              style="; --primary-color:#282828; --secondary-color:var(--alternate-color);"
-                              data-bt-override-class="{&quot;bt_bb_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_size_extralarge&quot;,&quot;xxl&quot;:&quot;extralarge&quot;},&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_center&quot;,&quot;xxl&quot;:&quot;center&quot;}}">
-                              <h2 class="bt_bb_headline_tag">
-                                <span class="bt_bb_headline_content">
-                                  <span>Parents Testimonials</span>
-                                </span>
-                              </h2>
-                            </header>
+        <section data-bb-version="4.6.0" id="bt_bb_section656da16abeb25"
+          class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_section_coverage_image bt_bb_section_with_top_coverage_image bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_large bt_bb_bottom_spacing_80 bt_bb_negative_margin_none"
+          style=";background-color:rgb(248,245,238);"
+          data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_large&quot;,&quot;xxl&quot;:&quot;large&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_80&quot;,&quot;xxl&quot;:&quot;80&quot;}}">
+          <div class="bt_bb_port">
+            <div class="bt_bb_cell">
+              <div class="bt_bb_cell_inner">
+                <div class="bt_bb_row_wrapper">
+                  <div class="bt_bb_row" data-bt-override-class="{}">
+                    <div
+                      class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_middle bt_bb_align_left bt_bb_padding_double bt_bb_animation_fade_in animate bt_bb_shape_inherit"
+                      data-width="12"
+                      data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_double&quot;,&quot;xxl&quot;:&quot;double&quot;,&quot;xl&quot;:&quot;double&quot;}}">
+                      <div class="bt_bb_column_content">
+                        <div class="bt_bb_column_content_inner">
+                          <header data-bb-version="4.6.0"
+                            class="pb-5 bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_9 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_center"
+                            style="; --primary-color:#282828; --secondary-color:var(--alternate-color);"
+                            data-bt-override-class="{&quot;bt_bb_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_size_extralarge&quot;,&quot;xxl&quot;:&quot;extralarge&quot;},&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_center&quot;,&quot;xxl&quot;:&quot;center&quot;}}">
+                            <h2 class="bt_bb_headline_tag">
+                              <span class="bt_bb_headline_content">
+                                <span>Parents Testimonials</span>
+                              </span>
+                            </h2>
+                          </header>
 
-                            <div data-bb-version="4.5.9"
-                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_20 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                              data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_20&quot;,&quot;xxl&quot;:&quot;20&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
-                              <div class="bt_bb_separator_v2_inner">
-                                <span class="bt_bb_separator_v2_inner_before"></span>
-                                <span class="bt_bb_separator_v2_inner_content">
-                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                                </span>
-                                <span class="bt_bb_separator_v2_inner_after"></span>
-                              </div>
+                          <div data-bb-version="4.5.9"
+                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_20 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_20&quot;,&quot;xxl&quot;:&quot;20&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
+                            <div class="bt_bb_separator_v2_inner">
+                              <span class="bt_bb_separator_v2_inner_before"></span>
+                              <span class="bt_bb_separator_v2_inner_content">
+                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                              </span>
+                              <span class="bt_bb_separator_v2_inner_after"></span>
                             </div>
-
-                            <div class="bt_bb_row owl-carousel owl-carousel-parent-testimonial pb-5"
-                              data-bt-override-class="{}">
-                              <?php foreach ($parents as $parent):
-                                $videoId = explode("v=", $parent['url'])[1] ?? '';
-                              ?>
-                                <div class="bt_bb_column col-xxl-12">
-                                  <div class="bt_bb_column_content_inner">
-                                    <div class="bt_bb_video">
-                                      <div class="bt-video-container">
-                                        <iframe width="640" height="360"
-                                          src="https://www.youtube.com/embed/<?php echo htmlspecialchars($videoId); ?>"
-                                          frameborder="0" allowfullscreen>
-                                        </iframe>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              <?php endforeach; ?>
-                            </div>
-
-                            <div data-bb-version="4.5.9"
-                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_10 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                              data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_10&quot;,&quot;xxl&quot;:&quot;10&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
-                              <div class="bt_bb_separator_v2_inner">
-                                <span class="bt_bb_separator_v2_inner_before"></span>
-                                <span class="bt_bb_separator_v2_inner_content">
-                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                                </span>
-                                <span class="bt_bb_separator_v2_inner_after"></span>
-                              </div>
-                            </div>
-
-
-                            <div
-                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_medium bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                              data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;,&quot;xl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_medium&quot;,&quot;xxl&quot;:&quot;medium&quot;,&quot;xl&quot;:&quot;medium&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;,&quot;xl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
-                              <div class="bt_bb_separator_v2_inner">
-                                <span class="bt_bb_separator_v2_inner_before"></span>
-                                <span class="bt_bb_separator_v2_inner_content">
-                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                                </span>
-                                <span class="bt_bb_separator_v2_inner_after"></span>
-                              </div>
-                            </div>
-
                           </div>
+
+                          <div class="bt_bb_row owl-carousel owl-carousel-parent-testimonial pb-5"
+                            data-bt-override-class="{}">
+                            <?php foreach ($parents as $parent): 
+                                    $videoId = explode("v=", $parent['url'])[1] ?? '';
+                                ?>
+                                    <div class="bt_bb_column col-xxl-12">
+                                        <div class="bt_bb_column_content_inner">
+                                            <div class="bt_bb_video">
+                                                <div class="bt-video-container">
+                                                    <iframe width="640" height="360"
+                                                        src="https://www.youtube.com/embed/<?php echo htmlspecialchars($videoId); ?>" 
+                                                        frameborder="0" allowfullscreen>
+                                                    </iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                          </div>
+
+                          <div data-bb-version="4.5.9"
+                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_10 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_10&quot;,&quot;xxl&quot;:&quot;10&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
+                            <div class="bt_bb_separator_v2_inner">
+                              <span class="bt_bb_separator_v2_inner_before"></span>
+                              <span class="bt_bb_separator_v2_inner_content">
+                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                              </span>
+                              <span class="bt_bb_separator_v2_inner_after"></span>
+                            </div>
+                          </div>
+
+
+                          <div
+                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_medium bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;,&quot;xl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_medium&quot;,&quot;xxl&quot;:&quot;medium&quot;,&quot;xl&quot;:&quot;medium&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;,&quot;xl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                            <div class="bt_bb_separator_v2_inner">
+                              <span class="bt_bb_separator_v2_inner_before"></span>
+                              <span class="bt_bb_separator_v2_inner_content">
+                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                              </span>
+                              <span class="bt_bb_separator_v2_inner_after"></span>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- cell_inner -->
               </div>
-              <!-- cell -->
+              <!-- cell_inner -->
             </div>
-            <!-- port -->
-            <div class="bt_bb_section_top_section_coverage_image">
-              <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/top_white_wave_03.png"
-                alt="bt_bb_section_top_section_coverage_image" />
-            </div>
-            <div class="bt_bb_section_bottom_section_coverage_image">
-              <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/bottom_white_wave_02.png"
-                alt="bt_bb_section_bottom_section_coverage_image" />
-            </div>
-          </section>
+            <!-- cell -->
+          </div>
+          <!-- port -->
+          <div class="bt_bb_section_top_section_coverage_image">
+            <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/top_white_wave_03.png"
+              alt="bt_bb_section_top_section_coverage_image" />
+          </div>
+          <div class="bt_bb_section_bottom_section_coverage_image">
+            <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/bottom_white_wave_02.png"
+              alt="bt_bb_section_bottom_section_coverage_image" />
+          </div>
+        </section>
         <?php } ?>
         <section data-bb-version="4.6.1" id="bt_bb_section656da25b830c3"
           class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_none bt_bb_negative_margin_none"
@@ -1378,36 +1326,36 @@
                           <div data-bb-version="4.6.1" class="bt_bb_row_inner">
 
                             <?php foreach ($campus_galleries as $gal) { ?>
-                              <div data-bb-version="4.6.1"
-                                class="bt_bb_column_inner col-xxl-3 col-xl-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
-                                data-width="3" data-bt-override-class="{}">
-                                <div class="bt_bb_column_inner_content">
-                                  <div data-bb-version="4.6.1"
-                                    class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_target_lightbox bt_bb_use_lightbox bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle bt_bb_right_negative_margin_none bt_bb_left_negative_margin_none"
-                                    data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                                    <a href="#lightbox" target="_blank" title=""><img fetchpriority="high"
-                                        decoding="async" width="600" height="600"
-                                        src="<?php echo base_url() . $gal['image']; ?>" class="attachment-full size-full"
-                                        alt="Kizonia" data-full_image_src="<?php echo base_url() . $gal['image']; ?>"
-                                        title="teachers day (1)" srcset="
+                            <div data-bb-version="4.6.1"
+                              class="bt_bb_column_inner col-xxl-3 col-xl-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
+                              data-width="3" data-bt-override-class="{}">
+                              <div class="bt_bb_column_inner_content">
+                                <div data-bb-version="4.6.1"
+                                  class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_target_lightbox bt_bb_use_lightbox bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle bt_bb_right_negative_margin_none bt_bb_left_negative_margin_none"
+                                  data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
+                                  <a href="#lightbox" target="_blank" title=""><img fetchpriority="high"
+                                      decoding="async" width="600" height="600"
+                                      src="<?php echo base_url() . $gal['image']; ?>" class="attachment-full size-full"
+                                      alt="Kizonia" data-full_image_src="<?php echo base_url() . $gal['image']; ?>"
+                                      title="teachers day (1)" srcset="
                                         <?php echo base_url() . $gal['image']; ?> 600w,
                                         <?php echo base_url() . $gal['image']; ?> 160w,
                                         <?php echo base_url() . $gal['image']; ?> 320w
                                       " sizes="(max-width: 600px) 100vw, 600px" /></a>
-                                  </div>
-                                  <div data-bb-version="4.6.1" class="bt_bb_text"></div>
-                                  <div data-bb-version="4.6.1"
-                                    class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_5 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                                    data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_5","xxl":"5"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal"}}'>
-                                    <div class="bt_bb_separator_v2_inner">
-                                      <span class="bt_bb_separator_v2_inner_before"></span><span
-                                        class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
-                                          class="bt_bb_icon_holder"></span></span><span
-                                        class="bt_bb_separator_v2_inner_after"></span>
-                                    </div>
+                                </div>
+                                <div data-bb-version="4.6.1" class="bt_bb_text"></div>
+                                <div data-bb-version="4.6.1"
+                                  class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_5 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                                  data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_5","xxl":"5"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal"}}'>
+                                  <div class="bt_bb_separator_v2_inner">
+                                    <span class="bt_bb_separator_v2_inner_before"></span><span
+                                      class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
+                                        class="bt_bb_icon_holder"></span></span><span
+                                      class="bt_bb_separator_v2_inner_after"></span>
                                   </div>
                                 </div>
                               </div>
+                            </div>
                             <?php } ?>
 
                           </div>
@@ -1427,99 +1375,99 @@
         </section>
 
         <?php if (!empty($galleries)) { ?>
-          <section data-bb-version="4.6.1" id="bt_bb_section656da190a1589"
-            class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_section_coverage_image bt_bb_section_with_top_coverage_image bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_large bt_bb_bottom_spacing_extra_large bt_bb_negative_margin_none"
-            style="background-color: white"
-            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_large","xxl":"large"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_extra_large","xxl":"extra_large"}}'>
-            <div class="bt_bb_port">
-              <div class="bt_bb_cell">
-                <div class="bt_bb_cell_inner">
-                  <div class="bt_bb_row_wrapper">
-                    <div class="bt_bb_row" data-bt-override-class="{}">
-                      <div
-                        class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
-                        data-width="12"
-                        data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_center","xxl":"center","xl":"center"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
-                        <div class="bt_bb_column_content">
-                          <div class="bt_bb_column_content_inner">
-                            <header data-bb-version="4.6.1"
-                              class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_5 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
-                              style="
+        <section data-bb-version="4.6.1" id="bt_bb_section656da190a1589"
+          class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_section_coverage_image bt_bb_section_with_top_coverage_image bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_large bt_bb_bottom_spacing_extra_large bt_bb_negative_margin_none"
+          style="background-color: white"
+          data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_large","xxl":"large"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_extra_large","xxl":"extra_large"}}'>
+          <div class="bt_bb_port">
+            <div class="bt_bb_cell">
+              <div class="bt_bb_cell_inner">
+                <div class="bt_bb_row_wrapper">
+                  <div class="bt_bb_row" data-bt-override-class="{}">
+                    <div
+                      class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
+                      data-width="12"
+                      data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_center","xxl":"center","xl":"center"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
+                      <div class="bt_bb_column_content">
+                        <div class="bt_bb_column_content_inner">
+                          <header data-bb-version="4.6.1"
+                            class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_5 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
+                            style="
                               --primary-color: #282828;
                               --secondary-color: var(--accent-color);
                             "
-                              data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_extralarge","xxl":"extralarge"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                              <h2 class="bt_bb_headline_tag">
-                                <span class="bt_bb_headline_content"><span>Kidzonia Gallery</span></span>
-                              </h2>
-                            </header>
-                            <div
-                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                              data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_50","xxl":"50","xl":"50"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
-                              <div class="bt_bb_separator_v2_inner">
-                                <span class="bt_bb_separator_v2_inner_before"></span><span
-                                  class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
-                                    class="bt_bb_icon_holder"></span></span><span
-                                  class="bt_bb_separator_v2_inner_after"></span>
-                              </div>
+                            data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_extralarge","xxl":"extralarge"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
+                            <h2 class="bt_bb_headline_tag">
+                              <span class="bt_bb_headline_content"><span>Kidzonia Gallery</span></span>
+                            </h2>
+                          </header>
+                          <div
+                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_50","xxl":"50","xl":"50"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
+                            <div class="bt_bb_separator_v2_inner">
+                              <span class="bt_bb_separator_v2_inner_before"></span><span
+                                class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
+                                  class="bt_bb_icon_holder"></span></span><span
+                                class="bt_bb_separator_v2_inner_after"></span>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="bt_bb_row_wrapper">
-                    <!-- Slider for Gallery Images -->
-                    <div class="bt_bb_row owl-carousel owl-carousel-parent-testimonial custom-car"
-                      data-bt-override-class="{}">
-                      <?php foreach ($galleries as $gal) { ?>
-                        <div
-                          class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal"
-                          data-width="4">
-                          <div class="bt_bb_column_content">
-                            <div class="bt_bb_column_content_inner">
-                              <div data-bb-version="4.6.1"
-                                class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle"
-                                style="box-shadow: 2px 2px 8px rgb(0 0 0 / 30%);">
-                                <a onclick="AjaxGalleryModal('<?php echo $gal['branch_id']; ?>','<?php echo strtolower($gal['title']); ?>');"
-                                  style="cursor:pointer" data-branch_id="<?php echo $gal['branch_id']; ?>"
-                                  data-title="<?php echo strtolower($gal['title']); ?>" target="_blank"
-                                  title="<?php echo $gal['title']; ?>">
-                                  <img loading="lazy" decoding="async" width="1000" height="1000"
-                                    src="<?php echo base_url() . $gal['image']; ?>"
-                                    class="attachment-full size-full gallery_image" alt="<?php echo $gal['title']; ?>"
-                                    data-full_image_src="<?php echo base_url() . $gal['image']; ?>"
-                                    title="<?php echo $gal['title']; ?>" srcset="<?php echo base_url() . $gal['image']; ?> 1000w,
+                </div>
+                <div class="bt_bb_row_wrapper">
+                  <!-- Slider for Gallery Images -->
+                  <div class="bt_bb_row owl-carousel owl-carousel-parent-testimonial custom-car"
+                    data-bt-override-class="{}">
+                    <?php foreach ($galleries as $gal) { ?>
+                    <div
+                      class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal"
+                      data-width="4">
+                      <div class="bt_bb_column_content">
+                        <div class="bt_bb_column_content_inner">
+                          <div data-bb-version="4.6.1"
+                            class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle"
+                            style="box-shadow: 2px 2px 8px rgb(0 0 0 / 30%);">
+                            <a onclick="AjaxGalleryModal('<?php echo $gal['branch_id']; ?>','<?php echo strtolower($gal['title']); ?>');"
+                              style="cursor:pointer" data-branch_id="<?php echo $gal['branch_id']; ?>"
+                              data-title="<?php echo strtolower($gal['title']); ?>" target="_blank"
+                              title="<?php echo $gal['title']; ?>">
+                              <img loading="lazy" decoding="async" width="1000" height="1000"
+                                src="<?php echo base_url() . $gal['image']; ?>"
+                                class="attachment-full size-full gallery_image" alt="<?php echo $gal['title']; ?>"
+                                data-full_image_src="<?php echo base_url() . $gal['image']; ?>"
+                                title="<?php echo $gal['title']; ?>" srcset="<?php echo base_url() . $gal['image']; ?> 1000w,
                                             <?php echo base_url() . $gal['image']; ?> 640w,
                                             <?php echo base_url() . $gal['image']; ?> 160w,
                                             <?php echo base_url() . $gal['image']; ?> 768w,
                                             <?php echo base_url() . $gal['image']; ?> 320w"
-                                    sizes="(max-width: 1000px) 100vw, 1000px" />
-                                </a>
-                                <div class="text-center p-2" style="font-size: 15px;"><?php echo $gal['title']; ?></div>
-                              </div>
-                            </div>
+                                sizes="(max-width: 1000px) 100vw, 1000px" />
+                            </a>
+                            <div class="text-center p-2" style="font-size: 15px;"><?php echo $gal['title']; ?></div>
                           </div>
                         </div>
-                      <?php } ?>
+                      </div>
                     </div>
-                    <!-- End of Slider -->
+                    <?php } ?>
                   </div>
+                  <!-- End of Slider -->
                 </div>
-                <!-- cell_inner -->
               </div>
-              <!-- cell -->
+              <!-- cell_inner -->
             </div>
-            <!-- port -->
-            <div class="bt_bb_section_top_section_coverage_image">
-              <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/top_white_wave_03.png"
-                alt="bt_bb_section_top_section_coverage_image" />
-            </div>
-            <div class="bt_bb_section_bottom_section_coverage_image">
-              <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/bottom_white_wave_03.png"
-                alt="bt_bb_section_bottom_section_coverage_image" />
-            </div>
-          </section>
+            <!-- cell -->
+          </div>
+          <!-- port -->
+          <div class="bt_bb_section_top_section_coverage_image">
+            <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/top_white_wave_03.png"
+              alt="bt_bb_section_top_section_coverage_image" />
+          </div>
+          <div class="bt_bb_section_bottom_section_coverage_image">
+            <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/bottom_white_wave_03.png"
+              alt="bt_bb_section_bottom_section_coverage_image" />
+          </div>
+        </section>
         <?php } ?>
 
 
@@ -1574,19 +1522,19 @@
               </div>
               <div data-bb-version="4.6.0" class=" row d-flex owl-carousel owl-carousel-event">
                 <?php foreach ($events as $evt) { ?>
-                  <div class="col-12 col-md-6 col-lg-4 p-3 w-100">
-                    <div class="box custom-box-event bg-white">
+                <div class="col-12 col-md-6 col-lg-4 p-3 w-100">
+                  <div class="box custom-box-event bg-white">
+                    <a href="<?php echo base_url() . 'event/' . $evt->slug . '/' . $evt->id; ?>">
+                      <img src="<?php echo base_url() . $evt->image; ?>" alt="<?php echo base_url() . $evt->name; ?>?tr=w-400"
+                        title="<?php echo $evt->name; ?>" class="img-fluid" alt="<?php echo $evt->name; ?>">
+                    </a>
+                    <div class="blog-title text-center">
                       <a href="<?php echo base_url() . 'event/' . $evt->slug . '/' . $evt->id; ?>">
-                        <img src="<?php echo base_url() . $evt->image; ?>" alt="<?php echo base_url() . $evt->name; ?>?tr=w-400"
-                          title="<?php echo $evt->name; ?>" class="img-fluid" alt="<?php echo $evt->name; ?>">
+                        <?php echo $evt->name; ?>
                       </a>
-                      <div class="blog-title text-center">
-                        <a href="<?php echo base_url() . 'event/' . $evt->slug . '/' . $evt->id; ?>">
-                          <?php echo $evt->name; ?>
-                        </a>
-                      </div>
                     </div>
                   </div>
+                </div>
                 <?php } ?>
               </div>
               <div data-bb-version="4.5.9"
@@ -1629,70 +1577,93 @@
           </div>
           <!-- port -->
         </section>
-
+        
         <!-- Kidzonia Hyderabad Branches Section -->
         <section
           data-bb-version="4.6.0"
           id="bt_bb_section656da1903d970"
           class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_none bt_bb_negative_margin_none"
-          data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_medium","xxl":"medium"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_none","xxl":"none"}}'>
+          data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_medium","xxl":"medium"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_none","xxl":"none"}}'
+        >
           <div class="bt_bb_port">
             <div class="bt_bb_cell">
               <div class="bt_bb_cell_inner">
                 <div
-                  class="bt_bb_row_wrapper bt_bb_row_push_right bt_bb_content_wide bt_bb_row_width_boxed_1200">
+                  class="bt_bb_row_wrapper bt_bb_row_push_right bt_bb_content_wide bt_bb_row_width_boxed_1200"
+                >
                   <div
                     class="bt_bb_row bt_bb_column_gap_0 bt_bb_negative_margin_none"
-                    data-bt-override-class="{}">
+                    data-bt-override-class="{}"
+                  >
                     <div
                       class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
                       data-width="12"
-                      data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_center","xxl":"center","xl":"center"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
+                      data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_center","xxl":"center","xl":"center"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'
+                    >
                       <div class="bt_bb_column_content">
                         <div class="bt_bb_column_content_inner">
                           <div
                             class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_medium bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_medium","xxl":"medium","xl":"medium"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
+                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_medium","xxl":"medium","xl":"medium"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'
+                          >
                             <div class="bt_bb_separator_v2_inner">
                               <span
-                                class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span
+                                class="bt_bb_separator_v2_inner_before"
+                              ></span
+                              ><span class="bt_bb_separator_v2_inner_content"
+                                ><span
                                   data-ico-="&#x;"
-                                  class="bt_bb_icon_holder"></span></span><span
-                                class="bt_bb_separator_v2_inner_after"></span>
+                                  class="bt_bb_icon_holder"
+                                ></span></span
+                              ><span
+                                class="bt_bb_separator_v2_inner_after"
+                              ></span>
                             </div>
                           </div>
                           <div
                             class="bt_bb_floating_image bt_bb_floating_image_horizontal_position_default bt_bb_floating_image_vertical_position_default bt_bb_floating_image_animation_delay_default bt_bb_floating_image_animation_duration_default bt_bb_floating_image_animation_style_ease_out bt_bb_animation_fade_in bt_bb_animation_move_down animate"
                             style="margin-top: -3em; position: relative"
                             data-speed="0.4"
-                            data-direction="">
+                            data-direction=""
+                          >
                             <div
                               class="bt_bb_floating_image_image"
                               data-speed="0.4"
-                              data-direction="">
+                              data-direction=""
+                            >
                               <div
                                 class="bt_bb_image"
-                                data-bt-override-class="{}">
-                                <span><img
+                                data-bt-override-class="{}"
+                              >
+                                <span
+                                  ><img
                                     decoding="async"
                                     width="65"
                                     height="45"
-                                    src="<?php echo base_url(); ?>uploads/2023/07/Leaf_Element.png"
+                                    src="<?php echo base_url();?>uploads/2023/07/Leaf_Element.png"
                                     class="attachment-full size-full"
-                                    alt="<?php echo base_url(); ?>uploads/2023/07/Leaf_Element.png"
-                                    title="Leaf_Element" /></span>
+                                    alt="<?php echo base_url();?>uploads/2023/07/Leaf_Element.png"
+                                    title="Leaf_Element"
+                                /></span>
                               </div>
                             </div>
                           </div>
                           <div
                             class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_extra_small bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_extra_small","xxl":"extra_small","xl":"extra_small"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
+                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_extra_small","xxl":"extra_small","xl":"extra_small"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'
+                          >
                             <div class="bt_bb_separator_v2_inner">
                               <span
-                                class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span
+                                class="bt_bb_separator_v2_inner_before"
+                              ></span
+                              ><span class="bt_bb_separator_v2_inner_content"
+                                ><span
                                   data-ico-="&#x;"
-                                  class="bt_bb_icon_holder"></span></span><span
-                                class="bt_bb_separator_v2_inner_after"></span>
+                                  class="bt_bb_icon_holder"
+                                ></span></span
+                              ><span
+                                class="bt_bb_separator_v2_inner_after"
+                              ></span>
                             </div>
                           </div>
                           <header
@@ -1702,20 +1673,30 @@
                               --primary-color: #282828;
                               --secondary-color: var(--accent-color);
                             "
-                            data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_extralarge","xxl":"extralarge"},"bt_bb_align_":{"current_class":"bt_bb_align_center","xxl":"center"}}'>
+                            data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_extralarge","xxl":"extralarge"},"bt_bb_align_":{"current_class":"bt_bb_align_center","xxl":"center"}}'
+                          >
                             <h2 class="bt_bb_headline_tag">
-                              <span class="bt_bb_headline_content"><span>Kidzonia Hyderabad Branches</span></span>
+                              <span class="bt_bb_headline_content"
+                                ><span>Kidzonia Hyderabad Branches</span></span
+                              >
                             </h2>
                           </header>
                           <div
                             class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_50","xxl":"50","xl":"50"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
+                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_50","xxl":"50","xl":"50"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'
+                          >
                             <div class="bt_bb_separator_v2_inner">
                               <span
-                                class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span
+                                class="bt_bb_separator_v2_inner_before"
+                              ></span
+                              ><span class="bt_bb_separator_v2_inner_content"
+                                ><span
                                   data-ico-="&#x;"
-                                  class="bt_bb_icon_holder"></span></span><span
-                                class="bt_bb_separator_v2_inner_after"></span>
+                                  class="bt_bb_icon_holder"
+                                ></span></span
+                              ><span
+                                class="bt_bb_separator_v2_inner_after"
+                              ></span>
                             </div>
                           </div>
                         </div>
@@ -1727,68 +1708,63 @@
             </div>
           </div>
         </section>
-
+        
         <section
           data-bb-version="4.6.1"
           id="bt_bb_section656da1903e0bc"
           class="bt_bb_section bt_bb_layout_boxed_1400 bt_bb_vertical_align_top bt_bb_top_spacing_none bt_bb_bottom_spacing_medium bt_bb_negative_margin_none"
-          data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_medium","xxl":"medium"}}'>
+          data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_medium","xxl":"medium"}}'
+        >
           <div class="bt_bb_port">
             <div class="bt_bb_cell">
               <div class="bt_bb_cell_inner">
                 <div class="bt_bb_row_wrapper">
                   <div class="bt_bb_row" data-bt-override-class="{}">
-                    <?php if (!empty($data)) {
-                      foreach ($data as $item) { ?>
+                      <?php if(!empty($data)){ foreach($data as $item){?>
                         <div
-                          data-bb-version="4.6.0"
-                          class="bt_bb_column mb-5 col-xxl-4 col-xl-4 col-xs-12 col-sm-12 col-md-12 col-lg-4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_50 bt_bb_animation_fade_in animate "
-                          data-width="4"
-                          data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_50","xxl":"50","sm":"normal","xs":"normal"}}'>
-                          <div class="bt_bb_column_content mb-5">
-                            <div class="bt_bb_column_content_inner">
-                              <?php
-                              $branch_url = '';
-                              $branch_name = strtolower(trim($item['name']));
-                              if (strpos($branch_name, 'serilingampally') !== false) {
-                                $branch_url = base_url() . 'preschool-in-serilingampally-hyderabad';
-                              } elseif (strpos($branch_name, 'nallagandla navodaya') !== false) {
-                                $branch_url = '';
-                              } elseif (strpos($branch_name, 'nallagandla') !== false) {
-                                $branch_url = base_url() . 'preschool-in-nallagandla';
-                              } elseif (strpos($branch_name, 'suraksha enclave') !== false || strpos($branch_name, 'ameenpur') !== false) {
-                                $branch_url = base_url() . 'preschool-in-suraksha-enclave-ameenpur';
-                              } elseif (strpos($branch_name, 'kphb') !== false) {
-                                $branch_url = base_url() . 'preschool-in-kphb-kukatpally';
-                              }
-                              ?>
-                              <header
-                                data-bb-version="4.6.0"
-                                class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
-                                data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_extralarge","xxl":"extralarge"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                                <h6
-                                  style="font-size: 25px"
-                                  class="bt_bb_headline_tag">
-                                  <span class="bt_bb_headline_content"><span><?php if (!empty($branch_url)) { ?><a href="<?php echo $branch_url; ?>"><?php echo $item['name']; ?></a><?php } else {
-                                                                                                                                                                                      echo $item['name'];
-                                                                                                                                                                                    } ?></span></span>
-                                </h6>
-                              </header>
-                              <div
-                                class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_40 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                                data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_40","xxl":"40","xl":"40"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
-                                <div class="bt_bb_separator_v2_inner">
-                                  <span
-                                    class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span
-                                      data-ico-="&#x;"
-                                      class="bt_bb_icon_holder"></span></span><span
-                                    class="bt_bb_separator_v2_inner_after"></span>
-                                </div>
-                              </div>
-                              <div
-                                data-bb-version="4.6.0"
-                                class="bt_bb_service bt_bb_style_borderless bt_bb_semitransparent_text bt_bb_size_large bt_bb_shape_circle bt_bb_align_inherit btNoTitle bt_bb_border_visible bt_bb_colored_icon_color_scheme_9 bt_bb_title_color_scheme_9"
-                                style="
+                      data-bb-version="4.6.0"
+                      class="bt_bb_column mb-5 col-xxl-4 col-xl-4 col-xs-12 col-sm-12 col-md-12 col-lg-4 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_50 bt_bb_animation_fade_in animate "
+                      data-width="4"
+                      data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_50","xxl":"50","sm":"normal","xs":"normal"}}'
+                    >
+                      <div class="bt_bb_column_content mb-5">
+                        <div class="bt_bb_column_content_inner">
+                          <header
+                            data-bb-version="4.6.0"
+                            class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
+                            data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_extralarge","xxl":"extralarge"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'
+                          >
+                            <h6
+                              style="font-size: 25px"
+                              class="bt_bb_headline_tag"
+                            >
+                              <span class="bt_bb_headline_content"
+                                ><span><?php echo $item['name'];?></span></span
+                              >
+                            </h6>
+                          </header>
+                          <div
+                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_40 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_40","xxl":"40","xl":"40"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'
+                          >
+                            <div class="bt_bb_separator_v2_inner">
+                              <span
+                                class="bt_bb_separator_v2_inner_before"
+                              ></span
+                              ><span class="bt_bb_separator_v2_inner_content"
+                                ><span
+                                  data-ico-="&#x;"
+                                  class="bt_bb_icon_holder"
+                                ></span></span
+                              ><span
+                                class="bt_bb_separator_v2_inner_after"
+                              ></span>
+                            </div>
+                          </div>
+                          <div
+                            data-bb-version="4.6.0"
+                            class="bt_bb_service bt_bb_style_borderless bt_bb_semitransparent_text bt_bb_size_large bt_bb_shape_circle bt_bb_align_inherit btNoTitle bt_bb_border_visible bt_bb_colored_icon_color_scheme_9 bt_bb_title_color_scheme_9"
+                            style="
                               max-width: 440px;
                               --icon-colored-icon-primary-color: #282828;
                               --icon-colored-icon-secondary-color: var(
@@ -1797,67 +1773,79 @@
                               --title-primary-color: #282828;
                               --title-secondary-color: var(--alternate-color);
                             "
-                                data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_large","xxl":"large"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                                <div class="bt_bb_service_colored_icon">
-                                  <span><svg
-                                      id="Layer_1"
-                                      data-name="Layer 1"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      viewBox="0 0 100 100">
-                                      <defs>
-                                        <style>
-                                          .cls-1 {
-                                            fill: #ffb129;
-                                          }
-
-                                          .cls-2 {
-                                            fill: #333538;
-                                          }
-                                        </style>
-                                      </defs>
-                                      <title>_</title>
-                                      <path
-                                        id="_Path_"
-                                        data-name="&lt;Path&gt;"
-                                        class="cls-1"
-                                        d="M49.56,51.82a9.61,9.61,0,1,1,9.61-9.61A9.62,9.62,0,0,1,49.56,51.82Z" />
-                                      <path
-                                        id="_Compound_Path_"
-                                        data-name="&lt;Compound Path&gt;"
-                                        class="cls-2"
-                                        d="M49.28,57a15,15,0,1,1,15-15A15,15,0,0,1,49.28,57Zm0-24a9,9,0,1,0,9,9A9,9,0,0,0,49.28,33Z" />
-                                      <path
-                                        id="_Compound_Path_2"
-                                        data-name="&lt;Compound Path&gt;"
-                                        class="cls-2"
-                                        d="M47.39,89.37a143.46,143.46,0,0,1-15-14.86C22,62.65,17,52,17,42.91V42a32.5,32.5,0,1,1,65,0v.91c0,9.11-5.27,19.74-15.6,31.6A134.48,134.48,0,0,1,51.18,89.37l-1.9,1.53Zm2.11-74A26.55,26.55,0,0,0,23,42v.91C23,58.53,43.11,77.52,49.33,83l0,.12L49.5,83C55.71,77.52,76,58.53,76,42.91V42A26.55,26.55,0,0,0,49.5,15.36Z" />
-                                    </svg></span>
-                                </div>
-                                <div class="bt_bb_service_content">
-                                  <div class="bt_bb_service_content_supertitle">
-                                    LOCATION
-                                  </div>
-                                  <div class="bt_bb_service_content_text">
-                                    <?php echo $item['address']; ?>
-                                  </div>
-                                </div>
+                            data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_large","xxl":"large"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'
+                          >
+                            <div class="bt_bb_service_colored_icon">
+                              <span
+                                ><svg
+                                  id="Layer_1"
+                                  data-name="Layer 1"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 100 100"
+                                >
+                                  <defs>
+                                    <style>
+                                      .cls-1 {
+                                        fill: #ffb129;
+                                      }
+                                      .cls-2 {
+                                        fill: #333538;
+                                      }
+                                    </style>
+                                  </defs>
+                                  <title>_</title>
+                                  <path
+                                    id="_Path_"
+                                    data-name="&lt;Path&gt;"
+                                    class="cls-1"
+                                    d="M49.56,51.82a9.61,9.61,0,1,1,9.61-9.61A9.62,9.62,0,0,1,49.56,51.82Z"
+                                  />
+                                  <path
+                                    id="_Compound_Path_"
+                                    data-name="&lt;Compound Path&gt;"
+                                    class="cls-2"
+                                    d="M49.28,57a15,15,0,1,1,15-15A15,15,0,0,1,49.28,57Zm0-24a9,9,0,1,0,9,9A9,9,0,0,0,49.28,33Z"
+                                  />
+                                  <path
+                                    id="_Compound_Path_2"
+                                    data-name="&lt;Compound Path&gt;"
+                                    class="cls-2"
+                                    d="M47.39,89.37a143.46,143.46,0,0,1-15-14.86C22,62.65,17,52,17,42.91V42a32.5,32.5,0,1,1,65,0v.91c0,9.11-5.27,19.74-15.6,31.6A134.48,134.48,0,0,1,51.18,89.37l-1.9,1.53Zm2.11-74A26.55,26.55,0,0,0,23,42v.91C23,58.53,43.11,77.52,49.33,83l0,.12L49.5,83C55.71,77.52,76,58.53,76,42.91V42A26.55,26.55,0,0,0,49.5,15.36Z"
+                                  /></svg
+                              ></span>
+                            </div>
+                            <div class="bt_bb_service_content">
+                              <div class="bt_bb_service_content_supertitle">
+                                LOCATION
                               </div>
-                              <div
-                                data-bb-version="4.6.1"
-                                class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_10 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                                data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_10","xxl":"10"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal"}}'>
-                                <div class="bt_bb_separator_v2_inner">
-                                  <span
-                                    class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span
-                                      data-ico-="&#x;"
-                                      class="bt_bb_icon_holder"></span></span><span
-                                    class="bt_bb_separator_v2_inner_after"></span>
-                                </div>
+                              <div class="bt_bb_service_content_text">
+                               <?php echo $item['address'];?>
                               </div>
-                              <div
-                                data-bb-version="4.6.0"
-                                class="bt_bb_service bt_bb_style_borderless bt_bb_semitransparent_text bt_bb_size_large bt_bb_shape_circle bt_bb_align_inherit btNoTitle bt_bb_border_visible bt_bb_colored_icon_color_scheme_9 bt_bb_title_color_scheme_9"
-                                style="
+                            </div>
+                          </div>
+                          <div
+                            data-bb-version="4.6.1"
+                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_10 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_10","xxl":"10"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal"}}'
+                          >
+                            <div class="bt_bb_separator_v2_inner">
+                              <span
+                                class="bt_bb_separator_v2_inner_before"
+                              ></span
+                              ><span class="bt_bb_separator_v2_inner_content"
+                                ><span
+                                  data-ico-="&#x;"
+                                  class="bt_bb_icon_holder"
+                                ></span></span
+                              ><span
+                                class="bt_bb_separator_v2_inner_after"
+                              ></span>
+                            </div>
+                          </div>
+                          <div
+                            data-bb-version="4.6.0"
+                            class="bt_bb_service bt_bb_style_borderless bt_bb_semitransparent_text bt_bb_size_large bt_bb_shape_circle bt_bb_align_inherit btNoTitle bt_bb_border_visible bt_bb_colored_icon_color_scheme_9 bt_bb_title_color_scheme_9"
+                            style="
                               max-width: 440px;
                               --icon-colored-icon-primary-color: #282828;
                               --icon-colored-icon-secondary-color: var(
@@ -1866,201 +1854,218 @@
                               --title-primary-color: #282828;
                               --title-secondary-color: var(--alternate-color);
                             "
-                                data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_large","xxl":"large"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                                <div class="bt_bb_service_colored_icon">
-                                  <span><svg
-                                      id="Layer_1"
-                                      data-name="Layer 1"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      viewBox="0 0 100 100">
-                                      <defs>
-                                        <style>
-                                          .cls-1 {
-                                            fill: #ffb129;
-                                          }
-
-                                          .cls-2 {
-                                            fill: #333538;
-                                          }
-                                        </style>
-                                      </defs>
-                                      <title>_</title>
-                                      <path
-                                        class="cls-1"
-                                        d="M31,14.4H70c1.66,0,3.36,2,3.36,3.66v1.83H27.68V18.06C27.68,16.4,29.38,14.4,31,14.4Z" />
-                                      <path
-                                        class="cls-1"
-                                        d="M70,86.7a3,3,0,0,1-2.09.62H32.2c-1.51,0-3.07-.86-3.07-2.33V75.95H70.87v9.13A2.32,2.32,0,0,1,70,86.7Z" />
-                                      <g id="_Group_2" data-name="&lt;Group&gt;">
-                                        <g
-                                          id="_Group_3"
-                                          data-name="&lt;Group&gt;">
-                                          <g
-                                            id="_Group_4"
-                                            data-name="&lt;Group&gt;">
-                                            <path
-                                              id="_Compound_Path_"
-                                              data-name="&lt;Compound Path&gt;"
-                                              class="cls-2"
-                                              d="M75.09,83.37v-66a8,8,0,0,0-8-8H32.39a8,8,0,0,0-8,8v66a8,8,0,0,0,8,8H67.15A8,8,0,0,0,72.87,89,7.72,7.72,0,0,0,75.09,83.37ZM69,85.25a2.59,2.59,0,0,1-1.88.8H32.39a2.68,2.68,0,0,1-2.67-2.67v-66a2.68,2.68,0,0,1,2.67-2.67H67.06a2.68,2.68,0,0,1,2.67,2.67v66A2.46,2.46,0,0,1,69,85.25Z" />
-                                          </g>
-                                        </g>
-                                        <g
-                                          id="_Group_5"
-                                          data-name="&lt;Group&gt;">
-                                          <g
-                                            id="_Group_6"
-                                            data-name="&lt;Group&gt;">
-                                            <rect
-                                              id="_Path_3"
-                                              data-name="&lt;Path&gt;"
-                                              class="cls-2"
-                                              x="27.05"
-                                              y="19.82"
-                                              width="45.46"
-                                              height="5.35" />
-                                          </g>
-                                        </g>
-                                        <g
-                                          id="_Group_7"
-                                          data-name="&lt;Group&gt;">
-                                          <g
-                                            id="_Group_8"
-                                            data-name="&lt;Group&gt;">
-                                            <rect
-                                              id="_Path_4"
-                                              data-name="&lt;Path&gt;"
-                                              class="cls-2"
-                                              x="27.05"
-                                              y="71.43"
-                                              width="45.46"
-                                              height="5.35" />
-                                          </g>
-                                        </g>
-                                        <g
-                                          id="_Group_9"
-                                          data-name="&lt;Group&gt;">
-                                          <g
-                                            id="_Group_10"
-                                            data-name="&lt;Group&gt;">
-                                            <path
-                                              id="_Path_5"
-                                              data-name="&lt;Path&gt;"
-                                              class="cls-2"
-                                              d="M52,78.65H47.55a2.67,2.67,0,1,0,0,5.35H52a2.67,2.67,0,1,0,0-5.35Z" />
-                                          </g>
-                                        </g>
-                                      </g>
-                                    </svg></span>
-                                </div>
-                                <div class="bt_bb_service_content">
-                                  <div class="bt_bb_service_content_supertitle">
-                                    PHONE
-                                  </div>
-                                  <div class="bt_bb_service_content_text">
-                                    <?php echo $item['mobile_1']; ?><?php if (!empty($item['mobile_2'])) {
-                                                                      echo ' / ' . $item['mobile_2'];
-                                                                    } ?>
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_normal bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                                data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_normal","xxl":"normal","xl":"normal"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
-                                <div class="bt_bb_separator_v2_inner">
-                                  <span
-                                    class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span
-                                      data-ico-="&#x;"
-                                      class="bt_bb_icon_holder"></span></span><span
-                                    class="bt_bb_separator_v2_inner_after"></span>
-                                </div>
-                              </div>
-                              <div
-                                data-bb-version="4.6.0"
-                                class="bt_bb_service bt_bb_style_borderless bt_bb_semitransparent_text bt_bb_size_large bt_bb_shape_circle bt_bb_align_inherit btNoTitle bt_bb_border_visible bt_bb_colored_icon_color_scheme_9 bt_bb_title_color_scheme_9"
-                                style="
-                              max-width: 440px;
-                              --icon-colored-icon-primary-color: #282828;
-                              --icon-colored-icon-secondary-color: var(
-                                --alternate-color
-                              );
-                              --title-primary-color: #282828;
-                              --title-secondary-color: var(--alternate-color);
-                            "
-                                data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_large","xxl":"large"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                                <div class="bt_bb_service_colored_icon">
-                                  <span><svg
-                                      id="Layer_1"
-                                      data-name="Layer 1"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      viewBox="0 0 100 100">
-                                      <defs>
-                                        <style>
-                                          .cls-1 {
-                                            fill: #ffb129;
-                                          }
-
-                                          .cls-2 {
-                                            fill: #333538;
-                                          }
-                                        </style>
-                                      </defs>
-                                      <title>_</title>
-                                      <path
-                                        class="cls-1"
-                                        d="M50.13,56.31A3.61,3.61,0,0,1,48,55.59L15.88,31.72V26.88a3.63,3.63,0,0,1,3.63-3.62H80.76a3.63,3.63,0,0,1,3.63,3.63v4.84L52.3,55.59A3.61,3.61,0,0,1,50.13,56.31Z" />
-                                      <g id="_Group_" data-name="&lt;Group&gt;">
+                            data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_large","xxl":"large"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'
+                          >
+                            <div class="bt_bb_service_colored_icon">
+                              <span
+                                ><svg
+                                  id="Layer_1"
+                                  data-name="Layer 1"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 100 100"
+                                >
+                                  <defs>
+                                    <style>
+                                      .cls-1 {
+                                        fill: #ffb129;
+                                      }
+                                      .cls-2 {
+                                        fill: #333538;
+                                      }
+                                    </style>
+                                  </defs>
+                                  <title>_</title>
+                                  <path
+                                    class="cls-1"
+                                    d="M31,14.4H70c1.66,0,3.36,2,3.36,3.66v1.83H27.68V18.06C27.68,16.4,29.38,14.4,31,14.4Z"
+                                  />
+                                  <path
+                                    class="cls-1"
+                                    d="M70,86.7a3,3,0,0,1-2.09.62H32.2c-1.51,0-3.07-.86-3.07-2.33V75.95H70.87v9.13A2.32,2.32,0,0,1,70,86.7Z"
+                                  />
+                                  <g id="_Group_2" data-name="&lt;Group&gt;">
+                                    <g
+                                      id="_Group_3"
+                                      data-name="&lt;Group&gt;"
+                                    >
+                                      <g
+                                        id="_Group_4"
+                                        data-name="&lt;Group&gt;"
+                                      >
                                         <path
                                           id="_Compound_Path_"
                                           data-name="&lt;Compound Path&gt;"
                                           class="cls-2"
-                                          d="M80.63,17.5H19.38A9.39,9.39,0,0,0,10,26.88v7.73L44.4,60.2a9.32,9.32,0,0,0,11.19,0L90,34.61V26.88A9.39,9.39,0,0,0,80.63,17.5Zm3.13,14L51.87,55.18a3.11,3.11,0,0,1-3.73,0L16.25,31.47V26.88a3.13,3.13,0,0,1,3.13-3.12H80.63a3.13,3.13,0,0,1,3.13,3.13Zm0,15.58L90,42.4V73.13a9.39,9.39,0,0,1-9.37,9.38H19.38A9.39,9.39,0,0,1,10,73.13V42.4L16.25,47V73.13a3.13,3.13,0,0,0,3.13,3.13H80.63a3.13,3.13,0,0,0,3.13-3.12Z" />
+                                          d="M75.09,83.37v-66a8,8,0,0,0-8-8H32.39a8,8,0,0,0-8,8v66a8,8,0,0,0,8,8H67.15A8,8,0,0,0,72.87,89,7.72,7.72,0,0,0,75.09,83.37ZM69,85.25a2.59,2.59,0,0,1-1.88.8H32.39a2.68,2.68,0,0,1-2.67-2.67v-66a2.68,2.68,0,0,1,2.67-2.67H67.06a2.68,2.68,0,0,1,2.67,2.67v66A2.46,2.46,0,0,1,69,85.25Z"
+                                        />
                                       </g>
-                                    </svg></span>
-                                </div>
-                                <div class="bt_bb_service_content">
-                                  <div class="bt_bb_service_content_supertitle">
-                                    EMAIL
-                                  </div>
-                                  <div class="bt_bb_service_content_text">
-                                    <?php echo $item['email']; ?>
-                                  </div>
-                                </div>
+                                    </g>
+                                    <g
+                                      id="_Group_5"
+                                      data-name="&lt;Group&gt;"
+                                    >
+                                      <g
+                                        id="_Group_6"
+                                        data-name="&lt;Group&gt;"
+                                      >
+                                        <rect
+                                          id="_Path_3"
+                                          data-name="&lt;Path&gt;"
+                                          class="cls-2"
+                                          x="27.05"
+                                          y="19.82"
+                                          width="45.46"
+                                          height="5.35"
+                                        />
+                                      </g>
+                                    </g>
+                                    <g
+                                      id="_Group_7"
+                                      data-name="&lt;Group&gt;"
+                                    >
+                                      <g
+                                        id="_Group_8"
+                                        data-name="&lt;Group&gt;"
+                                      >
+                                        <rect
+                                          id="_Path_4"
+                                          data-name="&lt;Path&gt;"
+                                          class="cls-2"
+                                          x="27.05"
+                                          y="71.43"
+                                          width="45.46"
+                                          height="5.35"
+                                        />
+                                      </g>
+                                    </g>
+                                    <g
+                                      id="_Group_9"
+                                      data-name="&lt;Group&gt;"
+                                    >
+                                      <g
+                                        id="_Group_10"
+                                        data-name="&lt;Group&gt;"
+                                      >
+                                        <path
+                                          id="_Path_5"
+                                          data-name="&lt;Path&gt;"
+                                          class="cls-2"
+                                          d="M52,78.65H47.55a2.67,2.67,0,1,0,0,5.35H52a2.67,2.67,0,1,0,0-5.35Z"
+                                        />
+                                      </g>
+                                    </g>
+                                  </g></svg
+                              ></span>
+                            </div>
+                            <div class="bt_bb_service_content">
+                              <div class="bt_bb_service_content_supertitle">
+                                PHONE
                               </div>
-                              <div
-                                class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                                data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_50","xxl":"50","xl":"50"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
-                                <div class="bt_bb_separator_v2_inner">
-                                  <span
-                                    class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span
-                                      data-ico-="&#x;"
-                                      class="bt_bb_icon_holder"></span></span><span
-                                    class="bt_bb_separator_v2_inner_after"></span>
-                                </div>
+                              <div class="bt_bb_service_content_text">
+                                <?php echo $item['mobile_1'];?><?php if(!empty($item['mobile_2'])){ echo ' / ' . $item['mobile_2']; }?>
                               </div>
                             </div>
                           </div>
-                        </div>
-                    <?php }
-                    } ?>
-
-                  </div>
-                </div>
-                <div class="bt_bb_row_wrapper">
-                  <div class="bt_bb_row" data-bt-override-class="{}">
-                    <div
-                      class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_shape_inherit"
-                      data-width="12"
-                      data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_left","xxl":"left","xl":"left"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
-                      <div class="bt_bb_column_content">
-                        <div class="bt_bb_column_content_inner">
-                          <iframe src="https://www.google.com/maps/d/embed?mid=1_gxhT4dCyb6s0LXCQrYq7pqJihsYwY4&ehbc=2E312F" width="100%" height="480"></iframe>
+                          <div
+                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_normal bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_normal","xxl":"normal","xl":"normal"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'
+                          >
+                            <div class="bt_bb_separator_v2_inner">
+                              <span
+                                class="bt_bb_separator_v2_inner_before"
+                              ></span
+                              ><span class="bt_bb_separator_v2_inner_content"
+                                ><span
+                                  data-ico-="&#x;"
+                                  class="bt_bb_icon_holder"
+                                ></span></span
+                              ><span
+                                class="bt_bb_separator_v2_inner_after"
+                              ></span>
+                            </div>
+                          </div>
+                          <div
+                            data-bb-version="4.6.0"
+                            class="bt_bb_service bt_bb_style_borderless bt_bb_semitransparent_text bt_bb_size_large bt_bb_shape_circle bt_bb_align_inherit btNoTitle bt_bb_border_visible bt_bb_colored_icon_color_scheme_9 bt_bb_title_color_scheme_9"
+                            style="
+                              max-width: 440px;
+                              --icon-colored-icon-primary-color: #282828;
+                              --icon-colored-icon-secondary-color: var(
+                                --alternate-color
+                              );
+                              --title-primary-color: #282828;
+                              --title-secondary-color: var(--alternate-color);
+                            "
+                            data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_large","xxl":"large"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'
+                          >
+                            <div class="bt_bb_service_colored_icon">
+                              <span
+                                ><svg
+                                  id="Layer_1"
+                                  data-name="Layer 1"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 100 100"
+                                >
+                                  <defs>
+                                    <style>
+                                      .cls-1 {
+                                        fill: #ffb129;
+                                      }
+                                      .cls-2 {
+                                        fill: #333538;
+                                      }
+                                    </style>
+                                  </defs>
+                                  <title>_</title>
+                                  <path
+                                    class="cls-1"
+                                    d="M50.13,56.31A3.61,3.61,0,0,1,48,55.59L15.88,31.72V26.88a3.63,3.63,0,0,1,3.63-3.62H80.76a3.63,3.63,0,0,1,3.63,3.63v4.84L52.3,55.59A3.61,3.61,0,0,1,50.13,56.31Z"
+                                  />
+                                  <g id="_Group_" data-name="&lt;Group&gt;">
+                                    <path
+                                      id="_Compound_Path_"
+                                      data-name="&lt;Compound Path&gt;"
+                                      class="cls-2"
+                                      d="M80.63,17.5H19.38A9.39,9.39,0,0,0,10,26.88v7.73L44.4,60.2a9.32,9.32,0,0,0,11.19,0L90,34.61V26.88A9.39,9.39,0,0,0,80.63,17.5Zm3.13,14L51.87,55.18a3.11,3.11,0,0,1-3.73,0L16.25,31.47V26.88a3.13,3.13,0,0,1,3.13-3.12H80.63a3.13,3.13,0,0,1,3.13,3.13Zm0,15.58L90,42.4V73.13a9.39,9.39,0,0,1-9.37,9.38H19.38A9.39,9.39,0,0,1,10,73.13V42.4L16.25,47V73.13a3.13,3.13,0,0,0,3.13,3.13H80.63a3.13,3.13,0,0,0,3.13-3.12Z"
+                                    />
+                                  </g></svg
+                              ></span>
+                            </div>
+                            <div class="bt_bb_service_content">
+                              <div class="bt_bb_service_content_supertitle">
+                                EMAIL
+                              </div>
+                              <div class="bt_bb_service_content_text">
+                                <?php echo $item['email'];?>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_50","xxl":"50","xl":"50"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'
+                          >
+                            <div class="bt_bb_separator_v2_inner">
+                              <span
+                                class="bt_bb_separator_v2_inner_before"
+                              ></span
+                              ><span class="bt_bb_separator_v2_inner_content"
+                                ><span
+                                  data-ico-="&#x;"
+                                  class="bt_bb_icon_holder"
+                                ></span></span
+                              ><span
+                                class="bt_bb_separator_v2_inner_after"
+                              ></span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
+                      <?php } } ?>
+                    
                   </div>
                 </div>
-
+                
               </div>
             </div>
           </div>
@@ -2075,39 +2080,40 @@
 
 
 <script>
-  function AjaxGalleryModal(branch_id, title) {
-    // Make an Ajax request to fetch image URLs
-    $.ajax({
-      url: '<?php echo base_url('home/get_ajax_gallery_images'); ?>',
-      method: 'POST',
-      dataType: 'json',
-      data: {
-        title: title,
-        branch_id: branch_id
-      },
-      success: function(images) {
-        // Populate the lightbox with images
-        openLightbox(images);
-      }
-    });
+function AjaxGalleryModal(branch_id, title) {
+  // Make an Ajax request to fetch image URLs
+  $.ajax({
+    url: '<?php echo base_url('home/get_ajax_gallery_images'); ?>',
+    method: 'POST',
+    dataType: 'json',
+    data: {
+      title: title,
+      branch_id: branch_id
+    },
+    success: function(images) {
+      // Populate the lightbox with images
+      openLightbox(images);
+    }
+  });
 
-  }
+}
 
-  function openLightbox(images) {
-    // Create an array of objects with 'src' and 'title' properties
-    var fancyboxImages = images.map(image => {
-      return {
-        src: '<?php echo base_url(); ?>' + image.image,
-        caption: image.title
-      };
-    });
+function openLightbox(images) {
+  // Create an array of objects with 'src' and 'title' properties
+  var fancyboxImages = images.map(image => {
+    return {
+      src: '<?php echo base_url(); ?>' + image.image,
+      caption: image.title
+    };
+  });
 
-    // Open FancyBox with the array of images
-    Fancybox.show(fancyboxImages, {
-      loop: true,
-      thumbs: {
-        autoStart: true
-      }
-    });
-  }
+  // Open FancyBox with the array of images
+  Fancybox.show(fancyboxImages, {
+    loop: true,
+    thumbs: {
+      autoStart: true
+    }
+  });
+}
 </script>
+
