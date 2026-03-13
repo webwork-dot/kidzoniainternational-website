@@ -1042,6 +1042,7 @@ class Crud_model extends CI_Model
     public function check_admission_enquiry() {
     $this->kcis_db = $this->load->database('kcis_db', TRUE);
     $this->db->trans_start(); // Start a transaction
+        $form_type = $this->input->post('form_type') ?: 'admission_enquiry';
 
     // --- Start of reCAPTCHA verification logic ---
     // $recaptcha_response = $this->input->post('g-recaptcha-response');
@@ -1099,6 +1100,10 @@ class Crud_model extends CI_Model
             'exact_length' => 'The %s field must be exactly 10 digits.'
         )
     );
+
+    if ($form_type === 'admission_enquiry' || $form_type === 'contact_us' || $form_type === 'callback') {
+        $this->form_validation->set_rules('captcha_input', 'Captcha', 'trim|required|integer');
+    }
       
     $phone = ($this->input->post('phone'));
     $check_mobile = $this->kcis_db->query("SELECT id FROM leads WHERE mobile='$phone' LIMIT 1")->num_rows();
@@ -1117,6 +1122,7 @@ class Crud_model extends CI_Model
             'email'        => form_error('email'),
             'phone'        => form_error('phone'),
             'location'     => form_error('location'),
+            'captcha_input' => form_error('captcha_input'),
         );
         $errors_ = array_map('strip_tags', array_filter($errors));
         $allErrors = implode('<br> ', $errors_);
@@ -1125,6 +1131,14 @@ class Crud_model extends CI_Model
             "status" => 400,
             "message" => $allErrors,
             "errors" => $errors,
+        );
+    } elseif (($form_type === 'admission_enquiry' || $form_type === 'contact_us' || $form_type === 'callback') && !verify_math_captcha($this->input->post('captcha_input'))) {
+        $resultpost = array(
+            "status" => 400,
+            "message" => 'Invalid captcha answer. Please try again.',
+            "errors" => array(
+                'captcha_input' => 'Invalid captcha answer. Please try again.'
+            ),
         );
     } else {
         $curr_date = date("Y-m-d H:i:s");
@@ -1147,7 +1161,7 @@ class Crud_model extends CI_Model
         $data['know_about_us']  = ($this->input->post('know_about_us'));
         $data['ip_address']  = $ip_address;
         $data['created_at']  = $curr_date;
-        $data['form_type']   = $this->input->post('form_type') ?: 'admission_enquiry';
+        $data['form_type']   = $form_type;
         
         // Capture referer - use stored external referer from session
         // Only use HTTP_REFERER if session doesn't have one (first page load)
@@ -1272,7 +1286,6 @@ class Crud_model extends CI_Model
                 "message" => 'Your Enquiry has been successfully submitted.',
                 "url" => $url,
             );
-            $form_type = $this->input->post('form_type') ?: 'admission_enquiry';
             if ($form_type === 'download_brochure') {
                 $resultpost['download_url'] = base_url('download_brochure_url');
             }

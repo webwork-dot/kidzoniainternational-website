@@ -40,6 +40,7 @@ class Modal extends CI_Controller {
 			$this->load->model('crud_model');
 			$page_data['class_list'] = $this->crud_model->get_kips_program_list();
 			$page_data['branches'] = $this->crud_model->get_header_branches()->result_array();
+			$page_data['captcha_question'] = generate_math_captcha();
 		}
 		$this->load->view( 'frontend/default/'.$page_name.'.php' ,$page_data);
 	}

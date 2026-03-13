@@ -221,6 +221,7 @@ and enriching environment where young minds thrive.";
         $page_data['class_list']        = $this->crud_model->get_kips_program_list();
         $page_data['branches']          = $this->crud_model->get_header_branches()->result_array();
         $page_data['admissions']        = $this->crud_model->get_admissions();
+        $page_data['captcha_question']  = generate_math_captcha();
         $page_data['page_name']         = "admissions";
         $page_data['page_title']        = "Online Admission Enquiry | Best Preschool in Hyderabad - Kidzonia International";
         $page_data['meta_description']  = "Enroll your child at Kidzonia International, the best preschool & daycare in Hyderabad. Admissions open for Playgroup, Nursery & Kindergarten. Fill the enquiry form today!";
@@ -651,6 +652,7 @@ inspiring stories.";
         $page_data['canonical_url']      = "https://kidzoniainternational.in/contact-us/";
         $page_data['class_list']         = $this->crud_model->get_kips_program_list();
         $page_data['branches']           = $this->crud_model->get_header_branches()->result_array();
+        $page_data['captcha_question']   = generate_math_captcha();
         $this->load->view('frontend/default/index', $page_data);
     }
 

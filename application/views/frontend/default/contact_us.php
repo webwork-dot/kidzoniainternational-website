@@ -275,6 +275,13 @@
                                       <span class="invalid-feedback"></span>
                                     </div>
                                   </div>
+                                  <div class="col-md-12">
+                                    <div class="form-group mb-2">
+                                      <label>Solve: <?php echo html_escape($captcha_question); ?> = ?<i class="text-dander">*</i></label>
+                                      <input type="number" class="form-control" name="captcha_input" placeholder="Enter answer" required>
+                                      <span class="invalid-feedback"></span>
+                                    </div>
+                                  </div>
                                   <div class="col-md-12 mt-2">
                                     <div class="wpforms-submit-container pt-0">
                                       <button type="submit" class="btn btn-enquiry wpforms-submit btn_verify" name="btn_verify">Submit</button>
