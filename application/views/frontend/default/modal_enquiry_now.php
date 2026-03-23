@@ -59,35 +59,7 @@
                      <span class="invalid-feedback"></span>
                   </div>
                </div>
-               <div class="col-md-12">
-                 <div class="form-group mb-2">
-                 <label>How did you come to know about us ?<i class="text-dander">*</i></label>
-                 <select class="form-control" name="know_about_us" required>
-                    <option value="">Select Source</option>
-                    <option value="Banner">Banner</option>
-                    <option value="Community Event">Community Event</option>
-                    <option value="Facebook">Facebook</option>
-                    <option value="Field Data">Field Data</option>
-                    <option value="Flyers">Flyers</option>
-                    <option value="Friends">Friends</option>
-                    <option value="Google">Google</option>
-                    <option value="Instagram">Instagram</option>
-                    <option value="No parking Board">No parking Board</option>
-                    <option value="Parent Referral">Parent Referral</option>
-                    <option value="Pole Kiosk">Pole Kiosk</option>
-                    <option value="Poster Ads">Poster Ads</option>
-                    <option value="Previous Student">Previous Student</option>
-                    <option value="Pro Eves">Pro Eves</option>
-                    <option value="School Hoarding">School Hoarding</option>
-                    <option value="Sibling">Sibling</option>
-                    <option value="Staff Child">Staff Child</option>
-                    <option value="Staff Referral">Staff Referral</option>
-                    <option value="Website">Website</option>
-                    <option value="WhatsApp">WhatsApp</option>
-                 </select>
-                 <span class="invalid-feedback"></span>
-                </div>
-              </div>
+               <input type="hidden" name="know_about_us" value="Website">
               <div class="col-md-12">
                 <div class="form-group mb-2">
                   <label>Solve: <?php echo html_escape($captcha_question); ?> = ?<i class="text-dander">*</i></label>
