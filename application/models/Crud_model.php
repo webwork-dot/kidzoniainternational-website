@@ -1040,276 +1040,275 @@ class Crud_model extends CI_Model
     }
 
     public function check_admission_enquiry() {
-    $this->kcis_db = $this->load->database('kcis_db', TRUE);
-    $this->db->trans_start(); // Start a transaction
-        $form_type = $this->input->post('form_type') ?: 'admission_enquiry';
-
-    // --- Start of reCAPTCHA verification logic ---
-    // $recaptcha_response = $this->input->post('g-recaptcha-response');
-
-    // if (empty($recaptcha_response)) {
-    //     $resultpost = [
-    //         "status" => 400,
-    //         "message" => "Please complete the reCAPTCHA before submitting."
-    //     ];
-    //     $this->db->trans_rollback();
-    //     return simple_json_output($resultpost);
-    // }
+        $this->kcis_db = $this->load->database('kcis_db', TRUE);
+        $this->db->trans_start(); // Start a transaction
+            $form_type = $this->input->post('form_type') ?: 'admission_enquiry';
     
-    // $secret_key = $this->config->item('recaptcha_secret_key');
-    // $verification_url = 'https://www.google.com/recaptcha/api/siteverify';
-    // $request_data = http_build_query([
-    //     'secret' => $secret_key,
-    //     'response' => $recaptcha_response
-    // ]);
-
-    // $ch = curl_init($verification_url);
-    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
-    // $response_json = curl_exec($ch);
-    // curl_close($ch);
-
-    // $response_data = json_decode($response_json);
+        // --- Start of reCAPTCHA verification logic ---
+        // $recaptcha_response = $this->input->post('g-recaptcha-response');
     
-    // if (!$response_data->success) {
-    //     $resultpost = [
-    //         "status" => 400,
-    //         "message" => "reCAPTCHA verification failed. Please try again."
-    //     ];
-    //     $this->db->trans_rollback();
-    //     return simple_json_output($resultpost);
-    // }
-    // --- End of reCAPTCHA verification logic ---
-
-    // The rest of your form validation and processing logic follows
-    $this->form_validation->set_rules('class_id', 'Class', 'trim|required');
-    $this->form_validation->set_rules('child_name', 'Child Name', 'trim|required');
-    $this->form_validation->set_rules('parent_name', 'Parent Name', 'trim|required');
-    $this->form_validation->set_rules('know_about_us', 'know about us', 'trim|required');
-    $this->form_validation->set_rules('location', 'Location', 'trim|required');
-    $this->form_validation->set_rules('email', 'Email', 'trim|valid_email', array(
-        'valid_email' => 'Please enter a valid email address.'
-    ));
-    $this->form_validation->set_rules(
-        'phone',
-        'Phone Number',
-        'trim|required|numeric|exact_length[10]',
-        array(
-            'required' => 'The %s field is required.',
-            'numeric' => 'The %s field must contain only numeric characters.',
-            'exact_length' => 'The %s field must be exactly 10 digits.'
-        )
-    );
-
-    if ($form_type === 'admission_enquiry' || $form_type === 'contact_us' || $form_type === 'callback') {
-        $this->form_validation->set_rules('captcha_input', 'Captcha', 'trim|required|integer');
-    }
-      
-    $phone = ($this->input->post('phone'));
-    $check_mobile = $this->kcis_db->query("SELECT id FROM leads WHERE mobile='$phone' LIMIT 1")->num_rows();
-      
-    if ($check_mobile>0) {
-       $resultpost = array(
-            "status" => 400,
-            "message" => "Primary Mobile Already Exist !",
-       );
-    } elseif ($this->form_validation->run() == FALSE) {
-        $errors = array(
-            'class_id'     => form_error('class_id'),
-            'child_name'   => form_error('child_name'),
-            'parent_name'  => form_error('parent_name'),
-            'know_about_us' => form_error('know_about_us'),
-            'email'        => form_error('email'),
-            'phone'        => form_error('phone'),
-            'location'     => form_error('location'),
-            'captcha_input' => form_error('captcha_input'),
-        );
-        $errors_ = array_map('strip_tags', array_filter($errors));
-        $allErrors = implode('<br> ', $errors_);
-
-        $resultpost = array(
-            "status" => 400,
-            "message" => $allErrors,
-            "errors" => $errors,
-        );
-    } elseif (($form_type === 'admission_enquiry' || $form_type === 'contact_us' || $form_type === 'callback') && !verify_math_captcha($this->input->post('captcha_input'))) {
-        $resultpost = array(
-            "status" => 400,
-            "message" => 'Invalid captcha answer. Please try again.',
-            "errors" => array(
-                'captcha_input' => 'Invalid captcha answer. Please try again.'
-            ),
-        );
-    } else {
-        $curr_date = date("Y-m-d H:i:s");
-        $class_id = ($this->input->post('class_id'));
-        $class_name = $this->get_kips_program_name($class_id);
-
-        $ip_address = $this->input->ip_address();
+        // if (empty($recaptcha_response)) {
+        //     $resultpost = [
+        //         "status" => 400,
+        //         "message" => "Please complete the reCAPTCHA before submitting."
+        //     ];
+        //     $this->db->trans_rollback();
+        //     return simple_json_output($resultpost);
+        // }
         
+        // $secret_key = $this->config->item('recaptcha_secret_key');
+        // $verification_url = 'https://www.google.com/recaptcha/api/siteverify';
+        // $request_data = http_build_query([
+        //     'secret' => $secret_key,
+        //     'response' => $recaptcha_response
+        // ]);
+    
+        // $ch = curl_init($verification_url);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $request_data);
+        // $response_json = curl_exec($ch);
+        // curl_close($ch);
+    
+        // $response_data = json_decode($response_json);
+        
+        // if (!$response_data->success) {
+        //     $resultpost = [
+        //         "status" => 400,
+        //         "message" => "reCAPTCHA verification failed. Please try again."
+        //     ];
+        //     $this->db->trans_rollback();
+        //     return simple_json_output($resultpost);
+        // }
+        // --- End of reCAPTCHA verification logic ---
+    
+        // The rest of your form validation and processing logic follows
+        $this->form_validation->set_rules('class_id', 'Class', 'trim|required');
+        $this->form_validation->set_rules('child_name', 'Child Name', 'trim|required');
+        $this->form_validation->set_rules('parent_name', 'Parent Name', 'trim|required');
+        $this->form_validation->set_rules('know_about_us', 'know about us', 'trim|required');
+        $this->form_validation->set_rules('location', 'Location', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'trim|valid_email', array(
+            'valid_email' => 'Please enter a valid email address.'
+        ));
+        $this->form_validation->set_rules(
+            'phone',
+            'Phone Number',
+            'trim|required|numeric|exact_length[10]',
+            array(
+                'required' => 'The %s field is required.',
+                'numeric' => 'The %s field must contain only numeric characters.',
+                'exact_length' => 'The %s field must be exactly 10 digits.'
+            )
+        );
+    
+        if ($form_type === 'admission_enquiry' || $form_type === 'contact_us' || $form_type === 'callback') {
+            $this->form_validation->set_rules('captcha_input', 'Captcha', 'trim|required|integer');
+        }
+          
         $phone = ($this->input->post('phone'));
-        
-        $data = array();
-        $data['class_id']    = $class_id;
-        $data['class']       = $class_name;
-        $data['parent_name'] = ($this->input->post('parent_name'));
-        $data['child_name']  = ($this->input->post('child_name'));
-        $data['email']       = ($this->input->post('email'));
-        $data['phone']       = $phone;
-        $data['phone_country_code'] = clean_and_escape($this->input->post('phone_country_code')) ?: '';
-        $data['location']    = ($this->input->post('location'));
-        $data['know_about_us']  = ($this->input->post('know_about_us'));
-        $data['ip_address']  = $ip_address;
-        $data['created_at']  = $curr_date;
-        $data['form_type']   = $form_type;
-        
-        // Capture referer - use stored external referer from session
-        // Only use HTTP_REFERER if session doesn't have one (first page load)
-        $referer = $this->session->userdata('referer_url');
-        if (empty($referer) || $referer === 'Direct/Internal Navigation') {
-            $http_referer = $this->input->server('HTTP_REFERER');
-            // Only use HTTP_REFERER if it's external
-            if (!empty($http_referer)) {
-                $current_domain = parse_url(base_url(), PHP_URL_HOST);
-                $parsed_referer = parse_url($http_referer);
-                $referer_host = isset($parsed_referer['host']) ? $parsed_referer['host'] : '';
-                if ($referer_host !== $current_domain) {
-                    $referer = $http_referer;
+        $check_mobile = $this->kcis_db->query("SELECT id FROM leads WHERE mobile='$phone' LIMIT 1")->num_rows();
+          
+        if ($check_mobile>0) {
+           $resultpost = array(
+                "status" => 400,
+                "message" => "Primary Mobile Already Exist !",
+           );
+        } elseif ($this->form_validation->run() == FALSE) {
+            $errors = array(
+                'class_id'     => form_error('class_id'),
+                'child_name'   => form_error('child_name'),
+                'parent_name'  => form_error('parent_name'),
+                'know_about_us' => form_error('know_about_us'),
+                'email'        => form_error('email'),
+                'phone'        => form_error('phone'),
+                'location'     => form_error('location'),
+                'captcha_input' => form_error('captcha_input'),
+            );
+            $errors_ = array_map('strip_tags', array_filter($errors));
+            $allErrors = implode('<br> ', $errors_);
+    
+            $resultpost = array(
+                "status" => 400,
+                "message" => $allErrors,
+                "errors" => $errors,
+            );
+        } elseif (($form_type === 'admission_enquiry' || $form_type === 'contact_us' || $form_type === 'callback') && !verify_math_captcha($this->input->post('captcha_input'))) {
+            $resultpost = array(
+                "status" => 400,
+                "message" => 'Invalid captcha answer. Please try again.',
+                "errors" => array(
+                    'captcha_input' => 'Invalid captcha answer. Please try again.'
+                ),
+            );
+        } else {
+            $curr_date = date("Y-m-d H:i:s");
+            $class_id = ($this->input->post('class_id'));
+            $class_name = $this->get_kips_program_name($class_id);
+    
+            $ip_address = $this->input->ip_address();
+            
+            $phone = ($this->input->post('phone'));
+            
+            $data = array();
+            $data['class_id']    = $class_id;
+            $data['class']       = $class_name;
+            $data['parent_name'] = ($this->input->post('parent_name'));
+            $data['child_name']  = ($this->input->post('child_name'));
+            $data['email']       = ($this->input->post('email'));
+            $data['phone']       = $phone;
+            $data['phone_country_code'] = clean_and_escape($this->input->post('phone_country_code')) ?: '';
+            $data['location']    = ($this->input->post('location'));
+            $data['know_about_us']  = ($this->input->post('know_about_us'));
+            $data['ip_address']  = $ip_address;
+            $data['created_at']  = $curr_date;
+            $data['form_type']   = $form_type;
+            
+            // Capture referer - use stored external referer from session
+            // Only use HTTP_REFERER if session doesn't have one (first page load)
+            $referer = $this->session->userdata('referer_url');
+            if (empty($referer) || $referer === 'Direct/Internal Navigation') {
+                $http_referer = $this->input->server('HTTP_REFERER');
+                // Only use HTTP_REFERER if it's external
+                if (!empty($http_referer)) {
+                    $current_domain = parse_url(base_url(), PHP_URL_HOST);
+                    $parsed_referer = parse_url($http_referer);
+                    $referer_host = isset($parsed_referer['host']) ? $parsed_referer['host'] : '';
+                    if ($referer_host !== $current_domain) {
+                        $referer = $http_referer;
+                    } else {
+                        $referer = 'Direct/Internal Navigation';
+                    }
                 } else {
                     $referer = 'Direct/Internal Navigation';
                 }
+            }
+    
+            $data['utm_source']   = $this->session->userdata('utm_source');
+            $data['utm_medium']   = $this->session->userdata('utm_medium');
+            $data['utm_id']       = $this->session->userdata('utm_id');
+            $data['utm_campaign'] = $this->session->userdata('utm_campaign');
+            $data['utm_term']     = $this->session->userdata('utm_term');
+            $data['utm_content']  = $this->session->userdata('utm_content');
+            $data['referrer_url'] = $referer ? html_escape($referer) : 'Direct/Internal Navigation';
+        
+            if ($this->db->insert('admission_enquiry', $data)) {
+                $leads = array();
+                $leads = array(
+                    "first_name"       => ($this->input->post('parent_name')),
+                    "child_first_name" => ($this->input->post('child_name')),
+                    "mobile"           => $phone,
+                    "mobile_country_code" => clean_and_escape($this->input->post('phone_country_code')) ?: '',
+                    "email"            => ($this->input->post('email')),
+                    "how_know"         => ($this->input->post('know_about_us')),
+                    "program_id"       => $class_id,
+                    "location"         => ($this->input->post('location')),
+                    "web_source" => 'kips',
+                    
+                    "utm_source"   => $this->session->userdata('utm_source'),
+                    "utm_medium"   => $this->session->userdata('utm_medium'),
+                    "utm_id"       => $this->session->userdata('utm_id'),
+                    "utm_campaign" => $this->session->userdata('utm_campaign'),
+                    "utm_term"     => $this->session->userdata('utm_term'),
+                    "utm_content"  => $this->session->userdata('utm_content'),
+                    
+                    "referrer_url"     => $referer ? html_escape($referer) : 'Direct/Internal Navigation',
+                    "site_name"        => 'Kidzonia International',
+                    "is_website"       => 2,
+                    "campaign_id"      => 16,
+                    "date_of_lead"     => $curr_date,
+                    "added_date"       => $curr_date
+                );
+    
+                if ($this->kcis_db->insert('leads', $leads)) {
+                    $insert_id = $this->kcis_db->insert_id();
+                    $leads_log = array();
+                    $leads_log = array(
+                        "lead_id"    => $insert_id,
+                        "tag"        => 'add',
+                        "added_date" => $curr_date
+                    );
+                    $this->kcis_db->insert('leads_log', $leads_log);
+                }
+    
+                // Send notifications (email, SMS, WhatsApp)
+                $parent_email = ($this->input->post('email'));
+                $parent_name = ($this->input->post('parent_name'));
+                
+                // Send email
+                try {
+                    $this->send_admission_enquiry_email($parent_email, $parent_name);
+                } catch (Exception $e) {
+                    log_message('error', 'Failed to send admission enquiry email: ' . $e->getMessage());
+                }
+    
+                // Send SMS
+                try {
+                    $this->send_admission_enquiry_sms($phone);
+                } catch (Exception $e) {
+                    log_message('error', 'Failed to send admission enquiry SMS: ' . $e->getMessage());
+                }
+    
+                // Send WhatsApp
+                try {
+                    $this->send_admission_enquiry_whatsapp($phone);
+                } catch (Exception $e) {
+                    log_message('error', 'Failed to send admission enquiry WhatsApp: ' . $e->getMessage());
+                }
+    
+                // Send tracking notification email with UTM and referer information
+                try {
+                    $tracking_data = array(
+                        'parent_name' => $this->input->post('parent_name'),
+                        'email' => $this->input->post('email'),
+                        'phone' => $phone,
+                        'child_name' => $this->input->post('child_name'),
+                        'location' => $this->input->post('location'),
+                        'class_name' => $class_name,
+                        'know_about_us' => $this->input->post('know_about_us'),
+                        'utm_source' => $this->session->userdata('utm_source'),
+                        'utm_medium' => $this->session->userdata('utm_medium'),
+                        'utm_campaign' => $this->session->userdata('utm_campaign'),
+                        'utm_term' => $this->session->userdata('utm_term'),
+                        'utm_content' => $this->session->userdata('utm_content'),
+                        'utm_id' => $this->session->userdata('utm_id'),
+                        'referrer_url' => $referer,
+                        'ip_address' => $ip_address,
+                        'submission_time' => $curr_date
+                    );
+                    $this->send_tracking_notification_email($tracking_data, 'Admission Enquiry');
+                } catch (Exception $e) {
+                    log_message('error', 'Failed to send tracking notification email: ' . $e->getMessage());
+                }
+    
+                $url = base_url('thank-you');
+                $resultpost = array(
+                    "status" => 200,
+                    "message" => 'Your Enquiry has been successfully submitted.',
+                    "url" => $url,
+                );
+                if ($form_type === 'download_brochure') {
+                    $resultpost['download_url'] = base_url('download_brochure_url');
+                }
             } else {
-                $referer = 'Direct/Internal Navigation';
+                $resultpost = array(
+                    "status" => 400,
+                    "message" => 'There is some issue while adding',
+                );
             }
         }
-
-        $data['utm_source']   = $this->session->userdata('utm_source');
-        $data['utm_medium']   = $this->session->userdata('utm_medium');
-        $data['utm_id']       = $this->session->userdata('utm_id');
-        $data['utm_campaign'] = $this->session->userdata('utm_campaign');
-        $data['utm_term']     = $this->session->userdata('utm_term');
-        $data['utm_content']  = $this->session->userdata('utm_content');
-        $data['referrer_url'] = $referer ? html_escape($referer) : 'Direct/Internal Navigation';
     
-        if ($this->db->insert('admission_enquiry', $data)) {
-            $leads = array();
-            $leads = array(
-                "first_name"       => ($this->input->post('parent_name')),
-                "child_first_name" => ($this->input->post('child_name')),
-                "mobile"           => $phone,
-                "mobile_country_code" => clean_and_escape($this->input->post('phone_country_code')) ?: '',
-                "email"            => ($this->input->post('email')),
-                "how_know"         => ($this->input->post('know_about_us')),
-                "program_id"       => $class_id,
-                "location"         => ($this->input->post('location')),
-                "web_source" => 'kips',
-                
-                "utm_source"   => $this->session->userdata('utm_source'),
-                "utm_medium"   => $this->session->userdata('utm_medium'),
-                "utm_id"       => $this->session->userdata('utm_id'),
-                "utm_campaign" => $this->session->userdata('utm_campaign'),
-                "utm_term"     => $this->session->userdata('utm_term'),
-                "utm_content"  => $this->session->userdata('utm_content'),
-                
-                "referrer_url"     => $referer ? html_escape($referer) : 'Direct/Internal Navigation',
-                "site_name"        => 'Kidzonia International',
-                "is_website"       => 2,
-                "campaign_id"      => 16,
-                "date_of_lead"     => $curr_date,
-                "added_date"       => $curr_date
-            );
-
-            if ($this->kcis_db->insert('leads', $leads)) {
-                $insert_id = $this->kcis_db->insert_id();
-                $leads_log = array();
-                $leads_log = array(
-                    "lead_id"    => $insert_id,
-                    "tag"        => 'add',
-                    "added_date" => $curr_date
-                );
-                $this->kcis_db->insert('leads_log', $leads_log);
-            }
-
-            // Send notifications (email, SMS, WhatsApp)
-            $parent_email = ($this->input->post('email'));
-            $parent_name = ($this->input->post('parent_name'));
-            
-            // Send email
-            try {
-                $this->send_admission_enquiry_email($parent_email, $parent_name);
-            } catch (Exception $e) {
-                log_message('error', 'Failed to send admission enquiry email: ' . $e->getMessage());
-            }
-
-            // Send SMS
-            try {
-                $this->send_admission_enquiry_sms($phone);
-            } catch (Exception $e) {
-                log_message('error', 'Failed to send admission enquiry SMS: ' . $e->getMessage());
-            }
-
-            // Send WhatsApp
-            try {
-                $this->send_admission_enquiry_whatsapp($phone);
-            } catch (Exception $e) {
-                log_message('error', 'Failed to send admission enquiry WhatsApp: ' . $e->getMessage());
-            }
-
-            // Send tracking notification email with UTM and referer information
-            try {
-                $tracking_data = array(
-                    'parent_name' => $this->input->post('parent_name'),
-                    'email' => $this->input->post('email'),
-                    'phone' => $phone,
-                    'child_name' => $this->input->post('child_name'),
-                    'location' => $this->input->post('location'),
-                    'class_name' => $class_name,
-                    'know_about_us' => $this->input->post('know_about_us'),
-                    'utm_source' => $this->session->userdata('utm_source'),
-                    'utm_medium' => $this->session->userdata('utm_medium'),
-                    'utm_campaign' => $this->session->userdata('utm_campaign'),
-                    'utm_term' => $this->session->userdata('utm_term'),
-                    'utm_content' => $this->session->userdata('utm_content'),
-                    'utm_id' => $this->session->userdata('utm_id'),
-                    'referrer_url' => $referer,
-                    'ip_address' => $ip_address,
-                    'submission_time' => $curr_date
-                );
-                $this->send_tracking_notification_email($tracking_data, 'Admission Enquiry');
-            } catch (Exception $e) {
-                log_message('error', 'Failed to send tracking notification email: ' . $e->getMessage());
-            }
-
-            $url = base_url('thank-you');
-            $resultpost = array(
-                "status" => 200,
-                "message" => 'Your Enquiry has been successfully submitted.',
-                "url" => $url,
-            );
-            if ($form_type === 'download_brochure') {
-                $resultpost['download_url'] = base_url('download_brochure_url');
-            }
-        } else {
+        if ($this->db->trans_status() === FALSE) {
             $resultpost = array(
                 "status" => 400,
                 "message" => 'There is some issue while adding',
             );
+            $this->db->trans_rollback();
+        } else {
+            $this->db->trans_commit();
         }
+    
+        return simple_json_output($resultpost);
     }
-
-    if ($this->db->trans_status() === FALSE) {
-        $resultpost = array(
-            "status" => 400,
-            "message" => 'There is some issue while adding',
-        );
-        $this->db->trans_rollback();
-    } else {
-        $this->db->trans_commit();
-    }
-
-    return simple_json_output($resultpost);
-}
-
     public function check_admission_enquiries()   {
         $this->kcis_db = $this->load->database('kcis_db', TRUE);
         $this->db->trans_start(); // Start a transaction

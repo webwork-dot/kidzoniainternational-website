@@ -1709,6 +1709,17 @@ class Admin extends CI_Controller
             $base_url = rtrim($this->config->item('base_url'), '/');
             $base_url = str_replace('/master-panel', '', $base_url);
             
+            // Ensure base URL includes www and uses https
+            if (strpos($base_url, 'kidzoniainternational.in') !== false) {
+                // Force https
+                $base_url = str_replace('http://', 'https://', $base_url);
+                // Ensure www is present
+                if (strpos($base_url, 'www.') === false) {
+                    $base_url = str_replace('https://kidzoniainternational.in', 'https://www.kidzoniainternational.in', $base_url);
+                    $base_url = str_replace('http://kidzoniainternational.in', 'https://www.kidzoniainternational.in', $base_url);
+                }
+            }
+            
             // Start XML
             $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
             $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . "\n";
@@ -1718,8 +1729,20 @@ class Admin extends CI_Controller
             
             $current_date = date('Y-m-d\TH:i:s+00:00');
             
+            // Get redirect rules from .htaccess and server
+            $redirect_map = $this->get_all_redirects($base_url);
+            $excluded_urls = array_keys($redirect_map); // URLs that redirect (should be excluded)
+            $redirect_destinations = array_unique(array_values($redirect_map)); // Destination URLs to include
+            
+            // Collect all URLs first
+            $all_urls = [];
+            
             // Homepage
-            $xml .= $this->generate_url_entry($base_url . '/', $current_date, 'always', '1.00');
+            $all_urls[] = [
+                'url' => $base_url . '/',
+                'changefreq' => 'always',
+                'priority' => '1.00'
+            ];
             
             // Get active blogs - URL format: /blog-details/(slug)
             try {
@@ -1736,12 +1759,11 @@ class Admin extends CI_Controller
                             $blog_slug = !empty($blog->slug) ? $blog->slug : slugify($blog->name);
                             
                             if (!empty($blog->name) && !empty($blog_slug)) {
-                                $xml .= $this->generate_url_entry(
-                                    $base_url . '/blog-details/' . $blog_slug,
-                                    $current_date,
-                                    'always',
-                                    '0.80'
-                                );
+                                $all_urls[] = [
+                                    'url' => $base_url . '/blog-details/' . $blog_slug,
+                                    'changefreq' => 'always',
+                                    'priority' => '0.80'
+                                ];
                             }
                         }
                     }
@@ -1751,6 +1773,25 @@ class Admin extends CI_Controller
             }
             
             // Get all events - URL format: /event/(slug)/(id)
+            // Exclude events that redirect to not-found page
+            $excluded_events = [
+                'tete-a-tete-parent-teacher-meeting' => 34,
+                'first-day-of-school' => 33,
+                'emoticon-hub' => 35,
+                'van-mahotsav' => 36,
+                'guru-purnima' => 37,
+                'back-to-school' => 32,
+                'sree-rama-navami' => 29,
+                'mother-child-fitness-challenge' => 31,
+                'good-friday' => 30,
+                'eid-mubarak' => 28,
+                'happy-ugadi' => 27,
+                'happy-holi' => 26,
+                'children-s-day' => 20,
+                'new-year-2025' => 22,
+                'happy-maha-shivaratri' => 25,
+            ];
+            
             try {
                 if ($this->db->table_exists('event')) {
                     $this->db->order_by('id', 'ASC');
@@ -1762,13 +1803,21 @@ class Admin extends CI_Controller
                             $event_slug = !empty($event->slug) ? $event->slug : (!empty($event_name) ? slugify($event_name) : '');
                             $event_id = !empty($event->id) ? $event->id : '';
                             
-                            if (!empty($event_id) && !empty($event_slug)) {
-                                $xml .= $this->generate_url_entry(
-                                    $base_url . '/event/' . $event_slug . '/' . $event_id,
-                                    $current_date,
-                                    'always',
-                                    '0.80'
-                                );
+                            // Skip events that redirect to not-found
+                            $should_exclude = false;
+                            foreach ($excluded_events as $excluded_slug => $excluded_id) {
+                                if ($event_slug === $excluded_slug && $event_id == $excluded_id) {
+                                    $should_exclude = true;
+                                    break;
+                                }
+                            }
+                            
+                            if (!empty($event_id) && !empty($event_slug) && !$should_exclude) {
+                                $all_urls[] = [
+                                    'url' => $base_url . '/event/' . $event_slug . '/' . $event_id,
+                                    'changefreq' => 'always',
+                                    'priority' => '0.80'
+                                ];
                             }
                         }
                     }
@@ -1777,22 +1826,9 @@ class Admin extends CI_Controller
                 log_message('error', 'Sitemap Generation Error (Events): ' . $e->getMessage());
             }
             
-            // Get active branches - URL format: /preschool-in-[slug]-hyderabad for migrated locations, /explore-centers/(city)/(slug) for others
+            // Get active branches - URL format: /explore-centers/(city)/(slug)
             try {
                 if ($this->db->table_exists('branches')) {
-                    // Locations that have been migrated to new URL format
-                    $migrated_locations = [
-                        'serilingampally',
-                        'nallagandla',
-                        'nallagandla-navodaya',
-                        'suraksha-enclave-ameenpur',
-                        'kphb-kukatpally',
-                        'tellapur',
-                        'lingampally',
-                        'ramachandrapuram',
-                        'chanda-nagar'
-                    ];
-                    
                     $this->db->group_start();
                     $this->db->where('status', '1');
                     $this->db->or_where('status', 1);
@@ -1807,21 +1843,11 @@ class Admin extends CI_Controller
                             $branch_city = !empty($branch->city) ? strtolower($branch->city) : 'hyderabad';
                             
                             if (!empty($branch->name) && !empty($branch_slug)) {
-                                // Check if this location has been migrated to new URL format
-                                if ($branch_city === 'hyderabad' && in_array($branch_slug, $migrated_locations)) {
-                                    // Use new URL format: /preschool-in-[slug]-hyderabad
-                                    $url = $base_url . '/preschool-in-' . $branch_slug . '-hyderabad';
-                                } else {
-                                    // Use old URL format: /explore-centers/(city)/(slug)
-                                    $url = $base_url . '/explore-centers/' . $branch_city . '/' . $branch_slug;
-                                }
-                                
-                                $xml .= $this->generate_url_entry(
-                                    $url,
-                                    $current_date,
-                                    'always',
-                                    '0.80'
-                                );
+                                $all_urls[] = [
+                                    'url' => $base_url . '/explore-centers/' . $branch_city . '/' . $branch_slug,
+                                    'changefreq' => 'always',
+                                    'priority' => '0.80'
+                                ];
                             }
                         }
                     }
@@ -1854,14 +1880,103 @@ class Admin extends CI_Controller
                 'explore-centers/pune' => '0.80',
                 'contact-us' => '0.80',
                 'privacy-policy' => '0.80',
+                // Location pages with preschool-in- prefix
+                'preschool-in-tellapur-hyderabad' => '0.80',
+                'preschool-in-lingampally-hyderabad' => '0.80',
+                'preschool-in-ramachandrapuram-hyderabad' => '0.80',
+                'preschool-in-chanda-nagar-hyderabad' => '0.80',
+                'preschool-in-pragathi-nagar-hyderabad' => '0.80',
+                'preschool-in-hyderabad' => '0.80',
+                // Explore centers location pages
+                'explore-centers/hyderabad/pragathi-nagar' => '0.80',
+                'preschool-in-serilingampally-hyderabad' => '0.80',
+                'preschool-in-nallagandla-hyderabad' => '0.80',
+                'preschool-in-nallagandla-navodaya-hyderabad' => '0.80',
+                'preschool-in-suraksha-enclave-ameenpur-hyderabad' => '0.80',
+                'preschool-in-kphb-kukatpally-hyderabad' => '0.80',
             ];
             
             foreach ($static_pages as $page => $priority) {
+                $all_urls[] = [
+                    'url' => $base_url . '/' . $page,
+                    'changefreq' => 'always',
+                    'priority' => $priority
+                ];
+            }
+            
+            // Add redirect destination URLs to sitemap (these are the final URLs after redirects)
+            foreach ($redirect_destinations as $dest_url) {
+                // Only add if not already in our URL list
+                $already_exists = false;
+                foreach ($all_urls as $existing_url) {
+                    if ($existing_url['url'] === $dest_url) {
+                        $already_exists = true;
+                        break;
+                    }
+                }
+                if (!$already_exists) {
+                    $all_urls[] = [
+                        'url' => $dest_url,
+                        'changefreq' => 'always',
+                        'priority' => '0.80'
+                    ];
+                }
+            }
+            
+            // Build final URL list - exclude redirecting URLs, include all others
+            $final_urls = [];
+            $debug_missing_urls = [
+                $base_url . '/preschool-in-pragathi-nagar-hyderabad',
+                $base_url . '/preschool-in-hyderabad',
+                $base_url . '/explore-centers/hyderabad/pragathi-nagar'
+            ];
+            
+            foreach ($all_urls as $url_data) {
+                $url = $url_data['url'];
+                
+                // Skip if this URL redirects (exclude redirecting URLs)
+                if (in_array($url, $excluded_urls)) {
+                    // Debug: Log if our target URLs are being excluded
+                    if (in_array($url, $debug_missing_urls)) {
+                        log_message('error', 'Sitemap: URL excluded as redirect: ' . $url);
+                    }
+                    continue;
+                }
+                
+                // Use URL as key to avoid duplicates
+                if (!isset($final_urls[$url])) {
+                    $final_urls[$url] = $url_data;
+                }
+            }
+            
+            // Debug: Check if our target URLs are in final_urls
+            foreach ($debug_missing_urls as $debug_url) {
+                if (!isset($final_urls[$debug_url])) {
+                    log_message('error', 'Sitemap: Missing URL not found in final_urls: ' . $debug_url);
+                    // Check if it was in all_urls
+                    $found_in_all = false;
+                    foreach ($all_urls as $url_data) {
+                        if ($url_data['url'] === $debug_url) {
+                            $found_in_all = true;
+                            log_message('error', 'Sitemap: URL found in all_urls but not in final_urls: ' . $debug_url);
+                            break;
+                        }
+                    }
+                    if (!$found_in_all) {
+                        log_message('error', 'Sitemap: URL not found in all_urls: ' . $debug_url);
+                    }
+                } else {
+                    log_message('info', 'Sitemap: URL correctly included: ' . $debug_url);
+                }
+            }
+            
+            // Generate XML for final URLs
+            foreach ($final_urls as $url_data) {
                 $xml .= $this->generate_url_entry(
-                    $base_url . '/' . $page,
+                    $url_data['url'],
                     $current_date,
-                    'always',
-                    $priority
+                    $url_data['changefreq'],
+                    $url_data['priority']
                 );
             }
             
@@ -2016,7 +2131,202 @@ class Admin extends CI_Controller
         }
     }
     
+    /**
+     * Get all redirects from .htaccess and server-level redirects
+     * Returns array: [source_url => destination_url]
+     */
+    private function get_all_redirects($base_url) {
+        $redirects = [];
+        
+        // 1. Parse .htaccess for redirect rules
+        $htaccess_redirects = $this->parse_htaccess_redirects($base_url);
+        $redirects = array_merge($redirects, $htaccess_redirects);
+        
+        // 2. Optionally check for server-level redirects via HTTP
+        // This catches redirects not in .htaccess (e.g., from server config, PHP redirects, etc.)
+        // Note: This is slower, so we only check if enabled
+        $check_http_redirects = true; // Set to false to skip HTTP checks (faster generation)
+        
+        if ($check_http_redirects && function_exists('curl_init')) {
+            // Check HTTP redirects for URLs that might redirect but aren't in .htaccess
+            // We'll check a sample of URLs that we generate to catch any new redirects
+            $sample_urls_to_check = [
+                // Add any URLs here that you suspect might redirect but aren't in .htaccess
+                // For example, if you add new redirects on the server, add them here temporarily
+            ];
+            
+            foreach ($sample_urls_to_check as $url_to_check) {
+                $full_url = $this->normalize_url($base_url . '/' . $url_to_check);
+                
+                // Skip if already in redirect map
+                if (isset($redirects[$full_url])) {
+                    continue;
+                }
+                
+                try {
+                    $result = $this->check_http_redirect($full_url);
+                    if ($result['is_redirect'] && $result['final_url'] !== $result['original_url']) {
+                        $redirects[$result['original_url']] = $result['final_url'];
+                        log_message('info', 'Detected HTTP redirect: ' . $result['original_url'] . ' -> ' . $result['final_url']);
+                    }
+                } catch (Exception $e) {
+                    // Skip if check fails
+                    log_message('debug', 'HTTP redirect check failed for ' . $full_url . ': ' . $e->getMessage());
+                }
+            }
+        }
+        
+        log_message('info', 'Found ' . count($redirects) . ' total redirects (' . count($htaccess_redirects) . ' from .htaccess)');
+        
+        return $redirects;
+    }
+    
+    /**
+     * Parse .htaccess file to get redirect rules
+     * Returns array: [source_url => destination_url]
+     */
+    private function parse_htaccess_redirects($base_url) {
+        $redirects = [];
+        $htaccess_path = dirname(FCPATH) . '/.htaccess';
+        
+        if (!file_exists($htaccess_path)) {
+            return $redirects;
+        }
+        
+        $content = file_get_contents($htaccess_path);
+        $lines = explode("\n", $content);
+        
+        foreach ($lines as $line) {
+            $line = trim($line);
+            
+            // Skip comments and empty lines
+            if (empty($line) || strpos($line, '#') === 0) {
+                continue;
+            }
+            
+            // Match RewriteRule patterns like: RewriteRule ^explore-centers/hyderabad/serilingampally$ /preschool-in-serilingampally-hyderabad [R=301,L]
+            // Pattern: RewriteRule ^source$ /destination [R=301,L]
+            if (preg_match('/RewriteRule\s+\^?([^\$\s]+)\$?\s+\/?([^\s\[\]]+)\s+\[R=301/i', $line, $match)) {
+                $source = trim($match[1], '^$');
+                $destination = trim($match[2], '/');
+                
+                // Skip if destination is a full URL (external redirect) or special patterns
+                if (strpos($destination, 'http') === 0 || strpos($destination, '%') !== false) {
+                    continue;
+                }
+                
+                // Convert to full URLs
+                $source_url = rtrim($base_url, '/') . '/' . ltrim($source, '/');
+                $dest_url = rtrim($base_url, '/') . '/' . ltrim($destination, '/');
+                
+                // Normalize URLs (remove double slashes, ensure www)
+                $source_url = $this->normalize_url($source_url);
+                $dest_url = $this->normalize_url($dest_url);
+                
+                $redirects[$source_url] = $dest_url;
+            }
+        }
+        
+        return $redirects;
+    }
+    
+    /**
+     * Normalize URL - ensure www and https
+     */
+    private function normalize_url($url) {
+        if (strpos($url, 'kidzoniainternational.in') !== false) {
+            // Force https
+            $url = str_replace('http://', 'https://', $url);
+            // Ensure www is present
+            if (strpos($url, 'www.') === false) {
+                $url = str_replace('https://kidzoniainternational.in', 'https://www.kidzoniainternational.in', $url);
+            }
+        }
+        // Remove double slashes (except after http:// or https://)
+        $url = preg_replace('#([^:])//+#', '$1/', $url);
+        return $url;
+    }
+    
+    /**
+     * Check if a URL redirects via HTTP (for server-level redirects not in .htaccess)
+     * This is slower, so use sparingly
+     */
+    private function check_http_redirect($url, $max_redirects = 5) {
+        $url = $this->normalize_url($url);
+        $original_url = $url;
+        $redirect_count = 0;
+        
+        // Use cURL to check redirects
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_NOBODY, true); // HEAD request only
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false); // Don't follow automatically
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 3); // 3 second timeout
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (compatible; SitemapGenerator/1.0)');
+        
+        while ($redirect_count < $max_redirects) {
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $redirect_url = curl_getinfo($ch, CURLINFO_REDIRECT_URL);
+            
+            // Check if it's a redirect (301, 302, 303, 307, 308)
+            if (in_array($http_code, [301, 302, 303, 307, 308]) && !empty($redirect_url)) {
+                $redirect_count++;
+                
+                // Handle relative redirects
+                if (strpos($redirect_url, 'http') !== 0) {
+                    $parsed = parse_url($url);
+                    $base = $parsed['scheme'] . '://' . $parsed['host'];
+                    if (isset($parsed['port'])) {
+                        $base .= ':' . $parsed['port'];
+                    }
+                    if (strpos($redirect_url, '/') === 0) {
+                        $redirect_url = $base . $redirect_url;
+                    } else {
+                        $redirect_url = $base . '/' . $redirect_url;
+                    }
+                }
+                
+                $url = $this->normalize_url($redirect_url);
+            } else {
+                // Not a redirect, return current URL
+                break;
+            }
+        }
+        
+        curl_close($ch);
+        
+        if ($redirect_count > 0 && $url !== $original_url) {
+            return [
+                'is_redirect' => true,
+                'final_url' => $url,
+                'original_url' => $original_url
+            ];
+        }
+        
+        return [
+            'is_redirect' => false,
+            'final_url' => $url,
+            'original_url' => $original_url
+        ];
+    }
+    
     private function generate_url_entry($url, $lastmod, $changefreq, $priority) {
+        // Ensure URL has www and https for kidzoniainternational.in
+        if (strpos($url, 'kidzoniainternational.in') !== false) {
+            // Force https
+            $url = str_replace('http://', 'https://', $url);
+            // Ensure www is present
+            if (strpos($url, 'www.') === false) {
+                $url = str_replace('https://kidzoniainternational.in', 'https://www.kidzoniainternational.in', $url);
+            }
+        }
+        
         $entry = "<url>\n";
         $entry .= "  <loc>" . htmlspecialchars($url, ENT_XML1, 'UTF-8') . "</loc>\n";
         $entry .= "  <lastmod>" . $lastmod . "</lastmod>\n";
