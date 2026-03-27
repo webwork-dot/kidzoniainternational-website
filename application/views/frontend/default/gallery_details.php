@@ -1766,8 +1766,7 @@ font-size: 4rem;
         {
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          "mainEntity": [
-            <?php 
+          "mainEntity": <?php 
             $schema_faqs = [];
             foreach ($faqs as $faq) {
                 $schema_faqs[] = [
@@ -1781,7 +1780,6 @@ font-size: 4rem;
             }
             echo json_encode($schema_faqs, JSON_UNESCAPED_SLASHES);
             ?>
-          ]
         }
         </script>
         <?php endif; ?>

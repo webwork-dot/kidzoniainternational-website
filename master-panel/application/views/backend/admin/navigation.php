@@ -14,19 +14,7 @@
             </a>
         </li>
 
-        <li class="nav-item <?php if($page_name == 'seo_curriculums' || $page_name == 'seo_curriculums_add' || $page_name == 'seo_curriculums_edit') echo 'active'; ?>">
-            <a class="d-flex align-items-center " href="<?php echo site_url('admin/seo-curriculums') ?>">
-                <i data-feather='list'></i>
-                <span class="menu-title text-truncate fw-bolder" data-i18n="blogs">SEO Curriculums</span>
-            </a>
-        </li>
 
-        <li class="nav-item <?php if($page_name == 'seo_content' || $page_name == 'seo_content_add' || $page_name == 'seo_content_edit') echo 'active'; ?>">
-            <a class="d-flex align-items-center " href="<?php echo site_url('admin/seo-content') ?>">
-                <i data-feather='info'></i>
-                <span class="menu-title text-truncate fw-bolder" data-i18n="blogs">SEO Content</span>
-            </a>
-        </li>
        
         <div class="nav_head px-2 pt-2">
             <div>CMS</div>
