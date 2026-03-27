@@ -5891,6 +5891,7 @@ class Crud_model extends CI_Model
         $data['curriculum_id'] = $this->input->post('curriculum_id');
         $data['meta_title'] = $this->input->post('meta_title');
         $data['meta_description'] = $this->input->post('meta_description');
+        $data['meta_keywords'] = $this->input->post('meta_keywords');
         $data['h1_title'] = $this->input->post('h1_title');
         $data['why_choose_us'] = $this->input->post('why_choose_us');
 
@@ -5926,6 +5927,7 @@ class Crud_model extends CI_Model
         $data['curriculum_id'] = $this->input->post('curriculum_id');
         $data['meta_title'] = $this->input->post('meta_title');
         $data['meta_description'] = $this->input->post('meta_description');
+        $data['meta_keywords'] = $this->input->post('meta_keywords');
         $data['h1_title'] = $this->input->post('h1_title');
         $data['why_choose_us'] = $this->input->post('why_choose_us');
 

@@ -550,6 +550,7 @@ and enriching environment where young minds thrive.";
             if ($dynamic_seo) {
                 if (!empty($dynamic_seo['meta_title'])) $page_data['page_title'] = $dynamic_seo['meta_title'];
                 if (!empty($dynamic_seo['meta_description'])) $page_data['meta_description'] = $dynamic_seo['meta_description'];
+                if (!empty($dynamic_seo['meta_keywords'])) $page_data['meta_keyword'] = $dynamic_seo['meta_keywords'];
                 if (!empty($dynamic_seo['h1_title'])) $page_data['h1_title'] = $dynamic_seo['h1_title'];
                 $page_data['why_choose_us'] = $dynamic_seo['why_choose_us'];
                 $page_data['faqs'] = json_decode($dynamic_seo['faqs'], true);

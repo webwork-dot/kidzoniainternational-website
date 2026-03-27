@@ -36,6 +36,11 @@
           </div>
 
           <div class="col-12 mb-1">
+            <label class="form-label">Meta Keywords</label>
+            <textarea class="form-control" name="meta_keywords" rows="2" placeholder="school, preschool, best preschool..."></textarea>
+          </div>
+
+          <div class="col-12 mb-1">
             <label class="form-label">H1 Title</label>
             <input type="text" class="form-control" name="h1_title" placeholder="Best Preschool in...">
           </div>
