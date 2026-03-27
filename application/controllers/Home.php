@@ -90,14 +90,14 @@ class Home extends CI_Controller
         }
 
         // Regex to extract curriculum, branch slug, and city
-        // Pattern: [curriculum]-in-[branch_slug]-in-[city] OR [curriculum]-in-[branch_slug]-[city]
-        if (preg_match('/^([a-z-]+)-in-([a-z-]+)-in-(hyderabad|mumbai|pune)$/', $slug, $matches)) {
+        // Pattern: [curriculum]-in-[branch_slug]-[city] OR [curriculum]-[city]
+        if (preg_match('/^([a-z-]+)-in-([a-z-]+)-(hyderabad|mumbai|pune)$/', $slug, $matches)) {
             if (in_array($matches[1], $curriculum_list)) {
                 $curriculum     = $matches[1];
                 $branch_slug    = $matches[2];
                 $city           = $matches[3];
             }
-        } elseif (preg_match('/^([a-z-]+)-in-(hyderabad|mumbai|pune)$/', $slug, $matches)) {
+        } elseif (preg_match('/^([a-z-]+)-(hyderabad|mumbai|pune)$/', $slug, $matches)) {
             if (in_array($matches[1], $curriculum_list)) {
                 $curriculum     = $matches[1];
                 $branch_slug    = '';
@@ -1145,7 +1145,7 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
         $page_data['page_title']        = "Best Preschool in Hyderabad | International Nursery & DayCare";
         $page_data['meta_description']  = "Kidzonia International is a leading Preschool and DayCare in Hyderabad. We offer a safe, Montessori-based curriculum for Playgroup to UKG. Locate a center near you.";
         $page_data['meta_keyword']      = "schools in hyderabad, pre primary schools in hyderabad, cbse schools in hyderabad, international schools in hyderabad, best schools in hyderabad, top international schools in hyderabad, schools near hyderabad, pre schools in hyderabad, nursery schools in hyderabad, kindergarten schools in hyderabad, daycare schools in hyderabad, best preschool in hyderabad, montessori schools in hyderabad";
-        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/preschool-in-hyderabad";
+        $page_data['canonical_url']     = "https://www.kidzoniainternational.in/preschool-hyderabad";
         $page_data['data']              = $data; // Pass branches data to view
         $this->load->view('frontend/default/index', $page_data);
     }

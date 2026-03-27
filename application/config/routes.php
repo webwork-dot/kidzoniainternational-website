@@ -61,7 +61,7 @@ $route['preschool-in-lingampally-hyderabad']                = 'home/lingampally'
 $route['preschool-in-ramachandrapuram-hyderabad']           = 'home/ramachandrapuram';
 $route['preschool-in-chanda-nagar-hyderabad']               = 'home/chanda_nagar';
 $route['preschool-in-pragathi-nagar-hyderabad']             = 'home/pragathi_nagar';
-$route['preschool-in-hyderabad']                             = 'home/hyderabad';
+$route['preschool-hyderabad']                             = 'home/hyderabad';
 
 $route['blogs']                                 = 'home/blogs';
 $route['blog-details/(:any)']            = 'home/blog_details/$1';

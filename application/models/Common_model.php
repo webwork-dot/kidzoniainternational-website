@@ -340,7 +340,7 @@ class Common_model extends CI_Model{
         if (empty($branch_slug)) {
             return base_url() . 'explore-centers/' . strtolower($city);
         }
-        return base_url() . $curriculum_slug . '-in-' . $branch_slug . '-in-' . strtolower($city);
+        return base_url() . $curriculum_slug . '-in-' . $branch_slug . '-' . strtolower($city);
     }
 }
 ?>
