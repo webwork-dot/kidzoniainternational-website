@@ -22,6 +22,10 @@
   padding-bottom: 3.4em !important;
 }
 
+.bt_bb_size_huge.bt_bb_headline h1{
+font-size: 4rem;
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
 
 .bt_bb_row{
@@ -97,9 +101,9 @@
                           <header data-bb-version="4.6.1"
                             class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_dash_none bt_bb_size_huge bt_bb_align_inherit"
                             data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_huge","xxl":"huge"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                            <h1 class="bt_bb_headline_tag">
-                                <?php echo $title; ?>
-                            </h1>
+                                <h1 class="bt_bb_headline_tag">
+                                    <?php echo $h1_title; ?>
+                                </h1>
                           </header>
                           <div
                             class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_ bt_bb_bottom_spacing_large bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
@@ -135,6 +139,8 @@
               alt="bt_bb_section_bottom_section_coverage_image" />
           </div>
         </section>
+
+
         <section id="bt_bb_section656da18c07412"
           class="bt_bb_section bt_bb_layout_wide bt_bb_vertical_align_top bt_bb_top_spacing_none bt_bb_bottom_spacing_none bt_bb_negative_margin_none"
           data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_none","xxl":"none","xl":"none"}}'>
@@ -680,6 +686,39 @@
               alt="bt_bb_section_bottom_section_coverage_image" />
           </div>
         </section>
+
+
+        <?php if (!empty($why_choose_us)): ?>
+        <section class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_medium">
+          <div class="bt_bb_port">
+            <div class="bt_bb_cell">
+              <div class="bt_bb_cell_inner">
+                <div class="bt_bb_row_wrapper">
+                  <div class="bt_bb_row">
+                    <div class="bt_bb_column col-xxl-12">
+                      <div class="bt_bb_column_content">
+                        <div class="bt_bb_column_content_inner">
+                          <header class="bt_bb_headline bt_bb_size_extralarge bt_bb_align_center bt_bb_color_scheme_9" style="--primary-color:#282828;">
+                            <h2 class="bt_bb_headline_tag">
+                                <span class="bt_bb_headline_content"><span>Why Choose Kidzonia International?</span></span>
+                            </h2>
+                          </header>
+                          <div class="bt_bb_separator_v2 bt_bb_bottom_spacing_medium bt_bb_separator_v2_without_content">
+                            <div class="bt_bb_separator_v2_inner"><span class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;" class="bt_bb_icon_holder"></span></span><span class="bt_bb_separator_v2_inner_after"></span></div>
+                          </div>
+                          <div class="bt_bb_text">
+                            <?php echo $why_choose_us; ?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <?php endif; ?>
 
         <section data-bb-version="4.5.9" id="bt_bb_section656da16ab1fd8"
           class="m-admission  bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_medium bt_bb_bottom_spacing_large bt_bb_negative_margin_none"
@@ -1311,6 +1350,7 @@
           </div>
         </section>
         <?php } ?>
+        <?php if (!empty($campus_galleries)) { ?>
         <section data-bb-version="4.6.1" id="bt_bb_section656da25b830c3"
           class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_none bt_bb_negative_margin_none"
           data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_medium","xxl":"medium"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_none","xxl":"none"}}'>
@@ -1410,6 +1450,7 @@
           </div>
           <!-- port -->
         </section>
+        <?php } ?>
 
         <?php if (!empty($galleries)) { ?>
         <section data-bb-version="4.6.1" id="bt_bb_section656da190a1589"
@@ -1675,6 +1716,75 @@
           </div>
           <!-- port -->
         </section>
+
+        <?php if (!empty($faqs)): ?>
+        <style>
+            .faq-item h4.active span { transform: rotate(45deg); display: inline-block; }
+        </style>
+        <section class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_large bt_bb_bottom_spacing_large" style="background-color: #f9f9f9;">
+          <div class="bt_bb_port">
+            <div class="bt_bb_cell">
+              <div class="bt_bb_cell_inner">
+                <div class="bt_bb_row_wrapper">
+                  <div class="bt_bb_row">
+                    <div class="bt_bb_column col-xxl-12">
+                      <div class="bt_bb_column_content">
+                        <div class="bt_bb_column_content_inner">
+                          <header class="bt_bb_headline bt_bb_size_extralarge bt_bb_align_center bt_bb_color_scheme_9" style="--primary-color:#282828;">
+                            <h2 class="bt_bb_headline_tag">
+                                <span class="bt_bb_headline_content"><span>Frequently Asked Questions</span></span>
+                            </h2>
+                          </header>
+                          <div class="bt_bb_separator_v2 bt_bb_bottom_spacing_medium bt_bb_separator_v2_without_content">
+                            <div class="bt_bb_separator_v2_inner"><span class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;" class="bt_bb_icon_holder"></span></span><span class="bt_bb_separator_v2_inner_after"></span></div>
+                          </div>
+                          <div class="faq-accordion mt-4">
+                            <?php foreach ($faqs as $index => $faq): ?>
+                            <div class="faq-item mb-3" style="border-bottom: 1px solid #ddd; padding-bottom: 15px;">
+                                <h4 style="cursor: pointer; position: relative; padding-right: 30px; font-weight: 600;" onclick="$(this).next().slideToggle(); $(this).toggleClass('active');">
+                                    <?php echo $faq['question']; ?>
+                                    <span style="position: absolute; right: 0; top: 0; font-size: 24px; line-height: 1;">+</span>
+                                </h4>
+                                <div class="faq-answer" style="display: none; padding-top: 10px;">
+                                    <?php echo $faq['answer']; ?>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- JSON-LD FAQ Schema -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            <?php 
+            $schema_faqs = [];
+            foreach ($faqs as $faq) {
+                $schema_faqs[] = [
+                    "@type" => "Question",
+                    "name" => $faq['question'],
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => strip_tags($faq['answer'])
+                    ]
+                ];
+            }
+            echo json_encode($schema_faqs, JSON_UNESCAPED_SLASHES);
+            ?>
+          ]
+        }
+        </script>
+        <?php endif; ?>
         <?php } ?>
 
 

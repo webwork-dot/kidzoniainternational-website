@@ -17,6 +17,53 @@
 
 <div class="btSiteFooter">
   <div class="bt_bb_wrapper">
+    <section class="bt_bb_section bt_bb_bottom_spacing_none bt_bb_top_spacing_small bt_bb_layout_boxed_1200">
+      <div class="bt_bb_port">
+        <div class="bt_bb_cell">
+          <div class="bt_bb_cell_inner">
+            <div class="bt_bb_row" style="border-top: 1px solid #eee; padding-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 20px;">
+              <div class="bt_bb_column col-xxl-12">
+                <header class="bt_bb_headline bt_bb_size_small bt_bb_align_center" style="cursor: pointer;" onclick="toggleExploreMore()">
+                  <h6 class="bt_bb_headline_tag"><span class="bt_bb_headline_content" style="letter-spacing: 2px; font-weight: 400;">EXPLORE MORE <i id="explore-more-icon" class="bi bi-chevron-down" style="display: inline-block; transition: transform 0.3s ease;"></i></span></h6>
+                </header>
+                <div id="explore-more-content" class="explore-more-container" style="display: none; text-align: center; font-size: 12px; line-height: 2.2; color: #666; margin-top: 15px; transition: max-height 0.3s ease-out;">
+                  <?php 
+                  $all_hyd_branches = $this->crud_model->get_branches()->result_array();
+                  $seo_curriculums = $this->crud_model->get_seo_curriculums();
+                  
+                  $links = [];
+                  foreach($all_hyd_branches as $branch){
+                      if (strtolower($branch['city']) == 'hyderabad') {
+                          foreach($seo_curriculums as $curriculum){
+                              $label = ucfirst($curriculum['name']) . ' in ' . $branch['name'];
+                              $url = $this->common_model->get_seo_url($branch['slug'], $curriculum['slug'], 'hyderabad');
+                              $links[] = '<a href="'.$url.'" title="'.$label.'" style="color: #666; text-decoration: none;">'.$label.'</a>';
+                          }
+                      }
+                  }
+                  echo implode(' <span style="color: #ccc;">|</span> ', $links);
+                  ?>
+                </div>
+
+                <script>
+                  function toggleExploreMore() {
+                    var content = document.getElementById("explore-more-content");
+                    var icon = document.getElementById("explore-more-icon");
+                    if (content.style.display === "none" || content.style.display === "") {
+                      content.style.display = "block";
+                      icon.style.transform = "rotate(180deg)";
+                    } else {
+                      content.style.display = "none";
+                      icon.style.transform = "rotate(0deg)";
+                    }
+                  }
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section
       data-bb-version="4.6.0"
       id="bt_bb_section656da16ac6c5d"
@@ -275,15 +322,7 @@
                                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4267">
                                     <a href="<?php echo base_url(); ?>admissions" title="Admissions">Admissions</a>
                                   </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4267">
-                                    <a href="<?php echo base_url(); ?>explore-centers/hyderabad" title="Hyderabad">Hyderabad Center</a>
-                                  </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4267">
-                                    <a href="<?php echo base_url(); ?>explore-centers/mumbai" title="Mumbai">Mumbai Center</a>
-                                  </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4267">
-                                    <a href="<?php echo base_url(); ?>explore-centers/pune" title="Pune">Pune Center</a>
-                                  </li>
+
 
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
                                     <a href="<?php echo base_url(); ?>career" title="Career">Career</a>
@@ -297,24 +336,7 @@
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
                                     <a href="<?php echo base_url(); ?>sitemap" title="Sitemap">Sitemap </a>
                                   </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-serilingampally-hyderabad" title="Preschool in Serilingampally">Preschool in Serilingampally</a>
-                                  </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-nallagandla-hyderabad" title="Preschool in Nallagandla">Preschool in Nallagandla</a>
-                                  </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-nallagandla-navodaya-hyderabad" title="Preschool in Nallagandla Navodaya">Preschool in Nallagandla Navodaya</a>
-                                  </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-suraksha-enclave-ameenpur-hyderabad" title="Preschool in Suraksha Enclave Ameenpur">Preschool in Suraksha Enclave Ameenpur</a>
-                                  </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-kphb-kukatpally-hyderabad" title="Preschool in KPHB Kukatpally">Preschool in KPHB Kukatpally</a>
-                                  </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>preschool-in-hyderabad" title="Preschool in Hyderabad">Preschool in Hyderabad</a>
-                                  </li>
+
 
 
                                 </ul>

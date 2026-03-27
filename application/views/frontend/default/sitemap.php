@@ -178,64 +178,55 @@
                   <button class="toggle-btn" onclick="toggleNode(this)"></button>
                 </div>
                 <ul class="children">
-                  <li class="tree-node city">
-                    <a href="<?php echo base_url(); ?>preschool-in-hyderabad" class="node-content node-link">📍 Preschool in Hyderabad</a>
-                  </li>
-                  <li class="tree-node city">
-                    <div class="node-content">
-                      📍 Hyderabad
-                      <button class="toggle-btn" onclick="toggleNode(this)"></button>
-                    </div>
-                    <ul class="children">
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/serilingampally" class="node-content node-link">Serilingampally</a>
-                      </li>
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/nallagandla" class="node-content node-link">Nallagandla</a>
-                      </li>
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/nallagandla-navodaya" class="node-content node-link">Nallagandla Navodaya</a>
-                      </li>
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/pragathi-nagar" class="node-content node-link">Pragathi Nagar</a>
-                      </li>
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/suraksha-enclave-ameenpur" class="node-content node-link">Suraksha Enclave Ameenpur</a>
-                      </li>
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/kphb-kukatpally" class="node-content node-link">KPHB, Kukatpally</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="tree-node city">
-                    <a href="<?php echo base_url(); ?>explore-centers/mumbai" class="node-content node-link">📍 Mumbai</a>
-                  </li>
-                  <li class="tree-node city">
-                    <a href="<?php echo base_url(); ?>explore-centers/pune" class="node-content node-link">📍 Pune</a>
-                  </li>
+                  <?php 
+                  $sitemap_branches = $this->crud_model->get_branches()->result_array();
+                  $seo_curriculums = $this->crud_model->get_seo_curriculums();
+
+                  // Group branches by city
+                  $grouped_branches = [];
+                  foreach($sitemap_branches as $branch){
+                      $city = strtolower($branch['city']);
+                      $grouped_branches[$city][] = $branch;
+                  }
+                  ?>
+
+                  <?php foreach($grouped_branches as $city => $city_branches){ ?>
                   <li class="tree-node city">
                     <div class="node-content">
-                      📍 New Area
+                      📍 <?php echo ucfirst($city); ?>
                       <button class="toggle-btn" onclick="toggleNode(this)"></button>
                     </div>
+                    <?php if($city == 'hyderabad'){ ?>
+                    <?php foreach($city_branches as $branch){ ?>
+                    <li class="tree-node leaf">
+                      <a href="<?php echo $this->common_model->get_seo_url($branch['slug'], 'preschool', $city); ?>" class="node-content node-link">🏫 <?php echo $branch['name']; ?></a>
+                    </li>
+                    <?php } ?>
+                    <?php } ?>
+                    <li class="tree-node leaf">
+                      <a href="<?php echo $this->common_model->get_seo_url('', 'preschool', $city); ?>" class="node-content node-link">📍 Preschool in <?php echo ucfirst($city); ?></a>
+                    </li>
                     <ul class="children">
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/tellapur" class="node-content node-link">Tellapur</a>
-                      </li>
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/lingampally" class="node-content node-link">Lingampally</a>
-                      </li>
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/ramachandrapuram" class="node-content node-link">Ramachandrapuram</a>
-                      </li>
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/chanda-nagar" class="node-content node-link">Chanda Nagar</a>
-                      </li>
-                      <li class="tree-node branch">
-                        <a href="<?php echo base_url(); ?>explore-centers/hyderabad/pragathi-nagar" class="node-content node-link">Pragathi Nagar</a>
-                      </li>
+                      <?php foreach($city_branches as $branch){ ?>
+                        <li class="tree-node branch">
+                          <div class="node-content">
+                            🏠 <?php echo $branch['name']; ?>
+                            <button class="toggle-btn" onclick="toggleNode(this)"></button>
+                          </div>
+                          <ul class="children">
+                            <?php foreach($seo_curriculums as $curriculum){ ?>
+                              <li class="tree-node leaf">
+                                <a href="<?php echo $this->common_model->get_seo_url($branch['slug'], $curriculum['slug'], $city); ?>" class="node-content node-link">
+                                  <?php echo $curriculum['name']; ?> in <?php echo $branch['name']; ?>
+                                </a>
+                              </li>
+                            <?php } ?>
+                          </ul>
+                        </li>
+                      <?php } ?>
                     </ul>
                   </li>
+                  <?php } ?>
                 </ul>
               </li>
 

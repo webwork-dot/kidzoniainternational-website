@@ -8,6 +8,20 @@ $route['translate_uri_dashes']                      = FALSE;
 $route['system-password']                           = 'admin/system_password';              
 
 // CMS
+$route[$r_admin . '/seo-content']                      = 'admin/seo_content';
+$route[$r_admin . '/seo-content/add']                  = 'admin/seo_content_form/add';
+$route[$r_admin . '/seo-content/edit/(:num)']          = 'admin/seo_content_form/edit/$1';
+$route[$r_admin . '/seo-content/add_post']             = 'admin/seo_content/add_post';
+$route[$r_admin . '/seo-content/edit_post/(:num)']     = 'admin/seo_content/edit_post/$1';
+$route[$r_admin . '/seo-content/delete/(:num)']        = 'admin/seo_content/delete/$1';
+
+$route['Admin/seo-content']                            = 'admin/seo_content';
+$route['Admin/seo-content/add']                        = 'admin/seo_content_form/add';
+$route['Admin/seo-content/edit/(:num)']                = 'admin/seo_content_form/edit/$1';
+$route['Admin/seo-content/add_post']                   = 'admin/seo_content/add_post';
+$route['Admin/seo-content/edit_post/(:num)']           = 'admin/seo_content/edit_post/$1';
+$route['Admin/seo-content/delete/(:num)']              = 'admin/seo_content/delete/$1';
+
 $route[$r_admin . '/banner']                       = 'admin/banner';
 $route[$r_admin . '/banner/add']                   = 'admin/banner_form/add';
 $route[$r_admin . '/banner/edit/(:num)']           = 'admin/banner_form/edit/$1';
@@ -133,6 +147,15 @@ $route[$r_admin . '/gallery-image/edit/(:any)']     = 'admin/branch_gallery_imag
 $route[$r_admin . '/branches']                      = 'admin/branches';
 $route[$r_admin . '/branches/add']                  = 'admin/branches_form/add';
 $route[$r_admin . '/branches/edit/(:num)']          = 'admin/branches_form/edit/$1';
+
+$route[$r_admin . '/seo-curriculums']                = 'admin/seo_curriculums';
+$route[$r_admin . '/seo-curriculums/add']            = 'admin/seo_curriculums_form/add';
+$route[$r_admin . '/seo-curriculums/edit/(:num)']    = 'admin/seo_curriculums_form/edit/$1';
+$route[$r_admin . '/seo-curriculums/add_post']       = 'admin/seo_curriculums/add_post';
+$route[$r_admin . '/seo-curriculums/edit_post/(:num)'] = 'admin/seo_curriculums/edit_post/$1';
+$route[$r_admin . '/seo-curriculums/delete/(:num)']  = 'admin/seo_curriculums/delete/$1';
+$route[$r_admin . '/get_seo_curriculums']            = 'admin/get_seo_curriculums';
+
 
 $route[$r_admin . '/products']                      = 'admin/products';
 $route[$r_admin . '/products/add']                  = 'admin/products_form/add';

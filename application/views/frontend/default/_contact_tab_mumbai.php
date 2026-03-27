@@ -685,7 +685,7 @@
                                 VIEW CAMPUS
                               </div>
                               <div class="bt_bb_service_content_title">
-                                <a href="<?php echo base_url().'explore-centers/'.strtolower($item['city']) .'/'.$item['slug'];?>"
+                                <a href="<?php echo $this->common_model->get_seo_url($item['slug'], 'preschool', $item['city']);?>"
                                   target="_self"
                                   >Click here</a
                                 >

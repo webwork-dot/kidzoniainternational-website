@@ -115,3 +115,5 @@ $route['test_whatsapp'] = 'home/test_whatsapp';
 
 
 $route['translate_uri_dashes']                  = FALSE;
+
+$route['(:any)'] = 'home/branch_handler/$1';

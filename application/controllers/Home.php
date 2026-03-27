@@ -68,6 +68,78 @@ class Home extends CI_Controller
         $this->load->view('frontend/default/index', $page_data);
     }
 
+    public function branch_handler($slug = '')
+    {
+        if ($slug == '') {
+            redirect(base_url());
+        }
+
+        $curriculum = '';
+        $branch_slug = $slug;
+
+        // Fetch dynamic curriculums from database
+        $db_curriculums = $this->crud_model->get_seo_curriculums();
+        $curriculum_list = array_column($db_curriculums, 'slug');
+        
+        // Add robust common fallbacks/synonyms
+        $fallbacks = ['preschool', 'playschool', 'preprimary', 'kindergarden', 'primary-school', 'motessori'];
+        foreach ($fallbacks as $fb) {
+            if (!in_array($fb, $curriculum_list)) {
+                $curriculum_list[] = $fb;
+            }
+        }
+
+        // Regex to extract curriculum, branch slug, and city
+        // Pattern: [curriculum]-in-[branch_slug]-in-[city] OR [curriculum]-in-[branch_slug]-[city]
+        if (preg_match('/^([a-z-]+)-in-([a-z-]+)-in-(hyderabad|mumbai|pune)$/', $slug, $matches)) {
+            if (in_array($matches[1], $curriculum_list)) {
+                $curriculum     = $matches[1];
+                $branch_slug    = $matches[2];
+                $city           = $matches[3];
+            }
+        } elseif (preg_match('/^([a-z-]+)-in-(hyderabad|mumbai|pune)$/', $slug, $matches)) {
+            if (in_array($matches[1], $curriculum_list)) {
+                $curriculum     = $matches[1];
+                $branch_slug    = '';
+                $city           = $matches[2];
+            }
+        }
+
+        // Check if it's a branch slug
+        $branch = $this->db->get_where('branches', array('slug' => $branch_slug))->row_array();
+        
+        // If not found by core slug, try exact slug (legacy or custom)
+        if (!$branch) {
+            $branch = $this->db->get_where('branches', array('slug' => $slug))->row_array();
+            $branch_slug = $slug;
+            $curriculum = '';
+        }
+
+        if ($branch || empty($branch_slug)) {
+            $allowed_locations = [
+                'nallagandla',
+                'suraksha-enclave-ameenpur',
+                'serilingampally',
+                'nallagandla-navodaya',
+                'kphb-kukatpally',
+                'pragathi-nagar'
+            ];
+            
+            $is_gallery = false;
+            if (in_array($branch_slug, $allowed_locations) || !empty($curriculum)) {
+                $is_gallery = true;
+            }
+
+            if ($is_gallery) {
+                return $this->gallery_details($branch_slug, $curriculum, (isset($city) ? $city : 'hyderabad'));
+            } else {
+                return $this->explore_centers_branches('any', $branch_slug);
+            }
+        }
+
+        $this->not_found();
+    }
+
     public function index2()
     {
         $page_data['blogs']             = $this->crud_model->get_recent_blogs_for_home()->result_array();
@@ -415,18 +487,41 @@ and enriching environment where young minds thrive.";
             'serilingampally',
             'nallagandla-navodaya',
             'kphb-kukatpally',
-            'pragathi-nagar',
-            ''
+            'pragathi-nagar'
         ];
 
-        if (!in_array($param1, $allowed_locations)) {
+        // Check if the provided slug is one of the allowed or maps to one
+        $branch = $this->db->get_where('branches', array('slug' => $param1))->row_array();
+        if (!$branch) {
             redirect('not-found');
+        }
+        
+        // Internal slug for content mapping (Pragathi Nagar, etc.)
+        $internal_slug = $param1;
+        if (!in_array($param1, $allowed_locations)) {
+            // Try to map by name if it's a new SEO slug
+            if (strpos($param1, 'navodaya') !== false) $internal_slug = 'nallagandla-navodaya';
+            else if (strpos($param1, 'nallagandla') !== false) $internal_slug = 'nallagandla';
+            else if (strpos($param1, 'ameenpur') !== false) $internal_slug = 'suraksha-enclave-ameenpur';
+            else if (strpos($param1, 'serilingampally') !== false) $internal_slug = 'serilingampally';
+            else if (strpos($param1, 'kphb') !== false || strpos($param1, 'kukatpally') !== false) $internal_slug = 'kphb-kukatpally';
+            else if (strpos($param1, 'pragathi-nagar') !== false) $internal_slug = 'pragathi-nagar';
         }
 
         $title                          = $this->crud_model->get_gallery_title_by_id($param1)->row_array();
-        $location_name = !empty($param1) ? ucfirst(str_replace('-', ' ', $param1)) : 'HO';
+        $location_display = !empty($branch['name']) ? $branch['name'] : ucfirst(str_replace('-', ' ', $param1));
 
-        $page_data['title']             = $title['name'];
+        // Dynamic Curriculum Heading/Title
+        $curriculum_tag = 'International Preschool';
+        if (!empty($param2)) {
+            $curriculum_tag = ucfirst(str_replace('-', ' ', $param2)); // Fallback
+            $seo_curriculum = $this->db->get_where('seo_curriculums', ['slug' => $param2])->row_array();
+            if ($seo_curriculum) {
+                $curriculum_tag = $seo_curriculum['name'];
+            }
+        }
+        
+        $page_data['title']             = $curriculum_tag . " in " . $location_display;
         $page_data['banner']             = $title['image'];
         $page_data['campus_galleries']         = $this->crud_model->get_gallery_campus_details_by_id($param1);
         $page_data['galleries']           = $this->crud_model->get_gallery_details_by_id($param1);
@@ -434,15 +529,35 @@ and enriching environment where young minds thrive.";
         $page_data['awards']            = $this->common_model->selectByidsINWhere('', 'awards_and_recognitions', '4', '0');
         $page_data['events']            = $this->common_model->selectByidsINWhere('', 'events', '8', '0');
 
-        $page_data['location_name']     = $location_name; 
+        $page_data['location_name']     = $location_display; 
         $page_data['page_name']         = "gallery_details";
-        $page_data['page_title']        = "International preschool, Daycare and Playschool Near me | Kidzonia";
-        $page_data['meta_description']  = "";
+        $page_data['page_title']        = "Best " . $curriculum_tag . " in " . $location_display . " | Kidzonia International";
+        $page_data['meta_description']  = "Explore the best " . $curriculum_tag . " in " . $location_display . ". A premier learning environment with a nurturing atmosphere and innovative curriculum.";
         $page_data['meta_keyword']      = "";
         $page_data['get_directions']      = "";
 
+        // Fetch Dynamic SEO Content (Branch x Curriculum)
+        $page_data['why_choose_us'] = '';
+        $page_data['faqs'] = [];
+        $page_data['h1_title'] = $page_data['title']; // Default H1
+
+        if ($branch && isset($seo_curriculum)) {
+            $dynamic_seo = $this->db->get_where('seo_branch_curriculum_content', [
+                'branch_id' => $branch['id'],
+                'curriculum_id' => $seo_curriculum['id']
+            ])->row_array();
+            
+            if ($dynamic_seo) {
+                if (!empty($dynamic_seo['meta_title'])) $page_data['page_title'] = $dynamic_seo['meta_title'];
+                if (!empty($dynamic_seo['meta_description'])) $page_data['meta_description'] = $dynamic_seo['meta_description'];
+                if (!empty($dynamic_seo['h1_title'])) $page_data['h1_title'] = $dynamic_seo['h1_title'];
+                $page_data['why_choose_us'] = $dynamic_seo['why_choose_us'];
+                $page_data['faqs'] = json_decode($dynamic_seo['faqs'], true);
+            }
+        }
+
         // Footer Address
-        switch ($param1) {
+        switch ($internal_slug) {
             case 'nallagandla':
                 $page_data['page_title']        = "Best Preschool, Nursery & Childcare in Nalagandla | Nursery Admission | Montessori School, DayCare Centre & Preprimary School in Nalagandla - Kidzonia International";
                 $page_data['content'] = 'Kidzonia, a premier <a href="https://www.kidzoniainternational.in/" target="_blank">Preschool in Nalagandla</a>, makes learning playful yet purposeful. Our Discover Curriculum nurtures each child\'s unique personality, fostering creativity and confidence from the Nursery stage onward. Through a blend of digital tools, hands-on experiences, and theme-based learning, we inspire curiosity and a lifelong passion for knowledge — distinguishing us as one of the top Montessori schools in the area.';

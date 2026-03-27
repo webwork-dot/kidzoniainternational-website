@@ -1390,7 +1390,7 @@
                                  <div class="box custom-box">
                                     <img src="<?php echo base_url() . $d['pic']; ?>?tr=w-400" class="img-fluid" title="<?php echo $d['alt']; ?>" alt="<?php echo $d['alt']; ?>">
                                     <div class="blog-title text-center pb-0">
-                                       <a href="<?php echo base_url() . 'explore-centers/hyderabad/' . $d['url']; ?>">
+                                       <a href="<?php echo $this->common_model->get_seo_url($d['url'], 'preschool', 'hyderabad'); ?>">
                                           <?php echo $d['name']; ?>
                                        </a>
                                     </div>

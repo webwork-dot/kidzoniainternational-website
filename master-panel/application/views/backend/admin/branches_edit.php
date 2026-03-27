@@ -20,15 +20,20 @@
                   <label class="form-label">Branch Name <span class="required">*</span></label>
                   <input type="text" class="form-control" name="name" placeholder="Enter Branch Name"  value="<?php echo $data['name']; ?>"  required>
                </div>
+
+               <div class="col-12 col-sm-4 mb-1">
+                  <label class="form-label">Slug</label>
+                  <input type="text" class="form-control" name="slug" placeholder="Enter Slug (Optional)" value="<?php echo $data['slug']; ?>">
+               </div>
                
                <div class="col-12 col-sm-4 mb-1">
-                  <label class="form-label">Email <span class="required">*</span></label>
-                  <input type="email" class="form-control" name="email" placeholder="Enter Email" value="<?php echo $data['email']; ?>" required>
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email" placeholder="Enter Email" value="<?php echo $data['email']; ?>">
                </div>
                 
                <div class="col-12 col-sm-4 mb-1">
-                  <label class="form-label">Mobile no. 1 <span class="required">*</span></label>
-                  <input type="text" class="form-control" name="mobile_1" placeholder="Enter Mobile no." value="<?php echo $data['mobile_1']; ?>" required>
+                  <label class="form-label">Mobile no. 1</label>
+                  <input type="text" class="form-control" name="mobile_1" placeholder="Enter Mobile no." value="<?php echo $data['mobile_1']; ?>">
                </div>
                
                <div class="col-12 col-sm-4 mb-1">
@@ -37,13 +42,13 @@
                </div>
                
                <div class="col-12 col-sm-4 mb-1">
-                  <label class="form-label">Location URL <span class="required">*</span></label>
-                  <input type="text" class="form-control" name="location_url" placeholder="Enter Location" value="<?php echo $data['location_url']; ?>" required>
+                  <label class="form-label">Location URL</label>
+                  <input type="text" class="form-control" name="location_url" placeholder="Enter Location" value="<?php echo $data['location_url']; ?>">
                </div>
                
                <div class="col-12 col-sm-8 mb-1">
-                  <label class="form-label">Address <span class="required">*</span></label>
-                  <textarea class="form-control" name="address" placeholder="Enter Address" rows="5" required><?php echo $data['address']; ?></textarea>
+                  <label class="form-label">Address</label>
+                  <textarea class="form-control" name="address" placeholder="Enter Address" rows="5"><?php echo $data['address']; ?></textarea>
                </div>
 
                <div class="col-12 col-sm-4 mb-1">

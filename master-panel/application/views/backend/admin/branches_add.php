@@ -20,15 +20,20 @@
                   <label class="form-label">Branch Name <span class="required">*</span></label>
                   <input type="text" class="form-control" name="name" placeholder="Enter Branch Name" required>
                </div>
+                
+               <div class="col-12 col-sm-4 mb-1">
+                  <label class="form-label">Slug</label>
+                  <input type="text" class="form-control" name="slug" placeholder="Enter Slug (Optional)">
+               </div>
                
                <div class="col-12 col-sm-4 mb-1">
-                  <label class="form-label">Email <span class="required">*</span></label>
-                  <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email" placeholder="Enter Email">
                </div>
                 
                <div class="col-12 col-sm-4 mb-1">
-                  <label class="form-label">Mobile no. 1 <span class="required">*</span></label>
-                  <input type="text" class="form-control" name="mobile_1" placeholder="Enter Mobile no." required>
+                  <label class="form-label">Mobile no. 1</label>
+                  <input type="text" class="form-control" name="mobile_1" placeholder="Enter Mobile no.">
                </div>
                
                <div class="col-12 col-sm-4 mb-1">
@@ -37,17 +42,17 @@
                </div>
                
                <div class="col-12 col-sm-4 mb-1">
-                  <label class="form-label">Location URL <span class="required">*</span></label>
-                  <input type="text" class="form-control" name="location_url" placeholder="Enter Location" required>
+                  <label class="form-label">Location URL</label>
+                  <input type="text" class="form-control" name="location_url" placeholder="Enter Location">
                </div>
                
                <div class="col-12 col-sm-8 mb-1">
-                  <label class="form-label">Address <span class="required">*</span></label>
-                  <textarea class="form-control" name="address" placeholder="Enter Address" rows="5" required></textarea>
+                  <label class="form-label">Address</label>
+                  <textarea class="form-control" name="address" placeholder="Enter Address" rows="5"></textarea>
                </div>
                <div class="col-12 col-sm-4 mb-1">
-                  <label class="form-label">Upload Image<span class="required">*</span></label>
-                  <input type="file" class="form-control" name="image" placeholder="Upload Image" accept="image/*" required>
+                  <label class="form-label">Upload Image</label>
+                  <input type="file" class="form-control" name="image" placeholder="Upload Image" accept="image/*">
                </div>
 
                

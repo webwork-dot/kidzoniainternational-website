@@ -395,6 +395,102 @@ class Admin extends CI_Controller
             $this->crud_model->get_programmes_content();
         }
     }
+
+    // SEO Curriculums
+    public function seo_curriculums($param1 = "", $param2 = "")
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+        if ($param1 == "add_post") {
+            $this->crud_model->add_seo_curriculum($param2);
+        } elseif ($param1 == "edit_post") {
+            $this->crud_model->edit_seo_curriculum($param2);
+        } elseif ($param1 == "delete") {
+            $this->crud_model->delete_seo_curriculum($param2);
+            redirect(site_url('admin/seo-curriculums'), 'refresh');
+        } else {
+            $page_data['navigate']  = 'seo_curriculums';
+            $page_data['page_name']  = 'seo_curriculums';
+            $page_data['page_title'] = 'Kidzonia International | SEO Curriculums';
+            $this->load->view('backend/index', $page_data);
+        }
+    }
+
+    public function seo_curriculums_form($param1 = "", $param2 = "")
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+
+        if ($param1 == 'add') {
+            $page_data['navigate']  = 'seo_curriculums';
+            $page_data['page_name']     = 'seo_curriculums_add';
+            $page_data['page_title']    = 'Kidzonia International | SEO Curriculums';
+            $this->load->view('backend/index', $page_data);
+        } elseif ($param1 == 'edit') {
+            $page_data['navigate']  = 'seo_curriculums';
+            $data                       = $this->crud_model->get_seo_curriculum_by_id($param2)->row_array();
+            $page_data['data']          = $data;
+            $page_data['page_name']     = 'seo_curriculums_edit';
+            $page_data['id']            = $param2;
+            $page_data['page_title']    = 'Kidzonia International | SEO Curriculums';
+            $this->load->view('backend/index', $page_data);
+        }
+    }
+
+    public function seo_content($param1 = "", $param2 = "")
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+        if ($param1 == "add_post") {
+            $this->crud_model->add_seo_content($param2);
+        } elseif ($param1 == "edit_post") {
+            $this->crud_model->edit_seo_content($param2);
+        } elseif ($param1 == "delete") {
+            $this->crud_model->delete_seo_content($param2);
+            redirect(site_url('admin/seo-content'), 'refresh');
+        } else {
+            $page_data['navigate']  = 'seo_content';
+            $page_data['page_name']  = 'seo_content';
+            $page_data['page_title'] = 'Kidzonia International | SEO Content';
+            $this->load->view('backend/index', $page_data);
+        }
+    }
+
+    public function seo_content_form($param1 = "", $param2 = "")
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+
+        if ($param1 == 'add') {
+            $page_data['navigate']  = 'seo_content';
+            $page_data['page_name']     = 'seo_content_add';
+            $page_data['branches']      = $this->crud_model->get_branches('Hyderabad')->result_array();
+            $page_data['curriculums']    = $this->crud_model->get_seo_curriculums_list();
+            $page_data['page_title']    = 'Kidzonia International | SEO Content';
+            $this->load->view('backend/index', $page_data);
+        } elseif ($param1 == 'edit') {
+            $page_data['navigate']  = 'seo_content';
+            $data                       = $this->crud_model->get_seo_content_by_id($param2)->row_array();
+            $page_data['data']          = $data;
+            $page_data['branches']      = $this->crud_model->get_branches('Hyderabad')->result_array();
+            $page_data['curriculums']    = $this->crud_model->get_seo_curriculums_list();
+            $page_data['page_name']     = 'seo_content_edit';
+            $page_data['id']            = $param2;
+            $page_data['page_title']    = 'Kidzonia International | SEO Content';
+            $this->load->view('backend/index', $page_data);
+        }
+    }
+
+    public function get_seo_curriculums()
+    {
+        if ($this->input->is_ajax_request()) {
+            $this->crud_model->get_seo_curriculums();
+        }
+    }
         
     // Programmes Content
     public function programmes_icon($param1 = "", $param2 = "")
@@ -1641,7 +1737,7 @@ class Admin extends CI_Controller
 
     public function get_branches() {
         if ($this->input->is_ajax_request()) {
-            $this->crud_model->get_branches();
+            $this->crud_model->get_branches_ajax();
         }
     }
     

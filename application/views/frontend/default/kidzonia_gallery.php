@@ -160,7 +160,7 @@
                                   data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"},"bt_bb_content_display_":{"current_class":"bt_bb_content_display_always","xxl":"always"}}'
                                 >
                                   <a
-                                    href="<?php echo base_url() . 'explore-centers/hyderabad/' . $d['url'];?>"
+                                    href="<?php echo $this->common_model->get_seo_url($d['url'], 'preschool', 'hyderabad');?>"
                                     target="_self"
                                     title="teachers day (1)"
                                     ><img
@@ -184,7 +184,7 @@
                                 <div data-bb-version="4.6.1" class="bt_bb_text">
                                   <h6 style="text-align: center">
                                     <a
-                                      href="<?php echo base_url() . 'explore-centers/hyderabad/' . $d['url'];?>"
+                                      href="<?php echo $this->common_model->get_seo_url($d['url'], 'preschool', 'hyderabad');?>"
                                       ><?php echo $d['name'];?></a
                                     >
                                   </h6>

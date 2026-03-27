@@ -335,6 +335,12 @@ class Common_model extends CI_Model{
         }
     }
     
-    
+    public function get_seo_url($branch_slug = '', $curriculum_slug = 'preschool', $city = 'hyderabad')
+    {
+        if (empty($branch_slug)) {
+            return base_url() . 'explore-centers/' . strtolower($city);
+        }
+        return base_url() . $curriculum_slug . '-in-' . $branch_slug . '-in-' . strtolower($city);
+    }
 }
 ?>

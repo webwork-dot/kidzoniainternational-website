@@ -11,7 +11,28 @@
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"></noscript>
 
-<?php $header_branches = $this->crud_model->get_header_branches()->result_array();?>
+<?php 
+$all_branches = $this->crud_model->get_branches()->result_array();
+$seo_curriculums = $this->crud_model->get_seo_curriculums();
+
+// Filter for header: Specific Hyderabad IDs and show all cities
+$header_branch_ids = [2, 3, 4, 7, 8];
+$grouped_branches = [];
+foreach($all_branches as $branch){
+    $city = strtolower($branch['city']);
+    if ($city == 'hyderabad') {
+        if (in_array($branch['id'], $header_branch_ids)) {
+            $grouped_branches[$city][] = $branch;
+        }
+    } else {
+        // Just ensure the city key exists for Mumbai/Pune even if branches are hidden later
+        if (!isset($grouped_branches[$city])) {
+            $grouped_branches[$city] = [];
+        }
+        $grouped_branches[$city][] = $branch;
+    }
+}
+?>
 <a href="javascript:void(0);"
   onclick="showAjaxEnquiryModal('<?php echo base_url();?>modal/popup_front/modal_enquiry_now','Enquiry Now!');"
   class="sidebar-contact">
@@ -351,27 +372,23 @@
                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4631">
                 <a href="#" title="Explore Centers">Explore Centers</a>
                 <ul class="sub-menu">
-                  <li id="menu-item-4632"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4632">
-                    <a href="<?php echo base_url();?>explore-centers/hyderabad" title="Hyderabad">Hyderabad</a>
-                    <ul class="sub-menu">
-                      <?php foreach($header_branches as $branch){ ?>
-                      <li id="menu-item-5139"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5139">
-                        <a href="<?php echo base_url() . 'explore-centers/' . strtolower($branch['city']) . '/' . $branch['slug'];?>"
-                          title="<?php echo $branch['name'];?>"><?php echo $branch['name'];?></a>
-                      </li>
-                      <?php } ?>
-                    </ul>
+                  <?php foreach($grouped_branches as $city => $city_branches){ ?>
+                  <li id="menu-item-city-<?php echo $city; ?>"
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-city-<?php echo $city; ?>">
+                    <a href="<?php echo $this->common_model->get_seo_url('', 'preschool', $city); ?>" title="<?php echo ucfirst($city); ?>"><?php echo ucfirst($city); ?></a>
+                     <?php if($city == 'hyderabad'){ ?>
+                     <ul class="sub-menu">
+                       <?php foreach($city_branches as $branch){ ?>
+                       <li id="menu-item-branch-<?php echo $branch['id']; ?>"
+                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-branch-<?php echo $branch['id']; ?>">
+                         <a href="<?php echo $this->common_model->get_seo_url($branch['slug'], 'preschool', $city); ?>"
+                           title="<?php echo $branch['name']; ?>"><?php echo $branch['name']; ?></a>
+                       </li>
+                       <?php } ?>
+                     </ul>
+                     <?php } ?>
                   </li>
-                  <li id="menu-item-4656"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4656">
-                    <a href="<?php echo base_url();?>explore-centers/mumbai" title="Mumbai">Mumbai</a>
-                  </li>
-                  <li id="menu-item-4656"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4656">
-                    <a href="<?php echo base_url();?>explore-centers/pune" title="Pune">Pune</a>
-                  </li>
+                  <?php } ?>
                 </ul>
               </li>
               <li id="menu-item-4098"

@@ -117,6 +117,11 @@ class Crud_model extends CI_Model
         return $data->result_array();
     }
 
+    public function get_seo_curriculums()
+    {
+        return $this->db->get('seo_curriculums')->result_array();
+    }
+
     public function get_day_at_kidzonia()
     {
         $data = $this->db->select('*')
