@@ -26,23 +26,36 @@
                 <header class="bt_bb_headline bt_bb_size_small bt_bb_align_center" style="cursor: pointer;" onclick="toggleExploreMore()">
                   <h6 class="bt_bb_headline_tag"><span class="bt_bb_headline_content" style="letter-spacing: 2px; font-weight: 400;">EXPLORE MORE <i id="explore-more-icon" class="bi bi-chevron-down" style="display: inline-block; transition: transform 0.3s ease;"></i></span></h6>
                 </header>
-                <div id="explore-more-content" class="explore-more-container" style="display: none; text-align: center; font-size: 12px; line-height: 2.2; color: #666; margin-top: 15px; transition: max-height 0.3s ease-out;">
-                  <?php 
-                  $all_hyd_branches = $this->crud_model->get_branches()->result_array();
-                  $seo_curriculums = $this->crud_model->get_seo_curriculums();
-                  
-                  $links = [];
-                  foreach($all_hyd_branches as $branch){
-                      if (strtolower($branch['city']) == 'hyderabad') {
-                          foreach($seo_curriculums as $curriculum){
-                              $label = ucfirst($curriculum['name']) . ' in ' . $branch['name'];
-                              $url = $this->common_model->get_seo_url($branch['slug'], $curriculum['slug'], 'hyderabad');
-                              $links[] = '<a href="'.$url.'" title="'.$label.'" style="color: #666; text-decoration: none;">'.$label.'</a>';
-                          }
-                      }
-                  }
-                  echo implode(' <span style="color: #ccc;">|</span> ', $links);
-                  ?>
+                <div id="explore-more-content" class="explore-more-container" style="display: none; text-align: left; margin-top: 30px; padding: 0 15px;">
+                  <!-- <h5 style="text-align: center; color: #333; font-weight: 600; margin-bottom: 30px; letter-spacing: 1px;">CURRICULUMS</h5> -->
+                  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 40px 20px;">
+                    <?php 
+                    $all_hyd_branches = $this->crud_model->get_branches()->result_array();
+                    $seo_curriculums = $this->crud_model->get_seo_curriculums();
+                    
+                    foreach($all_hyd_branches as $branch){
+                        if (strtolower($branch['city']) == 'hyderabad') {
+                            ?>
+                            <div class="curriculum-item-group">
+                              <h6 style="font-size: 14px; color: #333; margin-bottom: 12px; font-weight: 700; border-bottom: 1px solid #eee; padding-bottom: 8px;"><?php echo $branch['name']; ?></h6>
+                              <ul style="list-style: none; padding: 0; margin: 0; font-size: 12.5px; line-height: 1.8;">
+                                <?php foreach($seo_curriculums as $curriculum): 
+                                    $label = ucfirst($curriculum['name']);
+                                    $url = $this->common_model->get_seo_url($branch['slug'], $curriculum['slug'], 'hyderabad');
+                                ?>
+                                <li style="margin-bottom: 4px;">
+                                  <a href="<?php echo $url; ?>" title="<?php echo $label . ' in ' . $branch['name']; ?>" style="color: #666; text-decoration: none; transition: all 0.2s ease;" onmouseover="this.style.color='var(--accent-color)'; this.style.paddingLeft='5px';" onmouseout="this.style.color='#666'; this.style.paddingLeft='0';">
+                                    <?php echo $label; ?>
+                                  </a>
+                                </li>
+                                <?php endforeach; ?>
+                              </ul>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
+                  </div>
                 </div>
 
                 <script>
