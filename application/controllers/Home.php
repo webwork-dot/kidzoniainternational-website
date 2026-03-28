@@ -109,6 +109,15 @@ class Home extends CI_Controller
         // Check if it's a branch slug
         $branch = $this->db->get_where('branches', array('slug' => $branch_slug))->row_array();
 
+        // Normalization fallback for hyphenated slugs (e.g., chanda-nagar -> chandanagar)
+        if (!$branch && !empty($branch_slug)) {
+            $normalized_slug = str_replace('-', '', $branch_slug);
+            $branch = $this->db->get_where('branches', array('slug' => $normalized_slug))->row_array();
+            if ($branch) {
+                $branch_slug = $normalized_slug;
+            }
+        }
+
         // If not found by core slug, try exact slug (legacy or custom)
         if (!$branch) {
             $branch = $this->db->get_where('branches', array('slug' => $slug))->row_array();
@@ -123,7 +132,12 @@ class Home extends CI_Controller
                 'serilingampally',
                 'nallagandla-navodaya',
                 'kphb-kukatpally',
-                'pragathi-nagar'
+                'pragathi-nagar',
+                'tellapur',
+                'lingampally',
+                'ramachandrapuram',
+                'chanda-nagar',
+                'chandanagar',
             ];
 
             $is_gallery = false;
@@ -132,7 +146,7 @@ class Home extends CI_Controller
             }
 
             if ($is_gallery) {
-                return $this->gallery_details($branch_slug, $curriculum, (isset($city) ? $city : 'hyderabad'));
+                return $this->gallery_details($branch_slug, $curriculum);
             }
             else {
                 return $this->explore_centers_branches('any', $branch_slug);
@@ -484,38 +498,15 @@ and enriching environment where young minds thrive.";
 
     public function gallery_details($param1 = '', $param2 = '')
     {
-
-        $allowed_locations = [
-            'nallagandla',
-            'suraksha-enclave-ameenpur',
-            'serilingampally',
-            'nallagandla-navodaya',
-            'kphb-kukatpally',
-            'pragathi-nagar'
-        ];
-
-        // Check if the provided slug is one of the allowed or maps to one
+        // Branch lookup — works for all branches regardless of city
         $branch = $this->db->get_where('branches', array('slug' => $param1))->row_array();
         if (!$branch) {
-            redirect('not-found');
-        }
-
-        // Internal slug for content mapping (Pragathi Nagar, etc.)
-        $internal_slug = $param1;
-        if (!in_array($param1, $allowed_locations)) {
-            // Try to map by name if it's a new SEO slug
-            if (strpos($param1, 'navodaya') !== false)
-                $internal_slug = 'nallagandla-navodaya';
-            else if (strpos($param1, 'nallagandla') !== false)
-                $internal_slug = 'nallagandla';
-            else if (strpos($param1, 'ameenpur') !== false)
-                $internal_slug = 'suraksha-enclave-ameenpur';
-            else if (strpos($param1, 'serilingampally') !== false)
-                $internal_slug = 'serilingampally';
-            else if (strpos($param1, 'kphb') !== false || strpos($param1, 'kukatpally') !== false)
-                $internal_slug = 'kphb-kukatpally';
-            else if (strpos($param1, 'pragathi-nagar') !== false)
-                $internal_slug = 'pragathi-nagar';
+            // Try normalised slug (e.g. chanda-nagar -> chandanagar)
+            $normalised = str_replace('-', '', $param1);
+            $branch = $this->db->get_where('branches', array('slug' => $normalised))->row_array();
+            if (!$branch) {
+                redirect('not-found');
+            }
         }
 
         $title = $this->crud_model->get_gallery_title_by_id($param1)->row_array();
@@ -529,6 +520,12 @@ and enriching environment where young minds thrive.";
             if ($seo_curriculum) {
                 $curriculum_tag = $seo_curriculum['name'];
             }
+        } else {
+            // Default to 'preschool' if no curriculum specified in URL, to ensure FAQs & SEO are always fetched
+            $seo_curriculum = $this->db->get_where('seo_curriculums', ['slug' => 'preschool'])->row_array();
+            if ($seo_curriculum) {
+                $curriculum_tag = $seo_curriculum['name'];
+            }
         }
 
         $page_data['title'] = $curriculum_tag . " in " . $location_display;
@@ -539,100 +536,33 @@ and enriching environment where young minds thrive.";
         $page_data['awards'] = $this->common_model->selectByidsINWhere('', 'awards_and_recognitions', '4', '0');
         $page_data['events'] = $this->common_model->selectByidsINWhere('', 'events', '8', '0');
 
+
         $page_data['location_name'] = $location_display;
         $page_data['page_name'] = "gallery_details";
+        // Default SEO metadata (can be overridden by dynamic content below)
         $page_data['page_title'] = "Best " . $curriculum_tag . " in " . $location_display . " | Kidzonia International";
         $page_data['meta_description'] = "Explore the best " . $curriculum_tag . " in " . $location_display . ". A premier learning environment with a nurturing atmosphere and innovative curriculum.";
         $page_data['meta_keyword'] = "";
         $page_data['get_directions'] = "";
 
+        // Standardized Curriculum Description Template
+        $page_data['content'] = "At Kidzonia, one of the best school in " . $location_display . ", Hyderabad, we believe learning should be both fun and educational. Our approach blends structure with play, creating a dynamic environment where children thrive. The Discover Curriculum is tailored to celebrate each child's unique personality, providing an enthusiastic space that fosters creativity and imagination. By combining digital tools with hands-on experiences, our theme-based program lays a strong foundation for early learning. Whether you're looking for a nursery school, kindergarten school, preschool, daycare school, or even an international school, Kidzonia stands apart by cultivating confidence and instilling a lifelong love for learning in every child.";
 
+        // Dynamic Footer Contact & Map Data from Database (Decoupled from hardcoded switch)
+        $page_data['footer_address'] = !empty($branch['address']) ? $branch['address'] : "<b>Suraka Educational Society,</b><br> 2nd floor, 169/33, Ratnadeep Lane, beside GHMC Park, near kidzonia school, HUDA Layout, Nallagandla, Hyderabad, Telangana 500019";
+        $page_data['footer_phone'] = !empty($branch['mobile_1']) ? $branch['mobile_1'] . (!empty($branch['mobile_2']) ? ' / ' . $branch['mobile_2'] : '') : "+91 9100 25 6256";
+        $page_data['footer_email'] = !empty($branch['email']) ? $branch['email'] : "info@kidzoniainternational.in";
 
-        // Footer Address
-        switch ($internal_slug) {
-            case 'nallagandla':
-                $page_data['page_title'] = "Best Preschool, Nursery & Childcare in Nalagandla | Nursery Admission | Montessori School, DayCare Centre & Preprimary School in Nalagandla - Kidzonia International";
-                $page_data['content'] = 'Kidzonia, a premier <a href="https://www.kidzoniainternational.in/" target="_blank">Preschool in Nalagandla</a>, makes learning playful yet purposeful. Our Discover Curriculum nurtures each child\'s unique personality, fostering creativity and confidence from the Nursery stage onward. Through a blend of digital tools, hands-on experiences, and theme-based learning, we inspire curiosity and a lifelong passion for knowledge — distinguishing us as one of the top Montessori schools in the area.';
-                $page_data['meta_description'] = "Discover the best preschool in Nalagandla, a distinguished Montessori School offering premier preprimary education. Our inclusive environment extends to a trusted DayCare Centre, ensuring comprehensive early childhood development for a promising future.";
-                $page_data['meta_keyword'] = "preschool in nalagandla, nursery in nalagandla, childcare in nalagandla, montessori school in nalagandla, daycare centre in nalagandla, preprimary school in nalagandla, best preschool in nalagandla, best nursery in nalagandla, nursery admission in nalagandla";
-                $page_data['canonical_url'] = 'https://www.kidzoniainternational.in/preschool-in-nallagandla-hyderabad';
-                $page_data['footer_address'] = "169/33 Beside GHMC Park, Near Ratnadeep Lane, HUDA Layout, Nalagandla, Hyderabad, Telangana – 500 019.";
-                $page_data['footer_phone'] = "+91 9100256256 / 7288078692";
-                $page_data['footer_email'] = "nallagandla@kidzoniainternational.in";
-                $page_data['get_directions'] = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.713016168667!2d78.3081978!3d17.473444699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb92db33dcdb71%3A0xa1515a2cb19bee!2sKidzonia%20International%20Preschool%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1729247151430!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-                break;
-            case 'suraksha-enclave-ameenpur':
-                $page_data['page_title'] = "Best Preschool, Nursery & Childcare in Ameenpur | Nursery Admission | Montessori School, DayCare Centre & Preprimary School in Ameenpur - Kidzonia International";
-                $page_data['content'] = 'At Kidzonia, the premier <a href="https://www.kidzoniainternational.in/" target="_blank">Preschool in Ameenpur</a>, learning is more than lessons, it\'s a journey of imagination, discovery, and growth. From the very first Nursery year, our Discover Curriculum celebrates each child\'s individuality, blending playful exploration with purposeful learning. Through a creative mix of digital innovation and hands-on experiences, we inspire curiosity, build confidence, and instill a lifelong love for knowledge, setting a new benchmark for Montessori education in the region.';
-                $page_data['meta_description'] = "Explore the best preschool in Ameenpur, a distinguished Montessori School offering excellence in preprimary education. Our nurturing environment extends to a reliable DayCare Centre, ensuring holistic early childhood development for a promising future.";
-                $page_data['meta_keyword'] = "preschool in ameenpur, nursery in ameenpur, montessori school in ameenpur, daycare centre in ameenpur, preprimary school in ameenpur, best preschool in ameenpur, best nursery in ameenpur, nursery admission in ameenpur, childcare in ameenpur";
-                $page_data['canonical_url'] = 'https://www.kidzoniainternational.in/preschool-in-suraksha-enclave-ameenpur-hyderabad';
-                $page_data['footer_address'] = "Plot No. 13, Suraksha Enclave, Chandanagar, Ameenpur. Hyderabad, Telangana – 502 032";
-                $page_data['footer_phone'] = "+91 6309767979";
-                $page_data['footer_email'] = "ameenpur@kidzoniainternational.in";
-                $page_data['get_directions'] = '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15220.27137082883!2d78.3192318!3d17.5042746!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93daa1e87b19%3A0x71681190fd5e7190!2sKidzonia%20International%20Preschool%20%7C%20Best%20Preschool%20in%20Ameenpur!5e0!3m2!1sen!2sin!4v1729247390182!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-                break;
-            case 'serilingampally':
-                $page_data['page_title'] = "Best Preschool, Nursery & Childcare in Serilingampally | Nursery Admission | Montessori School, DayCare Centre & Preprimary in Serilingampally - Kidzonia International";
-                $page_data['content'] = 'At Kidzonia, a leading <a href="https://www.kidzoniainternational.in/" target="_blank">Preschool in Serilingampally</a>, learning is both playful and purposeful. Our Discover Curriculum celebrates each child\'s unique personality, fostering creativity, curiosity, and confidence from the Nursery stage onward. Combining digital tools with hands-on, theme-based learning, we inspire a lifelong passion for knowledge while building essential skills for future success. This innovative approach sets us apart as one of the top Montessori schools in the area.';
-
-                $page_data['meta_description'] = "Uncover excellence at the best preschool in Serilingampally, a distinguished Montessori School providing top-notch preprimary education. Our inclusive atmosphere extends to a trusted DayCare Centre, ensuring holistic early childhood development for a bright future.";
-                $page_data['meta_keyword'] = "preschool in serilingampally, nursery in serilingampally, childcare in serilingampally, montessori school in serilingampally, daycare centre in serilingampally, preprimary school in serilingampally, best preschool in serilingampally, best nursery in serilingampally, nursery admission in serilingampally";
-                $page_data['canonical_url'] = 'https://www.kidzoniainternational.in/preschool-in-serilingampally-hyderabad';
-                $page_data['footer_address'] = "Marigold Apartment, Near Nallagandla Flyover, Serilingampally, Hyderabad, Telangana – 500 019.";
-                $page_data['footer_phone'] = "+91 7207378692 / 7207178692";
-                $page_data['footer_email'] = "serilingampally@kidzoniainternational.in";
-                $page_data['get_directions'] = '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15221.723936849523!2d78.3134752!3d17.4869282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb92c067566a71%3A0x379653ba6a08e205!2sKidzonia%20International%20Preschool%20%7C%20Best%20Preschool%20in%20Serilingampally!5e0!3m2!1sen!2sin!4v1729246148964!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-                break;
-            case 'nallagandla-navodaya':
-                $page_data['page_title'] = "Top International Schools in Nallagandla | Best CBSE, Pre Primary, Nursery, Kindergarten & Daycare Schools in Nallagandla Hyderabad - Kidzonia International";
-                $page_data['content'] = 'Kidzonia, the leading <a href="https://www.kidzoniainternational.in/" target="_blank">Preschool in Nallagandla Navodaya</a>, turns early learning into an inspiring adventure. From Nursery onwards, our Discover Curriculum blends creativity, play, and structured learning to nurture confidence, curiosity, and essential skills. With a perfect mix of digital innovation and hands-on experiences, we ignite a lifelong passion for learning, making us a top choice for Montessori education in the region.';
-                $page_data['meta_description'] = "Discover the top international schools in Nallagandla, Hyderabad, known for academic excellence, holistic development, and a nurturing environment for your child's bright future.";
-                $page_data['meta_keyword'] = "schools in nallagandla, pre primary schools in nallagandla, cbse schools in nallagandla, international schools in nallagandla, best schools in nallagandla, top international schools in nallagandla, schools near nallagandla,schools in nallagandlahyderabad, pre schools in nallagandla, nursery schools in nallagandla, kindergarten schools in nallagandla, best international schools near nallagandla, daycare schools in nallagandla, pre schools in nallagandlahyderabad, pre primary schools in nallagandla hyderabad";
-                $page_data['canonical_url'] = 'https://www.kidzoniainternational.in/preschool-in-nallagandla-navodaya-hyderabad';
-                $page_data['footer_address'] = "Plot No 127, Navodaya H. S, D. No-2-55/KGB/N/127, Kanchi Gachibowli Rd, Serilingampalle (M), Telangana - 500 019";
-                $page_data['footer_phone'] = "+91 9000273256";
-                $page_data['footer_email'] = "kips.navodaya@kidzoniainternational.in";
-                $page_data['get_directions'] = '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7611.788900250971!2d78.3024695!3d17.4647653!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb932797ca4b83%3A0x9439fc259db67e1f!2sKidzonia%20International%20Preschool%20in%20Navodaya!5e0!3m2!1sen!2sin!4v1729247268438!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-                break;
-            case 'kphb-kukatpally':
-                $page_data['page_title'] = "Top International Schools in KPHB Kukatpally | Best CBSE, Pre Primary, Nursery, Kindergarten & Daycare Schools in KPHB Kukatpally, Hyderabad - Kidzonia International";
-                $page_data['content'] = 'Kidzonia, the trusted <a href="https://www.kidzoniainternational.in/" target="_blank">Preschool in KPHB, Kukatpally</a>, turns early education into a joyful adventure. From Nursery onwards, our Discover Curriculum blends play, creativity, and structured learning to spark curiosity, build confidence, and develop essential skills. With the perfect mix of digital innovation and hands-on activities, we inspire a lifelong love for learning, making us the preferred choice for Montessori education in the region.';
-
-                $page_data['meta_description'] = "A playful learning paradise! Kidzonia is a top international preschool in KPHB, Hyderabad, offering a unique Montessori curriculum.";
-                $page_data['meta_keyword'] = "schools in kphb, pre primary schools in kphb, cbse schools in kphb, international schools in kphb, best schools in kphb, top international schools in kphb, schools near kphb, schools in kphbhyderabad, pre schools in kphb,nursery schools in kphb, kindergarten schools in kphb, best international schools near kphb, daycare schools in kphb, pre schools in kphbhyderabad, pre primary schools in kphbhyderabad, schools in kukatpally, pre primary schools in kukatpally, cbse schools in kukatpally, international schools in kukatpally, best schools in kukatpally, top international schools in kukatpally, schools near kukatpally, schools in kukatpallyhyderabad, pre schools in kukatpally, nursery schools in kukatpally, kindergarten schools in kukatpally, best international schools near kukatpally, daycare schools in kukatpally, pre schools in kukatpallyhyderabad, pre primary schools in kukatpallyhyderabad";
-                $page_data['canonical_url'] = 'https://www.kidzoniainternational.in/preschool-in-kphb-kukatpally-hyderabad';
-                $page_data['footer_address'] = "19 KPHB 5th Phase Rd, Kukatpally, Hyderabad, Telengana, 500072";
-                $page_data['footer_phone'] = "+91 8522066635 / 9100256256";
-                $page_data['footer_email'] = "kips.kphb@kidzoniainternational.in";
-                $page_data['get_directions'] = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.577133339571!2d78.39164047512314!3d17.479942300132315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9185427ce7fd%3A0x697acf091bd5d11e!2s19%2C%20KPHB%205th%20Phase%20Rd%2C%20Kukatpally%20Housing%20Board%20Colony%2C%20Kukatpally%2C%20Hyderabad%2C%20Telangana%20500072!5e0!3m2!1sen!2sin!4v1746193052907!5m2!1sen!2sin" width="10%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-                break;
-            case 'pragathi-nagar':
-                $page_data['page_title'] = "Best Preschool, Nursery & Childcare in Pragathi Nagar | Nursery Admission | Montessori School, DayCare Centre & Preprimary School in Pragathi Nagar - Kidzonia International";
-                $page_data['content'] = 'In the playful yet structured world of Kidzonia, learning becomes an exciting journey of growth and discovery. As a leading <a href="https://www.kidzoniainternational.in/" target="_blank">Preschool in Pragathi Nagar</a>, we offer our signature Discover Curriculum, designed to embrace the unique personalities of young learners and create an inspiring environment that fosters creativity and self-expression. Grounded in both digital innovation and hands-on experiential learning, this theme-based programme empowers children right from their Nursery years. It builds confidence, nurtures curiosity, and instills a lifelong love for knowledge, qualities that make us one of the top Montessori schools in the region.';
-
-                $page_data['meta_description'] = "Discover the best preschool in Pragathi Nagar, a distinguished Montessori School providing top-notch preprimary education. Our inclusive atmosphere extends to a trusted DayCare Centre, ensuring holistic early childhood development for a bright future.";
-                $page_data['meta_keyword'] = "preschool in pragathinagar, nursery in pragathinagar, childcare in pragathinagar, montessori school in pragathinagar, daycare centre in pragathinagar, preprimary school in pragathinagar, best preschool in pragathinagar, best nursery in pragathinagar, nursery admission in pragathinagar";
-                $page_data['canonical_url'] = 'https://www.kidzoniainternational.in/explore-centers/hyderabad/pragathi-nagar';
-                $page_data['footer_address'] = "7-167/2/2, Villa no :2,Mega Vista Villas, Pragathi Nagar, Near Jagan Studios, Kakatiya
-                Hills, Hyderabad, Telangana 500090";
-                $page_data['footer_phone'] = "+91 9849775540, +91 8639106092";
-                $page_data['footer_email'] = "pragathinagar@kidzoniainternational.in";
-                $page_data['get_directions'] = '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15217.890782497734!2d78.3912914!3d17.5326674!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f03fc2b9479%3A0x5bfec9e38b84d87f!2sKidzonia%20International%20Preschool%20%7C%20Best%20Preschool%20in%20Pragathinagar!5e0!3m2!1sen!2sin!4v1733233668044!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-                break;
-            default:
-                $page_data['footer_address'] = "<b>Suraka Educational Society,</b><br>
-                                                              2nd floor, 169/33, Ratnadeep Lane,
-                                                              beside GHMC Park, near kidzonia school,
-                                                              HUDA Layout, Nallagandla, Hyderabad, Telangana
-                                                              500019";
-                $page_data['footer_phone'] = "+91 9100 25 6256";
-                $page_data['footer_email'] = "info@kidzoniainternational.in";
-                $page_data['get_directions'] = '';
-                break;
+        if (!empty($branch['location_url'])) {
+            // Check if location_url is already an iframe embed
+            if (strpos($branch['location_url'], '<iframe') !== false) {
+                $page_data['get_directions'] = $branch['location_url'];
+            } else {
+                $page_data['get_directions'] = '<iframe src="' . $branch['location_url'] . '" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+            }
         }
 
-        // Fetch Dynamic SEO Content (Branch x Curriculum) - Must be after switch to correctly override hardcoded defaults
+        // Fetch Dynamic SEO Content (Branch x Curriculum) - Must be after switch/defaults to correctly override
         $page_data['why_choose_us'] = '';
         $page_data['faqs'] = [];
         $page_data['h1_title'] = $page_data['title']; // Default H1
@@ -652,8 +582,18 @@ and enriching environment where young minds thrive.";
                     $page_data['meta_keyword'] = $dynamic_seo['meta_keywords'];
                 if (!empty($dynamic_seo['h1_title']))
                     $page_data['h1_title'] = $dynamic_seo['h1_title'];
+                if (!empty($dynamic_seo['content']))
+                    $page_data['content'] = $dynamic_seo['content'];
+
                 $page_data['why_choose_us'] = $dynamic_seo['why_choose_us'];
-                $page_data['faqs'] = json_decode($dynamic_seo['faqs'], true);
+
+                // Robust JSON decode: handle both normal and double-escaped JSON
+                $faqs_raw = $dynamic_seo['faqs'];
+                $decoded = json_decode($faqs_raw, true);
+                if ($decoded === null && !empty($faqs_raw)) {
+                    $decoded = json_decode(stripslashes($faqs_raw), true);
+                }
+                $page_data['faqs'] = is_array($decoded) ? $decoded : [];
             }
         }
 

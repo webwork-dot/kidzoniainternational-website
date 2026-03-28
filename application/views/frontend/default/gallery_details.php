@@ -1,57 +1,59 @@
 <style>
-.gallery_image {
-  display: block;
-  margin: 0;
-  line-height: 0;
-  max-width: 100%;
-  height: auto;
-  min-height: 280px;
-  max-height: 280px;
-  object-fit: cover;
-  background: #7d66a8;
-}
+  .gallery_image {
+    display: block;
+    margin: 0;
+    line-height: 0;
+    max-width: 100%;
+    height: auto;
+    min-height: 280px;
+    max-height: 280px;
+    object-fit: cover;
+    background: #7d66a8;
+  }
 
-.bt_bb_image.bt_bb_shape_soft-rounded{
-  width:100%
-}
-.custom-car .owl-stage {
-  padding-bottom: 50px;
-}
+  .bt_bb_image.bt_bb_shape_soft-rounded {
+    width: 100%
+  }
 
-.bt_bb_section.bt_bb_bottom_spacing_extra_large>.bt_bb_port {
-  padding-bottom: 3.4em !important;
-}
+  .custom-car .owl-stage {
+    padding-bottom: 50px;
+  }
 
-.bt_bb_size_huge.bt_bb_headline h1{
-font-size: 4rem;
-}
+  .bt_bb_section.bt_bb_bottom_spacing_extra_large>.bt_bb_port {
+    padding-bottom: 3.4em !important;
+  }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+  .bt_bb_size_huge.bt_bb_headline h1 {
+    font-size: 4rem;
+  }
 
-.bt_bb_row{
-  margin: 0 auto;
-}
-.bt_bb_layout_boxed_1200 .bt_bb_cell{
+  @media (min-width: 768px) and (max-width: 1024px) {
+
+    .bt_bb_row {
+      margin: 0 auto;
+    }
+
+    .bt_bb_layout_boxed_1200 .bt_bb_cell {
       max-width: calc(100% - 100px) !important;
-   }
+    }
 
-   .bt_bb_title_size_normal.bt_bb_organic_animation .item .item__meta .item__title{
-    font-size: 16px;
-   }
-}
+    .bt_bb_title_size_normal.bt_bb_organic_animation .item .item__meta .item__title {
+      font-size: 16px;
+    }
+  }
 
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
 
-.bt_bb_row{
-  margin: 0 auto;
-}
+    .bt_bb_row {
+      margin: 0 auto;
+    }
 
-.bt_bb_layout_boxed_1200 .bt_bb_cell{
+    .bt_bb_layout_boxed_1200 .bt_bb_cell {
       max-width: calc(100% - 100px) !important;
-   }
+    }
 
-  
-}
+
+  }
 </style>
 
 <div class="btContentWrap btClear">
@@ -66,16 +68,16 @@ font-size: 4rem;
           "
           data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_large","xxl":"large","xl":"large"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_large","xxl":"large","xl":"large"}}'>
           <!-- <pre><?php print_r($campus_galleries); ?></pre> -->
-          <?php if (!empty($banner)) : ?>
-          <div class="bt_bb_background_image_holder_wrapper">
-            <div class="bt_bb_background_image_holder bt_bb_parallax" data-parallax="0.7" data-parallax-offset="0"
-              data-parallax-zoom-start="1" data-parallax-zoom-end="1" data-parallax-blur-start="0"
-              data-parallax-blur-end="0" data-parallax-opacity-start="1" data-parallax-opacity-end="1"
-              style="background-image: url(<?php echo base_url() . $banner; ?>);">
+          <?php if (!empty($banner)): ?>
+            <div class="bt_bb_background_image_holder_wrapper">
+              <div class="bt_bb_background_image_holder bt_bb_parallax" data-parallax="0.7" data-parallax-offset="0"
+                data-parallax-zoom-start="1" data-parallax-zoom-end="1" data-parallax-blur-start="0"
+                data-parallax-blur-end="0" data-parallax-opacity-start="1" data-parallax-opacity-end="1"
+                style="background-image: url(<?php echo base_url() . $banner; ?>);">
+              </div>
             </div>
-          </div>
           <?php else: ?>
-          <p>No image available.</p>
+            <p>No image available.</p>
           <?php endif; ?>
           <div class="bt_bb_port">
             <div class="bt_bb_cell">
@@ -101,9 +103,9 @@ font-size: 4rem;
                           <header data-bb-version="4.6.1"
                             class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_dash_none bt_bb_size_huge bt_bb_align_inherit"
                             data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_huge","xxl":"huge"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                                <h1 class="bt_bb_headline_tag">
-                                    <?php echo $h1_title; ?>
-                                </h1>
+                            <h1 class="bt_bb_headline_tag">
+                              <?php echo $h1_title; ?>
+                            </h1>
                           </header>
                           <div
                             class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_ bt_bb_bottom_spacing_large bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
@@ -246,7 +248,7 @@ font-size: 4rem;
                           </div>
                           <div class="bt_bb_text">
                             <p>
-                             <?php echo $content ?>
+                              <?php echo $content ?>
                             </p>
                           </div>
                           <div
@@ -689,25 +691,34 @@ font-size: 4rem;
 
 
         <?php if (!empty($why_choose_us)): ?>
-        <section class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_medium">
-          <div class="bt_bb_port">
-            <div class="bt_bb_cell">
-              <div class="bt_bb_cell_inner">
-                <div class="bt_bb_row_wrapper">
-                  <div class="bt_bb_row">
-                    <div class="bt_bb_column col-xxl-12">
-                      <div class="bt_bb_column_content">
-                        <div class="bt_bb_column_content_inner">
-                          <header class="bt_bb_headline bt_bb_size_extralarge bt_bb_align_center bt_bb_color_scheme_9" style="--primary-color:#282828;">
-                            <h2 class="bt_bb_headline_tag">
-                                <span class="bt_bb_headline_content"><span>Why Choose Kidzonia International?</span></span>
-                            </h2>
-                          </header>
-                          <div class="bt_bb_separator_v2 bt_bb_bottom_spacing_medium bt_bb_separator_v2_without_content">
-                            <div class="bt_bb_separator_v2_inner"><span class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;" class="bt_bb_icon_holder"></span></span><span class="bt_bb_separator_v2_inner_after"></span></div>
-                          </div>
-                          <div class="bt_bb_text">
-                            <?php echo $why_choose_us; ?>
+          <section
+            class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_medium">
+            <div class="bt_bb_port">
+              <div class="bt_bb_cell">
+                <div class="bt_bb_cell_inner">
+                  <div class="bt_bb_row_wrapper">
+                    <div class="bt_bb_row">
+                      <div class="bt_bb_column col-xxl-12">
+                        <div class="bt_bb_column_content">
+                          <div class="bt_bb_column_content_inner">
+                            <header class="bt_bb_headline bt_bb_size_extralarge bt_bb_align_center bt_bb_color_scheme_9"
+                              style="--primary-color:#282828;">
+                              <h2 class="bt_bb_headline_tag">
+                                <span class="bt_bb_headline_content"><span>Why Choose Kidzonia
+                                    International?</span></span>
+                              </h2>
+                            </header>
+                            <div
+                              class="bt_bb_separator_v2 bt_bb_bottom_spacing_medium bt_bb_separator_v2_without_content">
+                              <div class="bt_bb_separator_v2_inner"><span
+                                  class="bt_bb_separator_v2_inner_before"></span><span
+                                  class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
+                                    class="bt_bb_icon_holder"></span></span><span
+                                  class="bt_bb_separator_v2_inner_after"></span></div>
+                            </div>
+                            <div class="bt_bb_text">
+                              <?php echo $why_choose_us; ?>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -716,8 +727,7 @@ font-size: 4rem;
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
         <?php endif; ?>
 
         <section data-bb-version="4.5.9" id="bt_bb_section656da16ab1fd8"
@@ -750,8 +760,10 @@ font-size: 4rem;
                             </div>
                           </header>
                           <div class="bt_bb_text">
-                            <p>By blending engaging extracurricular activities with our innovative digital lesson-planning tool, 
-                            we equip teachers to deliver customized learning experiences that suit every age group.</p>
+                            <p>By blending engaging extracurricular activities with our innovative digital
+                              lesson-planning tool,
+                              we equip teachers to deliver customized learning experiences that suit every age group.
+                            </p>
                           </div>
                           <div data-bb-version="4.5.9"
                             class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
@@ -1185,56 +1197,56 @@ font-size: 4rem;
                   <div class="bt_bb_row bt_bb_column_gap_15 bt_bb_negative_margin_ owl-carousel owl-carousel-awards"
                     data-bt-override-class="{}">
                     <?php foreach ($awards as $awrd) { ?>
-                    <div
-                      class="bt_bb_column w-100 col-xxl-3 col-xl-3 col-xs-12 col-sm-12 col-md-6 col-lg-6 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
-                      data-width="3"
-                      data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}"
-                      style="max-width: 100% !important;">
-                      <div class="bt_bb_column_content">
-                        <div class="bt_bb_column_content_inner">
-                          <div data-bb-version="4.5.9"
-                            class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_target_lightbox bt_bb_use_lightbox bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle bt_bb_right_negative_margin_none bt_bb_left_negative_margin_none"
-                            data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_inherit&quot;,&quot;xxl&quot;:&quot;inherit&quot;}}">
-                            <a href="#lightbox" target="_blank" title="<?= htmlspecialchars($awrd->title); ?>">
-                              <img loading="lazy" decoding="async" width="966" height="400"
-                                src="<?= base_url() . $awrd->image; ?>" class="attachment-full size-full"
-                                alt="<?= htmlspecialchars($awrd->alt); ?>"
-                                data-full_image_src="<?= base_url() . $awrd->image; ?>"
-                                title="<?= htmlspecialchars($awrd->title); ?>"
-                                srcset="<?= base_url() . $awrd->image; ?>" sizes="(max-width: 966px) 100vw, 966px" />
-                            </a>
-                          </div>
-                          <div data-bb-version="4.5.9"
-                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_normal bt_bb_bottom_spacing_normal bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content bt_bb_hidden_lg bt_bb_hidden_xl"
-                            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
-                            <div class="bt_bb_separator_v2_inner">
-                              <span class="bt_bb_separator_v2_inner_before"></span>
-                              <span class="bt_bb_separator_v2_inner_content">
-                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                              </span>
-                              <span class="bt_bb_separator_v2_inner_after"></span>
+                      <div
+                        class="bt_bb_column w-100 col-xxl-3 col-xl-3 col-xs-12 col-sm-12 col-md-6 col-lg-6 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
+                        data-width="3"
+                        data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}"
+                        style="max-width: 100% !important;">
+                        <div class="bt_bb_column_content">
+                          <div class="bt_bb_column_content_inner">
+                            <div data-bb-version="4.5.9"
+                              class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_target_lightbox bt_bb_use_lightbox bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle bt_bb_right_negative_margin_none bt_bb_left_negative_margin_none"
+                              data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_inherit&quot;,&quot;xxl&quot;:&quot;inherit&quot;}}">
+                              <a href="#lightbox" target="_blank" title="<?= htmlspecialchars($awrd->title); ?>">
+                                <img loading="lazy" decoding="async" width="966" height="400"
+                                  src="<?= base_url() . $awrd->image; ?>" class="attachment-full size-full"
+                                  alt="<?= htmlspecialchars($awrd->alt); ?>"
+                                  data-full_image_src="<?= base_url() . $awrd->image; ?>"
+                                  title="<?= htmlspecialchars($awrd->title); ?>"
+                                  srcset="<?= base_url() . $awrd->image; ?>" sizes="(max-width: 966px) 100vw, 966px" />
+                              </a>
                             </div>
-                          </div>
-                          <div data-bb-version="4.5.9" class="bt_bb_text">
-                            <p style="text-align: center;">
-                              <strong><?= $awrd->name; ?></strong>
-                              <br /><?= $awrd->description; ?>
-                            </p>
-                          </div>
-                          <div data-bb-version="4.5.9"
-                            class="bt_bb_separator_v2 bt_bb_top_spacing_none bt_bb_bottom_spacing_none bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                            data-bt-override-class="null">
-                            <div class="bt_bb_separator_v2_inner">
-                              <span class="bt_bb_separator_v2_inner_before"></span>
-                              <span class="bt_bb_separator_v2_inner_content">
-                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                              </span>
-                              <span class="bt_bb_separator_v2_inner_after"></span>
+                            <div data-bb-version="4.5.9"
+                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_normal bt_bb_bottom_spacing_normal bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content bt_bb_hidden_lg bt_bb_hidden_xl"
+                              data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
+                              <div class="bt_bb_separator_v2_inner">
+                                <span class="bt_bb_separator_v2_inner_before"></span>
+                                <span class="bt_bb_separator_v2_inner_content">
+                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                                </span>
+                                <span class="bt_bb_separator_v2_inner_after"></span>
+                              </div>
+                            </div>
+                            <div data-bb-version="4.5.9" class="bt_bb_text">
+                              <p style="text-align: center;">
+                                <strong><?= $awrd->name; ?></strong>
+                                <br /><?= $awrd->description; ?>
+                              </p>
+                            </div>
+                            <div data-bb-version="4.5.9"
+                              class="bt_bb_separator_v2 bt_bb_top_spacing_none bt_bb_bottom_spacing_none bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                              data-bt-override-class="null">
+                              <div class="bt_bb_separator_v2_inner">
+                                <span class="bt_bb_separator_v2_inner_before"></span>
+                                <span class="bt_bb_separator_v2_inner_content">
+                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                                </span>
+                                <span class="bt_bb_separator_v2_inner_after"></span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                     <?php } ?>
                   </div>
                 </div>
@@ -1246,306 +1258,306 @@ font-size: 4rem;
           <!-- port -->
         </section>
         <?php if (!empty($parents)) { ?>
-        <section data-bb-version="4.6.0" id="bt_bb_section656da16abeb25"
-          class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_section_coverage_image bt_bb_section_with_top_coverage_image bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_large bt_bb_bottom_spacing_80 bt_bb_negative_margin_none"
-          style=";background-color:rgb(248,245,238);"
-          data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_large&quot;,&quot;xxl&quot;:&quot;large&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_80&quot;,&quot;xxl&quot;:&quot;80&quot;}}">
-          <div class="bt_bb_port">
-            <div class="bt_bb_cell">
-              <div class="bt_bb_cell_inner">
-                <div class="bt_bb_row_wrapper">
-                  <div class="bt_bb_row" data-bt-override-class="{}">
-                    <div
-                      class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_middle bt_bb_align_left bt_bb_padding_double bt_bb_animation_fade_in animate bt_bb_shape_inherit"
-                      data-width="12"
-                      data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_double&quot;,&quot;xxl&quot;:&quot;double&quot;,&quot;xl&quot;:&quot;double&quot;}}">
-                      <div class="bt_bb_column_content">
-                        <div class="bt_bb_column_content_inner">
-                          <header data-bb-version="4.6.0"
-                            class="pb-5 bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_9 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_center"
-                            style="; --primary-color:#282828; --secondary-color:var(--alternate-color);"
-                            data-bt-override-class="{&quot;bt_bb_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_size_extralarge&quot;,&quot;xxl&quot;:&quot;extralarge&quot;},&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_center&quot;,&quot;xxl&quot;:&quot;center&quot;}}">
-                            <h2 class="bt_bb_headline_tag">
-                              <span class="bt_bb_headline_content">
-                                <span>Parents Testimonials</span>
-                              </span>
-                            </h2>
-                          </header>
+          <section data-bb-version="4.6.0" id="bt_bb_section656da16abeb25"
+            class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_section_coverage_image bt_bb_section_with_top_coverage_image bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_large bt_bb_bottom_spacing_80 bt_bb_negative_margin_none"
+            style=";background-color:rgb(248,245,238);"
+            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_large&quot;,&quot;xxl&quot;:&quot;large&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_80&quot;,&quot;xxl&quot;:&quot;80&quot;}}">
+            <div class="bt_bb_port">
+              <div class="bt_bb_cell">
+                <div class="bt_bb_cell_inner">
+                  <div class="bt_bb_row_wrapper">
+                    <div class="bt_bb_row" data-bt-override-class="{}">
+                      <div
+                        class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_middle bt_bb_align_left bt_bb_padding_double bt_bb_animation_fade_in animate bt_bb_shape_inherit"
+                        data-width="12"
+                        data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_left&quot;,&quot;xxl&quot;:&quot;left&quot;,&quot;xl&quot;:&quot;left&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_double&quot;,&quot;xxl&quot;:&quot;double&quot;,&quot;xl&quot;:&quot;double&quot;}}">
+                        <div class="bt_bb_column_content">
+                          <div class="bt_bb_column_content_inner">
+                            <header data-bb-version="4.6.0"
+                              class="pb-5 bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_9 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_center"
+                              style="; --primary-color:#282828; --secondary-color:var(--alternate-color);"
+                              data-bt-override-class="{&quot;bt_bb_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_size_extralarge&quot;,&quot;xxl&quot;:&quot;extralarge&quot;},&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_center&quot;,&quot;xxl&quot;:&quot;center&quot;}}">
+                              <h2 class="bt_bb_headline_tag">
+                                <span class="bt_bb_headline_content">
+                                  <span>Parents Testimonials</span>
+                                </span>
+                              </h2>
+                            </header>
 
-                          <div data-bb-version="4.5.9"
-                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_20 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_20&quot;,&quot;xxl&quot;:&quot;20&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
-                            <div class="bt_bb_separator_v2_inner">
-                              <span class="bt_bb_separator_v2_inner_before"></span>
-                              <span class="bt_bb_separator_v2_inner_content">
-                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                              </span>
-                              <span class="bt_bb_separator_v2_inner_after"></span>
+                            <div data-bb-version="4.5.9"
+                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_20 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                              data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_20&quot;,&quot;xxl&quot;:&quot;20&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
+                              <div class="bt_bb_separator_v2_inner">
+                                <span class="bt_bb_separator_v2_inner_before"></span>
+                                <span class="bt_bb_separator_v2_inner_content">
+                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                                </span>
+                                <span class="bt_bb_separator_v2_inner_after"></span>
+                              </div>
                             </div>
-                          </div>
 
-                          <div class="bt_bb_row owl-carousel owl-carousel-parent-testimonial pb-5"
-                            data-bt-override-class="{}">
-                            <?php foreach ($parents as $parent): 
-                                    $videoId = explode("v=", $parent['url'])[1] ?? '';
+                            <div class="bt_bb_row owl-carousel owl-carousel-parent-testimonial pb-5"
+                              data-bt-override-class="{}">
+                              <?php foreach ($parents as $parent):
+                                $videoId = explode("v=", $parent['url'])[1] ?? '';
                                 ?>
-                                    <div class="bt_bb_column col-xxl-12">
-                                        <div class="bt_bb_column_content_inner">
-                                            <div class="bt_bb_video">
-                                                <div class="bt-video-container">
-                                                    <iframe width="640" height="360"
-                                                        src="https://www.youtube.com/embed/<?= htmlspecialchars($videoId); ?>" 
-                                                        frameborder="0" allowfullscreen>
-                                                    </iframe>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="bt_bb_column col-xxl-12">
+                                  <div class="bt_bb_column_content_inner">
+                                    <div class="bt_bb_video">
+                                      <div class="bt-video-container">
+                                        <iframe width="640" height="360"
+                                          src="https://www.youtube.com/embed/<?= htmlspecialchars($videoId); ?>"
+                                          frameborder="0" allowfullscreen>
+                                        </iframe>
+                                      </div>
                                     </div>
-                                <?php endforeach; ?>
-                          </div>
-
-                          <div data-bb-version="4.5.9"
-                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_10 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_10&quot;,&quot;xxl&quot;:&quot;10&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
-                            <div class="bt_bb_separator_v2_inner">
-                              <span class="bt_bb_separator_v2_inner_before"></span>
-                              <span class="bt_bb_separator_v2_inner_content">
-                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                              </span>
-                              <span class="bt_bb_separator_v2_inner_after"></span>
+                                  </div>
+                                </div>
+                              <?php endforeach; ?>
                             </div>
-                          </div>
 
-
-                          <div
-                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_medium bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;,&quot;xl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_medium&quot;,&quot;xxl&quot;:&quot;medium&quot;,&quot;xl&quot;:&quot;medium&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;,&quot;xl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
-                            <div class="bt_bb_separator_v2_inner">
-                              <span class="bt_bb_separator_v2_inner_before"></span>
-                              <span class="bt_bb_separator_v2_inner_content">
-                                <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                              </span>
-                              <span class="bt_bb_separator_v2_inner_after"></span>
+                            <div data-bb-version="4.5.9"
+                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_10 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                              data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_10&quot;,&quot;xxl&quot;:&quot;10&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
+                              <div class="bt_bb_separator_v2_inner">
+                                <span class="bt_bb_separator_v2_inner_before"></span>
+                                <span class="bt_bb_separator_v2_inner_content">
+                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                                </span>
+                                <span class="bt_bb_separator_v2_inner_after"></span>
+                              </div>
                             </div>
-                          </div>
 
+
+                            <div
+                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_medium bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                              data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;,&quot;xl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_medium&quot;,&quot;xxl&quot;:&quot;medium&quot;,&quot;xl&quot;:&quot;medium&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;,&quot;xl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                              <div class="bt_bb_separator_v2_inner">
+                                <span class="bt_bb_separator_v2_inner_before"></span>
+                                <span class="bt_bb_separator_v2_inner_content">
+                                  <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                                </span>
+                                <span class="bt_bb_separator_v2_inner_after"></span>
+                              </div>
+                            </div>
+
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!-- cell_inner -->
               </div>
-              <!-- cell_inner -->
+              <!-- cell -->
             </div>
-            <!-- cell -->
-          </div>
-          <!-- port -->
-          <div class="bt_bb_section_top_section_coverage_image">
-            <img decoding="async" src="<?= base_url(); ?>uploads/2022/04/top_white_wave_03.png"
-              alt="bt_bb_section_top_section_coverage_image" />
-          </div>
-          <div class="bt_bb_section_bottom_section_coverage_image">
-            <img decoding="async" src="<?= base_url(); ?>uploads/2022/04/bottom_white_wave_02.png"
-              alt="bt_bb_section_bottom_section_coverage_image" />
-          </div>
-        </section>
+            <!-- port -->
+            <div class="bt_bb_section_top_section_coverage_image">
+              <img decoding="async" src="<?= base_url(); ?>uploads/2022/04/top_white_wave_03.png"
+                alt="bt_bb_section_top_section_coverage_image" />
+            </div>
+            <div class="bt_bb_section_bottom_section_coverage_image">
+              <img decoding="async" src="<?= base_url(); ?>uploads/2022/04/bottom_white_wave_02.png"
+                alt="bt_bb_section_bottom_section_coverage_image" />
+            </div>
+          </section>
         <?php } ?>
         <?php if (!empty($campus_galleries)) { ?>
-        <section data-bb-version="4.6.1" id="bt_bb_section656da25b830c3"
-          class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_none bt_bb_negative_margin_none"
-          data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_medium","xxl":"medium"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_none","xxl":"none"}}'>
-          <div class="bt_bb_port">
-            <div class="bt_bb_cell">
-              <div class="bt_bb_cell_inner">
+          <section data-bb-version="4.6.1" id="bt_bb_section656da25b830c3"
+            class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_none bt_bb_negative_margin_none"
+            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_medium","xxl":"medium"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_none","xxl":"none"}}'>
+            <div class="bt_bb_port">
+              <div class="bt_bb_cell">
+                <div class="bt_bb_cell_inner">
 
-                <div class="bt_bb_row_wrapper">
-                  <div class="bt_bb_row" data-bt-override-class="{}" data-structure="12">
-                    <div
-                      class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_animation_fade_in animate bt_bb_shape_inherit animated bt_bb_align_center bt_bb_padding_normal"
-                      data-width="12"
-                      data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_center&quot;,&quot;xxl&quot;:&quot;center&quot;,&quot;xl&quot;:&quot;center&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
-                      <div class="bt_bb_column_content">
-                        <div class="bt_bb_column_content_inner">
-                          <header data-bb-version="4.6.1"
-                            class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_5 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
-                            style="
+                  <div class="bt_bb_row_wrapper">
+                    <div class="bt_bb_row" data-bt-override-class="{}" data-structure="12">
+                      <div
+                        class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_animation_fade_in animate bt_bb_shape_inherit animated bt_bb_align_center bt_bb_padding_normal"
+                        data-width="12"
+                        data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_center&quot;,&quot;xxl&quot;:&quot;center&quot;,&quot;xl&quot;:&quot;center&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                        <div class="bt_bb_column_content">
+                          <div class="bt_bb_column_content_inner">
+                            <header data-bb-version="4.6.1"
+                              class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_5 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
+                              style="
                               --primary-color: #282828;
                               --secondary-color: var(--accent-color);
                             "
-                            data-bt-override-class="{&quot;bt_bb_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_size_extralarge&quot;,&quot;xxl&quot;:&quot;extralarge&quot;},&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_inherit&quot;,&quot;xxl&quot;:&quot;inherit&quot;}}">
-                            <h2 class="bt_bb_headline_tag">
-                              <span class="bt_bb_headline_content"><span>Campus Photos</span></span>
-                            </h2>
-                          </header>
-                          <div
-                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_separator_v2_without_content bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal"
-                            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;,&quot;xl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_50&quot;,&quot;xxl&quot;:&quot;50&quot;,&quot;xl&quot;:&quot;50&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;,&quot;xl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
-                            <div class="bt_bb_separator_v2_inner">
-                              <span class="bt_bb_separator_v2_inner_before"></span><span
-                                class="bt_bb_separator_v2_inner_content"><span data-ico-="&amp;#x;"
-                                  class="bt_bb_icon_holder"></span></span><span
-                                class="bt_bb_separator_v2_inner_after"></span>
+                              data-bt-override-class="{&quot;bt_bb_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_size_extralarge&quot;,&quot;xxl&quot;:&quot;extralarge&quot;},&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_inherit&quot;,&quot;xxl&quot;:&quot;inherit&quot;}}">
+                              <h2 class="bt_bb_headline_tag">
+                                <span class="bt_bb_headline_content"><span>Campus Photos</span></span>
+                              </h2>
+                            </header>
+                            <div
+                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_separator_v2_without_content bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal"
+                              data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;,&quot;xl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_50&quot;,&quot;xxl&quot;:&quot;50&quot;,&quot;xl&quot;:&quot;50&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;,&quot;xl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                              <div class="bt_bb_separator_v2_inner">
+                                <span class="bt_bb_separator_v2_inner_before"></span><span
+                                  class="bt_bb_separator_v2_inner_content"><span data-ico-="&amp;#x;"
+                                    class="bt_bb_icon_holder"></span></span><span
+                                  class="bt_bb_separator_v2_inner_after"></span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="bt_bb_row_wrapper">
-                  <div class="bt_bb_row" data-bt-override-class="{}">
-                    <div data-bb-version="4.6.1"
-                      class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_shape_inherit"
-                      data-width="12" data-bt-override-class="{}">
-                      <div class="bt_bb_column_content">
-                        <div class="bt_bb_column_content_inner">
-                          <div data-bb-version="4.6.1" class="bt_bb_row_inner">
+                  <div class="bt_bb_row_wrapper">
+                    <div class="bt_bb_row" data-bt-override-class="{}">
+                      <div data-bb-version="4.6.1"
+                        class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_shape_inherit"
+                        data-width="12" data-bt-override-class="{}">
+                        <div class="bt_bb_column_content">
+                          <div class="bt_bb_column_content_inner">
+                            <div data-bb-version="4.6.1" class="bt_bb_row_inner">
 
-                            <?php foreach ($campus_galleries as $gal) { ?>
-                            <div data-bb-version="4.6.1"
-                              class="bt_bb_column_inner col-xxl-3 col-xl-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
-                              data-width="3" data-bt-override-class="{}">
-                              <div class="bt_bb_column_inner_content">
+                              <?php foreach ($campus_galleries as $gal) { ?>
                                 <div data-bb-version="4.6.1"
-                                  class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_target_lightbox bt_bb_use_lightbox bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle bt_bb_right_negative_margin_none bt_bb_left_negative_margin_none"
-                                  data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                                  <a href="#lightbox" target="_blank" title=""><img fetchpriority="high"
-                                      decoding="async" width="600" height="600"
-                                      src="<?php echo base_url() . $gal['image']; ?>" class="attachment-full size-full"
-                                      alt="Kizonia" data-full_image_src="<?php echo base_url() . $gal['image']; ?>"
-                                      title="teachers day (1)" srcset="
+                                  class="bt_bb_column_inner col-xxl-3 col-xl-3 col-xs-12 col-sm-6 col-md-6 col-lg-3 bt_bb_align_left bt_bb_vertical_align_top bt_bb_shape_inherit"
+                                  data-width="3" data-bt-override-class="{}">
+                                  <div class="bt_bb_column_inner_content">
+                                    <div data-bb-version="4.6.1"
+                                      class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_target_lightbox bt_bb_use_lightbox bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle bt_bb_right_negative_margin_none bt_bb_left_negative_margin_none"
+                                      data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
+                                      <a href="#lightbox" target="_blank" title=""><img fetchpriority="high"
+                                          decoding="async" width="600" height="600"
+                                          src="<?php echo base_url() . $gal['image']; ?>" class="attachment-full size-full"
+                                          alt="Kizonia" data-full_image_src="<?php echo base_url() . $gal['image']; ?>"
+                                          title="teachers day (1)" srcset="
                                         <?php echo base_url() . $gal['image']; ?> 600w,
                                         <?php echo base_url() . $gal['image']; ?> 160w,
                                         <?php echo base_url() . $gal['image']; ?> 320w
                                       " sizes="(max-width: 600px) 100vw, 600px" /></a>
-                                </div>
-                                <div data-bb-version="4.6.1" class="bt_bb_text"></div>
-                                <div data-bb-version="4.6.1"
-                                  class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_5 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                                  data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_5","xxl":"5"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal"}}'>
-                                  <div class="bt_bb_separator_v2_inner">
-                                    <span class="bt_bb_separator_v2_inner_before"></span><span
-                                      class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
-                                        class="bt_bb_icon_holder"></span></span><span
-                                      class="bt_bb_separator_v2_inner_after"></span>
+                                    </div>
+                                    <div data-bb-version="4.6.1" class="bt_bb_text"></div>
+                                    <div data-bb-version="4.6.1"
+                                      class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_5 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                                      data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_5","xxl":"5"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal"}}'>
+                                      <div class="bt_bb_separator_v2_inner">
+                                        <span class="bt_bb_separator_v2_inner_before"></span><span
+                                          class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
+                                            class="bt_bb_icon_holder"></span></span><span
+                                          class="bt_bb_separator_v2_inner_after"></span>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            </div>
-                            <?php } ?>
+                              <?php } ?>
 
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+
                 </div>
 
+                <!-- cell_inner -->
               </div>
-
-              <!-- cell_inner -->
+              <!-- cell -->
             </div>
-            <!-- cell -->
-          </div>
-          <!-- port -->
-        </section>
+            <!-- port -->
+          </section>
         <?php } ?>
 
         <?php if (!empty($galleries)) { ?>
-        <section data-bb-version="4.6.1" id="bt_bb_section656da190a1589"
-          class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_section_coverage_image bt_bb_section_with_top_coverage_image bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_large bt_bb_bottom_spacing_extra_large bt_bb_negative_margin_none"
-          style="background-color: white"
-          data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_large","xxl":"large"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_extra_large","xxl":"extra_large"}}'>
-          <div class="bt_bb_port">
-            <div class="bt_bb_cell">
-              <div class="bt_bb_cell_inner">
-                <div class="bt_bb_row_wrapper">
-                  <div class="bt_bb_row" data-bt-override-class="{}">
-                    <div
-                      class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
-                      data-width="12"
-                      data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_center","xxl":"center","xl":"center"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
-                      <div class="bt_bb_column_content">
-                        <div class="bt_bb_column_content_inner">
-                          <header data-bb-version="4.6.1"
-                            class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_5 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
-                            style="
+          <section data-bb-version="4.6.1" id="bt_bb_section656da190a1589"
+            class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_section_coverage_image bt_bb_section_with_top_coverage_image bt_bb_bottom_section_coverage_image bt_bb_section_with_bottom_coverage_image bt_bb_top_spacing_large bt_bb_bottom_spacing_extra_large bt_bb_negative_margin_none"
+            style="background-color: white"
+            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_large","xxl":"large"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_extra_large","xxl":"extra_large"}}'>
+            <div class="bt_bb_port">
+              <div class="bt_bb_cell">
+                <div class="bt_bb_cell_inner">
+                  <div class="bt_bb_row_wrapper">
+                    <div class="bt_bb_row" data-bt-override-class="{}">
+                      <div
+                        class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
+                        data-width="12"
+                        data-bt-override-class='{"bt_bb_align_":{"current_class":"bt_bb_align_center","xxl":"center","xl":"center"},"bt_bb_padding_":{"current_class":"bt_bb_padding_normal","xxl":"normal","xl":"normal"}}'>
+                        <div class="bt_bb_column_content">
+                          <div class="bt_bb_column_content_inner">
+                            <header data-bb-version="4.6.1"
+                              class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_5 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
+                              style="
                               --primary-color: #282828;
                               --secondary-color: var(--accent-color);
                             "
-                            data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_extralarge","xxl":"extralarge"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
-                            <h2 class="bt_bb_headline_tag">
-                              <span class="bt_bb_headline_content"><span>Kidzonia Gallery</span></span>
-                            </h2>
-                          </header>
-                          <div
-                            class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                            data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_50","xxl":"50","xl":"50"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
-                            <div class="bt_bb_separator_v2_inner">
-                              <span class="bt_bb_separator_v2_inner_before"></span><span
-                                class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
-                                  class="bt_bb_icon_holder"></span></span><span
-                                class="bt_bb_separator_v2_inner_after"></span>
+                              data-bt-override-class='{"bt_bb_size_":{"current_class":"bt_bb_size_extralarge","xxl":"extralarge"},"bt_bb_align_":{"current_class":"bt_bb_align_inherit","xxl":"inherit"}}'>
+                              <h2 class="bt_bb_headline_tag">
+                                <span class="bt_bb_headline_content"><span>Kidzonia Gallery</span></span>
+                              </h2>
+                            </header>
+                            <div
+                              class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                              data-bt-override-class='{"bt_bb_top_spacing_":{"current_class":"bt_bb_top_spacing_none","xxl":"none","xl":"none"},"bt_bb_bottom_spacing_":{"current_class":"bt_bb_bottom_spacing_50","xxl":"50","xl":"50"},"bt_bb_border_thickness_":{"current_class":"bt_bb_border_thickness_1","xxl":"1","xl":"1"},"bt_bb_icon_size_":{"current_class":"bt_bb_icon_size_normal","xxl":"normal","xl":"normal"},"bt_bb_text_size_":{"current_class":"bt_bb_text_size_normal","xxl":"normal","xl":"normal"}}'>
+                              <div class="bt_bb_separator_v2_inner">
+                                <span class="bt_bb_separator_v2_inner_before"></span><span
+                                  class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
+                                    class="bt_bb_icon_holder"></span></span><span
+                                  class="bt_bb_separator_v2_inner_after"></span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="bt_bb_row_wrapper">
-                  <!-- Slider for Gallery Images -->
-                  <div class="bt_bb_row owl-carousel owl-carousel-parent-testimonial custom-car"
-                    data-bt-override-class="{}">
-                    <?php foreach ($galleries as $gal) { ?>
-                    <div
-                      class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal"
-                      data-width="4">
-                      <div class="bt_bb_column_content">
-                        <div class="bt_bb_column_content_inner">
-                          <div data-bb-version="4.6.1"
-                            class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle"
-                            style="box-shadow: 2px 2px 8px rgb(0 0 0 / 30%);">
-                            <a onclick="AjaxGalleryModal('<?php echo $gal['branch_id']; ?>','<?php echo strtolower($gal['title']); ?>');"
-                              style="cursor:pointer" data-branch_id="<?php echo $gal['branch_id']; ?>"
-                              data-title="<?php echo strtolower($gal['title']); ?>" target="_blank"
-                              title="<?php echo $gal['title']; ?>">
-                              <img loading="lazy" decoding="async" width="1000" height="1000"
-                                src="<?php echo base_url() . $gal['image']; ?>"
-                                class="attachment-full size-full gallery_image" alt="<?php echo $gal['title']; ?>"
-                                data-full_image_src="<?php echo base_url() . $gal['image']; ?>"
-                                title="<?php echo $gal['title']; ?>" srcset="<?php echo base_url() . $gal['image']; ?> 1000w,
+                  <div class="bt_bb_row_wrapper">
+                    <!-- Slider for Gallery Images -->
+                    <div class="bt_bb_row owl-carousel owl-carousel-parent-testimonial custom-car"
+                      data-bt-override-class="{}">
+                      <?php foreach ($galleries as $gal) { ?>
+                        <div
+                          class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal"
+                          data-width="4">
+                          <div class="bt_bb_column_content">
+                            <div class="bt_bb_column_content_inner">
+                              <div data-bb-version="4.6.1"
+                                class="bt_bb_image bt_bb_shape_soft-rounded bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle"
+                                style="box-shadow: 2px 2px 8px rgb(0 0 0 / 30%);">
+                                <a onclick="AjaxGalleryModal('<?php echo $gal['branch_id']; ?>','<?php echo strtolower($gal['title']); ?>');"
+                                  style="cursor:pointer" data-branch_id="<?php echo $gal['branch_id']; ?>"
+                                  data-title="<?php echo strtolower($gal['title']); ?>" target="_blank"
+                                  title="<?php echo $gal['title']; ?>">
+                                  <img loading="lazy" decoding="async" width="1000" height="1000"
+                                    src="<?php echo base_url() . $gal['image']; ?>"
+                                    class="attachment-full size-full gallery_image" alt="<?php echo $gal['title']; ?>"
+                                    data-full_image_src="<?php echo base_url() . $gal['image']; ?>"
+                                    title="<?php echo $gal['title']; ?>" srcset="<?php echo base_url() . $gal['image']; ?> 1000w,
                                             <?php echo base_url() . $gal['image']; ?> 640w,
                                             <?php echo base_url() . $gal['image']; ?> 160w,
                                             <?php echo base_url() . $gal['image']; ?> 768w,
                                             <?php echo base_url() . $gal['image']; ?> 320w"
-                                sizes="(max-width: 1000px) 100vw, 1000px" />
-                            </a>
-                            <div class="text-center p-2" style="font-size: 15px;"><?php echo $gal['title']; ?></div>
+                                    sizes="(max-width: 1000px) 100vw, 1000px" />
+                                </a>
+                                <div class="text-center p-2" style="font-size: 15px;"><?php echo $gal['title']; ?></div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      <?php } ?>
                     </div>
-                    <?php } ?>
+                    <!-- End of Slider -->
                   </div>
-                  <!-- End of Slider -->
                 </div>
+                <!-- cell_inner -->
               </div>
-              <!-- cell_inner -->
+              <!-- cell -->
             </div>
-            <!-- cell -->
-          </div>
-          <!-- port -->
-          <div class="bt_bb_section_top_section_coverage_image">
-            <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/top_white_wave_03.png"
-              alt="bt_bb_section_top_section_coverage_image" />
-          </div>
-          <div class="bt_bb_section_bottom_section_coverage_image">
-            <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/bottom_white_wave_03.png"
-              alt="bt_bb_section_bottom_section_coverage_image" />
-          </div>
-        </section>
+            <!-- port -->
+            <div class="bt_bb_section_top_section_coverage_image">
+              <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/top_white_wave_03.png"
+                alt="bt_bb_section_top_section_coverage_image" />
+            </div>
+            <div class="bt_bb_section_bottom_section_coverage_image">
+              <img decoding="async" src="<?php echo base_url(); ?>uploads/2022/04/bottom_white_wave_03.png"
+                alt="bt_bb_section_bottom_section_coverage_image" />
+            </div>
+          </section>
         <?php } ?>
 
 
@@ -1600,19 +1612,19 @@ font-size: 4rem;
               </div>
               <div data-bb-version="4.6.0" class=" row d-flex owl-carousel owl-carousel-event">
                 <?php foreach ($events as $evt) { ?>
-                <div class="col-12 col-md-6 col-lg-4 p-3 w-100">
-                  <div class="box custom-box-event bg-white">
-                    <a href="<?= base_url() . 'event/' . $evt->slug . '/' . $evt->id; ?>">
-                      <img src="<?= base_url() . $evt->image; ?>" alt="<?= base_url() . $evt->name; ?>?tr=w-400"
-                        title="<?= $evt->name; ?>" class="img-fluid" alt="<?= $evt->name; ?>">
-                    </a>
-                    <div class="blog-title text-center">
+                  <div class="col-12 col-md-6 col-lg-4 p-3 w-100">
+                    <div class="box custom-box-event bg-white">
                       <a href="<?= base_url() . 'event/' . $evt->slug . '/' . $evt->id; ?>">
-                        <?= $evt->name; ?>
+                        <img src="<?= base_url() . $evt->image; ?>" alt="<?= base_url() . $evt->name; ?>?tr=w-400"
+                          title="<?= $evt->name; ?>" class="img-fluid" alt="<?= $evt->name; ?>">
                       </a>
+                      <div class="blog-title text-center">
+                        <a href="<?= base_url() . 'event/' . $evt->slug . '/' . $evt->id; ?>">
+                          <?= $evt->name; ?>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
                 <?php } ?>
               </div>
               <div data-bb-version="4.5.9"
@@ -1657,133 +1669,147 @@ font-size: 4rem;
         </section>
 
         <?php if ($get_directions != '') { ?>
-        <section data-bb-version="4.5.9" id="bt_bb_section656da16ab88f3"
-          class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_normal bt_bb_bottom_spacing_normal bt_bb_negative_margin_none"
-          data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
-          <div class="bt_bb_port">
-            <div class="bt_bb_cell">
-              <div class="bt_bb_cell_inner">
-                <div class="bt_bb_row_wrapper">
-                  <div class="bt_bb_cell">
-                    <div class="bt_bb_cell_inner">
-                      <div class="bt_bb_row_wrapper">
-                        <div class="bt_bb_row" data-bt-override-class="{}">
-                          <div
-                            class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
-                            data-width="12"
-                            data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_center&quot;,&quot;xxl&quot;:&quot;center&quot;,&quot;xl&quot;:&quot;center&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
-                            <div class="bt_bb_column_content">
-                              <div class="bt_bb_column_content_inner">
-                                <header data-bb-version="4.5.9"
-                                  class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_5 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
-                                  style="; --primary-color:#282828; --secondary-color:var(--accent-color);"
-                                  data-bt-override-class="{&quot;bt_bb_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_size_extralarge&quot;,&quot;xxl&quot;:&quot;extralarge&quot;},&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_inherit&quot;,&quot;xxl&quot;:&quot;inherit&quot;}}">
-                                  <h2 class="bt_bb_headline_tag">
-                                    <span class="bt_bb_headline_content">
-                                      <span>Get Directions</span>
-                                    </span>
-                                  </h2>
-                                </header>
+          <section data-bb-version="4.5.9" id="bt_bb_section656da16ab88f3"
+            class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_normal bt_bb_bottom_spacing_normal bt_bb_negative_margin_none"
+            data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
+            <div class="bt_bb_port">
+              <div class="bt_bb_cell">
+                <div class="bt_bb_cell_inner">
+                  <div class="bt_bb_row_wrapper">
+                    <div class="bt_bb_cell">
+                      <div class="bt_bb_cell_inner">
+                        <div class="bt_bb_row_wrapper">
+                          <div class="bt_bb_row" data-bt-override-class="{}">
+                            <div
+                              class="bt_bb_column col-xxl-12 col-xl-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 bt_bb_vertical_align_top bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate bt_bb_shape_inherit"
+                              data-width="12"
+                              data-bt-override-class="{&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_center&quot;,&quot;xxl&quot;:&quot;center&quot;,&quot;xl&quot;:&quot;center&quot;},&quot;bt_bb_padding_&quot;:{&quot;current_class&quot;:&quot;bt_bb_padding_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                              <div class="bt_bb_column_content">
+                                <div class="bt_bb_column_content_inner">
+                                  <header data-bb-version="4.5.9"
+                                    class="bt_bb_headline bt_bb_subheadline_text_transform_default bt_bb_color_scheme_5 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit"
+                                    style="; --primary-color:#282828; --secondary-color:var(--accent-color);"
+                                    data-bt-override-class="{&quot;bt_bb_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_size_extralarge&quot;,&quot;xxl&quot;:&quot;extralarge&quot;},&quot;bt_bb_align_&quot;:{&quot;current_class&quot;:&quot;bt_bb_align_inherit&quot;,&quot;xxl&quot;:&quot;inherit&quot;}}">
+                                    <h2 class="bt_bb_headline_tag">
+                                      <span class="bt_bb_headline_content">
+                                        <span>Get Directions</span>
+                                      </span>
+                                    </h2>
+                                  </header>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- cell_inner -->
+                    </div>
+                  </div>
+                  <!-- cell -->
+                </div>
+                <div
+                  class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
+                  data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;,&quot;xl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_50&quot;,&quot;xxl&quot;:&quot;50&quot;,&quot;xl&quot;:&quot;50&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;,&quot;xl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
+                  <div class="bt_bb_separator_v2_inner">
+                    <span class="bt_bb_separator_v2_inner_before"></span>
+                    <span class="bt_bb_separator_v2_inner_content">
+                      <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
+                    </span>
+                    <span class="bt_bb_separator_v2_inner_after"></span>
+                  </div>
+                </div>
+                <div data-bb-version="4.6.0" class=" row d-flex">
+                  <?php echo $get_directions; ?>
+                </div>
+
+                <!-- cell_inner -->
+              </div>
+              <!-- cell -->
+            </div>
+            <!-- port -->
+          </section>
+
+          <?php } ?>
+
+        <?php if (!empty($faqs)): ?>
+            <style>
+              .faq-item h4.active span {
+                transform: rotate(45deg);
+                display: inline-block;
+              }
+            </style>
+            <section
+              class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_large bt_bb_bottom_spacing_large"
+              style="background-color: #f9f9f9;">
+              <div class="bt_bb_port">
+                <div class="bt_bb_cell">
+                  <div class="bt_bb_cell_inner">
+                    <div class="bt_bb_row_wrapper">
+                      <div class="bt_bb_row">
+                        <div class="bt_bb_column col-xxl-12">
+                          <div class="bt_bb_column_content">
+                            <div class="bt_bb_column_content_inner">
+                              <header class="bt_bb_headline bt_bb_size_extralarge bt_bb_align_center bt_bb_color_scheme_9"
+                                style="--primary-color:#282828;">
+                                <h2 class="bt_bb_headline_tag">
+                                  <span class="bt_bb_headline_content"><span>Frequently Asked Questions</span></span>
+                                </h2>
+                              </header>
+                              <div
+                                class="bt_bb_separator_v2 bt_bb_bottom_spacing_medium bt_bb_separator_v2_without_content">
+                                <div class="bt_bb_separator_v2_inner"><span
+                                    class="bt_bb_separator_v2_inner_before"></span><span
+                                    class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;"
+                                      class="bt_bb_icon_holder"></span></span><span
+                                    class="bt_bb_separator_v2_inner_after"></span></div>
+                              </div>
+                              <div class="faq-accordion mt-4">
+                                <?php foreach ($faqs as $index => $faq): ?>
+                                  <div class="faq-item mb-3" style="border-bottom: 1px solid #ddd; padding-bottom: 15px;">
+                                    <h4 style="cursor: pointer; position: relative; padding-right: 30px; font-weight: 600;"
+                                      onclick="$(this).next().slideToggle(); $(this).toggleClass('active');">
+                                      <?php echo $faq['question']; ?>
+                                      <span
+                                        style="position: absolute; right: 0; top: 0; font-size: 24px; line-height: 1;">+</span>
+                                    </h4>
+                                    <div class="faq-answer" style="display: none; padding-top: 10px;">
+                                      <?php echo $faq['answer']; ?>
+                                    </div>
+                                  </div>
+                                <?php endforeach; ?>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <!-- cell_inner -->
-                  </div>
-                </div>
-                <!-- cell -->
-              </div>
-              <div
-                class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_none bt_bb_bottom_spacing_50 bt_bb_border_thickness_1 bt_bb_icon_size_normal bt_bb_text_size_normal bt_bb_separator_v2_without_content"
-                data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_none&quot;,&quot;xxl&quot;:&quot;none&quot;,&quot;xl&quot;:&quot;none&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_50&quot;,&quot;xxl&quot;:&quot;50&quot;,&quot;xl&quot;:&quot;50&quot;},&quot;bt_bb_border_thickness_&quot;:{&quot;current_class&quot;:&quot;bt_bb_border_thickness_1&quot;,&quot;xxl&quot;:&quot;1&quot;,&quot;xl&quot;:&quot;1&quot;},&quot;bt_bb_icon_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_icon_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;},&quot;bt_bb_text_size_&quot;:{&quot;current_class&quot;:&quot;bt_bb_text_size_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;,&quot;xl&quot;:&quot;normal&quot;}}">
-                <div class="bt_bb_separator_v2_inner">
-                  <span class="bt_bb_separator_v2_inner_before"></span>
-                  <span class="bt_bb_separator_v2_inner_content">
-                    <span data-ico-="&#x;" class="bt_bb_icon_holder"></span>
-                  </span>
-                  <span class="bt_bb_separator_v2_inner_after"></span>
-                </div>
-              </div>
-              <div data-bb-version="4.6.0" class=" row d-flex">
-                <?php echo $get_directions; ?>
-              </div>
-
-              <!-- cell_inner -->
-            </div>
-            <!-- cell -->
-          </div>
-          <!-- port -->
-        </section>
-
-        <?php if (!empty($faqs)): ?>
-        <style>
-            .faq-item h4.active span { transform: rotate(45deg); display: inline-block; }
-        </style>
-        <section class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_large bt_bb_bottom_spacing_large" style="background-color: #f9f9f9;">
-          <div class="bt_bb_port">
-            <div class="bt_bb_cell">
-              <div class="bt_bb_cell_inner">
-                <div class="bt_bb_row_wrapper">
-                  <div class="bt_bb_row">
-                    <div class="bt_bb_column col-xxl-12">
-                      <div class="bt_bb_column_content">
-                        <div class="bt_bb_column_content_inner">
-                          <header class="bt_bb_headline bt_bb_size_extralarge bt_bb_align_center bt_bb_color_scheme_9" style="--primary-color:#282828;">
-                            <h2 class="bt_bb_headline_tag">
-                                <span class="bt_bb_headline_content"><span>Frequently Asked Questions</span></span>
-                            </h2>
-                          </header>
-                          <div class="bt_bb_separator_v2 bt_bb_bottom_spacing_medium bt_bb_separator_v2_without_content">
-                            <div class="bt_bb_separator_v2_inner"><span class="bt_bb_separator_v2_inner_before"></span><span class="bt_bb_separator_v2_inner_content"><span data-ico-="&#x;" class="bt_bb_icon_holder"></span></span><span class="bt_bb_separator_v2_inner_after"></span></div>
-                          </div>
-                          <div class="faq-accordion mt-4">
-                            <?php foreach ($faqs as $index => $faq): ?>
-                            <div class="faq-item mb-3" style="border-bottom: 1px solid #ddd; padding-bottom: 15px;">
-                                <h4 style="cursor: pointer; position: relative; padding-right: 30px; font-weight: 600;" onclick="$(this).next().slideToggle(); $(this).toggleClass('active');">
-                                    <?php echo $faq['question']; ?>
-                                    <span style="position: absolute; right: 0; top: 0; font-size: 24px; line-height: 1;">+</span>
-                                </h4>
-                                <div class="faq-answer" style="display: none; padding-top: 10px;">
-                                    <?php echo $faq['answer']; ?>
-                                </div>
-                            </div>
-                            <?php endforeach; ?>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <!-- JSON-LD FAQ Schema -->
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": <?php 
-            $schema_faqs = [];
-            foreach ($faqs as $faq) {
+            <!-- JSON-LD FAQ Schema -->
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": <?php
+              $schema_faqs = [];
+              foreach ($faqs as $faq) {
                 $schema_faqs[] = [
-                    "@type" => "Question",
-                    "name" => $faq['question'],
-                    "acceptedAnswer" => [
-                        "@type" => "Answer",
-                        "text" => strip_tags($faq['answer'])
-                    ]
+                  "@type" => "Question",
+                  "name" => $faq['question'],
+                  "acceptedAnswer" => [
+                    "@type" => "Answer",
+                    "text" => strip_tags($faq['answer'])
+                  ]
                 ];
+              }
+              echo json_encode($schema_faqs, JSON_UNESCAPED_SLASHES);
+              ?>
             }
-            echo json_encode($schema_faqs, JSON_UNESCAPED_SLASHES);
-            ?>
-        }
-        </script>
-        <?php endif; ?>
-        <?php } ?>
+            </script>
+          <?php endif; ?>
 
 
 
@@ -1803,39 +1829,39 @@ font-size: 4rem;
 
 
 <script>
-function AjaxGalleryModal(branch_id, title) {
-  // Make an Ajax request to fetch image URLs
-  $.ajax({
-    url: '<?= base_url('home/get_ajax_gallery_images') ?>',
-    method: 'POST',
-    dataType: 'json',
-    data: {
-      title: title,
-      branch_id: branch_id
-    },
-    success: function(images) {
-      // Populate the lightbox with images
-      openLightbox(images);
-    }
-  });
+  function AjaxGalleryModal(branch_id, title) {
+    // Make an Ajax request to fetch image URLs
+    $.ajax({
+      url: '<?= base_url('home/get_ajax_gallery_images') ?>',
+      method: 'POST',
+      dataType: 'json',
+      data: {
+        title: title,
+        branch_id: branch_id
+      },
+      success: function (images) {
+        // Populate the lightbox with images
+        openLightbox(images);
+      }
+    });
 
-}
+  }
 
-function openLightbox(images) {
-  // Create an array of objects with 'src' and 'title' properties
-  var fancyboxImages = images.map(image => {
-    return {
-      src: '<?= base_url() ?>' + image.image,
-      caption: image.title
-    };
-  });
+  function openLightbox(images) {
+    // Create an array of objects with 'src' and 'title' properties
+    var fancyboxImages = images.map(image => {
+      return {
+        src: '<?= base_url() ?>' + image.image,
+        caption: image.title
+      };
+    });
 
-  // Open FancyBox with the array of images
-  Fancybox.show(fancyboxImages, {
-    loop: true,
-    thumbs: {
-      autoStart: true
-    }
-  });
-}
+    // Open FancyBox with the array of images
+    Fancybox.show(fancyboxImages, {
+      loop: true,
+      thumbs: {
+        autoStart: true
+      }
+    });
+  }
 </script>

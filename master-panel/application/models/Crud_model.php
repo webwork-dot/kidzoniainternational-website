@@ -5893,6 +5893,7 @@ class Crud_model extends CI_Model
         $data['meta_description'] = $this->input->post('meta_description');
         $data['meta_keywords'] = $this->input->post('meta_keywords');
         $data['h1_title'] = $this->input->post('h1_title');
+        $data['content'] = $this->input->post('content');
         $data['why_choose_us'] = $this->input->post('why_choose_us');
 
         $questions = $this->input->post('question');
@@ -5929,6 +5930,7 @@ class Crud_model extends CI_Model
         $data['meta_description'] = $this->input->post('meta_description');
         $data['meta_keywords'] = $this->input->post('meta_keywords');
         $data['h1_title'] = $this->input->post('h1_title');
+        $data['content'] = $this->input->post('content');
         $data['why_choose_us'] = $this->input->post('why_choose_us');
 
         $questions = $this->input->post('question');

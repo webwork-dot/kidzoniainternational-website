@@ -247,8 +247,8 @@
                 },
                 "sameAs": [
                     "<?php echo $seo['seo_same_as1']; ?>",
-                    "<?php echo $seo['seo_same_as2']; ?>,
-                    "<?php echo $seo['seo_same_as3']; ?>,
+                    "<?php echo $seo['seo_same_as2']; ?>",
+                    "<?php echo $seo['seo_same_as3']; ?>",
                     "<?php echo $seo['seo_same_as4']; ?>"
                 ]
             }
