@@ -1947,11 +1947,6 @@ class Admin extends CI_Controller
                             $branch_city = !empty($page->branch_city) ? strtolower($page->branch_city) : 'hyderabad';
                             $curriculum_slug = $page->curriculum_slug;
                             
-                            // Skip excluded branches
-                            if ($branch_slug == 'ramachandrapuram' || $branch_slug == 'chanda-nagar' || $branch_slug == 'chandanagar') {
-                                continue;
-                            }
-                            
                             if (!empty($branch_slug) && !empty($curriculum_slug)) {
                                 $all_urls[] = [
                                     'url' => $base_url . '/' . $curriculum_slug . '-in-' . $branch_slug . '-' . $branch_city,
@@ -1989,7 +1984,8 @@ class Admin extends CI_Controller
                 'explore-centers/mumbai' => '0.80',
                 'explore-centers/pune' => '0.80',
                 'contact-us' => '0.80',
-                'privacy-policy' => '0.80'
+                'privacy-policy' => '0.80',
+                'preschool-in-hyderabad' => '0.80'
             ];
             
             foreach ($static_pages as $page => $priority) {
