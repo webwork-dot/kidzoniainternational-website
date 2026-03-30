@@ -1922,25 +1922,39 @@ class Admin extends CI_Controller
                 log_message('error', 'Sitemap Generation Error (Events): ' . $e->getMessage());
             }
             
-            // Get active branches - URL format: /explore-centers/(city)/(slug)
+            // Get active branches with SEO content - URL format: /{curriculum}-in-{branch}-{city}
             try {
-                if ($this->db->table_exists('branches')) {
+                if ($this->db->table_exists('seo_branch_curriculum_content')) {
+                    $this->db->select('sbc.*, b.slug as branch_slug, b.name as branch_name, b.city as branch_city, sc.slug as curriculum_slug');
+                    $this->db->from('seo_branch_curriculum_content sbc');
+                    $this->db->join('branches b', 'sbc.branch_id = b.id');
+                    $this->db->join('seo_curriculums sc', 'sbc.curriculum_id = sc.id');
+                    
+                    // Filter by active branches
                     $this->db->group_start();
-                    $this->db->where('status', '1');
-                    $this->db->or_where('status', 1);
-                    $this->db->or_where('status', 'active');
+                    $this->db->where('b.status', '1');
+                    $this->db->or_where('b.status', 1);
+                    $this->db->or_where('b.status', 'active');
                     $this->db->group_end();
-                    $this->db->order_by('id', 'ASC');
-                    $query = $this->db->get('branches');
+                    
+                    $this->db->order_by('b.id', 'ASC');
+                    $query = $this->db->get();
+                    
                     if ($query && $query->num_rows() > 0) {
-                        $branches = $query->result();
-                        foreach ($branches as $branch) {
-                            $branch_slug = !empty($branch->slug) ? $branch->slug : slugify($branch->name);
-                            $branch_city = !empty($branch->city) ? strtolower($branch->city) : 'hyderabad';
+                        $seo_pages = $query->result();
+                        foreach ($seo_pages as $page) {
+                            $branch_slug = !empty($page->branch_slug) ? $page->branch_slug : slugify($page->branch_name);
+                            $branch_city = !empty($page->branch_city) ? strtolower($page->branch_city) : 'hyderabad';
+                            $curriculum_slug = $page->curriculum_slug;
                             
-                            if (!empty($branch->name) && !empty($branch_slug)) {
+                            // Skip excluded branches
+                            if ($branch_slug == 'ramachandrapuram' || $branch_slug == 'chanda-nagar' || $branch_slug == 'chandanagar') {
+                                continue;
+                            }
+                            
+                            if (!empty($branch_slug) && !empty($curriculum_slug)) {
                                 $all_urls[] = [
-                                    'url' => $base_url . '/explore-centers/' . $branch_city . '/' . $branch_slug,
+                                    'url' => $base_url . '/' . $curriculum_slug . '-in-' . $branch_slug . '-' . $branch_city,
                                     'changefreq' => 'always',
                                     'priority' => '0.80'
                                 ];
@@ -1949,7 +1963,7 @@ class Admin extends CI_Controller
                     }
                 }
             } catch (Exception $e) {
-                log_message('error', 'Sitemap Generation Error (Branches): ' . $e->getMessage());
+                log_message('error', 'Sitemap Generation Error (SEO Branches): ' . $e->getMessage());
             }
             
             // Static pages based on frontend routes
@@ -1975,21 +1989,7 @@ class Admin extends CI_Controller
                 'explore-centers/mumbai' => '0.80',
                 'explore-centers/pune' => '0.80',
                 'contact-us' => '0.80',
-                'privacy-policy' => '0.80',
-                // Location pages with preschool-in- prefix
-                'preschool-in-tellapur-hyderabad' => '0.80',
-                'preschool-in-lingampally-hyderabad' => '0.80',
-                'preschool-in-ramachandrapuram-hyderabad' => '0.80',
-                'preschool-in-chanda-nagar-hyderabad' => '0.80',
-                'preschool-in-pragathi-nagar-hyderabad' => '0.80',
-                'preschool-in-hyderabad' => '0.80',
-                // Explore centers location pages
-                'explore-centers/hyderabad/pragathi-nagar' => '0.80',
-                'preschool-in-serilingampally-hyderabad' => '0.80',
-                'preschool-in-nallagandla-hyderabad' => '0.80',
-                'preschool-in-nallagandla-navodaya-hyderabad' => '0.80',
-                'preschool-in-suraksha-enclave-ameenpur-hyderabad' => '0.80',
-                'preschool-in-kphb-kukatpally-hyderabad' => '0.80',
+                'privacy-policy' => '0.80'
             ];
             
             foreach ($static_pages as $page => $priority) {
@@ -2019,50 +2019,19 @@ class Admin extends CI_Controller
                 }
             }
             
-            // Build final URL list - exclude redirecting URLs, include all others
+            // Build final URL list - exclude redirecting URLs
             $final_urls = [];
-            $debug_missing_urls = [
-                $base_url . '/preschool-in-pragathi-nagar-hyderabad',
-                $base_url . '/preschool-in-hyderabad',
-                $base_url . '/explore-centers/hyderabad/pragathi-nagar'
-            ];
-            
             foreach ($all_urls as $url_data) {
                 $url = $url_data['url'];
                 
-                // Skip if this URL redirects (exclude redirecting URLs)
+                // Skip if this URL redirects
                 if (in_array($url, $excluded_urls)) {
-                    // Debug: Log if our target URLs are being excluded
-                    if (in_array($url, $debug_missing_urls)) {
-                        log_message('error', 'Sitemap: URL excluded as redirect: ' . $url);
-                    }
                     continue;
                 }
                 
                 // Use URL as key to avoid duplicates
                 if (!isset($final_urls[$url])) {
                     $final_urls[$url] = $url_data;
-                }
-            }
-            
-            // Debug: Check if our target URLs are in final_urls
-            foreach ($debug_missing_urls as $debug_url) {
-                if (!isset($final_urls[$debug_url])) {
-                    log_message('error', 'Sitemap: Missing URL not found in final_urls: ' . $debug_url);
-                    // Check if it was in all_urls
-                    $found_in_all = false;
-                    foreach ($all_urls as $url_data) {
-                        if ($url_data['url'] === $debug_url) {
-                            $found_in_all = true;
-                            log_message('error', 'Sitemap: URL found in all_urls but not in final_urls: ' . $debug_url);
-                            break;
-                        }
-                    }
-                    if (!$found_in_all) {
-                        log_message('error', 'Sitemap: URL not found in all_urls: ' . $debug_url);
-                    }
-                } else {
-                    log_message('info', 'Sitemap: URL correctly included: ' . $debug_url);
                 }
             }
             
