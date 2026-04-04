@@ -558,7 +558,22 @@ and enriching environment where young minds thrive.";
             if (strpos($branch['location_url'], '<iframe') !== false) {
                 $page_data['get_directions'] = $branch['location_url'];
             } else {
-                $page_data['get_directions'] = '<iframe src="' . $branch['location_url'] . '" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+                $map_url = $branch['location_url'];
+                
+                // Fix: Google Maps "place" URLs cannot be embedded directly in an iframe.
+                // We convert them to an embeddable format if they match the "place" pattern.
+                if (strpos($map_url, 'google.com/maps/place/') !== false) {
+                    $parts = explode('/place/', $map_url);
+                    if (isset($parts[1])) {
+                        // Extract the place name (first segment after /place/)
+                        $place_name_parts = explode('/', $parts[1]);
+                        $place_name = $place_name_parts[0];
+                        // Use the older but reliable embed format that doesn't require an API key
+                        $map_url = "https://maps.google.com/maps?q=" . $place_name . "&output=embed";
+                    }
+                }
+                
+                $page_data['get_directions'] = '<iframe src="' . $map_url . '" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
             }
         }
 
@@ -819,6 +834,18 @@ inspiring stories.";
                 redirect(site_url('not-found'), 'refresh');
             }
             else {
+                // Fix: Google Maps "place" URLs cannot be embedded directly in an iframe.
+                if (!empty($data['map'])) {
+                    if (strpos($data['map'], '<iframe') === false && strpos($data['map'], 'google.com/maps/place/') !== false) {
+                        $parts = explode('/place/', $data['map']);
+                        if (isset($parts[1])) {
+                            $place_name_parts = explode('/', $parts[1]);
+                            $place_name = $place_name_parts[0];
+                            $data['map'] = "https://maps.google.com/maps?q=" . $place_name . "&output=embed";
+                        }
+                    }
+                }
+                
                 $page_data['title'] = $data['name'];
                 $page_data['data'] = $data;
                 $page_data['page_name'] = "explore_centers_branches";
