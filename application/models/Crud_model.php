@@ -2030,7 +2030,7 @@ class Crud_model extends CI_Model
 
         if ($this->db->insert('career_enquiry', $data)) {
             $curl = curl_init();
-            $url = 'https://erp.kidzonia.co.in/panel/hr/remote_career_leads';
+            $url = 'https://erp.surakaedusociety.com/panel/hr/remote_career_leads';
             curl_setopt_array($curl, array(
                 CURLOPT_URL => $url,
                 CURLOPT_RETURNTRANSFER => true,
