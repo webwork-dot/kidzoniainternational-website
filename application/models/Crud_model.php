@@ -2052,6 +2052,28 @@ class Crud_model extends CI_Model
                 ),
             ));
             $response = curl_exec($curl);
+            curl_close($curl);
+
+            $career_name = clean_and_escape($this->input->post('career_name'));
+            if (empty($career_name) && !empty($data['career_id'])) {
+                $career_name = $this->common_model->getNameById('careers', 'title', $data['career_id']);
+            }
+
+            try {
+                if (!empty($data['email'])) {
+                    $this->send_career_application_email($data['email'], $data['name'], $career_name, $data['branch']);
+                }
+            } catch (Exception $e) {
+                log_message('error', 'Failed to send career application email: ' . $e->getMessage());
+            }
+
+            try {
+                if (!empty($data['phone'])) {
+                    $this->send_career_application_whatsapp($data['phone'], $data['name'], $career_name, $data['branch']);
+                }
+            } catch (Exception $e) {
+                log_message('error', 'Failed to send career application WhatsApp: ' . $e->getMessage());
+            }
 
             $this->db->trans_complete();
             $url = base_url('thank-you');
@@ -2192,36 +2214,20 @@ class Crud_model extends CI_Model
     public function send_admission_enquiry_email($user_email, $parent_name)
     {
         try {
-            $this->load->library('email');
+            if (empty($user_email)) {
+                return false;
+            }
 
-            $config['protocol']     = 'smtp';
-		$config['smtp_host']    = 'smtp.zeptomail.com';
-		$config['smtp_crypto']  = 'tls'; // or html
-		$config['smtp_port']    = '587';
-		$config['smtp_timeout'] = '30';
-		$config['smtp_user']    = 'emailapikey';
-		$config['smtp_pass']    = 'wSsVR612+hOlDqx0nzT+crw4z1VXD1ygF0wp3lSg7yT/Gv+T/Mc8xBDPAQ+vSKcWF2dtFjIQobMhnBcHhDcIiot7zVAFDCiF9mqRe1U4J3x17qnvhDzDXG1dkhWJKogAwghqk2NjE8gl+g==';
-		$config['charset']      = 'utf-8';
-		$config['newline']      = "\r\n";
-		$config['mailtype'] = 'html';
-
-            $this->email->initialize($config);
-
-            $this->email->to($user_email);
-            $this->email->from('no-reply@kidzoniainternational.in', 'Kidzonia International');
-            $this->email->subject('Thank You for Your Admission Enquiry - Kidzonia International');
-
-            $user_msg = '<div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-                <h2 style="color: #2c3e50;">Dear ' . htmlspecialchars($parent_name) . ',</h2>
-                <p>Dear Parents, We would like to Thank you for showing interest in our Academic Program. Please explore our website www.kidzoniainternational.in</p>
+            $message = '<p>Dear ' . htmlspecialchars($parent_name) . ',</p>
+                <p>Thank you for your interest in Kidzonia International! We have received your admission enquiry and our team will contact you shortly.</p>
                 <p>We appreciate your interest in our educational programs and look forward to assisting you with your child\'s educational journey.</p>
-                <p>Warm regards,<br>Team KIPS</p>
-            </div>';
+                <p>For more details, visit: <a href="https://www.kidzoniainternational.in">www.kidzoniainternational.in</a></p>';
 
-            $this->email->message($user_msg);
-            $this->email->send();
-
-            return true;
+            return $this->email_model->sent_simple_mail(
+                $this->email_model->sample_mail_message($message),
+                $user_email,
+                'Thank You for Your Admission Enquiry - Kidzonia International'
+            );
         } catch (Exception $e) {
             log_message('error', 'Admission Enquiry Email Error: ' . $e->getMessage());
             return false;
@@ -2318,7 +2324,7 @@ class Crud_model extends CI_Model
                     'name' => 'kips_thanks_for_inquiry_z1',
                     'languageCode' => 'en',
                     'headerValues' => array(
-                        'https://www.kidzoniainternational.in/assets/images/logo.png' // Default logo URL, update if needed
+                        'https://www.kidzoniainternational.in/assets/images/international.jpeg'
                     ),
                     'bodyValues' => array()
                 )
@@ -2353,6 +2359,93 @@ class Crud_model extends CI_Model
             return false;
         } catch (Exception $e) {
             log_message('error', 'Admission Enquiry WhatsApp Error: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Send email notification for career application
+     */
+    public function send_career_application_email($user_email, $name, $career_title, $branch_name)
+    {
+        try {
+            if (empty($user_email)) {
+                return false;
+            }
+
+            $message = '<p>Dear ' . htmlspecialchars($name) . ',</p>
+                <p>Thank you for applying for the position of <strong>' . htmlspecialchars($career_title) . '</strong> at <strong>' . htmlspecialchars($branch_name) . '</strong>.</p>
+                <p>We have received your career application successfully. Our HR team will review your profile and contact you shortly.</p>
+                <p>For more details, visit: <a href="https://www.kidzoniainternational.in">www.kidzoniainternational.in</a></p>';
+
+            return $this->email_model->sent_simple_mail(
+                $this->email_model->sample_mail_message($message),
+                $user_email,
+                'Thank You for Your Career Application - Kidzonia International'
+            );
+        } catch (Exception $e) {
+            log_message('error', 'Career Application Email Error: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Send WhatsApp notification for career application using Interakt
+     */
+    public function send_career_application_whatsapp($phone, $name, $career_title, $branch_name)
+    {
+        try {
+            $api_endpoint = 'https://api.interakt.ai/v1/public/message/';
+            $api_key = 'UGNNRlpYaUwxeXNKRmg3NktJUWo4a2l0U3IzSzJVRzY1T2FPckgwbGljUTo=';
+
+            $postData = array(
+                'countryCode' => '+91',
+                'phoneNumber' => $phone,
+                'type' => 'Template',
+                'template' => array(
+                    'name' => 'kidzonia_career_inquiry',
+                    'languageCode' => 'en',
+                    'headerValues' => array(
+                        'https://www.kidzoniainternational.in/uploads/2023/07/kidzonia_logo.png'
+                    ),
+                    'bodyValues' => array(
+                        $name,
+                        $career_title,
+                        $branch_name,
+                        'www.kidzoniainternational.in'
+                    )
+                )
+            );
+
+            $curl = curl_init($api_endpoint);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($postData));
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                'Authorization: Basic ' . $api_key,
+                'Content-Type: application/json'
+            ));
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+
+            $response = curl_exec($curl);
+            $http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+            $curl_error = curl_error($curl);
+            curl_close($curl);
+
+            if ($curl_error) {
+                log_message('error', 'Interakt Career WhatsApp cURL Error: ' . $curl_error);
+                return false;
+            }
+
+            if ($http_code == 200 || $http_code == 201) {
+                log_message('info', 'Interakt Career WhatsApp Response: ' . $response);
+                return true;
+            }
+
+            log_message('error', 'Interakt Career WhatsApp Response: ' . $response . ' HTTP Code: ' . $http_code);
+            return false;
+        } catch (Exception $e) {
+            log_message('error', 'Career Application WhatsApp Error: ' . $e->getMessage());
             return false;
         }
     }

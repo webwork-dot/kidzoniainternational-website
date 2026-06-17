@@ -41,7 +41,7 @@ class Email_model extends CI_Model
         log_message('info', 'Email_model->sent_simple_mail() - Sending to: ' . $user_email);
         
         $this->email->to($user_email);
-        $this->email->from('noreply@kidzonia.co.in', 'Kidzonia');
+        $this->email->from('no-reply@kidzoniainternational.in', 'Kidzonia International');
         $this->email->subject($email_subject);
         $this->email->message($message);
 		
@@ -60,146 +60,38 @@ class Email_model extends CI_Model
         return $result;
     }
     
-    public function sample_mail_message($message)
+    public function build_branded_mail_message($message, $school_name, $team_name, $logo_url)
     {
-        $mail_message_='<body style="background-color: #fbf8ee; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
-        <table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #fbf8ee;" width="100%">
-            <tbody>
-                <tr>
-                <td>
-        
-                <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;" width="100%">
-                <tbody>
-                <tr>
-                <td>
-                <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 600px;" width="600">
-                <tbody>
-                <tr>
-                <td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="50%">
-                <table border="0" cellpadding="0" cellspacing="0" class="image_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-                <tr>
-                <td style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;">
-                <div align="center" style="line-height:10px"><img src="https://erp.kidzonia.co.in/panel/uploads/system/email-header.png" style="display: block; height: auto; border: 0;width: 100%;background-size: cover;" /></div>
-                </td>
-                </tr>
-                </table>
-                </td>
-                </tr>
-                </tbody>
-                </table>
-                </td>
-                </tr>
-                </tbody>
-                </table>
-                </td>
-                </tr>
-                </tbody>
-                </table>
-        
-        
-                <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;" width="100%">
-                <tbody>
-                <tr>
-                <td>
-        
-        
-                <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;" width="100%">
-                <tbody>
-                <tr>
-                <td>
-                <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 600px;border: 1px solid #ddd;" width="600">
-                <tbody>
-                <tr>
-                <td class="column column-1" style="border: 1px solid #ddd;mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 0px; padding-bottom: 25px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
-                <table border="0" cellpadding="0" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-                <tr>
-                <td style="padding-bottom:10px;padding-left:25px;padding-right:25px;padding-top:20px;">
-                <div style="font-family: sans-serif">
-                <div style="font-size: 12px; mso-line-height-alt: 18px; color: #636363; line-height: 1.5; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">
-                <p style="margin: 0; font-size: 16px; mso-line-height-alt: 24px;"><span style="font-size:16px;"><strong>Kidzonia International,</strong></span></p>
-                <p style="margin: 0; font-size: 16px; mso-line-height-alt: 18px;"> </p>
-                <p style="margin: 0; font-size: 16px; mso-line-height-alt: 24px;"><span style="font-size:16px;">'.$message.'</span></p>
-                <p style="margin: 0; font-size: 16px; mso-line-height-alt: 18px;"> </p>
-        
-                <p style="margin: 0; font-size: 16px; mso-line-height-alt: 24px;"><span style="font-size:16px;"><strong>Thanks and Regards,</strong></span></p>
-                <p style="margin: 0; font-size: 16px; mso-line-height-alt: 24px;"><span style="font-size:16px;"><strong>Team KCIS</strong></span></p>
-                </div>
-                </div>
-                </td>
-                </tr>
-                </table>
-                </td>
-                </tr>
-                </tbody>
-                </table>
-                </td>
-                </tr>
-                </tbody>
-                </table>
-        
-        
-                </td>
-                </tr>
-                </tbody>
-                </table>
-                <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-6"
-                                role="presentation"
-                                style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;" width="100%">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <table align="center" border="0" cellpadding="0" cellspacing="0"
-                                                class="row-content stack" role="presentation"
-                                                style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;color: #000000; width: 600px;"
-                                                width="600">
-                                                <tbody>
-                                                    <tr>
-                                                        <td  width="100%">
-                                                           <div style="background:#fbbb12;height:124px;margin:0 auto;width:100%;background-size: 100%;display: flex;align-items: center;justify-content: space-around;text-align: center;">
-        						<div class="" style="width:35%;margin: auto 0;">
-        							<p style="font-size:14px;line-height:1;text-align:center;margin: 5px;padding: 0;">Follow Us @</p>
-        							<p style="font-weight:bold;font-size:14px;line-height:1;text-align:center;margin: 5px;padding: 0;">Kidzonia international</p>
-        							<div >
-        							<a href="https://www.facebook.com/KidzoniaPreschoolHyderabad?mibextid=ZbWKwL" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/facebook.png" class="CToWUd" style="width: 25px;"></a>
-        							<a href="https://instagram.com/kidzonia_hyderabad?igshid=MzRlODBiNWFlZA==" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/instagram.png" class="CToWUd" style="width: 25px;"></a>
-        							<a href="https://youtube.com/@KIDZONIAINTERNATIONALPRESCHOOL?si=v37dXLROEXXubzJ_" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/youtube.png" class="CToWUd" style="width: 25px;"></a>
-        							<a href="https://www.linkedin.com/in/kidzonia-hyderabad-87451428a/" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/linkedin.png" class="CToWUd" style="width: 25px;"></a>
-        							<a href="https://twitter.com/Kidzoniapre_Hyd" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/twitter.png" class="CToWUd" style="width: 25px;"></a>
-        							</div>
-        						</div>
-        						<div class="" style="width:30%;margin: auto 0;">
-        							<img src="https://erp.kidzonia.co.in/panel/uploads/system/footer-logo.png" class="CToWUd">
-        							<p style="font-size:14px;line-height:1;text-align:center;margin: 5px;padding: 0;">Launching @2025</p>
-        							<p style="font-weight:bold;font-size:14px;line-height:1;text-align:center;margin: 5px;padding: 0;">K 12 School - Kollur</p>
-        						</div>
-        						<div class="" style="width:35%;margin: auto 0;">
-        							<p style="font-size:14px;line-height:1;text-align:center;margin: 5px;padding: 0;">Follow Us @</p>
-        							<p style="font-weight:bold;font-size:14px;line-height:1;text-align:center;margin: 5px;padding: 0;">Kidzonia credence international</p>
-        							<div >
-        							<a href="https://www.facebook.com/KidzoniaCredence" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/facebook.png" class="CToWUd" style="width: 25px;"></a>
-        							<a href="https://instagram.com/kidzoniacredence_hyderabad?igshid=MzRlODBiNWFlZA==" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/instagram.png" class="CToWUd" style="width: 25px;"></a>
-        							<a href="https://youtube.com/@kidzoniacredence?si=MMO_nd0nCT_Ayi0N" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/youtube.png" class="CToWUd" style="width: 25px;"></a>
-        							<a href="https://www.linkedin.com/in/kidzoniacredence-hyderabad-704b99289/" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/linkedin.png" class="CToWUd" style="width: 25px;"></a>
-        							<a href="https://twitter.com/KCredenceIS?t=RwZExuaPLhFp6fyb0HrZjg&s=09" target="_blank"><img src="https://erp.kidzonia.co.in/panel/uploads/system/twitter.png" class="CToWUd" style="width: 25px;"></a>
-        							</div>
-        						</div>
-        					</div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            
-                        </td>
-                    </tr>
-                </tbody>
+        return '<body style="background-color:#f5f5f5;margin:0;padding:0;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f5f5f5;">
+                <tr><td style="padding:20px 0;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="background-color:#ffffff;border:1px solid #e0e0e0;">
+                        <tr>
+                            <td style="padding:20px;text-align:center;background-color:#122051;">
+                                <img src="' . htmlspecialchars($logo_url) . '" alt="' . htmlspecialchars($school_name) . '" style="max-width:220px;height:auto;display:inline-block;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:25px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#333;">
+                                <p style="margin:0 0 12px;font-size:16px;"><strong>' . htmlspecialchars($school_name) . '</strong></p>
+                                <div>' . $message . '</div>
+                                <p style="margin:20px 0 0;">Warm regards,<br><strong>' . htmlspecialchars($team_name) . '</strong></p>
+                            </td>
+                        </tr>
+                    </table>
+                </td></tr>
             </table>
         </body>';
-
-        return $mail_message_;
+    }
+    
+    public function sample_mail_message($message)
+    {
+        return $this->build_branded_mail_message(
+            $message,
+            'Kidzonia International',
+            'Team KIPS',
+            'https://www.kidzoniainternational.in/uploads/2023/07/kidzonia_logo.png'
+        );
     }
     
 }

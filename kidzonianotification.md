@@ -38,16 +38,50 @@
 - Handler: `Crud_model::ajax_submit_career`
 - Data saved in: `career_enquiry` (resume upload in `uploads/career_enquiry/...`)
 - External push: `https://erp.surakaedusociety.com/panel/hr/remote_career_leads`
-- Notifications from this app: None (no email / SMS / WhatsApp in this handler)
+- Notifications sent: Email + WhatsApp (career thank-you)
+- SMS: Template documented below (not integrated in code yet)
+
+### Career notifications (`ajax_submit_career`)
+
+#### 1. Email (to applicant)
+- **Handler:** `Crud_model::send_career_application_email`
+- **Provider:** ZeptoMail (via `Email_model::sent_simple_mail`)
+- **From:** no-reply@kidzoniainternational.in
+- **Subject:** Thank You for Your Career Application - Kidzonia International
+- **Branded HTML:** `Email_model::sample_mail_message()` with KIPS header logo
+- **Logo URL:** `https://www.kidzoniainternational.in/uploads/2023/07/kidzonia_logo.png`
+
+#### 2. WhatsApp (to applicant)
+- **Handler:** `Crud_model::send_career_application_whatsapp`
+- **Provider:** Interakt
+- **Template:** `kidzonia_career_inquiry`
+- **Language:** en
+- **Header image:** `https://www.kidzoniainternational.in/uploads/2023/07/kidzonia_logo.png`
+- **Body variables:**
+  - `{{1}}` — Applicant name
+  - `{{2}}` — Job title (`career_name`)
+  - `{{3}}` — Branch / center name
+  - `{{4}}` — Website URL (`www.kidzoniainternational.in`)
+
+#### 3. SMS (to applicant) — documented only
+- **Provider:** Buzzify
+- **Sender ID:** KIPSES
+- **Template ID:** TBD
+- **Message:**
+  ```
+  Dear {name}, Thank you for applying for {position} at Kidzonia International, {branch}. We have received your career application. Our HR team will contact you shortly. Visit www.kidzoniainternational.in Team KIPS
+  ```
 
 ---
 
 ## Notification Providers (for `check_admission_enquiry` flow)
 
 ### 1. Email (to parent)
-- **Provider:** ZeptoMail (SMTP)
+- **Provider:** ZeptoMail (via `Email_model::sent_simple_mail`)
 - **From:** `no-reply@kidzoniainternational.in`
 - **Subject:** `Thank You for Your Admission Enquiry - Kidzonia International`
+- **Branded HTML:** `Email_model::sample_mail_message()` with KIPS header logo
+- **Logo URL:** `https://www.kidzoniainternational.in/uploads/2023/07/kidzonia_logo.png`
 
 ### 2. SMS (to parent)
 - **Provider:** Buzzify
