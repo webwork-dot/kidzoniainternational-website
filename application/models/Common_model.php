@@ -377,7 +377,7 @@ class Common_model extends CI_Model{
     public function log_notification($data)
     {
         try {
-            $kcis_db = $this->load->database('kcis_db', TRUE);
+            $kcis_leads = $this->load->database('kcis_leads', TRUE);
 
             $request_payload = null;
             if (isset($data['request_payload'])) {
@@ -411,8 +411,8 @@ class Common_model extends CI_Model{
                 'created_at' => date('Y-m-d H:i:s'),
             );
 
-            $kcis_db->insert('notifications_log', $row);
-            return $kcis_db->insert_id();
+            $kcis_leads->insert('notifications_log', $row);
+            return $kcis_leads->insert_id();
         } catch (Exception $e) {
             log_message('error', 'notifications_log insert failed: ' . $e->getMessage());
             return false;

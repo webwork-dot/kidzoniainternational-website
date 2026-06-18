@@ -4,7 +4,7 @@
 
 **Submit endpoint:** `check_admission_enquiry`  
 **Handler:** `Crud_model::check_admission_enquiry`  
-**Data saved in:** `admission_enquiry` (+ `kcis_db.leads`, `kcis_db.leads_log`)
+**Data saved in:** `admission_enquiry` (+ `kcis_leads.leads`, `kcis_leads.leads_log`, `kcis_leads.notifications_log`)
 
 ---
 

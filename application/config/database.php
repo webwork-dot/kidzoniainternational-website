@@ -27,28 +27,6 @@ $db['default'] = array(
     'save_queries' => TRUE
 );
 
-$db['kcis_db'] = array(
-	'dsn'	=> '',
-    'hostname' => 'localhost',
-    'username' => 'kipskcissur_usr',
-    'password' => '^fwB(A7AzawF',
-    'database' => 'kidzoniainternat_kcispnl_dbc',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-
 
 
 $db['kcis_leads'] = array(

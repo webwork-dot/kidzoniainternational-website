@@ -847,7 +847,7 @@ class Crud_model extends CI_Model
 
    public function ajax_call_back_enquiry()
      {
-    $this->kcis_db = $this->load->database('kcis_db', TRUE);
+    $this->kcis_leads = $this->load->database('kcis_leads', TRUE);
     $this->db->trans_start(); // Start a transaction
 
     // --- Start of reCAPTCHA verification logic ---
@@ -1045,7 +1045,7 @@ class Crud_model extends CI_Model
     }
 
     public function check_admission_enquiry() {
-        $this->kcis_db = $this->load->database('kcis_db', TRUE);
+        $this->kcis_leads = $this->load->database('kcis_leads', TRUE);
         $this->db->trans_start(); // Start a transaction
             $form_type = $this->input->post('form_type') ?: 'admission_enquiry';
     
@@ -1111,7 +1111,7 @@ class Crud_model extends CI_Model
         }
           
         $phone = ($this->input->post('phone'));
-        $check_mobile = $this->kcis_db->query("SELECT id FROM leads WHERE mobile='$phone' LIMIT 1")->num_rows();
+        $check_mobile = $this->kcis_leads->query("SELECT id FROM leads WHERE mobile='$phone' LIMIT 1")->num_rows();
           
         if ($check_mobile>0) {
            $resultpost = array(
@@ -1225,15 +1225,15 @@ class Crud_model extends CI_Model
                 );
     
                 $insert_id = null;
-                if ($this->kcis_db->insert('leads', $leads)) {
-                    $insert_id = $this->kcis_db->insert_id();
+                if ($this->kcis_leads->insert('leads', $leads)) {
+                    $insert_id = $this->kcis_leads->insert_id();
                     $leads_log = array();
                     $leads_log = array(
                         "lead_id"    => $insert_id,
                         "tag"        => 'add',
                         "added_date" => $curr_date
                     );
-                    $this->kcis_db->insert('leads_log', $leads_log);
+                    $this->kcis_leads->insert('leads_log', $leads_log);
                 }
 
                 $notification_context = array(
@@ -1322,7 +1322,7 @@ class Crud_model extends CI_Model
         return simple_json_output($resultpost);
     }
     public function check_admission_enquiries()   {
-        $this->kcis_db = $this->load->database('kcis_db', TRUE);
+        $this->kcis_leads = $this->load->database('kcis_leads', TRUE);
         $this->db->trans_start(); // Start a transaction
 
         $this->form_validation->set_rules('class_id', 'Class', 'trim|required');
@@ -1345,7 +1345,7 @@ class Crud_model extends CI_Model
         );
          
         $phone = clean_and_escape($this->input->post('phone'));
-        $check_mobile = $this->kcis_db->query("SELECT id FROM leads WHERE mobile='$phone' LIMIT 1")->num_rows();
+        $check_mobile = $this->kcis_leads->query("SELECT id FROM leads WHERE mobile='$phone' LIMIT 1")->num_rows();
         
         if ($check_mobile>0) {
            $resultpost = array(
@@ -1440,7 +1440,7 @@ class Crud_model extends CI_Model
  
     public function ajax_admission_otp_enquiry()
     {
-        $this->kcis_db = $this->load->database('kcis_db', TRUE);
+        $this->kcis_leads = $this->load->database('kcis_leads', TRUE);
 
         $id = $this->input->post('id');
         $otp = $this->input->post('otp');
@@ -1494,15 +1494,15 @@ class Crud_model extends CI_Model
                     "added_date"       => $curr_date
                 );
 
-                if ($this->kcis_db->insert('leads', $leads)) {
-                    $insert_id = $this->kcis_db->insert_id();
+                if ($this->kcis_leads->insert('leads', $leads)) {
+                    $insert_id = $this->kcis_leads->insert_id();
                     $leads_log = array();
                     $leads_log = array(
                         "lead_id"    => $insert_id,
                         "tag"        => 'add',
                         "added_date" => $curr_date
                     );
-                    $this->kcis_db->insert('leads_log', $leads_log);
+                    $this->kcis_leads->insert('leads_log', $leads_log);
                 }
 
                 $details_msg = 'Admission Enquiry From Kidzonia International website <br><b>Child Name:- </b> ' . $temp['child_name'] . ' <br><b>Parent Name:- </b> ' . $temp['first_name'] . ' <br><b>Class:- </b> ' . $temp['class'];
@@ -1537,7 +1537,7 @@ class Crud_model extends CI_Model
 
     public function ajax_callback_otp_enquiry()
     {
-        $this->kcis_db = $this->load->database('kcis_db', TRUE);
+        $this->kcis_leads = $this->load->database('kcis_leads', TRUE);
 
         $id = $this->input->post('id');
         $otp = $this->input->post('otp');
@@ -1566,15 +1566,15 @@ class Crud_model extends CI_Model
                     "added_date"       => $curr_date
                 );
 
-                if ($this->kcis_db->insert('leads', $leads)) {
-                    $insert_id = $this->kcis_db->insert_id();
+                if ($this->kcis_leads->insert('leads', $leads)) {
+                    $insert_id = $this->kcis_leads->insert_id();
                     $leads_log = array();
                     $leads_log = array(
                         "lead_id"    => $insert_id,
                         "tag"        => 'add',
                         "added_date" => $curr_date
                     );
-                    $this->kcis_db->insert('leads_log', $leads_log);
+                    $this->kcis_leads->insert('leads_log', $leads_log);
                 }
 
                 $url = base_url('thank-you');
@@ -1601,7 +1601,7 @@ class Crud_model extends CI_Model
 
     public function ajax_admission_enquiry()
     {
-        $this->kcis_db = $this->load->database('kcis_db', TRUE);
+        $this->kcis_leads = $this->load->database('kcis_leads', TRUE);
         $this->db->trans_start(); // Start a transaction
 
         $this->form_validation->set_rules('class_id', 'Class', 'trim|required');
@@ -1625,7 +1625,7 @@ class Crud_model extends CI_Model
         
                  
         $phone = clean_and_escape($this->input->post('phone'));
-        $check_mobile = $this->kcis_db->query("SELECT id FROM leads WHERE mobile='$phone' LIMIT 1")->num_rows();
+        $check_mobile = $this->kcis_leads->query("SELECT id FROM leads WHERE mobile='$phone' LIMIT 1")->num_rows();
         
         if ($check_mobile>0) {
            $resultpost = array(
@@ -1684,15 +1684,15 @@ class Crud_model extends CI_Model
                     "added_date"       => $curr_date
                 );
 
-                if ($this->kcis_db->insert('leads', $leads)) {
-                    $insert_id = $this->kcis_db->insert_id();
+                if ($this->kcis_leads->insert('leads', $leads)) {
+                    $insert_id = $this->kcis_leads->insert_id();
                     $leads_log = array();
                     $leads_log = array(
                         "lead_id"    => $insert_id,
                         "tag"        => 'add',
                         "added_date" => $curr_date
                     );
-                    $this->kcis_db->insert('leads_log', $leads_log);
+                    $this->kcis_leads->insert('leads_log', $leads_log);
                 }
 
 
@@ -1924,7 +1924,7 @@ class Crud_model extends CI_Model
 
     public function ajax_submit_career()
 {
-    $this->kcis_db = $this->load->database('kcis_db', TRUE);
+    $this->kcis_leads = $this->load->database('kcis_leads', TRUE);
     $this->db->trans_start();
 
     // --- Start of reCAPTCHA verification logic ---
@@ -2119,8 +2119,8 @@ class Crud_model extends CI_Model
 
     public function get_kips_program_list()
     {
-        $this->kcis_db = $this->load->database('kcis_db', TRUE);
-        $query = $this->kcis_db->query("SELECT id,name FROM program WHERE school_id='51' GROUP BY name ORDER BY sequence LIMIT 7 ");
+        $this->kcis_leads = $this->load->database('kcis_leads', TRUE);
+        $query = $this->kcis_leads->query("SELECT id,name FROM program WHERE school_id='51' GROUP BY name ORDER BY sequence LIMIT 7 ");
         $count = $query->num_rows();
         $data  = array();
         foreach ($query->result_array() as $row) {
@@ -2134,8 +2134,8 @@ class Crud_model extends CI_Model
 
     public function get_kips_program_name($id)
     {
-        $this->kcis_db = $this->load->database('kcis_db', TRUE);
-        $query = $this->kcis_db->query("SELECT name FROM program WHERE id='$id' AND school_id='51' LIMIT 1");
+        $this->kcis_leads = $this->load->database('kcis_leads', TRUE);
+        $query = $this->kcis_leads->query("SELECT name FROM program WHERE id='$id' AND school_id='51' LIMIT 1");
         $count = $query->num_rows();
         if ($count > 0) {
             $program_name = $query->row()->name;
