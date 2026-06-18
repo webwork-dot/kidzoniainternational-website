@@ -1225,6 +1225,7 @@ class Crud_model extends CI_Model
                 );
     
                 $insert_id = null;
+                $leads['academic_year'] = $this->common_model->get_current_academic_year();
                 if ($this->kcis_leads->insert('leads', $leads)) {
                     $insert_id = $this->kcis_leads->insert_id();
                     $leads_log = array();
@@ -1494,6 +1495,7 @@ class Crud_model extends CI_Model
                     "added_date"       => $curr_date
                 );
 
+                $leads['academic_year'] = $this->common_model->get_current_academic_year();
                 if ($this->kcis_leads->insert('leads', $leads)) {
                     $insert_id = $this->kcis_leads->insert_id();
                     $leads_log = array();
@@ -1566,6 +1568,7 @@ class Crud_model extends CI_Model
                     "added_date"       => $curr_date
                 );
 
+                $leads['academic_year'] = $this->common_model->get_current_academic_year();
                 if ($this->kcis_leads->insert('leads', $leads)) {
                     $insert_id = $this->kcis_leads->insert_id();
                     $leads_log = array();
@@ -1684,6 +1687,7 @@ class Crud_model extends CI_Model
                     "added_date"       => $curr_date
                 );
 
+                $leads['academic_year'] = $this->common_model->get_current_academic_year();
                 if ($this->kcis_leads->insert('leads', $leads)) {
                     $insert_id = $this->kcis_leads->insert_id();
                     $leads_log = array();
@@ -2038,7 +2042,7 @@ class Crud_model extends CI_Model
         if ($this->db->insert('career_enquiry', $data)) {
             $career_enquiry_id = $this->db->insert_id();
             $curl = curl_init();
-            $url = 'https://erp.surakaedusociety.com/panel/hr/remote_career_leads';
+            $url = 'http://panel.surakaedusociety.com/hr/remote_career_leads';
             curl_setopt_array($curl, array(
                 CURLOPT_URL => $url,
                 CURLOPT_RETURNTRANSFER => true,

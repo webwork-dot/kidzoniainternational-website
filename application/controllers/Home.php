@@ -1067,7 +1067,7 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
     public function remote_career_leads()
     {
         $curl = curl_init();
-        $url = 'https://erp.surakaedusociety.com/panel/hr/remote_career_leads';
+        $url = 'http://panel.surakaedusociety.com/hr/remote_career_leads';
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url, // Specify your API endpoint URL here
             CURLOPT_RETURNTRANSFER => true,

@@ -343,6 +343,16 @@ class Common_model extends CI_Model{
         return base_url() . $curriculum_slug . '-in-' . $branch_slug . '-' . strtolower($city);
     }
 
+    public function get_current_academic_year()
+    {
+        $year = (int) date('Y');
+        $month = (int) date('n');
+        if ($month >= 4) {
+            return $year . '-' . ($year + 1);
+        }
+        return ($year - 1) . '-' . $year;
+    }
+
     public function sanitize_notification_payload($payload)
     {
         if (is_array($payload)) {

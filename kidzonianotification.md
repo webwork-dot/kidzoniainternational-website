@@ -37,7 +37,7 @@
 - Submit endpoint: `ajax_submit_career`
 - Handler: `Crud_model::ajax_submit_career`
 - Data saved in: `career_enquiry` (resume upload in `uploads/career_enquiry/...`)
-- External push: `https://erp.surakaedusociety.com/panel/hr/remote_career_leads`
+- External push: `http://panel.surakaedusociety.com/hr/remote_career_leads`
 - Notifications sent: Email + WhatsApp (career thank-you)
 - SMS: Template documented below (not integrated in code yet)
 
