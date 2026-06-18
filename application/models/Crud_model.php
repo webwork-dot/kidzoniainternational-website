@@ -1224,6 +1224,7 @@ class Crud_model extends CI_Model
                     "added_date"       => $curr_date
                 );
     
+                $insert_id = null;
                 if ($this->kcis_db->insert('leads', $leads)) {
                     $insert_id = $this->kcis_db->insert_id();
                     $leads_log = array();
@@ -1234,6 +1235,12 @@ class Crud_model extends CI_Model
                     );
                     $this->kcis_db->insert('leads_log', $leads_log);
                 }
+
+                $notification_context = array(
+                    'form_type' => $form_type,
+                    'reference_type' => 'lead',
+                    'reference_id' => isset($insert_id) ? $insert_id : null,
+                );
     
                 // Send notifications (email, SMS, WhatsApp)
                 $parent_email = ($this->input->post('email'));
@@ -1241,21 +1248,21 @@ class Crud_model extends CI_Model
                 
                 // Send email
                 try {
-                    $this->send_admission_enquiry_email($parent_email, $parent_name);
+                    $this->send_admission_enquiry_email($parent_email, $parent_name, $notification_context);
                 } catch (Exception $e) {
                     log_message('error', 'Failed to send admission enquiry email: ' . $e->getMessage());
                 }
     
                 // Send SMS
                 try {
-                    $this->send_admission_enquiry_sms($phone);
+                    $this->send_admission_enquiry_sms($phone, $notification_context);
                 } catch (Exception $e) {
                     log_message('error', 'Failed to send admission enquiry SMS: ' . $e->getMessage());
                 }
     
                 // Send WhatsApp
                 try {
-                    $this->send_admission_enquiry_whatsapp($phone);
+                    $this->send_admission_enquiry_whatsapp($phone, $parent_name, $notification_context);
                 } catch (Exception $e) {
                     log_message('error', 'Failed to send admission enquiry WhatsApp: ' . $e->getMessage());
                 }
@@ -1280,7 +1287,7 @@ class Crud_model extends CI_Model
                         'ip_address' => $ip_address,
                         'submission_time' => $curr_date
                     );
-                    $this->send_tracking_notification_email($tracking_data, 'Admission Enquiry');
+                    $this->send_tracking_notification_email($tracking_data, 'Admission Enquiry', $notification_context);
                 } catch (Exception $e) {
                     log_message('error', 'Failed to send tracking notification email: ' . $e->getMessage());
                 }
@@ -2029,6 +2036,7 @@ class Crud_model extends CI_Model
         $data['created_at'] = date("Y-m-d H:i:s");
 
         if ($this->db->insert('career_enquiry', $data)) {
+            $career_enquiry_id = $this->db->insert_id();
             $curl = curl_init();
             $url = 'https://erp.surakaedusociety.com/panel/hr/remote_career_leads';
             curl_setopt_array($curl, array(
@@ -2059,9 +2067,15 @@ class Crud_model extends CI_Model
                 $career_name = $this->common_model->getNameById('careers', 'title', $data['career_id']);
             }
 
+            $notification_context = array(
+                'form_type' => 'career_application',
+                'reference_type' => 'career_enquiry',
+                'reference_id' => $career_enquiry_id,
+            );
+
             try {
                 if (!empty($data['email'])) {
-                    $this->send_career_application_email($data['email'], $data['name'], $career_name, $data['branch']);
+                    $this->send_career_application_email($data['email'], $data['name'], $career_name, $data['branch'], $notification_context);
                 }
             } catch (Exception $e) {
                 log_message('error', 'Failed to send career application email: ' . $e->getMessage());
@@ -2069,7 +2083,7 @@ class Crud_model extends CI_Model
 
             try {
                 if (!empty($data['phone'])) {
-                    $this->send_career_application_whatsapp($data['phone'], $data['name'], $career_name, $data['branch']);
+                    $this->send_career_application_whatsapp($data['phone'], $data['name'], $career_name, $data['branch'], $notification_context);
                 }
             } catch (Exception $e) {
                 log_message('error', 'Failed to send career application WhatsApp: ' . $e->getMessage());
@@ -2208,13 +2222,45 @@ class Crud_model extends CI_Model
 		return simple_json_output($resultpost);
 	}
 
-    /**
-     * Send email notification for admission enquiry
-     */
-    public function send_admission_enquiry_email($user_email, $parent_name)
+    private function log_website_notification($data)
     {
+        $data['type'] = isset($data['type']) ? $data['type'] : 'website';
+        $data['website'] = 'kips';
+        $this->common_model->log_notification($data);
+    }
+
+    private function notification_context_to_log_fields($context = array())
+    {
+        return array(
+            'form_type' => isset($context['form_type']) ? $context['form_type'] : null,
+            'reference_type' => isset($context['reference_type']) ? $context['reference_type'] : null,
+            'reference_id' => isset($context['reference_id']) ? $context['reference_id'] : null,
+        );
+    }
+
+    private function buzzify_response_is_success($http_code, $response)
+    {
+        if ((int) $http_code !== 200) {
+            return false;
+        }
+        $response_lower = strtolower((string) $response);
+        return strpos($response_lower, 'success') !== false ||
+            strpos($response_lower, 'sent') !== false ||
+            strpos($response_lower, 'ok') !== false ||
+            strpos($response_lower, 'messageid') !== false ||
+            (strpos($response_lower, 'error') === false && strpos($response_lower, 'fail') === false);
+    }
+
+    public function send_admission_enquiry_email($user_email, $parent_name, $context = array())
+    {
+        $subject = 'Thank You for Your Admission Enquiry - Kidzonia International';
         try {
             if (empty($user_email)) {
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'email', 'event_type' => 'admission_enquiry', 'provider' => 'zeptomail',
+                    'template_name' => $subject, 'recipient' => '', 'recipient_name' => $parent_name,
+                    'status' => 'skipped', 'error_message' => 'Email empty',
+                )));
                 return false;
             }
 
@@ -2223,120 +2269,56 @@ class Crud_model extends CI_Model
                 <p>We appreciate your interest in our educational programs and look forward to assisting you with your child\'s educational journey.</p>
                 <p>For more details, visit: <a href="https://www.kidzoniainternational.in">www.kidzoniainternational.in</a></p>';
 
-            return $this->email_model->sent_simple_mail(
+            $sent = $this->email_model->sent_simple_mail(
                 $this->email_model->sample_mail_message($message),
                 $user_email,
-                'Thank You for Your Admission Enquiry - Kidzonia International'
+                $subject
             );
+
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'email', 'event_type' => 'admission_enquiry', 'provider' => 'zeptomail',
+                'template_name' => $subject, 'recipient' => $user_email, 'recipient_name' => $parent_name,
+                'status' => $sent ? 'sent' : 'failed', 'error_message' => $sent ? null : 'ZeptoMail send failed',
+            )));
+
+            return $sent;
         } catch (Exception $e) {
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'email', 'event_type' => 'admission_enquiry', 'provider' => 'zeptomail',
+                'template_name' => $subject, 'recipient' => $user_email, 'recipient_name' => $parent_name,
+                'status' => 'failed', 'error_message' => $e->getMessage(),
+            )));
             log_message('error', 'Admission Enquiry Email Error: ' . $e->getMessage());
             return false;
         }
     }
 
-    /**
-     * Send SMS notification for admission enquiry using Buzzify
-     */
-    public function send_admission_enquiry_sms($phone)
+    public function send_admission_enquiry_sms($phone, $context = array())
     {
+        $template_id = '1507164828388639855';
         try {
-            // Buzzify V2 credentials
-            $apikey      = '9CuEkpgFFaeSqL9a';
-            $senderid    = 'KIPSES';
-            $template_id = '1507164828388639855';
-
-            // Format mobile
-            $mobile_no = '91' . $phone;
-
-            // Buzzify API URL
-            $url = "http://buzzify.in/V2/http-api-post.php";
-
-            // Message as per template
-            $message = "Dear Parents, We would like to Thank you for showing interest in our Academic Program. Please explore our website www.kidzoniainternational.in Team KIPS";
-
-            // POST data
-            $data = array(
-                "apikey"      => $apikey,
-                "senderid"    => $senderid,
-                "number"      => $mobile_no,
-                "message"     => $message,
-                "template_id" => $template_id,
-                "format"      => "json"
-            );
-
-            // CURL
-            $curl = curl_init($url);
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-
-            $response   = curl_exec($curl);
-            $http_code  = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-            $curl_error = curl_error($curl);
-            curl_close($curl);
-
-            if ($curl_error) {
-                log_message('error', 'Buzzify SMS cURL Error: ' . $curl_error);
+            if (empty($phone)) {
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'sms', 'event_type' => 'admission_enquiry', 'provider' => 'buzzify',
+                    'template_name' => $template_id, 'recipient' => '', 'status' => 'skipped', 'error_message' => 'Phone empty',
+                )));
                 return false;
             }
 
-            // Return true if HTTP code is 200 and response indicates success
-            if ($http_code == 200) {
-                $response_lower = strtolower($response);
-                if (strpos($response_lower, 'success') !== false ||
-                    strpos($response_lower, 'sent') !== false ||
-                    strpos($response_lower, 'ok') !== false ||
-                    strpos($response_lower, 'messageid') !== false ||
-                    (strpos($response_lower, 'error') === false && strpos($response_lower, 'fail') === false)) {
-                    return true;
-                }
-            }
-
-            log_message('error', 'Buzzify SMS Response: ' . $response);
-            return false;
-        } catch (Exception $e) {
-            log_message('error', 'Admission Enquiry SMS Error: ' . $e->getMessage());
-            return false;
-        }
-    }
-
-    /**
-     * Send WhatsApp notification for admission enquiry using Interakt
-     */
-    public function send_admission_enquiry_whatsapp($phone)
-    {
-        try {
-            $api_endpoint = 'https://api.interakt.ai/v1/public/message/';
-            $api_key = 'UGNNRlpYaUwxeXNKRmg3NktJUWo4a2l0U3IzSzJVRzY1T2FPckgwbGljUTo=';
-
-            // Format phone with country code
-            $fullPhoneNumber = '91' . $phone;
-
-            // Prepare request data for Interakt template message
-            // Use phoneNumber + countryCode (cannot use both phoneNumber and fullPhoneNumber together)
-            $postData = array(
-                'countryCode' => '+91',
-                'phoneNumber' => $phone,
-                'type' => 'Template',
-                'template' => array(
-                    'name' => 'kips_thanks_for_inquiry_z1',
-                    'languageCode' => 'en',
-                    'headerValues' => array(
-                        'https://www.kidzoniainternational.in/assets/images/international.jpeg'
-                    ),
-                    'bodyValues' => array()
-                )
+            $apikey = '9CuEkpgFFaeSqL9a';
+            $senderid = 'KIPSES';
+            $mobile_no = '91' . $phone;
+            $url = "http://buzzify.in/V2/http-api-post.php";
+            $message = "Dear Parents, We would like to Thank you for showing interest in our Academic Program. Please explore our website www.kidzoniainternational.in Team KIPS";
+            $post_data = array(
+                "apikey" => $apikey, "senderid" => $senderid, "number" => $mobile_no,
+                "message" => $message, "template_id" => $template_id, "format" => "json"
             );
 
-            $curl = curl_init($api_endpoint);
+            $curl = curl_init($url);
             curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($postData));
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Authorization: Basic ' . $api_key,
-                'Content-Type: application/json'
-            ));
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($post_data));
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_TIMEOUT, 30);
 
@@ -2346,30 +2328,119 @@ class Crud_model extends CI_Model
             curl_close($curl);
 
             if ($curl_error) {
-                log_message('error', 'Interakt WhatsApp cURL Error: ' . $curl_error);
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'sms', 'event_type' => 'admission_enquiry', 'provider' => 'buzzify',
+                    'template_name' => $template_id, 'recipient' => $phone, 'status' => 'failed',
+                    'http_code' => $http_code, 'request_payload' => $post_data, 'response_payload' => $response,
+                    'error_message' => $curl_error,
+                )));
                 return false;
             }
 
-            if ($http_code == 200 || $http_code == 201) {
-                log_message('info', 'Interakt WhatsApp Response: ' . $response);
-                return true;
+            $is_success = $this->buzzify_response_is_success($http_code, $response);
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'sms', 'event_type' => 'admission_enquiry', 'provider' => 'buzzify',
+                'template_name' => $template_id, 'recipient' => $phone, 'status' => $is_success ? 'sent' : 'failed',
+                'http_code' => $http_code, 'request_payload' => $post_data, 'response_payload' => $response,
+                'error_message' => $is_success ? null : 'Buzzify send failed',
+            )));
+
+            if (!$is_success) {
+                log_message('error', 'Buzzify SMS Response: ' . $response);
+            }
+            return $is_success;
+        } catch (Exception $e) {
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'sms', 'event_type' => 'admission_enquiry', 'provider' => 'buzzify',
+                'template_name' => $template_id, 'recipient' => $phone, 'status' => 'failed', 'error_message' => $e->getMessage(),
+            )));
+            log_message('error', 'Admission Enquiry SMS Error: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function send_admission_enquiry_whatsapp($phone, $parent_name = '', $context = array())
+    {
+        $template_name = 'kips_thanks_for_inquiry_z1';
+        try {
+            if (empty($phone)) {
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'whatsapp', 'event_type' => 'admission_enquiry', 'provider' => 'interakt',
+                    'template_name' => $template_name, 'recipient' => '', 'recipient_name' => $parent_name,
+                    'status' => 'skipped', 'error_message' => 'Phone empty',
+                )));
+                return false;
             }
 
-            log_message('error', 'Interakt WhatsApp Response: ' . $response . ' HTTP Code: ' . $http_code);
-            return false;
+            $api_endpoint = 'https://api.interakt.ai/v1/public/message/';
+            $api_key = 'UGNNRlpYaUwxeXNKRmg3NktJUWo4a2l0U3IzSzJVRzY1T2FPckgwbGljUTo=';
+            $postData = array(
+                'countryCode' => '+91', 'phoneNumber' => $phone, 'type' => 'Template',
+                'template' => array(
+                    'name' => $template_name, 'languageCode' => 'en',
+                    'headerValues' => array('https://www.kidzoniainternational.in/assets/images/international.jpeg'),
+                    'bodyValues' => array()
+                )
+            );
+
+            $curl = curl_init($api_endpoint);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($postData));
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Basic ' . $api_key, 'Content-Type: application/json'));
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+
+            $response = curl_exec($curl);
+            $http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+            $curl_error = curl_error($curl);
+            curl_close($curl);
+
+            if ($curl_error) {
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'whatsapp', 'event_type' => 'admission_enquiry', 'provider' => 'interakt',
+                    'template_name' => $template_name, 'recipient' => $phone, 'recipient_name' => $parent_name,
+                    'status' => 'failed', 'http_code' => $http_code, 'request_payload' => $postData,
+                    'response_payload' => $response, 'error_message' => $curl_error,
+                )));
+                return false;
+            }
+
+            $is_success = ($http_code == 200 || $http_code == 201);
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'whatsapp', 'event_type' => 'admission_enquiry', 'provider' => 'interakt',
+                'template_name' => $template_name, 'recipient' => $phone, 'recipient_name' => $parent_name,
+                'status' => $is_success ? 'sent' : 'failed', 'http_code' => $http_code,
+                'request_payload' => $postData, 'response_payload' => $response,
+                'error_message' => $is_success ? null : 'Interakt send failed',
+            )));
+
+            if ($is_success) {
+                log_message('info', 'Interakt WhatsApp Response: ' . $response);
+            } else {
+                log_message('error', 'Interakt WhatsApp Response: ' . $response . ' HTTP Code: ' . $http_code);
+            }
+            return $is_success;
         } catch (Exception $e) {
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'whatsapp', 'event_type' => 'admission_enquiry', 'provider' => 'interakt',
+                'template_name' => $template_name, 'recipient' => $phone, 'recipient_name' => $parent_name,
+                'status' => 'failed', 'error_message' => $e->getMessage(),
+            )));
             log_message('error', 'Admission Enquiry WhatsApp Error: ' . $e->getMessage());
             return false;
         }
     }
 
-    /**
-     * Send email notification for career application
-     */
-    public function send_career_application_email($user_email, $name, $career_title, $branch_name)
+    public function send_career_application_email($user_email, $name, $career_title, $branch_name, $context = array())
     {
+        $subject = 'Thank You for Your Career Application - Kidzonia International';
         try {
             if (empty($user_email)) {
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'email', 'event_type' => 'career_application', 'provider' => 'zeptomail',
+                    'template_name' => $subject, 'recipient' => '', 'recipient_name' => $name,
+                    'status' => 'skipped', 'error_message' => 'Email empty',
+                )));
                 return false;
             }
 
@@ -2378,52 +2449,58 @@ class Crud_model extends CI_Model
                 <p>We have received your career application successfully. Our HR team will review your profile and contact you shortly.</p>
                 <p>For more details, visit: <a href="https://www.kidzoniainternational.in">www.kidzoniainternational.in</a></p>';
 
-            return $this->email_model->sent_simple_mail(
+            $sent = $this->email_model->sent_simple_mail(
                 $this->email_model->sample_mail_message($message),
                 $user_email,
-                'Thank You for Your Career Application - Kidzonia International'
+                $subject
             );
+
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'email', 'event_type' => 'career_application', 'provider' => 'zeptomail',
+                'template_name' => $subject, 'recipient' => $user_email, 'recipient_name' => $name,
+                'status' => $sent ? 'sent' : 'failed', 'error_message' => $sent ? null : 'ZeptoMail send failed',
+            )));
+
+            return $sent;
         } catch (Exception $e) {
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'email', 'event_type' => 'career_application', 'provider' => 'zeptomail',
+                'template_name' => $subject, 'recipient' => $user_email, 'recipient_name' => $name,
+                'status' => 'failed', 'error_message' => $e->getMessage(),
+            )));
             log_message('error', 'Career Application Email Error: ' . $e->getMessage());
             return false;
         }
     }
 
-    /**
-     * Send WhatsApp notification for career application using Interakt
-     */
-    public function send_career_application_whatsapp($phone, $name, $career_title, $branch_name)
+    public function send_career_application_whatsapp($phone, $name, $career_title, $branch_name, $context = array())
     {
+        $template_name = 'kidzonia_career_inquiry';
         try {
+            if (empty($phone)) {
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'whatsapp', 'event_type' => 'career_application', 'provider' => 'interakt',
+                    'template_name' => $template_name, 'recipient' => '', 'recipient_name' => $name,
+                    'status' => 'skipped', 'error_message' => 'Phone empty',
+                )));
+                return false;
+            }
+
             $api_endpoint = 'https://api.interakt.ai/v1/public/message/';
             $api_key = 'UGNNRlpYaUwxeXNKRmg3NktJUWo4a2l0U3IzSzJVRzY1T2FPckgwbGljUTo=';
-
             $postData = array(
-                'countryCode' => '+91',
-                'phoneNumber' => $phone,
-                'type' => 'Template',
+                'countryCode' => '+91', 'phoneNumber' => $phone, 'type' => 'Template',
                 'template' => array(
-                    'name' => 'kidzonia_career_inquiry',
-                    'languageCode' => 'en',
-                    'headerValues' => array(
-                        'https://www.kidzoniainternational.in/uploads/2023/07/kidzonia_logo.png'
-                    ),
-                    'bodyValues' => array(
-                        $name,
-                        $career_title,
-                        $branch_name,
-                        'www.kidzoniainternational.in'
-                    )
+                    'name' => $template_name, 'languageCode' => 'en',
+                    'headerValues' => array('https://www.kidzoniainternational.in/uploads/2023/07/kidzonia_logo.png'),
+                    'bodyValues' => array($name, $career_title, $branch_name, 'www.kidzoniainternational.in')
                 )
             );
 
             $curl = curl_init($api_endpoint);
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($postData));
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Authorization: Basic ' . $api_key,
-                'Content-Type: application/json'
-            ));
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Basic ' . $api_key, 'Content-Type: application/json'));
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_TIMEOUT, 30);
 
@@ -2433,36 +2510,47 @@ class Crud_model extends CI_Model
             curl_close($curl);
 
             if ($curl_error) {
-                log_message('error', 'Interakt Career WhatsApp cURL Error: ' . $curl_error);
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'whatsapp', 'event_type' => 'career_application', 'provider' => 'interakt',
+                    'template_name' => $template_name, 'recipient' => $phone, 'recipient_name' => $name,
+                    'status' => 'failed', 'http_code' => $http_code, 'request_payload' => $postData,
+                    'response_payload' => $response, 'error_message' => $curl_error,
+                )));
                 return false;
             }
 
-            if ($http_code == 200 || $http_code == 201) {
-                log_message('info', 'Interakt Career WhatsApp Response: ' . $response);
-                return true;
-            }
+            $is_success = ($http_code == 200 || $http_code == 201);
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'whatsapp', 'event_type' => 'career_application', 'provider' => 'interakt',
+                'template_name' => $template_name, 'recipient' => $phone, 'recipient_name' => $name,
+                'status' => $is_success ? 'sent' : 'failed', 'http_code' => $http_code,
+                'request_payload' => $postData, 'response_payload' => $response,
+                'error_message' => $is_success ? null : 'Interakt send failed',
+            )));
 
-            log_message('error', 'Interakt Career WhatsApp Response: ' . $response . ' HTTP Code: ' . $http_code);
-            return false;
+            if ($is_success) {
+                log_message('info', 'Interakt Career WhatsApp Response: ' . $response);
+            } else {
+                log_message('error', 'Interakt Career WhatsApp Response: ' . $response . ' HTTP Code: ' . $http_code);
+            }
+            return $is_success;
         } catch (Exception $e) {
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'whatsapp', 'event_type' => 'career_application', 'provider' => 'interakt',
+                'template_name' => $template_name, 'recipient' => $phone, 'recipient_name' => $name,
+                'status' => 'failed', 'error_message' => $e->getMessage(),
+            )));
             log_message('error', 'Career Application WhatsApp Error: ' . $e->getMessage());
             return false;
         }
     }
 
-    /**
-     * Send tracking notification email with complete UTM and referer information
-     * @param array $form_data Form submission data
-     * @param string $form_type Form type (e.g., 'Admission Enquiry', 'Contact Enquiry')
-     * @return bool
-     */
-    public function send_tracking_notification_email($form_data, $form_type = 'Admission Enquiry')
+    public function send_tracking_notification_email($form_data, $form_type = 'Admission Enquiry', $context = array())
     {
+        $subject = 'New ' . $form_type . ' Submission - UTM Tracking Information';
         try {
-            // Get email from config
             $notification_email = $this->config->item('tracking_notification_email');
             
-            // If config is empty, use default
             if (empty($notification_email)) {
                 log_message('error', 'Tracking notification email not configured in config.php - using default');
                 $notification_email = 'info@kidzoniainternational.in';
@@ -2623,8 +2711,16 @@ class Crud_model extends CI_Model
             
             log_message('info', 'Calling email_model->sent_simple_mail() with email: ' . $notification_email);
             
-            $email_result = $this->email_model->sent_simple_mail($email_msg, $notification_email, 'New ' . $form_type . ' Submission - UTM Tracking Information');
+            $email_result = $this->email_model->sent_simple_mail($email_msg, $notification_email, $subject);
             
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'email', 'event_type' => 'tracking_email', 'provider' => 'zeptomail',
+                'template_name' => $subject, 'recipient' => $notification_email,
+                'recipient_name' => isset($form_data['parent_name']) ? $form_data['parent_name'] : null,
+                'status' => $email_result ? 'sent' : 'failed',
+                'error_message' => $email_result ? null : 'ZeptoMail send failed',
+            )));
+
             if (!$email_result) {
                 log_message('error', 'Tracking notification email FAILED to send to: ' . $notification_email . ' | Form Type: ' . $form_type);
                 log_message('error', 'Check application/logs/ for detailed email error messages');
@@ -2634,6 +2730,11 @@ class Crud_model extends CI_Model
             log_message('info', '✅ Tracking notification email sent successfully to: ' . $notification_email . ' | Form Type: ' . $form_type);
             return true;
         } catch (Exception $e) {
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'email', 'event_type' => 'tracking_email', 'provider' => 'zeptomail',
+                'template_name' => $subject, 'recipient' => isset($notification_email) ? $notification_email : '',
+                'status' => 'failed', 'error_message' => $e->getMessage(),
+            )));
             log_message('error', 'Failed to send tracking notification email: ' . $e->getMessage());
             return false;
         }

@@ -342,5 +342,81 @@ class Common_model extends CI_Model{
         }
         return base_url() . $curriculum_slug . '-in-' . $branch_slug . '-' . strtolower($city);
     }
+
+    public function sanitize_notification_payload($payload)
+    {
+        if (is_array($payload)) {
+            $sanitized = array();
+            foreach ($payload as $key => $value) {
+                $lower_key = strtolower($key);
+                if (in_array($lower_key, array('apikey', 'smtp_pass', 'password', 'smtp_user')) ||
+                    strpos($lower_key, 'pass') !== false ||
+                    strpos($lower_key, 'token') !== false ||
+                    strpos($lower_key, 'authorization') !== false) {
+                    $sanitized[$key] = '[redacted]';
+                } elseif (is_array($value)) {
+                    $sanitized[$key] = $this->sanitize_notification_payload($value);
+                } else {
+                    $sanitized[$key] = $value;
+                }
+            }
+            return $sanitized;
+        }
+
+        if (is_string($payload)) {
+            $decoded = json_decode($payload, true);
+            if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                return json_encode($this->sanitize_notification_payload($decoded));
+            }
+            return substr($payload, 0, 10000);
+        }
+
+        return $payload;
+    }
+
+    public function log_notification($data)
+    {
+        try {
+            $kcis_db = $this->load->database('kcis_db', TRUE);
+
+            $request_payload = null;
+            if (isset($data['request_payload'])) {
+                $request_payload = $this->sanitize_notification_payload($data['request_payload']);
+                if (is_array($request_payload)) {
+                    $request_payload = json_encode($request_payload);
+                }
+                $request_payload = substr((string) $request_payload, 0, 10000);
+            }
+
+            $response_payload = isset($data['response_payload']) ? substr((string) $data['response_payload'], 0, 10000) : null;
+
+            $row = array(
+                'type' => !empty($data['type']) ? $data['type'] : 'website',
+                'website' => $data['website'],
+                'channel' => $data['channel'],
+                'event_type' => $data['event_type'],
+                'provider' => isset($data['provider']) ? $data['provider'] : null,
+                'template_name' => isset($data['template_name']) ? $data['template_name'] : null,
+                'recipient' => isset($data['recipient']) ? $data['recipient'] : '',
+                'recipient_name' => isset($data['recipient_name']) ? $data['recipient_name'] : null,
+                'status' => $data['status'],
+                'http_code' => isset($data['http_code']) ? $data['http_code'] : null,
+                'request_payload' => $request_payload,
+                'response_payload' => $response_payload,
+                'error_message' => isset($data['error_message']) ? substr((string) $data['error_message'], 0, 2000) : null,
+                'reference_type' => isset($data['reference_type']) ? $data['reference_type'] : null,
+                'reference_id' => isset($data['reference_id']) ? $data['reference_id'] : null,
+                'form_type' => isset($data['form_type']) ? $data['form_type'] : null,
+                'ip_address' => isset($data['ip_address']) ? $data['ip_address'] : $this->input->ip_address(),
+                'created_at' => date('Y-m-d H:i:s'),
+            );
+
+            $kcis_db->insert('notifications_log', $row);
+            return $kcis_db->insert_id();
+        } catch (Exception $e) {
+            log_message('error', 'notifications_log insert failed: ' . $e->getMessage());
+            return false;
+        }
+    }
 }
 ?>
