@@ -79,11 +79,14 @@
 ## Notification Providers (for `check_admission_enquiry` flow)
 
 ### 1. Email (to parent)
+- **Handler:** `Crud_model::send_admission_enquiry_email`
 - **Provider:** ZeptoMail (via `Email_model::sent_simple_mail`)
 - **From:** `no-reply@kidzoniainternational.in`
 - **Subject:** `Thank You for Your Admission Enquiry - Kidzonia International`
 - **Branded HTML:** `Email_model::sample_mail_message()` with KIPS header logo
 - **Logo URL:** `https://www.kidzoniainternational.in/uploads/2023/07/kidzonia_logo.png`
+- **Body:** Inquiry thank-you with website, Instagram, Facebook, YouTube, and contact/location links
+- **Sign-off:** Team Kidzonia International
 
 ### 2. SMS (to parent)
 - **Provider:** Buzzify
@@ -93,9 +96,27 @@
 - **Message:** Dear Parent, Thank you for connecting with Kidzonia International School! We've received your inquiry and our team will contact you shortly regarding admissions. Warm regards, Team KIPS
 
 ### 3. WhatsApp (to parent)
+- **Handler:** `Crud_model::send_admission_enquiry_whatsapp`
 - **Provider:** Interakt
-- **Template:** `kips_thanks_for_inquiry_z1`
+- **Template:** `submitted_online_enquiry_all_kcis_and_kips_gg`
 - **Language:** `en`
+- **Header:** None
+- **Body variables:**
+  - `{{1}}` — Parent / student name
+  - `{{2}}` — `KIPS` (renders as “Team KIPS Admissions”)
+- **Body text:**
+  ```
+  Dear {{1}},
+
+  We are grateful for your recent inquiry and appreciate your interest in our school.
+
+  Your questions are important to us, and we thank you for reaching out.
+
+  Our team will get back to you shortly to address all your queries.
+
+  Warm regards,
+  Team {{2}} Admissions
+  ```
 
 ### 4. Tracking Email (internal)
 - **Provider:** ZeptoMail (via `Email_model::sent_simple_mail`)

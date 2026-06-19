@@ -2276,10 +2276,18 @@ class Crud_model extends CI_Model
                 return false;
             }
 
-            $message = '<p>Dear ' . htmlspecialchars($parent_name) . ',</p>
-                <p>Thank you for your interest in Kidzonia International! We have received your admission enquiry and our team will contact you shortly.</p>
-                <p>We appreciate your interest in our educational programs and look forward to assisting you with your child\'s educational journey.</p>
-                <p>For more details, visit: <a href="https://www.kidzoniainternational.in">www.kidzoniainternational.in</a></p>';
+            $display_name = !empty($parent_name) ? htmlspecialchars($parent_name) : 'Parent';
+            $message = '<p>Dear ' . $display_name . ',</p>
+                <p>We are grateful for your recent inquiry and appreciate your interest in our school.</p>
+                <p>Your questions are important to us, and we thank you for reaching out.</p>
+                <p>Our team will get back to you shortly to address all your queries.</p>
+                <p>Kindly find below the links to know more about our school:</p>
+                <p>Website: <a href="https://www.kidzoniainternational.in">https://www.kidzoniainternational.in</a><br>
+                Instagram: <a href="https://instagram.com/kidzonia_hyderabad?igshid=MzRlODBiNWFlZA==">https://instagram.com/kidzonia_hyderabad</a><br>
+                Facebook: <a href="https://www.facebook.com/KidzoniaPreschoolHyderabad?mibextid=ZbWKwL">https://www.facebook.com/KidzoniaPreschoolHyderabad</a><br>
+                YouTube: <a href="https://youtube.com/@KIDZONIAINTERNATIONALPRESCHOOL?si=v37dXLROEXXubzJ_">https://youtube.com/@KIDZONIAINTERNATIONALPRESCHOOL</a><br>
+                Location: <a href="https://www.kidzoniainternational.in/contact-us">https://www.kidzoniainternational.in/contact-us</a></p>
+                <p>Warm regards,<br>Team Kidzonia International</p>';
 
             $sent = $this->email_model->sent_simple_mail(
                 $this->email_model->sample_mail_message($message),
@@ -2373,7 +2381,7 @@ class Crud_model extends CI_Model
 
     public function send_admission_enquiry_whatsapp($phone, $parent_name = '', $context = array())
     {
-        $template_name = 'kips_thanks_for_inquiry_z1';
+        $template_name = 'submitted_online_enquiry_all_kcis_and_kips_gg';
         try {
             if (empty($phone)) {
                 $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
@@ -2390,8 +2398,10 @@ class Crud_model extends CI_Model
                 'countryCode' => '+91', 'phoneNumber' => $phone, 'type' => 'Template',
                 'template' => array(
                     'name' => $template_name, 'languageCode' => 'en',
-                    'headerValues' => array('https://www.kidzoniainternational.in/assets/images/international.jpeg'),
-                    'bodyValues' => array()
+                    'bodyValues' => array(
+                        !empty($parent_name) ? $parent_name : 'Parent',
+                        'KIPS',
+                    )
                 )
             );
 
