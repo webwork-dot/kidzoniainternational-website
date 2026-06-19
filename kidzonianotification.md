@@ -38,8 +38,7 @@
 - Handler: `Crud_model::ajax_submit_career`
 - Data saved in: `career_enquiry` (resume upload in `uploads/career_enquiry/...`)
 - External push: `http://panel.surakaedusociety.com/hr/remote_career_leads`
-- Notifications sent: Email + WhatsApp (career thank-you)
-- SMS: Template documented below (not integrated in code yet)
+- Notifications sent: Email + WhatsApp + SMS (career thank-you)
 
 ### Career notifications (`ajax_submit_career`)
 
@@ -63,13 +62,16 @@
   - `{{3}}` — Branch / center name
   - `{{4}}` — Website URL (`www.kidzoniainternational.in`)
 
-#### 3. SMS (to applicant) — documented only
+#### 3. SMS (to applicant)
+- **Handler:** `Crud_model::send_career_application_sms`
 - **Provider:** Buzzify
 - **Sender ID:** KIPSES
-- **Template ID:** TBD
+- **Template ID:** `1207178170992440494`
+- **PE ID:** `1501706900000037814`
+- **Variables:** name, position, branch
 - **Message:**
   ```
-  Dear {name}, Thank you for applying for {position} at Kidzonia International, {branch}. We have received your career application. Our HR team will contact you shortly. Visit www.kidzoniainternational.in Team KIPS
+  Dear {name} , Thank you for applying for {position} at Kidzonia International, {branch} . We have received your career application. Our HR team will contact you shortly. Team KIPS
   ```
 
 ---
@@ -86,7 +88,9 @@
 ### 2. SMS (to parent)
 - **Provider:** Buzzify
 - **Sender ID:** `KIPSES`
-- **Template ID:** `1507164828388639855`
+- **Template ID:** `1207178169265515300` (Thank you KIPS 2026)
+- **PE ID:** `1501706900000037814`
+- **Message:** Dear Parent, Thank you for connecting with Kidzonia International School! We've received your inquiry and our team will contact you shortly regarding admissions. Warm regards, Team KIPS
 
 ### 3. WhatsApp (to parent)
 - **Provider:** Interakt

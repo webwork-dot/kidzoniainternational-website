@@ -2093,6 +2093,14 @@ class Crud_model extends CI_Model
                 log_message('error', 'Failed to send career application WhatsApp: ' . $e->getMessage());
             }
 
+            try {
+                if (!empty($data['phone'])) {
+                    $this->send_career_application_sms($data['phone'], $data['name'], $career_name, $data['branch'], $notification_context);
+                }
+            } catch (Exception $e) {
+                log_message('error', 'Failed to send career application SMS: ' . $e->getMessage());
+            }
+
             $this->db->trans_complete();
             $url = base_url('thank-you');
             $resultpost = array(
@@ -2299,7 +2307,7 @@ class Crud_model extends CI_Model
 
     public function send_admission_enquiry_sms($phone, $context = array())
     {
-        $template_id = '1507164828388639855';
+        $template_id = '1207178169265515300';
         try {
             if (empty($phone)) {
                 $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
@@ -2313,7 +2321,7 @@ class Crud_model extends CI_Model
             $senderid = 'KIPSES';
             $mobile_no = '91' . $phone;
             $url = "http://buzzify.in/V2/http-api-post.php";
-            $message = "Dear Parents, We would like to Thank you for showing interest in our Academic Program. Please explore our website www.kidzoniainternational.in Team KIPS";
+            $message = "Dear Parent, Thank you for connecting with Kidzonia International School! We've received your inquiry and our team will contact you shortly regarding admissions. Warm regards, Team KIPS";
             $post_data = array(
                 "apikey" => $apikey, "senderid" => $senderid, "number" => $mobile_no,
                 "message" => $message, "template_id" => $template_id, "format" => "json"
@@ -2545,6 +2553,75 @@ class Crud_model extends CI_Model
                 'status' => 'failed', 'error_message' => $e->getMessage(),
             )));
             log_message('error', 'Career Application WhatsApp Error: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function send_career_application_sms($phone, $name, $career_title, $branch_name, $context = array())
+    {
+        $template_id = '1207178170992440494';
+        try {
+            if (empty($phone)) {
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'sms', 'event_type' => 'career_application', 'provider' => 'buzzify',
+                    'template_name' => $template_id, 'recipient' => '', 'recipient_name' => $name,
+                    'status' => 'skipped', 'error_message' => 'Phone empty',
+                )));
+                return false;
+            }
+
+            $apikey = '9CuEkpgFFaeSqL9a';
+            $senderid = 'KIPSES';
+            $mobile_no = '91' . $phone;
+            $url = "http://buzzify.in/V2/http-api-post.php";
+            $message = 'Dear ' . $name . ' , Thank you for applying for ' . $career_title . ' at Kidzonia International, ' . $branch_name . ' . We have received your career application. Our HR team will contact you shortly. Team KIPS';
+            $post_data = array(
+                "apikey" => $apikey, "senderid" => $senderid, "number" => $mobile_no,
+                "message" => $message, "template_id" => $template_id, "format" => "json"
+            );
+
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($post_data));
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+
+            $response = curl_exec($curl);
+            $http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+            $curl_error = curl_error($curl);
+            curl_close($curl);
+
+            if ($curl_error) {
+                $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                    'channel' => 'sms', 'event_type' => 'career_application', 'provider' => 'buzzify',
+                    'template_name' => $template_id, 'recipient' => $phone, 'recipient_name' => $name,
+                    'status' => 'failed', 'http_code' => $http_code, 'request_payload' => $post_data,
+                    'response_payload' => $response, 'error_message' => $curl_error,
+                )));
+                return false;
+            }
+
+            $is_success = $this->buzzify_response_is_success($http_code, $response);
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'sms', 'event_type' => 'career_application', 'provider' => 'buzzify',
+                'template_name' => $template_id, 'recipient' => $phone, 'recipient_name' => $name,
+                'status' => $is_success ? 'sent' : 'failed', 'http_code' => $http_code,
+                'request_payload' => $post_data, 'response_payload' => $response,
+                'error_message' => $is_success ? null : 'Buzzify send failed',
+            )));
+
+            if (!$is_success) {
+                log_message('error', 'Buzzify Career SMS Response: ' . $response);
+            }
+            return $is_success;
+        } catch (Exception $e) {
+            $this->log_website_notification(array_merge($this->notification_context_to_log_fields($context), array(
+                'channel' => 'sms', 'event_type' => 'career_application', 'provider' => 'buzzify',
+                'template_name' => $template_id, 'recipient' => $phone, 'recipient_name' => $name,
+                'status' => 'failed', 'error_message' => $e->getMessage(),
+            )));
+            log_message('error', 'Career Application SMS Error: ' . $e->getMessage());
             return false;
         }
     }
