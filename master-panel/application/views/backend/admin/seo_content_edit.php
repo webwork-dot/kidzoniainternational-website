@@ -44,11 +44,6 @@
             <label class="form-label">H1 Title</label>
             <input type="text" class="form-control" name="h1_title" value="<?php echo $data['h1_title']; ?>" placeholder="Best Preschool in...">
           </div>
-          
-          <div class="col-12 mb-1">
-            <label class="form-label">Our Curriculum Description (Dynamic)</label>
-            <textarea class="form-control editor" name="content" rows="5"><?php echo $data['content']; ?></textarea>
-          </div>
 
           <div class="col-12 mb-1">
             <label class="form-label">Why Choose Us Content</label>
