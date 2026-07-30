@@ -1118,6 +1118,51 @@ class Admin extends CI_Controller
             $this->crud_model->get_careers();
         }
     }
+
+    // Manage Documents
+    public function documents($param1 = "", $param2 = "") {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+        if ($param1 == "add_post") {
+            $this->crud_model->add_documents($param2);
+        } elseif ($param1 == "edit_post") {
+            $this->crud_model->edit_documents($param2);
+        } elseif ($param1 == "delete") {
+            $this->crud_model->delete_documents($param2);
+            redirect(site_url('admin/documents'), 'refresh');
+        } else {
+            $page_data['page_name']  = 'documents';
+            $page_data['page_title'] = 'Kidzonia International | Documents';
+            $this->load->view('backend/index', $page_data);
+        }
+    }
+
+    public function documents_form($param1 = "", $param2 = "") {
+        if ($this->session->userdata('admin_login') != true) {
+          redirect(site_url('login'), 'refresh');
+        }
+
+        if ($param1 == 'add') {
+            $page_data['page_name']     = 'documents_add';
+            $page_data['page_title']    = 'Kidzonia International | Add Document';
+            $this->load->view('backend/index', $page_data);
+        }
+        elseif ($param1 == 'edit') {
+            $data                       = $this->crud_model->get_documents_by_id($param2)->row_array();
+            $page_data['data']          = $data;
+            $page_data['page_name']     = 'documents_edit';
+            $page_data['id']            = $param2;
+            $page_data['page_title']    = 'Kidzonia International | Edit Document';
+            $this->load->view('backend/index', $page_data);
+        }
+    }
+
+    public function get_documents() {
+        if ($this->input->is_ajax_request()) {
+            $this->crud_model->get_documents();
+        }
+    }
     
     // Manage Parent Testimonial
     public function parents_testimonials($param1 = "", $param2 = "") {

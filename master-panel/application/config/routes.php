@@ -113,6 +113,10 @@ $route[$r_admin . '/careers']                       = 'admin/careers';
 $route[$r_admin . '/careers/add']                   = 'admin/careers_form/add';
 $route[$r_admin . '/careers/edit/(:num)']           = 'admin/careers_form/edit/$1';
 
+$route[$r_admin . '/documents']                     = 'admin/documents';
+$route[$r_admin . '/documents/add']                 = 'admin/documents_form/add';
+$route[$r_admin . '/documents/edit/(:num)']         = 'admin/documents_form/edit/$1';
+
 $route[$r_admin . '/awards-and-recognitions']                         = 'admin/awards_and_recognitions';
 $route[$r_admin . '/awards-and-recognitions/add']                     = 'admin/awards_and_recognitions_form/add';
 $route[$r_admin . '/awards-and-recognitions/edit/(:num)']             = 'admin/awards_and_recognitions_form/edit/$1';

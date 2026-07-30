@@ -143,6 +143,16 @@ class Crud_model extends CI_Model
         return $data->result_array();
     }
 
+    public function get_documents_list()
+    {
+        return $this->db->select('id, title, file, display_order')
+            ->where('status', 1)
+            ->order_by('display_order', 'ASC')
+            ->order_by('id', 'ASC')
+            ->get('documents')
+            ->result_array();
+    }
+
     public function get_ixplore()
     {
         $data = $this->db->select('*')

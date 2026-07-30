@@ -1647,6 +1647,197 @@ class Crud_model extends CI_Model
         }
     }
 
+    // manage Documents
+
+    public function get_documents()
+    {
+        $params['draw'] = $_REQUEST['draw'];
+        $start = $_REQUEST['start'];
+        $length = $_REQUEST['length'];
+
+        $search_value = $_REQUEST['search']['value'];
+        $data = array();
+        $keyword_filter = "";
+
+        if (!empty($search_value)) {
+            $keyword = $search_value;
+            $keyword_filter = " AND (title like '%" . $keyword . "%')";
+        }
+
+        $total_count = $this->db->query("SELECT id FROM documents WHERE (id<>'') $keyword_filter ORDER BY display_order ASC, id ASC")->num_rows();
+        $query = $this->db->query("SELECT id,title,file,display_order,status,created_at FROM documents WHERE (id<>'') $keyword_filter ORDER BY display_order ASC, id ASC LIMIT $start, $length");
+
+        if (!empty($query)) {
+            foreach ($query->result_array() as $item) {
+
+                $created_at = '-';
+                if ($item['created_at'] != "" || $item['created_at'] != NULL) {
+                    $newData = new DateTime($item['created_at']);
+                    $created_at = $newData->format("d M, Y");
+                }
+
+                $file = '-';
+                if ($item['file'] != "" || $item['file'] != NULL) {
+                    $file = "<a class='custom-pdf' href='" . main_url() . $item['file'] . "' target='_blank'>View Document</a>";
+                }
+
+                $status = ($item['status'] == 1) ? 'Active' : 'Inactive';
+
+                $edit_url = base_url() . 'admin/documents/edit/' . $item['id'];
+                $delete_url = base_url() . 'admin/documents/delete/' . $item['id'];
+                $confim_txt = "Confirm Delete";
+                $action = '<a href="' . $edit_url . '" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><button type="button" class="btn mr-1 mb-1 icon-btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>';
+                $action .= '<a href="#" onclick="confirm_modal(\'' . $delete_url . '\',\'' . $confim_txt . '\');"><button type="button" class="btn mr-1 mb-1 icon-btn-del"><i class="fa fa-trash" aria-hidden="true"></i></button></a>';
+
+                $data[] = array(
+                    "sr" => ++$start,
+                    "title" => $item['title'],
+                    "file" => $file,
+                    "display_order" => $item['display_order'],
+                    "status" => $status,
+                    "created_at" => $created_at,
+                    "action" => $action
+                );
+            }
+        }
+
+        $json_data = array(
+            "draw" => intval($params['draw']),
+            "recordsTotal" => $total_count,
+            "recordsFiltered" => $total_count,
+            "data" => $data
+        );
+        echo json_encode($json_data);
+    }
+
+    public function add_documents()
+    {
+        $super_type = $this->session->userdata('super_type');
+        if ($super_type == 'admin') {
+            $url = base_url('admin/documents');
+        }
+
+        $resultpost = array(
+            "status" => 200,
+            "message" => get_phrase('document_added_successfully'),
+            "url" => $url,
+        );
+
+        if ($_FILES['file']['name'] != "") {
+            $year = date("Y");
+            $month = date("m");
+            $day = date("d");
+            $directory = "../uploads/documents/" . "$year/$month/$day";
+
+            if (!is_dir($directory)) {
+                mkdir($directory, 0755, true);
+            }
+
+            $upload_path = $directory;
+            $upload_path2 = "uploads/documents/" . "$year/$month/$day";
+
+            $tmpFilePath = $_FILES['file']['tmp_name'];
+            $ext2 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+
+            if ($tmpFilePath != "") {
+                $this->load->helper('string');
+                $token = random_string('alnum', 10);
+                if (isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
+                    $file = 'document_' . $token . '.' . $ext2;
+                    move_uploaded_file($_FILES['file']['tmp_name'], $upload_path . '/' . $file);
+                    $data['file'] = $upload_path2 . '/' . $file;
+                }
+            }
+        }
+
+        $data['title'] = html_escape($this->input->post('title'));
+        $data['display_order'] = (int) $this->input->post('display_order');
+        $data['status'] = (int) $this->input->post('status');
+        $data['created_at'] = date("Y-m-d H:i:s");
+        $this->db->insert('documents', $data);
+        $this->session->set_flashdata('flash_message', get_phrase('document_added_successfully'));
+        return simple_json_output($resultpost);
+    }
+
+    public function edit_documents($id)
+    {
+        $super_type = $this->session->userdata('super_type');
+        if ($super_type == 'admin') {
+            $url = base_url('admin/documents');
+        }
+
+        $resultpost = array(
+            "status" => 200,
+            "message" => get_phrase('document_updated_successfully'),
+            "url" => $url,
+        );
+
+        $row = $this->get_documents_by_id($id)->row_array();
+
+        if ($_FILES['file']['name'] != "") {
+            $year = date("Y");
+            $month = date("m");
+            $day = date("d");
+            $directory = "../uploads/documents/" . "$year/$month/$day";
+
+            if (!is_dir($directory)) {
+                mkdir($directory, 0755, true);
+            }
+
+            $upload_path = $directory;
+            $upload_path2 = "uploads/documents/" . "$year/$month/$day";
+
+            $tmpFilePath = $_FILES['file']['tmp_name'];
+            $ext2 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+
+            if ($tmpFilePath != "") {
+                $this->load->helper('string');
+                $token = random_string('alnum', 10);
+                if (isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
+                    $file = 'document_' . $token . '.' . $ext2;
+                    move_uploaded_file($_FILES['file']['tmp_name'], $upload_path . '/' . $file);
+                    $data['file'] = $upload_path2 . '/' . $file;
+                    if ($row['file'] != "" || $row['file'] != NULL) {
+                        delete_file_from_server('../' . $row['file']);
+                    }
+                }
+            }
+        }
+
+        $data['title'] = html_escape($this->input->post('title'));
+        $data['display_order'] = (int) $this->input->post('display_order');
+        $data['status'] = (int) $this->input->post('status');
+
+        $this->db->where('id', $id);
+        $this->db->update('documents', $data);
+
+        $this->session->set_flashdata('flash_message', get_phrase('document_updated_successfully'));
+        return simple_json_output($resultpost);
+    }
+
+    public function get_documents_by_id($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->get('documents');
+    }
+
+    public function delete_documents($id)
+    {
+        $row = $this->get_documents_by_id($id)->row_array();
+        if ($row != '') {
+            $this->db->where('id', $id);
+            $this->db->delete('documents');
+            $this->session->set_flashdata('flash_message', get_phrase('document_deleted_successfully'));
+            if (!empty($row['file'])) {
+                delete_file_from_server('../' . $row['file']);
+            }
+        }
+        else {
+            redirect(site_url('admin/documents'), 'refresh');
+            $this->session->set_flashdata('error_message', get_phrase('no_data_found'));
+        }
+    }
+
     // manage Parent Testimonial
 
     public function get_parents_testimonials()

@@ -33,6 +33,7 @@ $route['kidzonia-commits'] = 'home/kidzonia_commits';
 $route['ixplore'] = 'home/ixplore';
 $route['whizkids'] = 'home/whizkids';
 $route['privacy-policy'] = 'home/privacy_policy';
+$route['document'] = 'home/documents';
 
 $route['digital-news'] = 'home/digital_news';
 

@@ -263,6 +263,17 @@ class Home extends CI_Controller
         $this->load->view('frontend/default/index', $page_data);
     }
 
+    public function documents()
+    {
+        $page_data['page_name'] = "documents";
+        $page_data['documents'] = $this->crud_model->get_documents_list();
+        $page_data['page_title'] = "Document | Kidzonia International";
+        $page_data['meta_description'] = "View official documents and information from Kidzonia International.";
+        $page_data['meta_keyword'] = "kidzonia documents, public disclosure, certificates";
+        $page_data['canonical_url'] = "https://kidzoniainternational.in/document/";
+        $this->load->view('frontend/default/index', $page_data);
+    }
+
     public function ixplore()
     {
         $page_data['page_name'] = "ixplore";

@@ -166,6 +166,13 @@
                <span class="menu-title text-truncate fw-bolder" data-i18n="blogs">Career</span>
            </a>
        </li>
+
+       <li class="nav-item <?php if($page_name == 'documents' || $page_name == 'documents_add' || $page_name == 'documents_edit') echo 'active'; ?>">
+           <a class="d-flex align-items-center " href="<?php echo site_url() . 'admin/documents' ?>">
+               <i data-feather='file-text'></i>
+               <span class="menu-title text-truncate fw-bolder" data-i18n="blogs">Documents</span>
+           </a>
+       </li>
        
        <li class="nav-item <?php if($page_name == 'brochure_enquiry') echo 'active'; ?>">
            <a class="d-flex align-items-center " href="<?php echo site_url() . 'admin/brochure-enquiry' ?>">
