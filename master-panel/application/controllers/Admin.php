@@ -1125,9 +1125,9 @@ class Admin extends CI_Controller
             redirect(site_url('login'), 'refresh');
         }
         if ($param1 == "add_post") {
-            $this->crud_model->add_documents($param2);
+            $this->crud_model->add_documents();
         } elseif ($param1 == "edit_post") {
-            $this->crud_model->edit_documents($param2);
+            $this->crud_model->edit_documents();
         } elseif ($param1 == "delete") {
             $this->crud_model->delete_documents($param2);
             redirect(site_url('admin/documents'), 'refresh');
@@ -1149,11 +1149,9 @@ class Admin extends CI_Controller
             $this->load->view('backend/index', $page_data);
         }
         elseif ($param1 == 'edit') {
-            $data                       = $this->crud_model->get_documents_by_id($param2)->row_array();
-            $page_data['data']          = $data;
+            $page_data['documents']     = $this->crud_model->get_all_documents();
             $page_data['page_name']     = 'documents_edit';
-            $page_data['id']            = $param2;
-            $page_data['page_title']    = 'Kidzonia International | Edit Document';
+            $page_data['page_title']    = 'Kidzonia International | Edit Documents';
             $this->load->view('backend/index', $page_data);
         }
     }

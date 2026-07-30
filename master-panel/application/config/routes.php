@@ -115,6 +115,7 @@ $route[$r_admin . '/careers/edit/(:num)']           = 'admin/careers_form/edit/$
 
 $route[$r_admin . '/documents']                     = 'admin/documents';
 $route[$r_admin . '/documents/add']                 = 'admin/documents_form/add';
+$route[$r_admin . '/documents/edit']                = 'admin/documents_form/edit';
 $route[$r_admin . '/documents/edit/(:num)']         = 'admin/documents_form/edit/$1';
 
 $route[$r_admin . '/awards-and-recognitions']                         = 'admin/awards_and_recognitions';

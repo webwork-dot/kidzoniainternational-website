@@ -324,9 +324,6 @@
                                       Policy </a>
                                   </li>
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
-                                    <a href="<?php echo base_url(); ?>document" title="Document">Document</a>
-                                  </li>
-                                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">
                                     <a href="<?php echo base_url(); ?>sitemap" title="Sitemap">Sitemap </a>
                                   </li>
                                   <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4268">

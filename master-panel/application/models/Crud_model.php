@@ -1683,10 +1683,10 @@ class Crud_model extends CI_Model
 
                 $status = ($item['status'] == 1) ? 'Active' : 'Inactive';
 
-                $edit_url = base_url() . 'admin/documents/edit/' . $item['id'];
+                $edit_url = base_url() . 'admin/documents/edit';
                 $delete_url = base_url() . 'admin/documents/delete/' . $item['id'];
                 $confim_txt = "Confirm Delete";
-                $action = '<a href="' . $edit_url . '" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><button type="button" class="btn mr-1 mb-1 icon-btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>';
+                $action = '<a href="' . $edit_url . '" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit / Reorder"><button type="button" class="btn mr-1 mb-1 icon-btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>';
                 $action .= '<a href="#" onclick="confirm_modal(\'' . $delete_url . '\',\'' . $confim_txt . '\');"><button type="button" class="btn mr-1 mb-1 icon-btn-del"><i class="fa fa-trash" aria-hidden="true"></i></button></a>';
 
                 $data[] = array(
@@ -1717,53 +1717,152 @@ class Crud_model extends CI_Model
             $url = base_url('admin/documents');
         }
 
+        $titles = $this->input->post('title');
+        if (empty($titles) || !is_array($titles)) {
+            $resultpost = array(
+                "status" => 400,
+                "message" => get_phrase('atleast_one_document_required'),
+                "url" => base_url('admin/documents/add'),
+            );
+            return simple_json_output($resultpost);
+        }
+
+        $year = date("Y");
+        $month = date("m");
+        $day = date("d");
+        $directory = "../uploads/documents/" . "$year/$month/$day";
+        if (!is_dir($directory)) {
+            mkdir($directory, 0755, true);
+        }
+        $upload_path2 = "uploads/documents/" . "$year/$month/$day";
+
+        $this->load->helper('string');
+        $order = 1;
+
+        foreach ($titles as $i => $title) {
+            $title = html_escape(trim($title));
+            if ($title === '') {
+                continue;
+            }
+
+            $data = array(
+                'title' => $title,
+                'display_order' => $order,
+                'status' => 1,
+                'created_at' => date("Y-m-d H:i:s"),
+            );
+
+            if (!empty($_FILES['file']['name'][$i])) {
+                $tmpFilePath = $_FILES['file']['tmp_name'][$i];
+                $ext2 = pathinfo($_FILES['file']['name'][$i], PATHINFO_EXTENSION);
+                if ($tmpFilePath != "" && is_uploaded_file($tmpFilePath)) {
+                    $token = random_string('alnum', 10);
+                    $file = 'document_' . $token . '.' . $ext2;
+                    move_uploaded_file($tmpFilePath, $directory . '/' . $file);
+                    $data['file'] = $upload_path2 . '/' . $file;
+                }
+            }
+
+            if (empty($data['file'])) {
+                continue;
+            }
+
+            $this->db->insert('documents', $data);
+            $order++;
+        }
+
         $resultpost = array(
             "status" => 200,
             "message" => get_phrase('document_added_successfully'),
             "url" => $url,
         );
-
-        if ($_FILES['file']['name'] != "") {
-            $year = date("Y");
-            $month = date("m");
-            $day = date("d");
-            $directory = "../uploads/documents/" . "$year/$month/$day";
-
-            if (!is_dir($directory)) {
-                mkdir($directory, 0755, true);
-            }
-
-            $upload_path = $directory;
-            $upload_path2 = "uploads/documents/" . "$year/$month/$day";
-
-            $tmpFilePath = $_FILES['file']['tmp_name'];
-            $ext2 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-
-            if ($tmpFilePath != "") {
-                $this->load->helper('string');
-                $token = random_string('alnum', 10);
-                if (isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
-                    $file = 'document_' . $token . '.' . $ext2;
-                    move_uploaded_file($_FILES['file']['tmp_name'], $upload_path . '/' . $file);
-                    $data['file'] = $upload_path2 . '/' . $file;
-                }
-            }
-        }
-
-        $data['title'] = html_escape($this->input->post('title'));
-        $data['display_order'] = (int) $this->input->post('display_order');
-        $data['status'] = (int) $this->input->post('status');
-        $data['created_at'] = date("Y-m-d H:i:s");
-        $this->db->insert('documents', $data);
         $this->session->set_flashdata('flash_message', get_phrase('document_added_successfully'));
         return simple_json_output($resultpost);
     }
 
-    public function edit_documents($id)
+    public function edit_documents($id = "")
     {
         $super_type = $this->session->userdata('super_type');
         if ($super_type == 'admin') {
             $url = base_url('admin/documents');
+        }
+
+        $titles = $this->input->post('title');
+        $ids = $this->input->post('id');
+        $deleted_ids = $this->input->post('deleted_ids');
+
+        if (!empty($deleted_ids)) {
+            $delete_arr = array_filter(array_map('intval', explode(',', $deleted_ids)));
+            foreach ($delete_arr as $del_id) {
+                if ($del_id > 0) {
+                    $this->delete_documents($del_id);
+                }
+            }
+        }
+
+        if (empty($titles) || !is_array($titles)) {
+            $resultpost = array(
+                "status" => 400,
+                "message" => get_phrase('atleast_one_document_required'),
+                "url" => base_url('admin/documents/edit'),
+            );
+            return simple_json_output($resultpost);
+        }
+
+        $year = date("Y");
+        $month = date("m");
+        $day = date("d");
+        $directory = "../uploads/documents/" . "$year/$month/$day";
+        if (!is_dir($directory)) {
+            mkdir($directory, 0755, true);
+        }
+        $upload_path2 = "uploads/documents/" . "$year/$month/$day";
+
+        $this->load->helper('string');
+        $order = 1;
+
+        foreach ($titles as $i => $title) {
+            $title = html_escape(trim($title));
+            if ($title === '') {
+                continue;
+            }
+
+            $row_id = isset($ids[$i]) ? (int) $ids[$i] : 0;
+            $data = array(
+                'title' => $title,
+                'display_order' => $order,
+                'status' => 1,
+            );
+
+            $has_new_file = !empty($_FILES['file']['name'][$i]);
+            if ($has_new_file) {
+                $tmpFilePath = $_FILES['file']['tmp_name'][$i];
+                $ext2 = pathinfo($_FILES['file']['name'][$i], PATHINFO_EXTENSION);
+                if ($tmpFilePath != "" && is_uploaded_file($tmpFilePath)) {
+                    $token = random_string('alnum', 10);
+                    $file = 'document_' . $token . '.' . $ext2;
+                    move_uploaded_file($tmpFilePath, $directory . '/' . $file);
+                    $data['file'] = $upload_path2 . '/' . $file;
+                }
+            }
+
+            if ($row_id > 0) {
+                if (!empty($data['file'])) {
+                    $row = $this->get_documents_by_id($row_id)->row_array();
+                    if (!empty($row['file'])) {
+                        delete_file_from_server('../' . $row['file']);
+                    }
+                }
+                $this->db->where('id', $row_id);
+                $this->db->update('documents', $data);
+            } else {
+                if (empty($data['file'])) {
+                    continue;
+                }
+                $data['created_at'] = date("Y-m-d H:i:s");
+                $this->db->insert('documents', $data);
+            }
+            $order++;
         }
 
         $resultpost = array(
@@ -1771,48 +1870,16 @@ class Crud_model extends CI_Model
             "message" => get_phrase('document_updated_successfully'),
             "url" => $url,
         );
-
-        $row = $this->get_documents_by_id($id)->row_array();
-
-        if ($_FILES['file']['name'] != "") {
-            $year = date("Y");
-            $month = date("m");
-            $day = date("d");
-            $directory = "../uploads/documents/" . "$year/$month/$day";
-
-            if (!is_dir($directory)) {
-                mkdir($directory, 0755, true);
-            }
-
-            $upload_path = $directory;
-            $upload_path2 = "uploads/documents/" . "$year/$month/$day";
-
-            $tmpFilePath = $_FILES['file']['tmp_name'];
-            $ext2 = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-
-            if ($tmpFilePath != "") {
-                $this->load->helper('string');
-                $token = random_string('alnum', 10);
-                if (isset($_FILES['file']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
-                    $file = 'document_' . $token . '.' . $ext2;
-                    move_uploaded_file($_FILES['file']['tmp_name'], $upload_path . '/' . $file);
-                    $data['file'] = $upload_path2 . '/' . $file;
-                    if ($row['file'] != "" || $row['file'] != NULL) {
-                        delete_file_from_server('../' . $row['file']);
-                    }
-                }
-            }
-        }
-
-        $data['title'] = html_escape($this->input->post('title'));
-        $data['display_order'] = (int) $this->input->post('display_order');
-        $data['status'] = (int) $this->input->post('status');
-
-        $this->db->where('id', $id);
-        $this->db->update('documents', $data);
-
         $this->session->set_flashdata('flash_message', get_phrase('document_updated_successfully'));
         return simple_json_output($resultpost);
+    }
+
+    public function get_all_documents()
+    {
+        return $this->db->order_by('display_order', 'ASC')
+            ->order_by('id', 'ASC')
+            ->get('documents')
+            ->result_array();
     }
 
     public function get_documents_by_id($id)

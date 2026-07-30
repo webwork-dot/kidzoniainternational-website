@@ -159,7 +159,7 @@
                           <header class="bt_bb_headline bt_bb_color_scheme_6 bt_bb_dash_none bt_bb_size_extrahuge bt_bb_align_inherit"
                             style="--primary-color: #ffffff; --secondary-color: var(--accent-color);">
                             <h1 class="bt_bb_headline_tag">
-                              <span class="bt_bb_headline_content"><span>Document</span></span>
+                              <span class="bt_bb_headline_content"><span>Public Disclosure</span></span>
                             </h1>
                           </header>
                           <div class="bt_bb_separator_v2 bt_bb_border_style_none bt_bb_top_spacing_100 bt_bb_bottom_spacing_large bt_bb_border_thickness_1">
@@ -192,14 +192,12 @@
                       <div class="bt_bb_column_content">
                         <div class="bt_bb_column_content_inner">
                           <div class="documents-page">
-                            <h2 class="documents-title">Document</h2>
+                            <h2 class="documents-title">Public Disclosure</h2>
                             <div class="documents-table-wrap">
                               <?php if (!empty($documents)): ?>
                               <table class="documents-table">
                                 <thead>
-                                  <tr class="section-head">
-                                    <th colspan="3">DOCUMENTS AND INFORMATION:</th>
-                                  </tr>
+                             
                                   <tr class="col-head">
                                     <th>SL NO.</th>
                                     <th>DOCUMENT/INFORMATION</th>
