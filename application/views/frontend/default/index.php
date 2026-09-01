@@ -18,6 +18,7 @@
     <meta property="article:modified_time" content="2023-11-23T10:20:40+00:00" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Kidzoniapre_Hyd" />
+    <meta name="robots" content="noindex, nofollow">
 
 
     <!-- Preload critical resources for faster rendering -->

@@ -34,7 +34,6 @@
          </div>
          <div class="card-datatable mb-2">
             <a href="<?php echo site_url('admin/documents/add'); ?>" class="dt-button add-new add-btn btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" ><span><i data-feather='plus'></i> Add</span></a>
-            <a href="<?php echo site_url('admin/documents/edit'); ?>" class="dt-button add-new add-btn btn btn-secondary" style="margin-left:8px;" tabindex="0"><span><i data-feather='list'></i> Reorder / Edit All</span></a>
             <table class="table" id="report-datatable">
                <thead>
                   <tr>
