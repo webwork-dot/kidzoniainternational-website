@@ -66,6 +66,8 @@ $route['preschool-in-hyderabad'] = 'home/hyderabad';
 
 $route['blogs'] = 'home/blogs';
 $route['blog-details/(:any)'] = 'home/blog_details/$1';
+$route['newsletter'] = 'home/newsletter';
+$route['newsletter/(:num)'] = 'home/newsletter/$1';
 $route['event/(:any)/(:num)'] = 'home/event_details/$1/$2';
 $route['explore-centers/mumbai'] = 'home/explore_centers/mumbai';
 $route['explore-centers/hyderabad'] = 'home/explore_centers/hyderabad';

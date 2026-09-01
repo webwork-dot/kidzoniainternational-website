@@ -6217,5 +6217,197 @@ class Crud_model extends CI_Model
         $this->session->set_flashdata('flash_message', get_phrase('seo_content_deleted_successfully'));
     }
 
+    // Manage Newsletter PDFs
+    public function get_newsletter_pdf()
+    {
+        $draw = intval($this->input->post("draw"));
+        $start = intval($this->input->post("start"));
+        $length = intval($this->input->post("length"));
+        $order = $this->input->post("order");
+        $search = $this->input->post("search");
+
+        $search_val = isset($search['value']) ? trim($search['value']) : '';
+        $keyword_filter = "";
+        if ($search_val != '') {
+            $search_val = $this->db->escape_like_str($search_val);
+            $keyword_filter = " AND (title LIKE '%$search_val%' OR month LIKE '%$search_val%' OR year LIKE '%$search_val%')";
+        }
+
+        $total_count = $this->db->query("SELECT id FROM newsletter_pdfs WHERE (id <> '') $keyword_filter")->num_rows();
+        $query = $this->db->query("SELECT * FROM newsletter_pdfs WHERE (id <> '') $keyword_filter ORDER BY year DESC, id DESC LIMIT $start, $length");
+
+        $data = array();
+        $i = $start + 1;
+        foreach ($query->result_array() as $item) {
+            $edit_url = base_url() . 'admin/newsletter-pdf/edit/' . $item['id'];
+            $delete_url = base_url() . 'admin/newsletter-pdf/delete/' . $item['id'];
+            $file_url = base_url() . '../' . $item['pdf_file'];
+
+            $action = '<a href="' . $edit_url . '" class="btn btn-primary btn-sm me-1"><i class="feather icon-edit"></i> Edit</a>';
+            $action .= '<a href="' . $delete_url . '" onclick="return confirm(\'Are you sure you want to delete this newsletter?\')" class="btn btn-danger btn-sm me-1"><i class="feather icon-trash-2"></i> Delete</a>';
+            if (!empty($item['pdf_file'])) {
+                $action .= '<a href="' . $file_url . '" target="_blank" class="btn btn-info btn-sm"><i class="feather icon-eye"></i> View PDF</a>';
+            }
+
+            $data[] = array(
+                $i++,
+                $item['title'],
+                $item['month'],
+                $item['year'],
+                '<a href="' . $file_url . '" target="_blank">View File</a>',
+                ($item['status'] == 1) ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Inactive</span>',
+                $action
+            );
+        }
+
+        $json_data = array(
+            "draw" => $draw,
+            "recordsTotal" => $total_count,
+            "recordsFiltered" => $total_count,
+            "data" => $data
+        );
+        echo json_encode($json_data);
+    }
+
+    public function get_newsletter_pdf_by_id($id)
+    {
+        return $this->db->get_where('newsletter_pdfs', array('id' => $id))->row_array();
+    }
+
+    public function add_newsletter_pdf()
+    {
+        $url = base_url('admin/newsletter-pdf');
+        $title = html_escape(trim($this->input->post('title')));
+        $month = html_escape(trim($this->input->post('month')));
+        $year  = intval($this->input->post('year'));
+        $status = intval($this->input->post('status'));
+
+        if (empty($title) || empty($month) || empty($year)) {
+            $resultpost = array(
+                "status" => 400,
+                "message" => get_phrase('please_fill_all_required_fields'),
+                "url" => base_url('admin/newsletter-pdf/add'),
+            );
+            return simple_json_output($resultpost);
+        }
+
+        $directory = "../uploads/newsletter";
+        if (!is_dir($directory)) {
+            mkdir($directory, 0755, true);
+        }
+
+        $pdf_file_path = '';
+        if (!empty($_FILES['pdf_file']['name'])) {
+            $tmpFilePath = $_FILES['pdf_file']['tmp_name'];
+            $ext = strtolower(pathinfo($_FILES['pdf_file']['name'], PATHINFO_EXTENSION));
+            if ($ext !== 'pdf') {
+                $resultpost = array(
+                    "status" => 400,
+                    "message" => get_phrase('only_pdf_files_are_allowed'),
+                    "url" => base_url('admin/newsletter-pdf/add'),
+                );
+                return simple_json_output($resultpost);
+            }
+            if ($tmpFilePath != "" && is_uploaded_file($tmpFilePath)) {
+                $this->load->helper('string');
+                $filename = 'newsletter_' . time() . '_' . random_string('alnum', 6) . '.' . $ext;
+                move_uploaded_file($tmpFilePath, $directory . '/' . $filename);
+                $pdf_file_path = 'uploads/newsletter/' . $filename;
+            }
+        } else {
+            $resultpost = array(
+                "status" => 400,
+                "message" => get_phrase('please_select_a_pdf_file'),
+                "url" => base_url('admin/newsletter-pdf/add'),
+            );
+            return simple_json_output($resultpost);
+        }
+
+        $data = array(
+            'title' => $title,
+            'month' => $month,
+            'year' => $year,
+            'pdf_file' => $pdf_file_path,
+            'status' => $status ? $status : 1,
+            'created_at' => date("Y-m-d H:i:s")
+        );
+
+        $this->db->insert('newsletter_pdfs', $data);
+
+        $resultpost = array(
+            "status" => 200,
+            "message" => get_phrase('newsletter_added_successfully'),
+            "url" => $url,
+        );
+        $this->session->set_flashdata('flash_message', get_phrase('newsletter_added_successfully'));
+        return simple_json_output($resultpost);
+    }
+
+    public function edit_newsletter_pdf($id)
+    {
+        $url = base_url('admin/newsletter-pdf');
+        $title = html_escape(trim($this->input->post('title')));
+        $month = html_escape(trim($this->input->post('month')));
+        $year  = intval($this->input->post('year'));
+        $status = intval($this->input->post('status'));
+
+        $existing = $this->get_newsletter_pdf_by_id($id);
+        if (!$existing) {
+            redirect($url, 'refresh');
+        }
+
+        $data = array(
+            'title' => $title,
+            'month' => $month,
+            'year' => $year,
+            'status' => $status,
+            'updated_at' => date("Y-m-d H:i:s")
+        );
+
+        if (!empty($_FILES['pdf_file']['name'])) {
+            $directory = "../uploads/newsletter";
+            if (!is_dir($directory)) {
+                mkdir($directory, 0755, true);
+            }
+            $tmpFilePath = $_FILES['pdf_file']['tmp_name'];
+            $ext = strtolower(pathinfo($_FILES['pdf_file']['name'], PATHINFO_EXTENSION));
+            if ($ext === 'pdf' && is_uploaded_file($tmpFilePath)) {
+                $this->load->helper('string');
+                $filename = 'newsletter_' . time() . '_' . random_string('alnum', 6) . '.' . $ext;
+                move_uploaded_file($tmpFilePath, $directory . '/' . $filename);
+                $data['pdf_file'] = 'uploads/newsletter/' . $filename;
+
+                // remove old file
+                if (!empty($existing['pdf_file']) && file_exists('../' . $existing['pdf_file'])) {
+                    @unlink('../' . $existing['pdf_file']);
+                }
+            }
+        }
+
+        $this->db->where('id', $id);
+        $this->db->update('newsletter_pdfs', $data);
+
+        $resultpost = array(
+            "status" => 200,
+            "message" => get_phrase('newsletter_updated_successfully'),
+            "url" => $url,
+        );
+        $this->session->set_flashdata('flash_message', get_phrase('newsletter_updated_successfully'));
+        return simple_json_output($resultpost);
+    }
+
+    public function delete_newsletter_pdf($id)
+    {
+        $existing = $this->get_newsletter_pdf_by_id($id);
+        if ($existing) {
+            if (!empty($existing['pdf_file']) && file_exists('../' . $existing['pdf_file'])) {
+                @unlink('../' . $existing['pdf_file']);
+            }
+            $this->db->where('id', $id);
+            $this->db->delete('newsletter_pdfs');
+            $this->session->set_flashdata('flash_message', get_phrase('newsletter_deleted_successfully'));
+        }
+        return true;
+    }
 
 }

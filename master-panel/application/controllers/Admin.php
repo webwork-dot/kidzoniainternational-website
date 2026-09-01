@@ -2439,5 +2439,55 @@ class Admin extends CI_Controller
         $entry .= "</url>\n";
         return $entry;
     }
-    
+
+    // Manage Newsletter PDFs
+    public function newsletter_pdf($param1 = "", $param2 = "")
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+        if ($param1 == "add_post") {
+            $this->crud_model->add_newsletter_pdf();
+        } elseif ($param1 == "edit_post") {
+            $this->crud_model->edit_newsletter_pdf($param2);
+        } elseif ($param1 == "delete") {
+            $this->crud_model->delete_newsletter_pdf($param2);
+            redirect(site_url('admin/newsletter-pdf'), 'refresh');
+        } else {
+            $page_data['navigation']  = 'newsletter_pdf';
+            $page_data['page_name']   = 'newsletter_pdf';
+            $page_data['page_title']  = 'Kidzonia International | Newsletter PDFs';
+            $this->load->view('backend/index', $page_data);
+        }
+    }
+
+    public function newsletter_pdf_form($param1 = "", $param2 = "")
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+
+        if ($param1 == 'add') {
+            $page_data['navigation']  = 'newsletter_pdf';
+            $page_data['page_name']   = 'newsletter_pdf_add';
+            $page_data['page_title']  = 'Kidzonia International | Add Newsletter PDF';
+            $this->load->view('backend/index', $page_data);
+        } elseif ($param1 == 'edit') {
+            $page_data['navigation']  = 'newsletter_pdf';
+            $data                     = $this->crud_model->get_newsletter_pdf_by_id($param2);
+            $page_data['data']        = $data;
+            $page_data['page_name']   = 'newsletter_pdf_edit';
+            $page_data['id']          = $param2;
+            $page_data['page_title']  = 'Kidzonia International | Edit Newsletter PDF';
+            $this->load->view('backend/index', $page_data);
+        }
+    }
+
+    public function get_newsletter_pdf()
+    {
+        if ($this->input->is_ajax_request()) {
+            $this->crud_model->get_newsletter_pdf();
+        }
+    }
+
 }

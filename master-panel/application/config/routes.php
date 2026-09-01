@@ -171,3 +171,12 @@ $route[$r_admin . '/contact-enquiry']               = 'admin/contact_enquiry';
 // Sitemap Management
 $route[$r_admin . '/sitemap-management']                 = 'admin/sitemap_management';
 $route[$r_admin . '/generate_sitemap']                   = 'admin/generate_sitemap';
+
+// Newsletter PDFs Management
+$route[$r_admin . '/newsletter-pdf']                              = 'admin/newsletter_pdf';
+$route[$r_admin . '/newsletter-pdf/add']                          = 'admin/newsletter_pdf_form/add';
+$route[$r_admin . '/newsletter-pdf/add_post']                     = 'admin/newsletter_pdf/add_post';
+$route[$r_admin . '/newsletter-pdf/edit/(:num)']                  = 'admin/newsletter_pdf_form/edit/$1';
+$route[$r_admin . '/newsletter-pdf/edit_post/(:num)']             = 'admin/newsletter_pdf/edit_post/$1';
+$route[$r_admin . '/newsletter-pdf/delete/(:num)']                = 'admin/newsletter_pdf/delete/$1';
+$route[$r_admin . '/get_newsletter_pdf']                          = 'admin/get_newsletter_pdf';

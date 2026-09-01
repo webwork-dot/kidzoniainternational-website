@@ -2840,4 +2840,28 @@ class Crud_model extends CI_Model
             return false;
         }
     }
+
+    public function get_active_newsletter_pdfs()
+    {
+        $this->db->where('status', 1);
+        $this->db->order_by('year', 'DESC');
+        $this->db->order_by('id', 'DESC');
+        return $this->db->get('newsletter_pdfs')->result_array();
+    }
+
+    public function get_newsletter_pdf_by_id($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->where('status', 1);
+        return $this->db->get('newsletter_pdfs')->row_array();
+    }
+
+    public function get_latest_newsletter_pdf()
+    {
+        $this->db->where('status', 1);
+        $this->db->order_by('year', 'DESC');
+        $this->db->order_by('id', 'DESC');
+        $this->db->limit(1);
+        return $this->db->get('newsletter_pdfs')->row_array();
+    }
 }

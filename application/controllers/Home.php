@@ -1238,4 +1238,55 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
             echo json_encode(['status' => 400, 'message' => 'Failed to send WhatsApp']);
         }
     }
+
+    public function newsletter($id = null)
+    {
+        $all_newsletters = $this->crud_model->get_active_newsletter_pdfs();
+        
+        $active_newsletter = null;
+        if ($id !== null && is_numeric($id)) {
+            $active_newsletter = $this->crud_model->get_newsletter_pdf_by_id($id);
+        }
+        
+        if (empty($active_newsletter) && !empty($all_newsletters)) {
+            $current_month_name = date('F'); // e.g. "August"
+            $current_month_num  = date('n'); // e.g. 8
+            $current_year       = date('Y'); // e.g. 2026
+
+            foreach ($all_newsletters as $nl) {
+                $nl_month = trim($nl['month']);
+                $nl_year  = intval($nl['year']);
+
+                $is_month_match = (
+                    strcasecmp($nl_month, $current_month_name) === 0 ||
+                    intval($nl_month) === $current_month_num ||
+                    strcasecmp($nl_month, date('M')) === 0
+                );
+
+                if ($is_month_match && $nl_year === intval($current_year)) {
+                    $active_newsletter = $nl;
+                    break;
+                }
+            }
+
+            // Fallback: If current month's PDF is not available yet, default to the latest available newsletter
+            if (empty($active_newsletter)) {
+                $active_newsletter = $all_newsletters[0];
+            }
+        }
+
+        $data['page_name'] = "newsletter";
+        $data['page_title'] = "Kidzonia International Preschool | Monthly Newsletters";
+        $data['meta_description'] = "Explore and view the monthly newsletters of Kidzonia International Preschool.";
+        $data['meta_keyword'] = "Kidzonia International Newsletter, School Newsletter PDF";
+        $data['breadcrum_title'] = "Home";
+        $data['breadcrum_sub_title'] = "Our Newsletter";
+
+        $data['active_newsletter'] = $active_newsletter;
+        $data['all_newsletters'] = $all_newsletters;
+        $data['canonical'] = base_url(uri_string());
+
+        $this->load->view('frontend/default/index', $data);
+    }
+
 }

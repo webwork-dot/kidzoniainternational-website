@@ -239,5 +239,12 @@
            </a>
        </li>
        
+       <li class="nav-item <?php if ($navigation == 'newsletter_pdf' || $page_name == 'newsletter_pdf') echo 'active'; ?>">
+           <a class="d-flex align-items-center" href="<?php echo site_url() . 'admin/newsletter-pdf' ?>">
+               <i data-feather='file-text'></i>
+               <span class="menu-title text-truncate fw-bolder" data-i18n="newsletter_pdf">Newsletter PDFs</span>
+           </a>
+       </li>
+       
     </ul>
 </div>
