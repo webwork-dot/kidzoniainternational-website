@@ -546,8 +546,11 @@ and enriching environment where young minds thrive.";
         $page_data['parents'] = $this->crud_model->get_parents_testimonials_by_id($param1);
         $page_data['awards'] = $this->common_model->selectByidsINWhere('', 'awards_and_recognitions', '4', '0');
         $page_data['events'] = $this->common_model->selectByidsINWhere('', 'events', '8', '0');
+        $page_data['newsletters'] = $this->crud_model->get_active_newsletter_pdfs(!empty($branch['id']) ? $branch['id'] : null);
 
 
+        $page_data['branch'] = $branch;
+        $page_data['branch_slug'] = !empty($branch['slug']) ? $branch['slug'] : $param1;
         $page_data['location_name'] = $location_display;
         $page_data['page_name'] = "gallery_details";
         // Default SEO metadata (can be overridden by dynamic content below)
@@ -859,6 +862,9 @@ inspiring stories.";
                 
                 $page_data['title'] = $data['name'];
                 $page_data['data'] = $data;
+                $page_data['branch'] = $data;
+                $page_data['branch_slug'] = !empty($data['slug']) ? $data['slug'] : $param2;
+                $page_data['newsletters'] = $this->crud_model->get_active_newsletter_pdfs(!empty($data['id']) ? $data['id'] : null);
                 $page_data['page_name'] = "explore_centers_branches";
 
                 if ($param2 == 'nallagandla') {
@@ -1241,11 +1247,38 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
 
     public function newsletter($id = null)
     {
-        $all_newsletters = $this->crud_model->get_active_newsletter_pdfs();
+        $branch_query = $this->input->get('branch', true);
+        $branch_id_query = $this->input->get('branch_id', true);
+
+        $branch = null;
+        $branch_id = null;
+
+        if (!empty($branch_query)) {
+            $branch = $this->db->get_where('branches', array('slug' => $branch_query))->row_array();
+            if (!$branch) {
+                // Try normalized slug
+                $normalized = str_replace('-', '', $branch_query);
+                $branch = $this->db->get_where('branches', array('slug' => $normalized))->row_array();
+            }
+        } elseif (!empty($branch_id_query)) {
+            $branch = $this->db->get_where('branches', array('id' => intval($branch_id_query)))->row_array();
+        }
+
+        if ($branch) {
+            $branch_id = $branch['id'];
+        }
+
+        $all_newsletters = $this->crud_model->get_active_newsletter_pdfs($branch_id);
         
         $active_newsletter = null;
         if ($id !== null && is_numeric($id)) {
             $active_newsletter = $this->crud_model->get_newsletter_pdf_by_id($id);
+            // If active newsletter does not match the requested branch, fallback
+            if (!empty($active_newsletter) && !empty($branch_id)) {
+                if (!empty($active_newsletter['branch_id']) && $active_newsletter['branch_id'] != $branch_id) {
+                    $active_newsletter = null;
+                }
+            }
         }
         
         if (empty($active_newsletter) && !empty($all_newsletters)) {
@@ -1275,13 +1308,16 @@ preschool in Nallagandla, offering a Montessori-inspired curriculum.";
             }
         }
 
+        $branch_title = $branch ? ' - ' . $branch['name'] : '';
+
         $data['page_name'] = "newsletter";
-        $data['page_title'] = "Kidzonia International Preschool | Monthly Newsletters";
-        $data['meta_description'] = "Explore and view the monthly newsletters of Kidzonia International Preschool.";
+        $data['page_title'] = "Kidzonia International Preschool | Monthly Newsletters" . $branch_title;
+        $data['meta_description'] = "Explore and view the monthly newsletters of Kidzonia International Preschool" . $branch_title . ".";
         $data['meta_keyword'] = "Kidzonia International Newsletter, School Newsletter PDF";
         $data['breadcrum_title'] = "Home";
-        $data['breadcrum_sub_title'] = "Our Newsletter";
+        $data['breadcrum_sub_title'] = "Our Newsletter" . $branch_title;
 
+        $data['selected_branch'] = $branch;
         $data['active_newsletter'] = $active_newsletter;
         $data['all_newsletters'] = $all_newsletters;
         $data['canonical'] = base_url(uri_string());

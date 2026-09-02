@@ -2841,9 +2841,16 @@ class Crud_model extends CI_Model
         }
     }
 
-    public function get_active_newsletter_pdfs()
+    public function get_active_newsletter_pdfs($branch_id = null)
     {
         $this->db->where('status', 1);
+        if (!empty($branch_id)) {
+            $this->db->group_start();
+            $this->db->where('branch_id', $branch_id);
+            $this->db->or_where('branch_id', NULL);
+            $this->db->or_where('branch_id', 0);
+            $this->db->group_end();
+        }
         $this->db->order_by('year', 'DESC');
         $this->db->order_by('id', 'DESC');
         return $this->db->get('newsletter_pdfs')->result_array();
@@ -2856,9 +2863,16 @@ class Crud_model extends CI_Model
         return $this->db->get('newsletter_pdfs')->row_array();
     }
 
-    public function get_latest_newsletter_pdf()
+    public function get_latest_newsletter_pdf($branch_id = null)
     {
         $this->db->where('status', 1);
+        if (!empty($branch_id)) {
+            $this->db->group_start();
+            $this->db->where('branch_id', $branch_id);
+            $this->db->or_where('branch_id', NULL);
+            $this->db->or_where('branch_id', 0);
+            $this->db->group_end();
+        }
         $this->db->order_by('year', 'DESC');
         $this->db->order_by('id', 'DESC');
         $this->db->limit(1);

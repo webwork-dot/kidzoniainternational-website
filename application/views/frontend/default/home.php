@@ -1498,25 +1498,6 @@
 
 
 
-            <section class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_medium" style="background: #fdfbf7; padding: 40px 0; border-radius: 12px; margin-bottom: 30px;">
-               <div class="bt_bb_port">
-                  <div class="bt_bb_cell">
-                     <div class="bt_bb_cell_inner">
-                        <div class="row align-items-center text-center text-md-start">
-                           <div class="col-md-8 mb-3 mb-md-0" style="padding-left: 30px;">
-                              <h3 style="color: #122051; font-weight: 700; margin-bottom: 8px;">OUR NEWSLETTER</h3>
-                              <p style="color: #666; margin: 0; font-size: 15px;">Read our latest monthly publications, events, and school updates in PDF format.</p>
-                           </div>
-                           <div class="col-md-4 text-center text-md-end" style="padding-right: 30px;">
-                              <a href="<?= base_url('newsletter'); ?>" class="btn" style="background-color: #122051; color: #ffffff; border-radius: 25px; padding: 10px 30px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 10px rgba(18, 32, 81, 0.25);">
-                                 View Newsletter
-                              </a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </section>
 
             <section data-bb-version="4.5.9" id="bt_bb_section656da16ab88f3" class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_top_spacing_normal bt_bb_bottom_spacing_normal bt_bb_negative_margin_none" data-bt-override-class="{&quot;bt_bb_top_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_top_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;},&quot;bt_bb_bottom_spacing_&quot;:{&quot;current_class&quot;:&quot;bt_bb_bottom_spacing_normal&quot;,&quot;xxl&quot;:&quot;normal&quot;}}">
                <div class="bt_bb_port">

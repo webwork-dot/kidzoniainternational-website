@@ -6230,11 +6230,11 @@ class Crud_model extends CI_Model
         $keyword_filter = "";
         if ($search_val != '') {
             $search_val = $this->db->escape_like_str($search_val);
-            $keyword_filter = " AND (title LIKE '%$search_val%' OR month LIKE '%$search_val%' OR year LIKE '%$search_val%')";
+            $keyword_filter = " AND (newsletter_pdfs.title LIKE '%$search_val%' OR newsletter_pdfs.month LIKE '%$search_val%' OR newsletter_pdfs.year LIKE '%$search_val%' OR branches.name LIKE '%$search_val%')";
         }
 
-        $total_count = $this->db->query("SELECT id FROM newsletter_pdfs WHERE (id <> '') $keyword_filter")->num_rows();
-        $query = $this->db->query("SELECT * FROM newsletter_pdfs WHERE (id <> '') $keyword_filter ORDER BY year DESC, id DESC LIMIT $start, $length");
+        $total_count = $this->db->query("SELECT newsletter_pdfs.id FROM newsletter_pdfs LEFT JOIN branches ON branches.id = newsletter_pdfs.branch_id WHERE (newsletter_pdfs.id <> '') $keyword_filter")->num_rows();
+        $query = $this->db->query("SELECT newsletter_pdfs.*, branches.name as branch_name FROM newsletter_pdfs LEFT JOIN branches ON branches.id = newsletter_pdfs.branch_id WHERE (newsletter_pdfs.id <> '') $keyword_filter ORDER BY newsletter_pdfs.year DESC, newsletter_pdfs.id DESC LIMIT $start, $length");
 
         $data = array();
         $i = $start + 1;
@@ -6249,9 +6249,12 @@ class Crud_model extends CI_Model
                 $action .= '<a href="' . $file_url . '" target="_blank" class="btn btn-info btn-sm"><i class="feather icon-eye"></i> View PDF</a>';
             }
 
+            $branch_display = !empty($item['branch_name']) ? html_escape($item['branch_name']) : '<span class="badge bg-secondary">All Branches</span>';
+
             $data[] = array(
                 $i++,
                 $item['title'],
+                $branch_display,
                 $item['month'],
                 $item['year'],
                 '<a href="' . $file_url . '" target="_blank">View File</a>',
@@ -6278,6 +6281,7 @@ class Crud_model extends CI_Model
     {
         $url = base_url('admin/newsletter-pdf');
         $title = html_escape(trim($this->input->post('title')));
+        $branch_id = $this->input->post('branch_id') !== '' && $this->input->post('branch_id') !== null ? intval($this->input->post('branch_id')) : NULL;
         $month = html_escape(trim($this->input->post('month')));
         $year  = intval($this->input->post('year'));
         $status = intval($this->input->post('status'));
@@ -6325,6 +6329,7 @@ class Crud_model extends CI_Model
 
         $data = array(
             'title' => $title,
+            'branch_id' => $branch_id,
             'month' => $month,
             'year' => $year,
             'pdf_file' => $pdf_file_path,
@@ -6347,6 +6352,7 @@ class Crud_model extends CI_Model
     {
         $url = base_url('admin/newsletter-pdf');
         $title = html_escape(trim($this->input->post('title')));
+        $branch_id = $this->input->post('branch_id') !== '' && $this->input->post('branch_id') !== null ? intval($this->input->post('branch_id')) : NULL;
         $month = html_escape(trim($this->input->post('month')));
         $year  = intval($this->input->post('year'));
         $status = intval($this->input->post('status'));
@@ -6358,6 +6364,7 @@ class Crud_model extends CI_Model
 
         $data = array(
             'title' => $title,
+            'branch_id' => $branch_id,
             'month' => $month,
             'year' => $year,
             'status' => $status,

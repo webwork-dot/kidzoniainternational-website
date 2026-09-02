@@ -19,6 +19,7 @@
                   <tr>
                      <th>Sr. No.</th>
                      <th>Title</th>
+                     <th>Branch</th>
                      <th>Month</th>
                      <th>Year</th>
                      <th>PDF File</th>

@@ -11,6 +11,17 @@
                   <label class="form-label">Title <span class="required">*</span></label>
                   <input type="text" class="form-control" name="title" placeholder="e.g. August 2026 Edition" required>
                </div>
+               <div class="col-12 col-sm-6 mb-1">
+                  <label class="form-label">Select Branch</label>
+                  <select class="form-select" name="branch_id">
+                     <option value="">All Branches</option>
+                     <?php if (!empty($branches)): ?>
+                        <?php foreach ($branches as $b): ?>
+                           <option value="<?= $b['id']; ?>"><?= html_escape($b['name']); ?></option>
+                        <?php endforeach; ?>
+                     <?php endif; ?>
+                  </select>
+               </div>
                <div class="col-12 col-sm-3 mb-1">
                   <label class="form-label">Month <span class="required">*</span></label>
                   <select class="form-select" name="month" required>

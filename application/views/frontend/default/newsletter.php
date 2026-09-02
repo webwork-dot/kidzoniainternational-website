@@ -75,9 +75,9 @@
     <div class="col-lg-12 text-center">
       <div class="section-title">
         <h5 style="color: #fbbc00; font-weight: 600;"><i class="fa fa-newspaper-o me-2"></i> Monthly Publication</h5>
-        <h2 style="color: #122051; font-weight: 700;">Our Newsletter</h2>
+        <h2 style="color: #122051; font-weight: 700;">Our Newsletter <?= !empty($selected_branch['name']) ? ' - ' . html_escape($selected_branch['name']) : ''; ?></h2>
         <p class="mt-2 text-muted">
-          Read our monthly newsletters to stay updated with school activities, events, student achievements, and notices!
+          Read our monthly newsletters<?= !empty($selected_branch['name']) ? ' for ' . html_escape($selected_branch['name']) : ''; ?> to stay updated with school activities, events, student achievements, and notices!
         </p>
       </div>
     </div>
@@ -111,7 +111,7 @@
           <div class="text-center py-5" style="text-align: center; padding: 40px 0;">
             <i class="fa fa-file-pdf-o fa-4x text-muted mb-3" style="font-size: 4em; color: #ccc;"></i>
             <h4>No Newsletter Available</h4>
-            <p class="text-muted">No monthly newsletter PDFs have been uploaded yet. Please check back soon!</p>
+            <p class="text-muted">No monthly newsletter PDFs have been uploaded<?= !empty($selected_branch['name']) ? ' for ' . html_escape($selected_branch['name']) : ''; ?> yet. Please check back soon!</p>
           </div>
         <?php endif; ?>
       </div>
@@ -127,9 +127,10 @@
             <?php foreach ($all_newsletters as $nl): ?>
               <?php 
                 $is_active = (!empty($active_newsletter) && $active_newsletter['id'] == $nl['id']);
+                $link_url = base_url('newsletter/' . $nl['id'] . (!empty($selected_branch['slug']) ? '?branch=' . $selected_branch['slug'] : ''));
               ?>
               <li class="newsletter-list-item">
-                <a href="<?= base_url('newsletter/' . $nl['id']); ?>" class="newsletter-link <?= $is_active ? 'active' : ''; ?>">
+                <a href="<?= $link_url; ?>" class="newsletter-link <?= $is_active ? 'active' : ''; ?>">
                   <div>
                     <i class="fa fa-file-pdf-o me-2"></i>
                     <span><?= html_escape($nl['month'] . ' ' . $nl['year']); ?></span>

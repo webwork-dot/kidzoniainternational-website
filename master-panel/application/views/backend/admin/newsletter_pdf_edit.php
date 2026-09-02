@@ -7,10 +7,21 @@
          <div class="card-body">
             <?php echo form_open('admin/newsletter-pdf/edit_post/' . $data['id'], ['class' => 'add-ajax-redirect-image-form', 'enctype' => 'multipart/form-data', 'onsubmit' => 'return checkForm(this);' ]);?>
             <div class="row">
-               <div class="col-12 col-sm-6 mb-1">
-                  <label class="form-label">Title <span class="required">*</span></label>
-                  <input type="text" class="form-control" name="title" value="<?= html_escape($data['title']); ?>" required>
-               </div>
+                <div class="col-12 col-sm-6 mb-1">
+                   <label class="form-label">Title <span class="required">*</span></label>
+                   <input type="text" class="form-control" name="title" value="<?= html_escape($data['title']); ?>" required>
+                </div>
+                <div class="col-12 col-sm-6 mb-1">
+                   <label class="form-label">Select Branch</label>
+                   <select class="form-select" name="branch_id">
+                      <option value="" <?= (empty($data['branch_id'])) ? 'selected' : ''; ?>>All Branches</option>
+                      <?php if (!empty($branches)): ?>
+                         <?php foreach ($branches as $b): ?>
+                            <option value="<?= $b['id']; ?>" <?= (!empty($data['branch_id']) && $data['branch_id'] == $b['id']) ? 'selected' : ''; ?>><?= html_escape($b['name']); ?></option>
+                         <?php endforeach; ?>
+                      <?php endif; ?>
+                   </select>
+                </div>
                <div class="col-12 col-sm-3 mb-1">
                   <label class="form-label">Month <span class="required">*</span></label>
                   <select class="form-select" name="month" required>
