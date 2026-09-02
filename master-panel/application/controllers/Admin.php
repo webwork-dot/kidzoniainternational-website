@@ -2467,7 +2467,7 @@ class Admin extends CI_Controller
             redirect(site_url('login'), 'refresh');
         }
 
-        $page_data['branches'] = $this->crud_model->get_branches()->result_array();
+        $page_data['branches'] = $this->db->order_by('name', 'ASC')->get('branches')->result_array();
 
         if ($param1 == 'add') {
             $page_data['navigation']  = 'newsletter_pdf';
