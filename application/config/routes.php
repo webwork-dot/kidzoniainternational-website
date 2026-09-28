@@ -35,6 +35,7 @@ $route['whizkids'] = 'home/whizkids';
 $route['privacy-policy'] = 'home/privacy_policy';
 $route['document'] = 'home/documents';
 
+
 $route['digital-news'] = 'home/digital_news';
 
 $route['summer-camp'] = 'home/summer_camp';
