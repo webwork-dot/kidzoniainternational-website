@@ -7,9 +7,7 @@ class Email_model extends CI_Model
     function __construct()
     {
         parent::__construct();
-        /*cache control*/
-        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-        $this->output->set_header('Pragma: no-cache');
+        /* Do not force no-cache here — Crud_model / controllers own response caching */
     }
     
     public function sent_simple_mail($message,$user_email,$email_subject,$file_url='') {

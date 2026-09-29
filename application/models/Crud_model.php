@@ -7,9 +7,13 @@ class Crud_model extends CI_Model
     function __construct()
     {
         parent::__construct();
-        /*cache control*/
-        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-        $this->output->set_header('Pragma: no-cache');
+        /* Allow short public caching for GET pages; forms/admin still bypass via method/POST */
+        if ($this->input->method(TRUE) === 'GET' && !$this->input->is_ajax_request()) {
+            $this->output->set_header('Cache-Control: public, max-age=300');
+        } else {
+            $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+            $this->output->set_header('Pragma: no-cache');
+        }
     }
 
     public function get_blogs()

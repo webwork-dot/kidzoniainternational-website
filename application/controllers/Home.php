@@ -8,6 +8,10 @@ class Home extends CI_Controller
         parent::__construct();
         /*cache control*/
         date_default_timezone_set('Asia/Kolkata');
+        if ($this->input->method(TRUE) === 'GET' && !$this->input->is_ajax_request()) {
+            $this->output->set_header('Cache-Control: public, max-age=300');
+            $this->output->set_header('Pragma: public');
+        }
     }
 
     function paginate($url, $total_rows)
@@ -42,6 +46,7 @@ class Home extends CI_Controller
 
     public function index()
     {
+        $this->output->cache(5);
         $page_data['about_us'] = $this->crud_model->get_home_about_us();
         $page_data['blogs'] = $this->crud_model->get_recent_blogs_for_home()->result_array();
         $page_data['pop_up'] = $this->crud_model->get_pop_up()->row_array();
