@@ -345,6 +345,26 @@ class Common_model extends CI_Model{
 
     public function get_current_academic_year()
     {
+        try {
+            $kcis_leads = $this->load->database('kcis_leads', TRUE);
+            if ($kcis_leads) {
+                $query = $kcis_leads->select('name')
+                    ->where('is_active', 1)
+                    ->order_by('id', 'DESC')
+                    ->limit(1)
+                    ->get('website_ay');
+
+                if ($query && $query->num_rows() > 0) {
+                    $row = $query->row();
+                    if (!empty($row->name)) {
+                        return trim($row->name);
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            log_message('error', 'Error fetching academic year from website_ay: ' . $e->getMessage());
+        }
+
         $year = (int) date('Y');
         $month = (int) date('n');
         if ($month >= 4) {
