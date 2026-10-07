@@ -382,11 +382,15 @@ class Upload_model extends CI_Model
 				continue;
 			}
 			$col = $src['column'];
-			$this->db->select($src['pk'] . ',' . $col);
+			$pk = $src['pk'];
+			$this->db->select('`' . $pk . '`, `' . $col . '`', false);
 			$this->db->from($src['table']);
-			$this->db->where($col . ' IS NOT NULL', null, false);
-			$this->db->where($col . ' !=', '');
-			$rows = $this->db->get()->result_array();
+			$this->db->where('`' . $col . '` IS NOT NULL AND `' . $col . "` != ''", null, false);
+			$query = $this->db->get();
+			if (!$query) {
+				continue;
+			}
+			$rows = $query->result_array();
 			$count = 0;
 			foreach ($rows as $row) {
 				$path = $row[$col];
@@ -431,12 +435,15 @@ class Upload_model extends CI_Model
 
 			$col = $src['column'];
 			$pk = $src['pk'];
-			$this->db->select($pk . ',' . $col);
+			$this->db->select('`' . $pk . '`, `' . $col . '`', false);
 			$this->db->from($src['table']);
-			$this->db->where($col . ' IS NOT NULL', null, false);
-			$this->db->where($col . ' !=', '');
-			$this->db->order_by($pk, 'ASC');
-			$rows = $this->db->get()->result_array();
+			$this->db->where('`' . $col . '` IS NOT NULL AND `' . $col . "` != ''", null, false);
+			$this->db->order_by('`' . $pk . '`', 'ASC', false);
+			$query = $this->db->get();
+			if (!$query) {
+				continue;
+			}
+			$rows = $query->result_array();
 
 			foreach ($rows as $row) {
 				if ($processed >= $limit) {
