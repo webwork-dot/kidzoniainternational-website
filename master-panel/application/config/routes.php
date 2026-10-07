@@ -180,3 +180,15 @@ $route[$r_admin . '/newsletter-pdf/edit/(:num)']                  = 'admin/newsl
 $route[$r_admin . '/newsletter-pdf/edit_post/(:num)']             = 'admin/newsletter_pdf/edit_post/$1';
 $route[$r_admin . '/newsletter-pdf/delete/(:num)']                = 'admin/newsletter_pdf/delete/$1';
 $route[$r_admin . '/get_newsletter_pdf']                          = 'admin/get_newsletter_pdf';
+
+// Convert existing CMS images to AVIF
+$route[$r_admin . '/convert-images-avif']                         = 'admin/convert_images_avif';
+$route[$r_admin . '/convert-images-avif/status']                  = 'admin/convert_images_avif_status';
+$route[$r_admin . '/convert-images-avif/run']                     = 'admin/convert_images_avif_run';
+
+// Static frontend images to AVIF + quarantine unused
+$route[$r_admin . '/static-images-avif']                          = 'admin/static_images_avif';
+$route[$r_admin . '/static-images-avif/status']                   = 'admin/static_images_avif_status';
+$route[$r_admin . '/static-images-avif/convert']                  = 'admin/static_images_avif_convert';
+$route[$r_admin . '/static-images-avif/quarantine']               = 'admin/static_images_avif_quarantine';
+$route[$r_admin . '/static-images-avif/purge']                    = 'admin/static_images_avif_purge';

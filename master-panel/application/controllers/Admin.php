@@ -2492,4 +2492,242 @@ class Admin extends CI_Controller
         }
     }
 
+
+    // Convert existing CMS images to AVIF
+    public function convert_images_avif()
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+
+        $this->load->model('upload_model');
+        $counts = $this->upload_model->count_convertible_images();
+        $self_test = $this->upload_model->avif_self_test();
+
+        $page_data['avif_supported'] = $this->upload_model->supports_avif();
+        $page_data['avif_self_test'] = $self_test;
+        $page_data['pending_total']  = $counts['total'];
+        $page_data['pending_by_table'] = $counts['by_table'];
+        $page_data['page_name']      = 'convert_images_avif';
+        $page_data['page_title']     = 'Kidzonia International | Convert Images to AVIF';
+        $this->load->view('backend/index', $page_data);
+    }
+
+    public function convert_images_avif_status()
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            echo json_encode(array('status' => 'error', 'message' => 'Unauthorized'));
+            return;
+        }
+
+        $this->load->model('upload_model');
+        $counts = $this->upload_model->count_convertible_images();
+        echo json_encode(array(
+            'status' => 'success',
+            'avif_supported' => $this->upload_model->supports_avif(),
+            'avif_self_test' => $this->upload_model->avif_self_test(),
+            'pending_total' => $counts['total'],
+            'pending_by_table' => $counts['by_table'],
+        ));
+    }
+
+    public function convert_images_avif_run()
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            echo json_encode(array('status' => 'error', 'message' => 'Unauthorized'));
+            return;
+        }
+
+        $this->load->model('upload_model');
+
+        if (!$this->upload_model->supports_avif()) {
+            echo json_encode(array(
+                'status' => 'error',
+                'message' => 'Server cannot encode AVIF. Enable GD with AVIF (PHP 8.1+) or Imagick with AVIF support.',
+            ));
+            return;
+        }
+
+        $self_test = $this->upload_model->avif_self_test();
+        if (empty($self_test['write_ok'])) {
+            echo json_encode(array(
+                'status' => 'error',
+                'message' => 'AVIF write self-test failed: ' . (!empty($self_test['message']) ? $self_test['message'] : 'unknown'),
+            ));
+            return;
+        }
+
+        ini_set('memory_limit', '512M');
+        ini_set('max_execution_time', 300);
+
+        $limit = (int) $this->input->post('limit');
+        if ($limit < 1) {
+            $limit = 20;
+        }
+        if ($limit > 100) {
+            $limit = 100;
+        }
+
+        $dry_run = $this->input->post('dry_run') === '1' || $this->input->post('dry_run') === 'true';
+        $delete_old = $this->input->post('delete_old') !== '0' && $this->input->post('delete_old') !== 'false';
+
+        $result = $this->upload_model->convert_existing_batch($limit, $dry_run, $delete_old);
+
+        echo json_encode(array(
+            'status' => 'success',
+            'message' => $dry_run
+                ? ('Dry run: ' . $result['converted'] . ' image(s) would be converted.')
+                : ('Converted ' . $result['converted'] . ' image(s).'),
+            'result' => $result,
+        ));
+    }
+
+    // Static frontend images to AVIF + quarantine unused
+    public function static_images_avif()
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+
+        $this->load->model('upload_model');
+        $this->load->model('static_avif_model');
+
+        ini_set('memory_limit', '512M');
+        ini_set('max_execution_time', 120);
+
+        $page_data['avif_supported'] = $this->upload_model->supports_avif();
+        $page_data['avif_self_test'] = $this->upload_model->avif_self_test();
+        $page_data['static_status']  = $this->static_avif_model->get_status(25);
+        $page_data['page_name']      = 'static_images_avif';
+        $page_data['page_title']     = 'Kidzonia International | Static Images AVIF';
+        $this->load->view('backend/index', $page_data);
+    }
+
+    public function static_images_avif_status()
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            echo json_encode(array('status' => 'error', 'message' => 'Unauthorized'));
+            return;
+        }
+
+        $this->load->model('upload_model');
+        $this->load->model('static_avif_model');
+        ini_set('memory_limit', '512M');
+        ini_set('max_execution_time', 120);
+
+        echo json_encode(array(
+            'status' => 'success',
+            'avif_supported' => $this->upload_model->supports_avif(),
+            'avif_self_test' => $this->upload_model->avif_self_test(),
+            'static_status' => $this->static_avif_model->get_status(25),
+        ));
+    }
+
+    public function static_images_avif_convert()
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            echo json_encode(array('status' => 'error', 'message' => 'Unauthorized'));
+            return;
+        }
+
+        $this->load->model('upload_model');
+        $this->load->model('static_avif_model');
+
+        if (!$this->upload_model->supports_avif()) {
+            echo json_encode(array('status' => 'error', 'message' => 'Server cannot encode AVIF.'));
+            return;
+        }
+        $self_test = $this->upload_model->avif_self_test();
+        if (empty($self_test['write_ok'])) {
+            echo json_encode(array(
+                'status' => 'error',
+                'message' => 'AVIF write self-test failed: ' . (!empty($self_test['message']) ? $self_test['message'] : 'unknown'),
+            ));
+            return;
+        }
+
+        ini_set('memory_limit', '512M');
+        ini_set('max_execution_time', 300);
+
+        $limit = (int) $this->input->post('limit');
+        if ($limit < 1) {
+            $limit = 15;
+        }
+        if ($limit > 50) {
+            $limit = 50;
+        }
+
+        $dry_run = $this->input->post('dry_run') === '1' || $this->input->post('dry_run') === 'true';
+        $delete_old = $this->input->post('delete_old') === '1' || $this->input->post('delete_old') === 'true';
+        $update_refs = $this->input->post('update_refs') !== '0' && $this->input->post('update_refs') !== 'false';
+
+        $result = $this->static_avif_model->convert_used_batch($limit, $dry_run, $delete_old, $update_refs);
+
+        echo json_encode(array(
+            'status' => 'success',
+            'message' => $dry_run
+                ? ('Dry run: ' . $result['converted'] . ' used static image(s) would be converted.')
+                : ('Converted ' . $result['converted'] . ' used static image(s).'),
+            'result' => $result,
+        ));
+    }
+
+    public function static_images_avif_quarantine()
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            echo json_encode(array('status' => 'error', 'message' => 'Unauthorized'));
+            return;
+        }
+
+        $this->load->model('static_avif_model');
+        ini_set('memory_limit', '512M');
+        ini_set('max_execution_time', 300);
+
+        $limit = (int) $this->input->post('limit');
+        if ($limit < 1) {
+            $limit = 30;
+        }
+        if ($limit > 100) {
+            $limit = 100;
+        }
+
+        $dry_run = $this->input->post('dry_run') === '1' || $this->input->post('dry_run') === 'true';
+        $result = $this->static_avif_model->quarantine_unused_batch($limit, $dry_run);
+
+        echo json_encode(array(
+            'status' => 'success',
+            'message' => $dry_run
+                ? ('Dry run: ' . $result['moved'] . ' unused file(s) would be quarantined.')
+                : ('Quarantined ' . $result['moved'] . ' unused file(s) under ' . $result['quarantine_prefix']),
+            'result' => $result,
+        ));
+    }
+
+    public function static_images_avif_purge()
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            echo json_encode(array('status' => 'error', 'message' => 'Unauthorized'));
+            return;
+        }
+
+        $this->load->model('static_avif_model');
+        $dry_run = $this->input->post('dry_run') === '1' || $this->input->post('dry_run') === 'true';
+        $limit = (int) $this->input->post('limit');
+        if ($limit < 1) {
+            $limit = 100;
+        }
+        if ($limit > 500) {
+            $limit = 500;
+        }
+
+        $result = $this->static_avif_model->purge_quarantine($dry_run, $limit);
+        echo json_encode(array(
+            'status' => 'success',
+            'message' => $dry_run
+                ? ('Dry run: ' . $result['deleted'] . ' quarantined file(s) would be deleted.')
+                : ('Permanently deleted ' . $result['deleted'] . ' quarantined file(s).'),
+            'result' => $result,
+        ));
+    }
+
 }

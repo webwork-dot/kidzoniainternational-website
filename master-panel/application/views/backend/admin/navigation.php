@@ -245,6 +245,20 @@
                <span class="menu-title text-truncate fw-bolder" data-i18n="newsletter_pdf">Newsletter PDFs</span>
            </a>
        </li>
+                       <!-- <li class="nav-item <?php if ($page_name == 'convert_images_avif') echo 'active'; ?>">
+                    <a href="<?php echo site_url() . 'admin/convert-images-avif'; ?>">
+                     <i data-feather="image"></i>
+                        <span class="menu-item" data-i18n="">Convert Images to AVIF</span>
+                        </a>
+                       </li>
+
+                       <li class="nav-item <?php if ($page_name == 'static_images_avif') echo 'active'; ?>">
+                    <a href="<?php echo site_url() . 'admin/static-images-avif'; ?>">
+                     <i data-feather="folder"></i>
+                        <span class="menu-item" data-i18n="">Static Images to AVIF</span>
+                        </a>
+                       </li> -->
+
        
     </ul>
 </div>
